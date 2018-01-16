@@ -4,7 +4,6 @@ Description on how I configured the installation and Security of Windows 10 Home
 **Table of Contents**
 - Introduction
   - [The Scope](#the-scope)
-  - [The Hardware](#the-hardware)
   - [The Software](#the-software)
   - [Steps to take](#steps-to-take)
 - [1 - Software](#software)
