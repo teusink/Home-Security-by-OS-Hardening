@@ -21,16 +21,14 @@ My other goal is to gain a good understanding on Windows 10 Hardening and other 
 Scope is an important part for this project. Otherwise you can endlessly install security tools and solutions which in the end have a trade-off. This might be resources and performance, but also your own precious time to keep it running :).
 
 The constraints are:
-- TBD
+- Windows 10 Home and up (sorry, not going to focus on Windows 8.1 and lower)
+- For the larger part, the settings needs to be able to be set through a GUI. I'll make some exceptions here and there (because there was never a GUI and it's impact is rather important).
+- Settings must be able to be set without using Group Policy Object (GPO), because that is not present (by default) on Windows 10 Home.
 
 ## The Software
 - Windows 10 Home - Creators Update
-
-## Steps to take
-TBD
-
-# Word of thanks
-TBD
+- Build ?
+- Date ?
 
 # Licensing
 All the licensing and copyrights of any of the code and applications belong to their respective owners. All other coding falls under the MIT-license: https://github.com/teusink/Home-Security-by-Pi/blob/master/LICENSE
