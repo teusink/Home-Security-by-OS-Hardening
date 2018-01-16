@@ -1,14 +1,19 @@
 Windows Registry Editor Version 5.00
 
-; User Account Control: Always Notify
+;;; User Account Control: Always Notify
 [HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Windows\CurrentVersion\Policies\System]
 
 "ConsentPromptBehaviorUser"=dword:00000003
-; https://msdn.microsoft.com/en-us/library/cc232762.aspx
-
 "ConsentPromptBehaviorAdmin"=dword:00000002
-; https://msdn.microsoft.com/en-us/library/cc232761.aspx
-
 "PromptOnSecureDesktop"=dword:00000001
-; https://msdn.microsoft.com/en-us/library/cc232766.aspx
+
+;;; Startup and Recovery: None
+[HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Control\CrashControl]
+
+"AutoReboot"=dword:00000001
+"LogEvent"=dword:00000001
+"MinidumpsCount"=dword:00000005
+"Overwrite"=dword:00000001
+"CrashDumpEnabled"=dword:00000000
+"AlwaysKeepMemoryDump"=dword:00000000
 
