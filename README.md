@@ -6,10 +6,10 @@ Description on how I configured the installation and Security of Windows 10 Home
   - [The Scope](#the-scope)
   - [The Software](#the-software)
   - [Steps to take](#steps-to-take)
-- [1 - Applications](#software)
+- [1 - Control Panel](#control-panel)
 - [2 - Settings](#settings)
-- [3 - Registery](#registery)
-- [4 - Scripts](#scripts)
+- [3 - Register](#register)
+- [4 - Additional software](#additional-software)
 - [5 - Skipped](#skipped)
 
 # Introduction
@@ -102,9 +102,12 @@ The constraints are:
 - Disable Weak Ciphers
 - Enable SMB Packet Signing
 
-# Additional software:
+# Additional software
 - Anti-malware
 - PSI Secunia
+
+# Skipped
+LOREM IPSUM
 
 # Licensing
 All the licensing and copyrights of any of the code and applications belong to their respective owners. All other coding falls under the MIT-license: https://github.com/teusink/Home-Security-by-W10-Hardening/blob/master/LICENSE
