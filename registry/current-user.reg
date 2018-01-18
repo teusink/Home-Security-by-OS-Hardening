@@ -14,14 +14,17 @@ Windows Registry Editor Version 5.00
 ;;; Turn off "Start Menu suggestions"
 [HKEY_CURRENT_USER\SOFTWARE\Microsoft\Windows\CurrentVersion\ContentDeliveryManager]
 "SystemPaneSuggestionsEnabled"=dword:00000000
+"SubscribedContent-338388Enabled"=dword:00000000
 
 ;;; Turn off "Get tips, tricks and suggestions as you use Windows"
 [HKEY_CURRENT_USER\SOFTWARE\Microsoft\Windows\CurrentVersion\ContentDeliveryManager]
 "SoftLandingEnabled"=dword:00000000
+"SubscribedContent-338393Enabled"=dword:00000000
 
 ;;; Turn off "Fun facts and tips"
 [HKEY_CURRENT_USER\SOFTWARE\Microsoft\Windows\CurrentVersion\ContentDeliveryManager]
 "RotatingLockScreenOverlayEnabled"=dword:00000000
+"SubscribedContent-338387Enabled"=dword:00000000
 
 ;;; Turn off "Game Bar Tips"
 [HKEY_CURRENT_USER\Software\Microsoft\GameBar]
@@ -31,13 +34,21 @@ Windows Registry Editor Version 5.00
 [HKEY_CURRENT_USER\Software\Microsoft\Windows\CurrentVersion\Explorer\AutoplayHandlers]
 "DisableAutoplay"=dword:00000001
 
-;;; Turn off automatic installation apps
+;;; Turn off "Let websites access language list"
+[HKEY_CURRENT_USER\Control Panel\International\User Profile]
+"HttpAcceptLanguageOptOut"=dword:00000001
+
+;;; Turn off "Let Windows track app launches"
+[HKEY_CURRENT_USER\Software\Microsoft\Windows\CurrentVersion\Explorer\Advanced]
+"Start_TrackProgs"=dword:00000001
+
+;;; Turn off "Automatic installation apps"
 [HKEY_CURRENT_USER\Software\Microsoft\Windows\CurrentVersion\ContentDeliveryManager]
 "PreInstalledAppsEnabled"=dword:00000000
 "PreInstalledAppsEverEnabled"=dword:00000000
 "FeatureManagementEnabled"=dword:00000000
 
-;;; UNUSED: Turn off automatic installation apps
+;;; UNUSED: Turn off "Automatic installation apps"
 [HKEY_CURRENT_USER\Software\Microsoft\Windows\CurrentVersion\ContentDeliveryManager]
 ;"OemPreInstalledAppsEnabled"=dword:00000000
 ;"SilentInstalledAppsEnabled"=dword:00000000
