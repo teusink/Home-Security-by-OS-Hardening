@@ -62,6 +62,7 @@ The constraints are:
 - Wi-Fi: Connect open hotspots: Off
 - Wi-Fi: Online Sign-Up: Off
 - Mobile hotspot: Off
+- Turn On Remotely: Off
 - Status: Adapter options: Disable Netbios & LMHOSTS (Advanced TCP/IP options)
 
 ## Personalization:
