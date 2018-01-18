@@ -40,13 +40,6 @@ Windows Registry Editor Version 5.00
 [HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Windows\CurrentVersion\Policies\DataCollection]
 "AllowTelemetry"=dword:00000000
 
-;;; SafeSearch: Moderate
-[HKEY_LOCAL_MACHINE\SOFTWARE\Policies\Microsoft\Windows\Windows Search]
-;1 = Strict
-;2 = Moderate
-;3 = Off
-"ConnectedSearchSafeSearch"=dword:00000002
-
 ;;; Encryption - Ciphers: AES only
 [HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Control\SecurityProviders\SCHANNEL\Ciphers\AES 128/128]
 "Enabled"=dword:ffffffff
