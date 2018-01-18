@@ -28,6 +28,10 @@ Windows Registry Editor Version 5.00
 "MaxTicketExpiry"=dword:00000001
 "MaxTicketExpiryUnits"=dword:00000001
 
+;;; Find my device: On
+[HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Settings\FindMyDevice]
+"LocationSyncEnabled"=dword:00000001
+
 ;;; Encryption - Ciphers: AES only
 [HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Control\SecurityProviders\SCHANNEL\Ciphers\AES 128/128]
 "Enabled"=dword:ffffffff
