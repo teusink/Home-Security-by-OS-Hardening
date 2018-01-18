@@ -66,6 +66,7 @@ Windows Registry Editor Version 5.00
 "ConnectedSearchUseWeb"=dword:00000000
 
 ;;; SafeSearch: Moderate
+;; DOES THIS WORK?
 [HKEY_CURRENT_USER\SOFTWARE\Policies\Microsoft\Windows\Windows Search]
 ;1 = Strict
 ;2 = Moderate
