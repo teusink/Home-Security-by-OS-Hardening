@@ -36,6 +36,18 @@ Windows Registry Editor Version 5.00
 [HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Windows\CurrentVersion\AdvertisingInfo]
 "Enabled"=dword:00000000
 
+;;; Project to this PC
+[HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\MiracastReceiver]
+"NetworkQualificationEnabled"=dword:00000000
+"ConsentToast"=dword:00000002
+"Primary Authorization Method"=dword:00000003
+"Secondary Authorization Method"=dword:00000000
+"Tertiary Authorization Method"=dword:00000000
+"EnabledOnACOnly"=dword:00000000
+
+[HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\PlayToReceiver]
+"AutoEnabled"=dword:00000000
+
 ;;; Encryption - Ciphers: AES only
 [HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Control\SecurityProviders\SCHANNEL\Ciphers\AES 128/128]
 "Enabled"=dword:ffffffff
