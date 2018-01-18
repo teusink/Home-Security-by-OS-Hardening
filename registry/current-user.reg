@@ -60,6 +60,17 @@ Windows Registry Editor Version 5.00
 "NumberOfSIUFInPeriod"=dword:00000000
 "PeriodInNanoSeconds"=-
 
+;;; Start Menu Web Search: Off
+[HKEY_CURRENT_USER\SOFTWARE\Policies\Microsoft\Windows\Windows Search]
+"ConnectedSearchUseWeb"=dword:00000000
+
+;;; SafeSearch: Moderate
+[HKEY_CURRENT_USER\SOFTWARE\Policies\Microsoft\Windows\Windows Search]
+;1 = Strict
+;2 = Moderate
+;3 = Off
+"ConnectedSearchSafeSearch"=dword:00000002
+
 ;;; Turn off "Automatic installation apps"
 [HKEY_CURRENT_USER\Software\Microsoft\Windows\CurrentVersion\ContentDeliveryManager]
 "PreInstalledAppsEnabled"=dword:00000000
