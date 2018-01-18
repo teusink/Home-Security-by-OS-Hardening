@@ -20,6 +20,7 @@ Windows Registry Editor Version 5.00
 [HKEY_CURRENT_USER\SOFTWARE\Microsoft\Windows\CurrentVersion\ContentDeliveryManager]
 "SoftLandingEnabled"=dword:00000000
 "SubscribedContent-338393Enabled"=dword:00000000
+"SubscribedContent-338389Enabled"=dword:00000000
 
 ;;; Turn off "Fun facts and tips"
 [HKEY_CURRENT_USER\SOFTWARE\Microsoft\Windows\CurrentVersion\ContentDeliveryManager]
@@ -42,6 +43,14 @@ Windows Registry Editor Version 5.00
 [HKEY_CURRENT_USER\Software\Microsoft\Windows\CurrentVersion\Explorer\Advanced]
 "Start_TrackProgs"=dword:00000001
 
+;;; Turn off "Let apps share and sync with wireless devices"
+[HKEY_CURRENT_USER\Software\Microsoft\Windows\CurrentVersion\DeviceAccess\Global\LooselyCoupled]
+"Value"="Deny"
+
+;;; Turn off "Show me the Windows welcome experience after updates and occasionally when I sign in to highlight what’s new and suggested"
+[HKEY_CURRENT_USER\Software\Microsoft\Windows\CurrentVersion\ContentDeliveryManager]
+"SubscribedContent-310093Enabled"=dword:00000000
+
 ;;; Turn off "Automatic installation apps"
 [HKEY_CURRENT_USER\Software\Microsoft\Windows\CurrentVersion\ContentDeliveryManager]
 "PreInstalledAppsEnabled"=dword:00000000
@@ -52,5 +61,4 @@ Windows Registry Editor Version 5.00
 [HKEY_CURRENT_USER\Software\Microsoft\Windows\CurrentVersion\ContentDeliveryManager]
 ;"OemPreInstalledAppsEnabled"=dword:00000000
 ;"SilentInstalledAppsEnabled"=dword:00000000
-;"SubscribedContentEnabled"=dword:00000000
 ;"ContentDeliveryAllowed"=dword:00000000
