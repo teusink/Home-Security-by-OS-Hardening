@@ -19,8 +19,11 @@ Windows Registry Editor Version 5.00
 ;;; Turn off "Get tips, tricks and suggestions as you use Windows"
 [HKEY_CURRENT_USER\SOFTWARE\Microsoft\Windows\CurrentVersion\ContentDeliveryManager]
 "SoftLandingEnabled"=dword:00000000
-"SubscribedContent-338393Enabled"=dword:00000000
 "SubscribedContent-338389Enabled"=dword:00000000
+
+;;; Turn off "Ads in Settings"
+[HKEY_CURRENT_USER\SOFTWARE\Microsoft\Windows\CurrentVersion\ContentDeliveryManager]
+"SubscribedContent-338393Enabled"=dword:00000000
 
 ;;; Turn off "Fun facts and tips"
 [HKEY_CURRENT_USER\SOFTWARE\Microsoft\Windows\CurrentVersion\ContentDeliveryManager]
@@ -55,7 +58,7 @@ Windows Registry Editor Version 5.00
 [HKEY_CURRENT_USER\Software\Microsoft\Windows\CurrentVersion\Privacy]
 "TailoredExperiencesWithDiagnosticDataEnabled"=dword:00000000
 
-;;; Turn off (Never) "Feedback Frequency"
+;;; Turn off (set to Never) "Feedback Frequency"
 [HKEY_CURRENT_USER\SOFTWARE\Microsoft\Siuf\Rules]
 "NumberOfSIUFInPeriod"=dword:00000000
 "PeriodInNanoSeconds"=-
@@ -73,7 +76,7 @@ Windows Registry Editor Version 5.00
 ;3 = Off
 "ConnectedSearchSafeSearch"=dword:00000002
 
-;; Telemetry and Diagnostics: Off
+;;; Telemetry and Diagnostics: Off
 [HKEY_CURRENT_USER\Software\Microsoft\Windows\CurrentVersion\Policies\DataCollection]
 "AllowTelemetry"=dword:00000000
 
