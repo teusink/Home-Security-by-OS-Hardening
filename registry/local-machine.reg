@@ -47,6 +47,27 @@ Windows Registry Editor Version 5.00
 [HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\PlayToReceiver]
 "AutoEnabled"=dword:00000000
 
+;;; Wi-Fi Sense: Off
+;; WHAT DOES THIS?
+[HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\PolicyManager\default\Wifi\AllowAutoConnectToWiFiSenseHotspots]
+"Behavior"=dword:00000020
+"highrange"=dword:00000001
+"lowrange"=dword:00000000
+"mergealgorithm"=dword:00000001
+"policytype"=dword:00000004
+"value"=dword:00000001
+
+;;; Wi-Fi services Hotspots: Off
+;;; NOTE: This disables resetting it through GUI
+[HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\WcmSvc\wifinetworkmanager\config\]
+"AutoConnectAllowedOEM"=dword:00000001
+
+;;; Hotspots 2.0 networks: Off
+[HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\WlanSvc\AnqpCache]
+"OsuRegistrationStatus":=dword:00000001
+
+;;; WARNING: THE SETTINGS BELOW CANNOT BE UNDONE THROUGH A GUI!
+
 ;;; Encryption - Ciphers: AES only
 [HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Control\SecurityProviders\SCHANNEL\Ciphers\AES 128/128]
 "Enabled"=dword:ffffffff
