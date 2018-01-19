@@ -76,9 +76,13 @@ Windows Registry Editor Version 5.00
 [HKEY_LOCAL_MACHINE\SOFTWARE\Policies\Microsoft\Windows\CloudContent]
 "DisableWindowsConsumerFeatures"=dword:00000001
 
-;;; Enable Samba Packet Signing
+;;; Samba Packet Signing: On
 [HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Services\LanmanServer\Parameters]
 "RequireSecuritySignature"=dword:00000001
+
+;;; Windows Error Reporting: Off
+[HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Windows\Windows Error Reporting]
+"Disabled"=dword:00000001
 
 ;;; Encryption - Ciphers: AES only
 ;;; NOTE: Third-Party GUI can be found here: https://www.nartac.com/Products/IISCrypto
