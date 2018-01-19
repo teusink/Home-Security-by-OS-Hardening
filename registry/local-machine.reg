@@ -47,16 +47,6 @@ Windows Registry Editor Version 5.00
 [HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\PlayToReceiver]
 "AutoEnabled"=dword:00000000
 
-;;; Wi-Fi Sense: Off
-;; WHAT DOES THIS?
-[HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\PolicyManager\default\Wifi\AllowAutoConnectToWiFiSenseHotspots]
-"Behavior"=dword:00000020
-"highrange"=dword:00000001
-"lowrange"=dword:00000000
-"mergealgorithm"=dword:00000001
-"policytype"=dword:00000004
-"value"=dword:00000001
-
 ;;; Hotspots 2.0 networks: Off
 [HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\WlanSvc\AnqpCache]
 "OsuRegistrationStatus":=dword:00000001
