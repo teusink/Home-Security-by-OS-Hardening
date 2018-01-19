@@ -49,7 +49,7 @@ Windows Registry Editor Version 5.00
 
 ;;; Hotspots 2.0 networks: Off
 [HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\WlanSvc\AnqpCache]
-"OsuRegistrationStatus":=dword:00000001
+"OsuRegistrationStatus":=dword:00000000
 
 ;;; SmartScreen Apps and Files: Warn
 [HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Windows\CurrentVersion\Explorer]
@@ -60,7 +60,7 @@ Windows Registry Editor Version 5.00
 ;;; Wi-Fi services Hotspots: Off
 ;;; NOTE: This disables resetting it through GUI
 [HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\WcmSvc\wifinetworkmanager\config\]
-"AutoConnectAllowedOEM"=dword:00000001
+"AutoConnectAllowedOEM"=dword:00000000
 
 ;;; Auto-populate Start with (suggested) Tiles: Off
 [HKEY_LOCAL_MACHINE\SOFTWARE\Policies\Microsoft\Windows\CloudContent]
