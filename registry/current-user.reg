@@ -71,6 +71,14 @@ Windows Registry Editor Version 5.00
 [HKEY_CURRENT_USER\Software\Microsoft\Windows\CurrentVersion\AppHost]
 "EnableWebContentEvaluation"=dword:00000001
 
+;;; Turn on "Storage sense" and delete Temporary files and empty Recycle bin
+[HKEY_CURRENT_USER\Software\Microsoft\Windows\CurrentVersion\StorageSense\Parameters\StoragePolicy]
+"01"=dword:00000001
+"02"=dword:00000001
+"04"=dword:00000001
+"08"=dword:00000001
+"32"=dword:00000000
+
 ;;; WARNING: THE SETTINGS BELOW CANNOT BE UNDONE THROUGH A GUI!
 
 ;;; Telemetry and Diagnostics: Off
