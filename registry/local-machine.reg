@@ -72,6 +72,10 @@ Windows Registry Editor Version 5.00
 [HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\WcmSvc\wifinetworkmanager\config\]
 "AutoConnectAllowedOEM"=dword:00000001
 
+;;; Auto-populate Start with (suggested) Tiles: Off
+[HKEY_LOCAL_MACHINE\SOFTWARE\Policies\Microsoft\Windows\CloudContent]
+"DisableWindowsConsumerFeatures"=dword:00000001
+
 ;;; Enable Samba Packet Signing
 [HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Services\LanmanServer\Parameters]
 "RequireSecuritySignature"=dword:00000001
