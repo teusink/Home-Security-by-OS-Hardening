@@ -100,6 +100,9 @@ The constraints are:
 - Permissions & History: CloudSearch: On
 - Permissions & History: Device History: On
 
+# Explorer
+- File Extensions: Show
+
 # Register
 - Current User: https://github.com/teusink/Home-Security-by-W10-Hardening/blob/master/registry/current-user.reg
 - Local Machine: https://github.com/teusink/Home-Security-by-W10-Hardening/blob/master/registry/local-machine.reg
