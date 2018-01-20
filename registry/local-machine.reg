@@ -74,6 +74,10 @@ Windows Registry Editor Version 5.00
 [HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Services\LanmanServer\Parameters]
 "RequireSecuritySignature"=dword:00000001
 "EnableSecuritySignature"=dword:00000001
+[HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Services\LanmanWorkstation\Parameters]
+"RequireSecuritySignature"=dword:00000001
+"EnableSecuritySignature"=dword:00000001
+"EnablePlainTextPassword"=dword:00000000
 
 ;;; NLTM Authentication: Level 5 - NTLMv2 only
 [HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Control\Lsa]
