@@ -55,6 +55,10 @@ Windows Registry Editor Version 5.00
 [HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Windows\CurrentVersion\Explorer]
 "SmartScreenEnabled"="Warn"
 
+;;; Sign-in after Windows Update: On
+[HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Windows NT\CurrentVersion\Winlogon]
+"ARSOUserConsent"==dword:00000001
+
 ;;; WARNING: THE SETTINGS BELOW CANNOT BE UNDONE THROUGH A GUI!
 
 ;;; Wi-Fi services Hotspots: Off
