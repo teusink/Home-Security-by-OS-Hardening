@@ -23,14 +23,15 @@ My other goal is to gain a good understanding on Windows 10 Hardening and other 
 Scope is an important part for this project. Otherwise you can endlessly install security tools and solutions which in the end have a trade-off. This might be resources and performance, but also your own precious time to keep it running :).
 
 The constraints are:
-- Windows 10 Home and up (sorry, not going to focus on Windows 8.1 and lower)
+- Windows 10 Home
 - For the larger part, the settings needs to be able to be set through a GUI. I'll make some exceptions here and there (because there was never a GUI and it's impact is rather important).
+- Some settings can also be set by using a registry-key file (.reg). I will supply these files.
 - Settings must be able to be set without using Group Policy Object (GPO), because that is not present (by default) on Windows 10 Home.
 
 ## The Software
-- Windows 10 Home - Creators Update
-- Build ?
-- Date ?
+- Windows 10 Home Build 1709
+
+Why focus on Home? The Home edition is by far the most used edition by regular consumers. Pro is more focused on the core IT, and Enterprise is, well, for enterprises. The GPO is only present on Pro and above.
 
 # Control Panel
 
