@@ -1,0 +1,104 @@
+Windows Registry Editor Version 5.00
+
+;;; Windows 10 Home Hardening
+;;; Repository: https://github.com/teusink/Home-Security-by-W10-Hardening/
+
+;;; Registry target: HKEY_CURRENT_USER
+;;; Source: Various online sources
+;;; Author: Joram Teusink
+
+;;; Performance - Visual Effects: Best performance
+[HKEY_CURRENT_USER\Software\Microsoft\Windows\CurrentVersion\Explorer\VisualEffects]
+;0 = Let Windows choose what’s best for my computer
+;1 = Adjust for best appearance
+;2 = Adjust for best performance
+"VisualFXSetting"=dword:00000001
+
+;;; Turn off "File Explorer ads"
+[HKEY_CURRENT_USER\SOFTWARE\Microsoft\Windows\CurrentVersion\Explorer\Advanced]
+"ShowSyncProviderNotifications"=dword:00000000
+
+;;; Turn off "Start Menu suggestions"
+[HKEY_CURRENT_USER\SOFTWARE\Microsoft\Windows\CurrentVersion\ContentDeliveryManager]
+"SystemPaneSuggestionsEnabled"=dword:00000000
+"SubscribedContent-338388Enabled"=dword:00000000
+
+;;; Turn off "Get tips, tricks and suggestions as you use Windows"
+[HKEY_CURRENT_USER\SOFTWARE\Microsoft\Windows\CurrentVersion\ContentDeliveryManager]
+"SoftLandingEnabled"=dword:00000000
+"SubscribedContent-338389Enabled"=dword:00000000
+
+;;; Turn off "Ads in Settings"
+[HKEY_CURRENT_USER\SOFTWARE\Microsoft\Windows\CurrentVersion\ContentDeliveryManager]
+"SubscribedContent-338393Enabled"=dword:00000000
+
+;;; Turn off "Fun facts and tips"
+[HKEY_CURRENT_USER\SOFTWARE\Microsoft\Windows\CurrentVersion\ContentDeliveryManager]
+"RotatingLockScreenOverlayEnabled"=dword:00000000
+"SubscribedContent-338387Enabled"=dword:00000000
+
+;;; Turn off "Game Bar Tips"
+[HKEY_CURRENT_USER\Software\Microsoft\GameBar]
+"ShowStartupPanel"=dword:00000000
+
+;;; Turn off "AutoPlay"
+[HKEY_CURRENT_USER\Software\Microsoft\Windows\CurrentVersion\Explorer\AutoplayHandlers]
+"DisableAutoplay"=dword:00000001
+
+;;; Turn off "Let websites access language list"
+[HKEY_CURRENT_USER\Control Panel\International\User Profile]
+"HttpAcceptLanguageOptOut"=dword:00000001
+
+;;; Turn off "Let Windows track app launches"
+[HKEY_CURRENT_USER\Software\Microsoft\Windows\CurrentVersion\Explorer\Advanced]
+"Start_TrackProgs"=dword:00000001
+
+;;; Turn off "Let apps share and sync with wireless devices"
+[HKEY_CURRENT_USER\Software\Microsoft\Windows\CurrentVersion\DeviceAccess\Global\LooselyCoupled]
+"Value"="Deny"
+
+;;; Turn off "Show me the Windows welcome experience after updates and occasionally when I sign in to highlight what’s new and suggested"
+[HKEY_CURRENT_USER\Software\Microsoft\Windows\CurrentVersion\ContentDeliveryManager]
+"SubscribedContent-310093Enabled"=dword:00000000
+
+;;; Turn off "Tailored experiences with diagnostic data"
+[HKEY_CURRENT_USER\Software\Microsoft\Windows\CurrentVersion\Privacy]
+"TailoredExperiencesWithDiagnosticDataEnabled"=dword:00000000
+
+;;; Turn off (set to Never) "Feedback Frequency"
+[HKEY_CURRENT_USER\SOFTWARE\Microsoft\Siuf\Rules]
+"NumberOfSIUFInPeriod"=dword:00000000
+"PeriodInNanoSeconds"=-
+
+;;; Turn on (set to Warning) "SmartScreen for Microsoft Edge"
+[HKEY_CURRENT_USER\Software\Classes\Local Settings\Software\Microsoft\Windows\CurrentVersion\AppContainer\Storage\microsoft.microsoftedge_8wekyb3d8bbwe\MicrosoftEdge\PhishingFilter]
+"EnabledV9"=dword:00000001
+
+;;; Turn on (set to Warning) "SmartScreen for Windows Store apps"
+[HKEY_CURRENT_USER\Software\Microsoft\Windows\CurrentVersion\AppHost]
+"EnableWebContentEvaluation"=dword:00000001
+
+;;; Turn on "Storage sense" and delete Temporary files and empty Recycle bin
+[HKEY_CURRENT_USER\Software\Microsoft\Windows\CurrentVersion\StorageSense\Parameters\StoragePolicy]
+"01"=dword:00000001
+"02"=dword:00000001
+"04"=dword:00000001
+"08"=dword:00000001
+"32"=dword:00000000
+
+;;; Turn on "File extensions for known file types"
+[HKEY_CURRENT_USER\Software\Microsoft\Windows\CurrentVersion\Explorer\Advanced]
+"HideFileExt"=dword:00000000
+
+;;; WARNING: THE SETTINGS BELOW CANNOT BE UNDONE THROUGH A GUI!
+
+;;; Turn off "Automatic installation apps"
+[HKEY_CURRENT_USER\Software\Microsoft\Windows\CurrentVersion\ContentDeliveryManager]
+; 0 = On
+; 1 = Off (Default)
+"PreInstalledAppsEnabled"=dword:00000000
+"PreInstalledAppsEverEnabled"=dword:00000000
+"FeatureManagementEnabled"=dword:00000000
+"OemPreInstalledAppsEnabled"=dword:00000000
+"SilentInstalledAppsEnabled"=dword:00000000
+"ContentDeliveryAllowed"=dword:00000000
