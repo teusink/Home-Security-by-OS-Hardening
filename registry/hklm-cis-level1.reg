@@ -755,7 +755,9 @@ Windows Registry Editor Version 5.00
 ; <deleted> = (Default)
 ; 0 = Off
 ; 1 = On (CIS L1)
-"AllowProjectionToPC"=dword:0000000
+; NON-COMPLIANCE DUE TO WINDOWS 10 HOME USE
+; Further configured through "HKLM-CUSTOM.REG"
+"AllowProjectionToPC"=dword:0000001
 
 ;;; 18.9.14.1b (L1) Ensure 'Require pin for pairing' is set to 'Enabled'
 [HKEY_LOCAL_MACHINE\SOFTWARE\Policies\Microsoft\Windows\Connect]
