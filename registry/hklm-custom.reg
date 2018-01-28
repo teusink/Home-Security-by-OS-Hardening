@@ -62,7 +62,7 @@ Windows Registry Editor Version 5.00
 ;;; Account-lockout
 [HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Services\RemoteAccess\Parameters\AccountLockout]
 "MaxDenials"=dword:0000000a
-"ResetTime (mins)"=dword:0000000f
+"ResetTime"=dword:0000000f
 ;;; @@ investigate this!
 
 ;;; Logon and timeout
