@@ -59,17 +59,6 @@ Windows Registry Editor Version 5.00
 
 ;;; WARNING: THE SETTINGS BELOW CANNOT BE UNDONE THROUGH A GUI!
 
-;;; Account-lockout
-[HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Services\RemoteAccess\Parameters\AccountLockout]
-"MaxDenials"=dword:0000000a
-"ResetTime"=dword:0000000f
-;;; @@ investigate this!
-
-;;; Logon and timeout
-[HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Windows\CurrentVersion\Policies\System]
-"MaxDevicePasswordFailedAttempts"=dword:0000000a
-;;; @@ investigate this!
-
 ;;; Wi-Fi services Hotspots: Off
 ;;; NOTE: This disables resetting it through GUI
 [HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\WcmSvc\wifinetworkmanager\config\]
