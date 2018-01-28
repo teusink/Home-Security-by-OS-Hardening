@@ -7,6 +7,8 @@ Windows Registry Editor Version 5.00
 ;;; Source: NARTAC IIS Crypto https://www.nartac.com/Products/IISCrypto
 ;;; Author: Joram Teusink
 
+;;; WARNING: THE SETTINGS BELOW CANNOT BE UNDONE THROUGH A GUI!
+
 ;;; Encryption - Ciphers: AES only
 [HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Control\SecurityProviders\SCHANNEL\Ciphers\AES 128/128]
 "Enabled"=dword:ffffffff
