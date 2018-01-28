@@ -7,6 +7,8 @@ Windows Registry Editor Version 5.00
 ;;; Source: Various online sources
 ;;; Author: Joram Teusink
 
+;;; NOTICE: THE SETTINGS BELOW CAN BE UNDONE THROUGH A GUI!
+
 ;;; Performance - Visual Effects: Best performance
 [HKEY_CURRENT_USER\Software\Microsoft\Windows\CurrentVersion\Explorer\VisualEffects]
 ;0 = Let Windows choose what’s best for my computer
