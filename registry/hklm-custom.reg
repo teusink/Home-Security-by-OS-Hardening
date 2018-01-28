@@ -7,6 +7,8 @@ Windows Registry Editor Version 5.00
 ;;; Source: Various online sources
 ;;; Author: Joram Teusink
 
+;;; NOTICE: THE SETTINGS BELOW CAN BE UNDONE THROUGH A GUI!
+
 ;;; Startup and Recovery - Debug Information: None
 [HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Control\CrashControl]
 "AutoReboot"=dword:00000001
@@ -43,7 +45,6 @@ Windows Registry Editor Version 5.00
 "EnabledOnACOnly"=dword:00000000
 [HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\PlayToReceiver]
 "AutoEnabled"=dword:00000000
-;;; @@ Investigate this
 
 ;;; Hotspots 2.0 networks: Off
 [HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\WlanSvc\AnqpCache]
