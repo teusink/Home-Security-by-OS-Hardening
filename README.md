@@ -31,7 +31,7 @@ The constraints are:
 ## The Software
 - Windows 10 Home Build 1709
 
-Why focus on Home? The Home edition is by far the most used edition by regular consumers. Pro is more focused on the core IT, and Enterprise is, well, for enterprises. The GPO is only present on Pro and above.
+Why focus on Home? The Home edition is by far the most used edition by regular consumers (even small business uses it sometimes due to buying their laptops or desktops at the local retailer...). Pro is more focused on the core IT, and Enterprise is, well, for enterprises. The GPO is only present on Pro and above.
 
 ## Read instructions
 
@@ -61,8 +61,21 @@ These are the settings that are done through the use of the Control Panel.
 
 # Settings
 
+These are the settings that are done through the use of the new Windows Settings interface.
+
 ## System
-- Project to this PC: Off [[hklm-cis-level1]](https://github.com/teusink/Home-Security-by-W10-Hardening/blob/master/registry/hklm-cis-level1.reg) & [[hkcu-custom]](https://github.com/teusink/Home-Security-by-W10-Hardening/blob/master/registry/hkcu-custom.reg)
+- Notifications & actions: Show me the Windows welcome experience: Off [[hklm-cis-level1]](https://github.com/teusink/Home-Security-by-W10-Hardening/blob/master/registry/hklm-cis-level1.reg) & [[hkcu-custom]](https://github.com/teusink/Home-Security-by-W10-Hardening/blob/master/registry/hkcu-custom.reg)
+- Notifications & actions: Get tips, tricks, and suggestions as you use Windows: Off [[hkcu-custom]](https://github.com/teusink/Home-Security-by-W10-Hardening/blob/master/registry/hkcu-custom.reg)
+- Storage sense: On [[hklm-cis-level1]](https://github.com/teusink/Home-Security-by-W10-Hardening/blob/master/registry/hklm-cis-level1.reg)
+- Storage sense: Delete temporary files that my apps aren't using: On [[hklm-cis-level1]](https://github.com/teusink/Home-Security-by-W10-Hardening/blob/master/registry/hklm-cis-level1.reg)
+- Storage sense: Delete files that have been in the recycle bin for over 30 days: On [[hklm-cis-level1]](https://github.com/teusink/Home-Security-by-W10-Hardening/blob/master/registry/hklm-cis-level1.reg)
+- Storage sense: Delete files in the Download folder that haven't changed in 30 days: Off [[hklm-cis-level1]](https://github.com/teusink/Home-Security-by-W10-Hardening/blob/master/registry/hklm-cis-level1.reg)
+- Projecting to this PC: Always off [[hklm-cis-level1]](https://github.com/teusink/Home-Security-by-W10-Hardening/blob/master/registry/hklm-cis-level1.reg) & [[hkcu-custom]](https://github.com/teusink/Home-Security-by-W10-Hardening/blob/master/registry/hkcu-custom.reg)
+- Projecting to this PC: Ask to project to this PC: Every time [[hkcu-custom]](https://github.com/teusink/Home-Security-by-W10-Hardening/blob/master/registry/hkcu-custom.reg)
+- Projecting to this PC: Require PIN for sharing: On [[hklm-cis-level1]](https://github.com/teusink/Home-Security-by-W10-Hardening/blob/master/registry/hklm-cis-level1.reg)
+- Projecting to this PC: This PC can be discovered for projection only when it is plugged in: Off [[hklm-cis-level1]](https://github.com/teusink/Home-Security-by-W10-Hardening/blob/master/registry/hklm-cis-level1.reg) & [[hkcu-custom]](https://github.com/teusink/Home-Security-by-W10-Hardening/blob/master/registry/hkcu-custom.reg)
+- Shared experiences: Share across devices: On
+- Shared experiences: I can share or receive from: My devices only [[hkcu-custom]](https://github.com/teusink/Home-Security-by-W10-Hardening/blob/master/registry/hkcu-custom.reg)
 
 ## Network & Internet
 - Wi-Fi: Find paid plans: Off [[hklm-cis-level1]](https://github.com/teusink/Home-Security-by-W10-Hardening/blob/master/registry/hklm-cis-level1.reg) & [[hkcu-custom]](https://github.com/teusink/Home-Security-by-W10-Hardening/blob/master/registry/hkcu-custom.reg)
@@ -70,7 +83,8 @@ These are the settings that are done through the use of the Control Panel.
 - Wi-Fi: Online Sign-Up: Off [[hkcu-custom]](https://github.com/teusink/Home-Security-by-W10-Hardening/blob/master/registry/hkcu-custom.reg)
 - Mobile hotspot: Off [[hkcu-custom]](https://github.com/teusink/Home-Security-by-W10-Hardening/blob/master/registry/hkcu-custom.reg)
 - Turn On Remotely: Off
-- Status: Adapter options: Disable Netbios & LMHOSTS (Advanced TCP/IP options)
+- Status: Adapter options: [Adapter]: TCP/IPv4: Properties: Advanced: WINS: NetBIOS over TCP/IP: Disabled
+- Status: Adapter options: [Adapter]: TCP/IPv4: Properties: Advanced: WINS: LMHOSTS Lookup: Disabled [[hklm-custom]](https://github.com/teusink/Home-Security-by-W10-Hardening/blob/master/registry/hklm-custom.reg)
 
 ## Personalization:
 - Lock screen: Screen saver settings: Blank - 10 minutes, on resume logon
