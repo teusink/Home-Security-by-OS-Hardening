@@ -1,8 +1,6 @@
 # Home-Security-by-W10-Hardening
 Description on how I configured the installation and Security of Windows 10 Home, and how I keep it fit for use and purpose.
 
-**REPO WORK IN PROGRESS _ DO NOT USE IN PRODUCTION YET!**
-
 **Table of Contents**
 - Introduction
   - [The Scope](#the-scope)
@@ -10,7 +8,7 @@ Description on how I configured the installation and Security of Windows 10 Home
   - [Steps to take](#steps-to-take)
 - [1 - Control Panel](#control-panel)
 - [2 - Settings](#settings)
-- [3 - Register](#register)
+- [3 - Registry](#registry)
 - [4 - Additional software](#additional-software)
 
 # Introduction
@@ -188,9 +186,17 @@ This setting can be set through Windows Explorer.
 
 - File Extensions: Show [[hkcu-custom]](https://github.com/teusink/Home-Security-by-W10-Hardening/blob/master/registry/hkcu-custom.reg)
 
+# Registry
+
+In order to even more harden your system, add the registry key-sets below to your register.
+
+- HKEY_LOCAL_MACHINE - CIS Level 1 [[REG]](https://github.com/teusink/Home-Security-by-W10-Hardening/blob/master/registry/hklm-cis-level1.reg)
+- HKEY_LOCAL_MACHINE - Custom hardening [[REG]](https://github.com/teusink/Home-Security-by-W10-Hardening/blob/master/registry/hklm-custom.reg)
+- HKEY_LOCAL_MACHINE - Client and Server Encryption hardening [[REG]](https://github.com/teusink/Home-Security-by-W10-Hardening/blob/master/registry/hklm-encryption.reg)
+- HKEY_CURRENT_USER - User level settings hardening [[REG]](https://github.com/teusink/Home-Security-by-W10-Hardening/blob/master/registry/hkcu-custom.reg)
+
 # Additional software
-- Anti-malware
-- PSI Secunia
+- TODO
 
 # Licensing
 All the licensing and copyrights of any of the code and applications belong to their respective owners. All other coding falls under the MIT-license: https://github.com/teusink/Home-Security-by-W10-Hardening/blob/master/LICENSE
