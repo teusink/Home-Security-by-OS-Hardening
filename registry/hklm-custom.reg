@@ -48,7 +48,7 @@ Windows Registry Editor Version 5.00
 
 ;;; Hotspots 2.0 networks: Off
 [HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\WlanSvc\AnqpCache]
-"OsuRegistrationStatus"=dword:00000001
+"OsuRegistrationStatus"=dword:00000000
 
 ;;; SmartScreen Apps and Files: Warn
 [HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Windows\CurrentVersion\Explorer]
@@ -57,6 +57,10 @@ Windows Registry Editor Version 5.00
 ;;; Sign-in after Windows Update: On
 [HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Windows NT\CurrentVersion\Winlogon]
 "ARSOUserConsent"=dword:00000001
+
+;;; LMHOSTS lookup: Off
+[HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Services\NetBT\Parameters]
+"EnableLMHOSTS"=dword:00000000
 
 ;;; WARNING: THE SETTINGS BELOW CANNOT BE UNDONE THROUGH A GUI!
 
