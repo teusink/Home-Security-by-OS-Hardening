@@ -34,6 +34,9 @@ Why focus on Home? The Home edition is by far the most used edition by regular c
 
 From a Graphical User Interface (GUI) perspective I will touch every relevant setting. Whenever there is a mention of, for instance, [[hklm-cis-level1]](https://github.com/teusink/Home-Security-by-W10-Hardening/blob/master/registry/hklm-cis-level1.reg) then you can also set the setting through the use of the Windows Registry.
 
+- HKLM stands for HKEY_LOCAL_MACHINE. It's about settings that are applied system wide. Adding it once to a system is enough.
+- HKCU stands for HKEY_CURRENT_USER. It's about settings that are applied per user. These needs to be added per user.
+
 # Control Panel
 
 These are the settings that are done through the use of the Control Panel. Set it's view to `Large icons` to better see all options.
@@ -166,7 +169,7 @@ These are the settings that are done through the use of the new Windows Settings
 ## Update & Security
 - Windows Update: Set `Active hours` to your likings
 - Windows Update: Set `Restart options` to your likings
-- Windows Update: Advanced options: Give updates other MS products: On [[hklm-cis-level1]](https://github.com/teusink/Home-Security-by-W10-Hardening/blob/master/registry/hklm-cis-level1.reg)
+- Windows Update: Advanced options: Give updates other MS products: On
 - Windows Update: Advanced options: Delivery optimizations: Allow downloads from other PCs: On [[hklm-cis-level1]](https://github.com/teusink/Home-Security-by-W10-Hardening/blob/master/registry/hklm-cis-level1.reg)
 - Windows Update: Advanced options: Delivery optimizations: PCs on my local network: On [[hklm-cis-level1]](https://github.com/teusink/Home-Security-by-W10-Hardening/blob/master/registry/hklm-cis-level1.reg)
 - Windows Update: Advanced options: Delivery optimizations: PCs on my local network, and PCs on the Internet: Off [[hklm-cis-level1]](https://github.com/teusink/Home-Security-by-W10-Hardening/blob/master/registry/hklm-cis-level1.reg)
@@ -188,9 +191,9 @@ This setting can be set through Windows Explorer.
 
 # Registry
 
-In order to even more harden your system, add the registry key-sets below to your register.
+In order to even more harden your system, add the registry key-sets below to your register. They also incorporate most of the settings above.
 
-- HKEY_LOCAL_MACHINE - CIS Level 1 [[REG]](https://github.com/teusink/Home-Security-by-W10-Hardening/blob/master/registry/hklm-cis-level1.reg)
+- HKEY_LOCAL_MACHINE - CIS Level 1 (not fully compliant) [[REG]](https://github.com/teusink/Home-Security-by-W10-Hardening/blob/master/registry/hklm-cis-level1.reg)
 - HKEY_LOCAL_MACHINE - Custom hardening [[REG]](https://github.com/teusink/Home-Security-by-W10-Hardening/blob/master/registry/hklm-custom.reg)
 - HKEY_LOCAL_MACHINE - Client and Server Encryption hardening [[REG]](https://github.com/teusink/Home-Security-by-W10-Hardening/blob/master/registry/hklm-encryption.reg)
 - HKEY_CURRENT_USER - User level settings hardening [[REG]](https://github.com/teusink/Home-Security-by-W10-Hardening/blob/master/registry/hkcu-custom.reg)
