@@ -38,25 +38,56 @@ From a Graphical User Interface (GUI) perspective I will touch every relevant se
 
 # Control Panel
 
-These are the settings that are done through the use of the Control Panel.
+These are the settings that are done through the use of the Control Panel. Set it's view to `Large icons` to better see all options.
 
 ## System and Security
-- Flash Player: Block all sites from storing
-- Flash Player: Block all sites from using camera & microphone
-- Flash Player: Block all sites from using peer-assisted networking
 - Security and Maintenance: User Account Control: Always notify [[hklm-cis-level1]](https://github.com/teusink/Home-Security-by-W10-Hardening/blob/master/registry/hklm-cis-level1.reg)
-- System: Data Execution Prevention: Turn on DEP for all
-- System: Remote Assistance: Disable [[hklm-custom]](https://github.com/teusink/Home-Security-by-W10-Hardening/blob/master/registry/hklm-custom.reg)
-- System: Startup and Recovery Debug information: None [[hklm-custom]](https://github.com/teusink/Home-Security-by-W10-Hardening/blob/master/registry/hklm-custom.reg)
-- System: Visual effects: Adjust for best appearance [[hkcu-custom]](https://github.com/teusink/Home-Security-by-W10-Hardening/blob/master/registry/hkcu-custom.reg)
-- System: Virtual Memory: Fixed size for recommended
+- System: Advanced system settings: Advanced: Performance Settings: Visual Effects: Adjust for best appearance [[hkcu-custom]](https://github.com/teusink/Home-Security-by-W10-Hardening/blob/master/registry/hkcu-custom.reg)
+- System: Advanced system settings: Advanced: Performance Settings: Advanced: Virtual memory: Fixed size for recommended values
+- System: Advanced system settings: Advanced: Performance Settings: Data Execution Prevention: Turn on DEP for all
+- System: Advanced system settings: Advanced: Startup and Recovery settings: Write debug information: None [[hklm-custom]](https://github.com/teusink/Home-Security-by-W10-Hardening/blob/master/registry/hklm-custom.reg)
+- System: Advanced system settings: Remote: Remote Assistance: Advanced: Set the maximum amount of time invitations can remaint open: 1 Hours [[hklm-custom]](https://github.com/teusink/Home-Security-by-W10-Hardening/blob/master/registry/hklm-custom.reg)
+- System: Advanced system settings: Remote: Remote Assistance: Advanced: Create invitations that can only be used from computers running Windows Vista or later: On [[hklm-custom]](https://github.com/teusink/Home-Security-by-W10-Hardening/blob/master/registry/hklm-custom.reg)
+- System: Advanced system settings: Remote: Remote Assistance: Disable [[hklm-custom]](https://github.com/teusink/Home-Security-by-W10-Hardening/blob/master/registry/hklm-custom.reg)
 - Device Encryption: Back up recovery key
+- Flash Player (if present)
+  - Storage: Block all sites from storing
+  - Camera and Mic: Block all sites from using camera & microphone
+  - Playback: Block all sites from using peer-assisted networking
 
 ## Programs
-- Windows Features: Disable WCF Services (.NET)
-- Windows Features: Disable XPS Writer
-- Windows Features: Disable SMB1.0
-- Windows Features: Disable XPS Viewer
+- Programs and Features: Turn Windows features on or off:
+  - .NET Framework 3.5 (includes .NET 2.0 and 3.0): Windows Communication Foundation HTTP Activation
+  - .NET Framework 3.5 (includes .NET 2.0 and 3.0): Windows Communication Foundation Non-HTTP Activation
+  - .NET Framework 4.7 Advanced Services: ASP.NET 4.7 (.NET)
+  - .NET Framework 4.7 Advanced Services: WCF Services (.NET)
+  - Internet Information Services (and all below)
+  - Internet Information Services Hostable Web Core
+  - Legacy Components (and all below)
+  - Media Features (and all below)
+  - Microsoft Message Queue (MSMQ) Server (and all below)
+  - Microsoft XPS Document Writer
+  - Print and Document Services: LPD Print Service
+  - Print and Document Services: LPR Port Monitor
+  - RIP Listener
+  - Simple Network Management Protocol (SNMP) (and all below)
+  - Simple TCPIP services (i.e. echo, daytime etc)
+  - SMB 1.0/CIFS File Share Support (and all below)
+  - Telnet Client
+  - TFTP Client
+  - Windows Identity Foundation 3.5
+  - Windows PowerShell 2.0 (and all below, unless needed!)
+  - Windows Process Activation Service (and all below)
+  - Windows Subsystem for Linux (unless needed!)
+  - Windows TIFF IFilter
+  - Work Folders Client
+  - XPS Viewer
+- Java (if present):
+  - Update: Notify Me: Before installing
+  - Update: Check for Updates Automatically: On
+  - Update: Check for Updates Automatically: Advanced: Frequency: Daily
+  - Security: Enable Java content for browser and Web Start applications: Off
+  - Security: Security level for applications not on the Exception Site list: High
 
 # Settings
 
