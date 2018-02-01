@@ -45,7 +45,7 @@ These are the settings that are done through the use of the Control Panel.
 - Flash Player: Block all sites from storing
 - Flash Player: Block all sites from using camera & microphone
 - Flash Player: Block all sites from using peer-assisted networking
-- Security and Maintenance: User Account Control: Always notify [hklm-cis-level1](https://github.com/teusink/Home-Security-by-W10-Hardening/blob/master/registry/hklm-cis-level1.reg)
+- Security and Maintenance: User Account Control: Always notify [[hklm-cis-level1]](https://github.com/teusink/Home-Security-by-W10-Hardening/blob/master/registry/hklm-cis-level1.reg)
 - System: Data Execution Prevention: Turn on DEP for all
 - System: Remote Assistance: Disable [hklm-custom](https://github.com/teusink/Home-Security-by-W10-Hardening/blob/master/registry/hklm-custom.reg)
 - System: Startup and Recovery Debug information: None [hklm-custom](https://github.com/teusink/Home-Security-by-W10-Hardening/blob/master/registry/hklm-custom.reg)
