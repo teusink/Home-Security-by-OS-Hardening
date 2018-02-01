@@ -12,7 +12,6 @@ Description on how I configured the installation and Security of Windows 10 Home
 - [2 - Settings](#settings)
 - [3 - Register](#register)
 - [4 - Additional software](#additional-software)
-- [5 - Skipped](#skipped)
 
 # Introduction
 The goal of this project is to make a secure (or at least secure within a reasonable amount of effort) Windows 10 Home installation to ensure a secure environment to consume and produce content. It is possible that by gaining new insights hardening-options are either removed or added.
@@ -115,9 +114,10 @@ These are the settings that are done through the use of the new Windows Settings
 - Sync your settings: Other Windows settings: On [[hkcu-custom]](https://github.com/teusink/Home-Security-by-W10-Hardening/blob/master/registry/hkcu-custom.reg)
 
 ## Cortana / Search
-- Talk to Cortana: Let Cortana respond to "Hey Cortana": Off
-- Talk to Cortana: Let Cortana listen for my commands when I press the Windows logo key + C: On
-- Talk to Cortana: Use Cortana even when my device is locked: Off
+- Talk to Cortana: It can be fully disabled if you like (but not through GUI) [[hklm-cis-level1]](https://github.com/teusink/Home-Security-by-W10-Hardening/blob/master/registry/hklm-cis-level1.reg)
+- Talk to Cortana: Let Cortana respond to "Hey Cortana": Off [[hkcu-custom]](https://github.com/teusink/Home-Security-by-W10-Hardening/blob/master/registry/hkcu-custom.reg)
+- Talk to Cortana: Let Cortana listen for my commands when I press the Windows logo key + C: On [[hkcu-custom]](https://github.com/teusink/Home-Security-by-W10-Hardening/blob/master/registry/hkcu-custom.reg)
+- Talk to Cortana: Use Cortana even when my device is locked: Off [[hkcu-custom]](https://github.com/teusink/Home-Security-by-W10-Hardening/blob/master/registry/hkcu-custom.reg)
 - Permissions & History: SafeSearch: Moderate
 - Permissions & History: CloudSearch: On
 - Permissions & History: Device History: On
@@ -146,17 +146,20 @@ These are the settings that are done through the use of the new Windows Settings
 - Device encryption: On
 
 # Xbox Game bar
+
+This setting can only be set when running a game.
+
 - Settings: General: Show tips when I start a game: Off [[hkcu-custom]](https://github.com/teusink/Home-Security-by-W10-Hardening/blob/master/registry/hkcu-custom.reg)
 
 # Explorer
+
+This setting can be set through Windows Explorer.
+
 - File Extensions: Show [[hkcu-custom]](https://github.com/teusink/Home-Security-by-W10-Hardening/blob/master/registry/hkcu-custom.reg)
 
 # Additional software
 - Anti-malware
 - PSI Secunia
-
-# Skipped
-LOREM IPSUM
 
 # Licensing
 All the licensing and copyrights of any of the code and applications belong to their respective owners. All other coding falls under the MIT-license: https://github.com/teusink/Home-Security-by-W10-Hardening/blob/master/LICENSE
