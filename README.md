@@ -35,7 +35,7 @@ Why focus on Home? The Home edition is by far the most used edition by regular c
 
 ## Read instructions
 
-From a Graphical User Interface (GUI) perspective I will touch every relevant setting. Whenever there is a mention of, for instance, [hklm-cis-level1](https://github.com/teusink/Home-Security-by-W10-Hardening/blob/master/registry/hklm-cis-level1.reg) then you can also set the setting through the use of the Windows Registry.
+From a Graphical User Interface (GUI) perspective I will touch every relevant setting. Whenever there is a mention of, for instance, [[hklm-cis-level1]](https://github.com/teusink/Home-Security-by-W10-Hardening/blob/master/registry/hklm-cis-level1.reg) then you can also set the setting through the use of the Windows Registry.
 
 # Control Panel
 
@@ -47,9 +47,9 @@ These are the settings that are done through the use of the Control Panel.
 - Flash Player: Block all sites from using peer-assisted networking
 - Security and Maintenance: User Account Control: Always notify [[hklm-cis-level1]](https://github.com/teusink/Home-Security-by-W10-Hardening/blob/master/registry/hklm-cis-level1.reg)
 - System: Data Execution Prevention: Turn on DEP for all
-- System: Remote Assistance: Disable [hklm-custom](https://github.com/teusink/Home-Security-by-W10-Hardening/blob/master/registry/hklm-custom.reg)
-- System: Startup and Recovery Debug information: None [hklm-custom](https://github.com/teusink/Home-Security-by-W10-Hardening/blob/master/registry/hklm-custom.reg)
-- System: Visual effects: Adjust for best appearance [hkcu-custom](https://github.com/teusink/Home-Security-by-W10-Hardening/blob/master/registry/hkcu-custom.reg)
+- System: Remote Assistance: Disable [[hklm-custom]](https://github.com/teusink/Home-Security-by-W10-Hardening/blob/master/registry/hklm-custom.reg)
+- System: Startup and Recovery Debug information: None [[hklm-custom]](https://github.com/teusink/Home-Security-by-W10-Hardening/blob/master/registry/hklm-custom.reg)
+- System: Visual effects: Adjust for best appearance [[hkcu-custom]](https://github.com/teusink/Home-Security-by-W10-Hardening/blob/master/registry/hkcu-custom.reg)
 - System: Virtual Memory: Fixed size for recommended
 - Device Encryption: Back up recovery key
 
@@ -62,44 +62,44 @@ These are the settings that are done through the use of the Control Panel.
 # Settings
 
 ## System
-- Project to this PC: Off [hklm-cis-level1](https://github.com/teusink/Home-Security-by-W10-Hardening/blob/master/registry/hklm-cis-level1.reg) & [hkcu-custom](https://github.com/teusink/Home-Security-by-W10-Hardening/blob/master/registry/hkcu-custom.reg)
+- Project to this PC: Off [[hklm-cis-level1]](https://github.com/teusink/Home-Security-by-W10-Hardening/blob/master/registry/hklm-cis-level1.reg) & [[hkcu-custom]](https://github.com/teusink/Home-Security-by-W10-Hardening/blob/master/registry/hkcu-custom.reg)
 
 ## Network & Internet
-- Wi-Fi: Find paid plans: Off [hklm-cis-level1](https://github.com/teusink/Home-Security-by-W10-Hardening/blob/master/registry/hklm-cis-level1.reg) & [hkcu-custom](https://github.com/teusink/Home-Security-by-W10-Hardening/blob/master/registry/hkcu-custom.reg)
-- Wi-Fi: Connect open hotspots: Off [hklm-cis-level1](https://github.com/teusink/Home-Security-by-W10-Hardening/blob/master/registry/hklm-cis-level1.reg) & [hkcu-custom](https://github.com/teusink/Home-Security-by-W10-Hardening/blob/master/registry/hkcu-custom.reg)
-- Wi-Fi: Online Sign-Up: Off [hkcu-custom](https://github.com/teusink/Home-Security-by-W10-Hardening/blob/master/registry/hkcu-custom.reg)
-- Mobile hotspot: Off [hkcu-custom](https://github.com/teusink/Home-Security-by-W10-Hardening/blob/master/registry/hkcu-custom.reg)
+- Wi-Fi: Find paid plans: Off [[hklm-cis-level1]](https://github.com/teusink/Home-Security-by-W10-Hardening/blob/master/registry/hklm-cis-level1.reg) & [[hkcu-custom]](https://github.com/teusink/Home-Security-by-W10-Hardening/blob/master/registry/hkcu-custom.reg)
+- Wi-Fi: Connect open hotspots: Off [[hklm-cis-level1]](https://github.com/teusink/Home-Security-by-W10-Hardening/blob/master/registry/hklm-cis-level1.reg) & [[hkcu-custom]](https://github.com/teusink/Home-Security-by-W10-Hardening/blob/master/registry/hkcu-custom.reg)
+- Wi-Fi: Online Sign-Up: Off [[hkcu-custom]](https://github.com/teusink/Home-Security-by-W10-Hardening/blob/master/registry/hkcu-custom.reg)
+- Mobile hotspot: Off [[hkcu-custom]](https://github.com/teusink/Home-Security-by-W10-Hardening/blob/master/registry/hkcu-custom.reg)
 - Turn On Remotely: Off
 - Status: Adapter options: Disable Netbios & LMHOSTS (Advanced TCP/IP options)
 
 ## Personalization:
 - Lock screen: Screen saver settings: Blank - 10 minutes, on resume logon
-- Lock screen: Fun fact & tips: Off [hkcu-custom](https://github.com/teusink/Home-Security-by-W10-Hardening/blob/master/registry/hkcu-custom.reg)
+- Lock screen: Fun fact & tips: Off [[hkcu-custom]](https://github.com/teusink/Home-Security-by-W10-Hardening/blob/master/registry/hkcu-custom.reg)
 
 ## Devices
 - Bluetooth: Off
-- AutoPlay: Off [hklm-cis-level1](https://github.com/teusink/Home-Security-by-W10-Hardening/blob/master/registry/hklm-cis-level1.reg) & [hkcu-custom](https://github.com/teusink/Home-Security-by-W10-Hardening/blob/master/registry/hkcu-custom.reg)
+- AutoPlay: Off [[hklm-cis-level1]](https://github.com/teusink/Home-Security-by-W10-Hardening/blob/master/registry/hklm-cis-level1.reg) & [[hkcu-custom]](https://github.com/teusink/Home-Security-by-W10-Hardening/blob/master/registry/hkcu-custom.reg)
 
 ## Accounts
 - Sign-in options: PIN: On
-- Sign-in options: Show account details: On [hklm-cis-level1](https://github.com/teusink/Home-Security-by-W10-Hardening/blob/master/registry/hklm-cis-level1.reg)
-- Sign-in options: Use sign-in after update: On [hklm-cis-level1](https://github.com/teusink/Home-Security-by-W10-Hardening/blob/master/registry/hklm-cis-level1.reg)
+- Sign-in options: Show account details: On [[hklm-cis-level1]](https://github.com/teusink/Home-Security-by-W10-Hardening/blob/master/registry/hklm-cis-level1.reg)
+- Sign-in options: Use sign-in after update: On [[hklm-cis-level1]](https://github.com/teusink/Home-Security-by-W10-Hardening/blob/master/registry/hklm-cis-level1.reg)
 
 ## Privacy
-- General: Let apps use advert ID: Off [hklm-custom](https://github.com/teusink/Home-Security-by-W10-Hardening/blob/master/registry/hklm-custom.reg)
-- General: Let websites access language list: Off [hkcu-custom](https://github.com/teusink/Home-Security-by-W10-Hardening/blob/master/registry/hkcu-custom.reg)
-- General: Let Windows track app launches: Off [hkcu-custom](https://github.com/teusink/Home-Security-by-W10-Hardening/blob/master/registry/hkcu-custom.reg)
-- General: Show suggested content in Settings: Off [hkcu-custom](https://github.com/teusink/Home-Security-by-W10-Hardening/blob/master/registry/hkcu-custom.reg)
+- General: Let apps use advert ID: Off [[hklm-custom]](https://github.com/teusink/Home-Security-by-W10-Hardening/blob/master/registry/hklm-custom.reg)
+- General: Let websites access language list: Off [[hkcu-custom]](https://github.com/teusink/Home-Security-by-W10-Hardening/blob/master/registry/hkcu-custom.reg)
+- General: Let Windows track app launches: Off [[hkcu-custom]](https://github.com/teusink/Home-Security-by-W10-Hardening/blob/master/registry/hkcu-custom.reg)
+- General: Show suggested content in Settings: Off [[hkcu-custom]](https://github.com/teusink/Home-Security-by-W10-Hardening/blob/master/registry/hkcu-custom.reg)
 - Data: Limit apps using privacy sensitive information sources
-- Other devices: Let apps share & sync: On [hkcu-custom](https://github.com/teusink/Home-Security-by-W10-Hardening/blob/master/registry/hkcu-custom.reg)
-- Feedback & diagnostics: Basic (Security is only possible through Registry) [hklm-cis-level1](https://github.com/teusink/Home-Security-by-W10-Hardening/blob/master/registry/hklm-cis-level1.reg)
-- Feedback & diagnostics: Let MS use diagnostics data: Off [hklm-custom](https://github.com/teusink/Home-Security-by-W10-Hardening/blob/master/registry/hklm-custom.reg)
-- Feedback & diagnostics: Feedback: Never [hklm-cis-level1](https://github.com/teusink/Home-Security-by-W10-Hardening/blob/master/registry/hklm-cis-level1.reg)
+- Other devices: Let apps share & sync: On [[hkcu-custom]](https://github.com/teusink/Home-Security-by-W10-Hardening/blob/master/registry/hkcu-custom.reg)
+- Feedback & diagnostics: Basic (Security is only possible through Registry) [[hklm-cis-level1]](https://github.com/teusink/Home-Security-by-W10-Hardening/blob/master/registry/hklm-cis-level1.reg)
+- Feedback & diagnostics: Let MS use diagnostics data: Off [[hklm-custom]](https://github.com/teusink/Home-Security-by-W10-Hardening/blob/master/registry/hklm-custom.reg)
+- Feedback & diagnostics: Feedback: Never [[hklm-cis-level1]](https://github.com/teusink/Home-Security-by-W10-Hardening/blob/master/registry/hklm-cis-level1.reg)
 
 ## Update & Security
 - Windows Update: Advanced: Give updates other MS products: On
 - Windows Update: Set Active Hours
-- Find my device: On [hklm-custom](https://github.com/teusink/Home-Security-by-W10-Hardening/blob/master/registry/hklm-custom.reg)
+- Find my device: On [[hklm-custom]](https://github.com/teusink/Home-Security-by-W10-Hardening/blob/master/registry/hklm-custom.reg)
 - Device encryption: On
 
 ## Search
@@ -108,7 +108,7 @@ These are the settings that are done through the use of the Control Panel.
 - Permissions & History: Device History: On
 
 # Explorer
-- File Extensions: Show [hkcu-custom](https://github.com/teusink/Home-Security-by-W10-Hardening/blob/master/registry/hkcu-custom.reg)
+- File Extensions: Show [[hkcu-custom]](https://github.com/teusink/Home-Security-by-W10-Hardening/blob/master/registry/hkcu-custom.reg)
 
 # Additional software
 - Anti-malware
