@@ -53,7 +53,7 @@ Windows Registry Editor Version 5.00
 
 ;;; Turn off "Let Windows track app launches"
 [HKEY_CURRENT_USER\Software\Microsoft\Windows\CurrentVersion\Explorer\Advanced]
-"Start_TrackProgs"=dword:00000001
+"Start_TrackProgs"=dword:00000000
 
 ;;; Turn off "Let apps share and sync with wireless devices"
 [HKEY_CURRENT_USER\Software\Microsoft\Windows\CurrentVersion\DeviceAccess\Global\LooselyCoupled]
@@ -91,6 +91,46 @@ Windows Registry Editor Version 5.00
 ;;; Turn on "File extensions for known file types"
 [HKEY_CURRENT_USER\Software\Microsoft\Windows\CurrentVersion\Explorer\Advanced]
 "HideFileExt"=dword:00000000
+
+;;; Set to "My devices only" for Shared Experiences: "I can share and receive from"
+[HKEY_CURRENT_USER\Software\Microsoft\Windows\CurrentVersion\CDP]
+"CdpSessionUserAuthzPolicy"=dword:00000001
+
+;;; Turn on "Sync your settings: Ease of Access"
+[HKEY_CURRENT_USER\Software\Microsoft\Windows\CurrentVersion\SettingSync\Groups\Accessibility]
+"Enabled"=dword:00000001
+
+;;; Turn on "Sync your settings: Internet Explorer settings"
+[HKEY_CURRENT_USER\Software\Microsoft\Windows\CurrentVersion\SettingSync\Groups\BrowserSettings]
+"Enabled"=dword:00000001
+
+;;; Turn on "Sync your settings: Passwords"
+[HKEY_CURRENT_USER\Software\Microsoft\Windows\CurrentVersion\SettingSync\Groups\Credentials]
+"Enabled"=dword:00000001
+
+;;; Turn on "Sync your settings: Language preferences"
+[HKEY_CURRENT_USER\Software\Microsoft\Windows\CurrentVersion\SettingSync\Groups\Language]
+"Enabled"=dword:00000001
+
+;;; Turn on "Sync your settings: Theme"
+[HKEY_CURRENT_USER\Software\Microsoft\Windows\CurrentVersion\SettingSync\Groups\Personalization]
+"Enabled"=dword:00000001
+
+;;; Turn on "Sync your settings: Other Windows settings"
+[HKEY_CURRENT_USER\Software\Microsoft\Windows\CurrentVersion\SettingSync\Groups\Windows]
+"Enabled"=dword:00000001
+
+;;; Turn off "Let Cortana respond to "Hey Cortana""
+[HKEY_CURRENT_USER\Software\Microsoft\Speech_OneCore\Preferences]
+"VoiceActivationOn"=dword:00000000
+
+;;; Turn on "Let Cortana listen for my commands when I press the Windows logo key + C"
+[HKEY_CURRENT_USER\Software\Microsoft\Windows\CurrentVersion\Search]
+"VoiceShortcut"=dword:00000001
+
+;;; Turn off "Use Cortana even when my device is locked"
+[HKEY_CURRENT_USER\Software\Microsoft\Speech_OneCore\Preferences]
+"VoiceActivationEnableAboveLockscreen"=dword:00000000
 
 ;;; WARNING: THE SETTINGS BELOW CANNOT BE UNDONE THROUGH A GUI!
 
