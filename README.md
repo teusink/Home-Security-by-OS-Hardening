@@ -199,7 +199,17 @@ In order to even more harden your system, add the registry key-sets below to you
 - HKEY_CURRENT_USER - User level settings hardening [[REG]](https://github.com/teusink/Home-Security-by-W10-Hardening/blob/master/registry/hkcu-custom.reg)
 
 # Additional software
+
+## Add third-party software
 - TODO
+
+## Remove third-party software
+If you don't need the software mentioned below, really remove it!
+- Adobe Shockwave Player
+- Adobe Flash Player (it is built-in into Google Chrome, Mozilla Firefox and Microsoft Edge)
+- Microsoft Silverlight
+- Adobe Reader (PDF files can be opened in Google Chrome, Mozilla Firefox and Microsoft Edge)
+- Java Runtime Environment (JRE)
 
 # Licensing
 All the licensing and copyrights of any of the code and applications belong to their respective owners. All other coding falls under the MIT-license: https://github.com/teusink/Home-Security-by-W10-Hardening/blob/master/LICENSE
