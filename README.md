@@ -115,8 +115,10 @@ These are the settings that are done through the use of the new Windows Settings
 - AutoPlay: Memory card: Take no action
 
 ## Network & Internet
-- Status: Adapter options: [Adapter]: TCP/IPv4: Properties: Advanced: WINS: NetBIOS over TCP/IP: Disabled
-- Status: Adapter options: [Adapter]: TCP/IPv4: Properties: Advanced: WINS: LMHOSTS Lookup: Disabled [[hklm-custom]](https://github.com/teusink/Home-Security-by-W10-Hardening/blob/master/registry/hklm-custom.reg)
+- Status: Adapter options: [Every Adapter]: Microsoft Network Adapter Multiplexor Protocol: Disabled
+- Status: Adapter options: [Every Adapter]: Microsoft LLDP Protocol Driver: Disabled
+- Status: Adapter options: [Every Adapter]: TCP/IPv4: Properties: Advanced: WINS: NetBIOS over TCP/IP: Disabled
+- Status: Adapter options: [Every Adapter]: TCP/IPv4: Properties: Advanced: WINS: LMHOSTS Lookup: Disabled [[hklm-custom]](https://github.com/teusink/Home-Security-by-W10-Hardening/blob/master/registry/hklm-custom.reg)
 - Wi-Fi: Find paid plans: Off [[hklm-cis-level1]](https://github.com/teusink/Home-Security-by-W10-Hardening/blob/master/registry/hklm-cis-level1.reg) & [[hkcu-custom]](https://github.com/teusink/Home-Security-by-W10-Hardening/blob/master/registry/hkcu-custom.reg)
 - Wi-Fi: Connect open hotspots: Off [[hklm-cis-level1]](https://github.com/teusink/Home-Security-by-W10-Hardening/blob/master/registry/hklm-cis-level1.reg) & [[hkcu-custom]](https://github.com/teusink/Home-Security-by-W10-Hardening/blob/master/registry/hkcu-custom.reg)
 - Wi-Fi: Online Sign-Up: Off [[hkcu-custom]](https://github.com/teusink/Home-Security-by-W10-Hardening/blob/master/registry/hkcu-custom.reg)
