@@ -193,8 +193,18 @@ This setting can be set through Windows Explorer.
 
 # Registry
 
-In order to even more harden your system, add the registry key-sets below to your register. They also incorporate most of the settings above.
+In order to even more harden your system, add the registry key-sets below to your register. They also incorporate most of the settings above. But they also incorporate security improvements that cannot be set through an interface. The usability part is here also a factor.
 
+h2. Additional settings
+
+Machine Level:
+- Encryption for both client and server purposes compliant to best-practices.
+- DLL search path algorithm vulnerability mitigation.
+
+User Level:
+- Automatic installation of Windows Store apps disabled.
+
+h2. Registry Files
 - HKEY_LOCAL_MACHINE - CIS Level 1 (not fully compliant) [[REG]](https://github.com/teusink/Home-Security-by-W10-Hardening/blob/master/registry/hklm-cis-level1.reg)
 - HKEY_LOCAL_MACHINE - Custom hardening [[REG]](https://github.com/teusink/Home-Security-by-W10-Hardening/blob/master/registry/hklm-custom.reg)
 - HKEY_LOCAL_MACHINE - Client and Server Encryption hardening [[REG]](https://github.com/teusink/Home-Security-by-W10-Hardening/blob/master/registry/hklm-encryption.reg)
@@ -203,7 +213,8 @@ In order to even more harden your system, add the registry key-sets below to you
 # Additional software
 
 ## Add third-party software
-- TODO
+If you want to further improve your security, you could install the software below!
+- [Personal Software Inspector (PSI) Secunia](https://www.flexera.com/enterprise/products/software-vulnerability-management/personal-software-inspector/)
 
 ## Remove third-party software
 If you don't need the software mentioned below, really remove it!
