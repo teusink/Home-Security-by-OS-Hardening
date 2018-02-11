@@ -176,11 +176,13 @@ These are the settings that are done through the use of the new Windows Settings
 - Windows Update: Advanced options: Delivery optimizations: PCs on my local network: On [[hklm-cis-level1]](https://github.com/teusink/Home-Security-by-W10-Hardening/blob/master/registry/hklm-cis-level1.reg)
 - Windows Update: Advanced options: Delivery optimizations: PCs on my local network, and PCs on the Internet: Off [[hklm-cis-level1]](https://github.com/teusink/Home-Security-by-W10-Hardening/blob/master/registry/hklm-cis-level1.reg)
 - Windows Defender: Windows Defender Security Center
+- Windows Defender: Antivirus options: Period scanning: Off (NOTE: setting only available when third-party anti-malware is installed) 
 - Backup: TODO
 - Find my device: On [[hklm-custom]](https://github.com/teusink/Home-Security-by-W10-Hardening/blob/master/registry/hklm-custom.reg)
 - Device encryption: On
 
 ## Update & Security - Windows Defender Security Center
+- Virus & threat Protection: NOTE: Settings below only available when third-party anti-malware is NOT installed
 - Virus & threat Protection: Settings: Real-time protection: On
 - Virus & threat Protection: Settings: Cloud-delivered protection: On
 - Virus & threat Protection: Settings: Automatic sample submission: On
