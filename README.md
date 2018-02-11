@@ -215,7 +215,7 @@ This setting can be set through Windows Explorer.
 
 # Registry
 
-In order to even more harden your system, add the registry key-sets below to your register. They also incorporate most of the settings above. But they also incorporate security improvements that cannot be set through an interface. The usability part is here also a factor.
+In order to even more harden your system, add the registry key-sets below to your register. They also incorporate most of the settings above. But they also incorporate security improvements that cannot be set through an interface. Usability is considered when deciding if it should be more or less secure.
 
 ## Additional settings
 
