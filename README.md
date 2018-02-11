@@ -183,8 +183,8 @@ These are the settings that are done through the use of the new Windows Settings
 ## Update & Security - Windows Defender Security Center
 - Virus & threat Protection: Settings: Real-time protection: On
 - Virus & threat Protection: Settings: Cloud-delivered protection: On
-- Virus & threat Protection: Settings: Automatic sample submission: Off
-- Virus & threat Protection: Settings: Controlled folder access: Off
+- Virus & threat Protection: Settings: Automatic sample submission: On
+- Virus & threat Protection: Settings: Controlled folder access: On
 - Virus & threat Protection: Settings: Notifications: Receive recent activity and scan results: On
 - Virus & threat Protection: Settings: Notifications: Notify when Windows Defender Firewall blocks a new app: On
 - Virus & threat Protection: Settings: Notifications: Domain firewall: On
