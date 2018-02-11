@@ -622,6 +622,30 @@ Windows Registry Editor Version 5.00
 ; NON-EXISTENCE DUE TO WINDOWS 10 HOME USE
 ;"Start"=dword:0000004
 
+;;; 18.1.1.1 (L1) Ensure 'Prevent enabling lock screen camera' is set to 'Enabled'
+[HKEY_LOCAL_MACHINE\Software\Policies\Microsoft\Windows\Personalization]
+; <deleted> = (Default)
+; 0 = Off
+; 1 = On (CIS L1)
+; NON-EXISTENCE & NON-COMPLIANCE DUE TO WINDOWS 10 HOME USE
+;"NoLockScreenCamera"=dword:0000000
+
+;;; 18.1.1.2 (L1) Ensure 'Prevent enabling lock screen slide show' is set to 'Enabled'
+[HKEY_LOCAL_MACHINE\Software\Policies\Microsoft\Windows\Personalization]
+; <deleted> = (Default)
+; 0 = Off
+; 1 = On (CIS L1)
+; NON-EXISTENCE & NON-COMPLIANCE DUE TO WINDOWS 10 HOME USE
+;"NoLockScreenSlideshow"=dword:0000000
+
+;;; 18.1.2.1 (L1) Ensure 'Allow Input Personalization' is set to 'Disabled'
+[HKEY_LOCAL_MACHINE\SOFTWARE\Policies\Microsoft\InputPersonalization]
+; <deleted> = (Default)
+; 0 = Off (CIS L1)
+; 1 = On
+; NON-EXISTENCE & NON-COMPLIANCE DUE TO WINDOWS 10 HOME USE
+;"AllowInputPersonalization"=dword:0000001
+
 ;;; 18.4.4.1 (L1) Set 'NetBIOS node type' to 'P-node' (Ensure NetBT Parameter 'NodeType' is set to '0x2 (2)')
 [HKEY_LOCAL_MACHINE\System\CurrentControlSet\Services\Netbt\Parameters]
 ; <deleted> = Default
@@ -648,7 +672,7 @@ Windows Registry Editor Version 5.00
 ; <deleted> = (Default)
 ; 0 = Off
 ; 1 = On (CIS L1)
-; NON-EXISTENCE & COMPLIANCE DUE TO WINDOWS 10 HOME USE
+; NON-EXISTENCE & NON-COMPLIANCE DUE TO WINDOWS 10 HOME USE
 ;"BlockUserFromShowingAccountDetailsOnSignin"=dword:0000000
 
 ;;; 18.8.25.2 (L1) Ensure 'Do not display network selection UI' is set to 'Enabled'
@@ -656,7 +680,7 @@ Windows Registry Editor Version 5.00
 ; <deleted> = (Default)
 ; 0 = Off
 ; 1 = On (CIS L1)
-; NON-EXISTENCE & COMPLIANCE DUE TO WINDOWS 10 HOME USE
+; NON-EXISTENCE & NON-COMPLIANCE DUE TO WINDOWS 10 HOME USE
 ;"DontDisplayNetworkSelectionUI"=dword:0000000
 
 ;;; 18.8.25.3 (L1) Ensure 'Do not enumerate connected users on domain-joined computers' is set to 'Enabled'
@@ -680,7 +704,7 @@ Windows Registry Editor Version 5.00
 ; <deleted> = (Default)
 ; 0 = Off
 ; 1 = On (CIS L1)
-; NON-EXISTENCE & COMPLIANCE DUE TO WINDOWS 10 HOME USE
+; NON-EXISTENCE & NON-COMPLIANCE DUE TO WINDOWS 10 HOME USE
 ;"DisableLockScreenAppNotifications"=dword:0000000
 
 ;;; 18.8.25.6 (L1) Ensure 'Turn on convenience PIN sign-in' is set to 'Disabled'
@@ -771,7 +795,7 @@ Windows Registry Editor Version 5.00
 ; <deleted> = (Default)
 ; 0 = Off
 ; 1 = On (CIS L1)
-; NON-EXISTENCE & COMPLIANCE DUE TO WINDOWS 10 HOME USE
+; NON-EXISTENCE & NON-COMPLIANCE DUE TO WINDOWS 10 HOME USE
 ;"DisablePasswordReveal"=dword:0000000
 
 ;;; 18.9.15.2 (L1) Ensure 'Enumerate administrator accounts on elevation' is set to 'Disabled'
@@ -796,7 +820,7 @@ Windows Registry Editor Version 5.00
 ; <deleted> = (Default)
 ; 0 = Off (CIS L1)
 ; 1 = On
-; NON-EXISTENCE & COMPLIANCE DUE TO WINDOWS 10 HOME USE
+; NON-EXISTENCE & NON-COMPLIANCE DUE TO WINDOWS 10 HOME USE
 ;"EnableConfigFlighting"=dword:0000001
 
 ;;; 18.9.16.3 (L1) Ensure 'Do not show feedback notifications' is set to 'Enabled'
@@ -811,7 +835,7 @@ Windows Registry Editor Version 5.00
 ; <deleted> = (Default)
 ; 0 = Off (CIS L1)
 ; 1 = On
-; NON-EXISTENCE & COMPLIANCE DUE TO WINDOWS 10 HOME USE
+; NON-EXISTENCE & NON-COMPLIANCE DUE TO WINDOWS 10 HOME USE
 ;"AllowBuildPreview"=dword:0000001
 
 ;;; 18.9.17.1 (L1) Ensure 'Download Mode' is NOT set to 'Enabled: Internet'
@@ -845,5 +869,5 @@ Windows Registry Editor Version 5.00
 ; <deleted> = (Default)
 ; 0 = Off
 ; 1 = On (CIS L1)
-; NON-EXISTENCE & COMPLIANCE DUE TO WINDOWS 10 HOME USE
+; NON-EXISTENCE & NON-COMPLIANCE DUE TO WINDOWS 10 HOME USE
 ;"DisableAutomaticRestartSignOn"=dword:0000000
