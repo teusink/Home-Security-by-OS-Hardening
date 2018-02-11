@@ -181,7 +181,7 @@ These are the settings that are done through the use of the new Windows Settings
 - Find my device: On [[hklm-custom]](https://github.com/teusink/Home-Security-by-W10-Hardening/blob/master/registry/hklm-custom.reg)
 - Device encryption: On
 
-## Update & Security - Windows Defender Security Center
+### Update & Security - Windows Defender Security Center
 - Virus & threat Protection: NOTE: Settings below only available when third-party anti-malware is NOT installed
 - Virus & threat Protection: Settings: Real-time protection: On
 - Virus & threat Protection: Settings: Cloud-delivered protection: On
