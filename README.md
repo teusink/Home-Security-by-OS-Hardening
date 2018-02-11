@@ -175,10 +175,30 @@ These are the settings that are done through the use of the new Windows Settings
 - Windows Update: Advanced options: Delivery optimizations: Allow downloads from other PCs: On [[hklm-cis-level1]](https://github.com/teusink/Home-Security-by-W10-Hardening/blob/master/registry/hklm-cis-level1.reg)
 - Windows Update: Advanced options: Delivery optimizations: PCs on my local network: On [[hklm-cis-level1]](https://github.com/teusink/Home-Security-by-W10-Hardening/blob/master/registry/hklm-cis-level1.reg)
 - Windows Update: Advanced options: Delivery optimizations: PCs on my local network, and PCs on the Internet: Off [[hklm-cis-level1]](https://github.com/teusink/Home-Security-by-W10-Hardening/blob/master/registry/hklm-cis-level1.reg)
-- Windows Defender: TODO
+- Windows Defender: Windows Defender Security Center
 - Backup: TODO
 - Find my device: On [[hklm-custom]](https://github.com/teusink/Home-Security-by-W10-Hardening/blob/master/registry/hklm-custom.reg)
 - Device encryption: On
+
+## Update & Security - Windows Defender Security Center
+- Virus & threat Protection: Settings: Real-time protection: On
+- Virus & threat Protection: Settings: Cloud-delivered protection: On
+- Virus & threat Protection: Settings: Automatic sample submission: Off
+- Virus & threat Protection: Settings: Controlled folder access: Off
+- Virus & threat Protection: Settings: Notifications: Receive recent activity and scan results: On
+- Virus & threat Protection: Settings: Notifications: Notify when Windows Defender Firewall blocks a new app: On
+- Virus & threat Protection: Settings: Notifications: Domain firewall: On
+- Virus & threat Protection: Settings: Notifications: Private firewall: On
+- Virus & threat Protection: Settings: Notifications: Public firewall: On
+- App & browser control: Check apps and files: Warn [[hklm-custom]](https://github.com/teusink/Home-Security-by-W10-Hardening/blob/master/registry/hklm-custom.reg)
+- App & browser control: SmartScreen for Edge: Warn [[hkcu-custom]](https://github.com/teusink/Home-Security-by-W10-Hardening/blob/master/registry/hkcu-custom.reg)
+- App & browser control: SmartScreen for Windows Store apps: Warn [[hkcu-custom]](https://github.com/teusink/Home-Security-by-W10-Hardening/blob/master/registry/hkcu-custom.reg)
+- App & browser control: Exploit protection: Control Flow Gaurd (CFG): On by default
+- App & browser control: Exploit protection: Data Execution Prevention (DEP): On by default
+- App & browser control: Exploit protection: Force randomization for images (Mandatory ASLR): On by default
+- App & browser control: Exploit protection: Randomize memory allocation (Bottom-up ASLR): On by default
+- App & browser control: Exploit protection: Validate exception chains (SEHOP): On by default
+- App & browser control: Exploit protection: Validate heap integrity: On by default
 
 # Xbox Game bar
 
