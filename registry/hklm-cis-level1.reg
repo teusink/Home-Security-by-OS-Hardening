@@ -14,11 +14,10 @@ Windows Registry Editor Version 5.00
 ;;; - Microsoft Solutions for Security (MSS) (Legacy)
 ;;; - Security Compliance Manager (SCM)
 ;;; - Windows Connection Manager (WCM)
-;;; - Audit Process Creation
-;;; - Early Launch Anti-malware
-;;; - Logging and tracing
+;;; - Group Policy
 ;;; - Sleep Settings
-;;; - Terminal Services & Remote Desktop Session (RDS) Related Settings
+;;; - Remote Assistance
+;;; - Remote Desktop Services (formerly Terminal Services)
 ;;; - Remote Procedure Call (RPC)
 ;;; - Application, Security, Setup and System EventLog
 ;;; - Previous Versions
@@ -666,6 +665,22 @@ Windows Registry Editor Version 5.00
 ; 1 = On (Default)
 ; NON-COMPLIANCE DUE TO WINDOWS 10 HOME USE
 "AutoConnectAllowedOEM"=dword:0000000
+
+;;; 18.8.3.1 (L1) Ensure 'Include command line in process creation events' is set to 'Disabled'
+[HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Windows\CurrentVersion\Policies\System\Audit]
+; <deleted> = (Default)
+; 0 = Off (CIS L1)
+; 1 = On
+"ProcessCreationIncludeCmdLine_Enabled"=dword:0000000
+
+;;; 18.8.12 Early Launch Antimalware
+[HKEY_LOCAL_MACHINE\System\CurrentControlSet\Policies\EarlyLaunch]
+; <deleted> = (Default)
+; 8 = Only good drivers
+; 1 = Good and unknown drivers
+; 3 = Good, unknown, and bad but critical drivers (CIS L1)
+; 7 = All drivers
+"DriverLoadPolicy"=dword:0000003
 
 ;;; 18.8.25.1 (L1) Ensure 'Block user from showing account details on sign-in' is set to 'Enabled'
 [HKEY_LOCAL_MACHINE\SOFTWARE\Policies\Microsoft\Windows\System]
