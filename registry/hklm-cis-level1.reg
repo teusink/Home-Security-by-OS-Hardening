@@ -471,7 +471,7 @@ Windows Registry Editor Version 5.00
 ; 3 = Manual (Default)
 ; 4 = Disabled (CIS L1)
 ; NON-COMPLIANCE TO NOT DISRUPT COMMON HOME FEATURES
-"Start"=dword:0000003
+;"Start"=dword:0000003
 
 ;;; 5.7 (L1) Ensure 'HomeGroup Provider (HomeGroupProvider)' is set to 'Disabled'
 [HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Services\HomeGroupProvider]
@@ -479,7 +479,7 @@ Windows Registry Editor Version 5.00
 ; 3 = Manual (Default)
 ; 4 = Disabled (CIS L1)
 ; NON-COMPLIANCE TO NOT DISRUPT COMMON HOME FEATURES
-"Start"=dword:0000003
+;"Start"=dword:0000003
 
 ;;; 5.8 (L1) Ensure 'IIS Admin Service (IISADMIN)' is set to 'Disabled' or 'Not Installed'
 [HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Services\IISADMIN]
@@ -496,7 +496,7 @@ Windows Registry Editor Version 5.00
 ; 2 = Automatic
 ; 3 = Manual
 ; 4 = Disabled (CIS L1)
-"Start"=dword:0000004
+;"Start"=dword:0000004
 
 ;;; 5.10 (L1) Ensure 'Internet Connection Sharing (ICS) (SharedAccess) ' is set to 'Disabled'
 [HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Services\SharedAccess]
@@ -504,7 +504,7 @@ Windows Registry Editor Version 5.00
 ; 2 = Automatic
 ; 3 = Manual
 ; 4 = Disabled (CIS L1)
-"Start"=dword:0000004
+;"Start"=dword:0000004
 
 ;;; 5.12 (L1) Ensure 'LxssManager (LxssManager)' is set to 'Disabled' or 'Not Installed'
 [HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Services\LxssManager]
@@ -529,14 +529,14 @@ Windows Registry Editor Version 5.00
 ; 2 = Automatic
 ; 3 = Manual (Default)
 ; 4 = Disabled (CIS L1)
-"Start"=dword:0000004
+;"Start"=dword:0000004
 
 ;;; 5.26 (L1) Ensure 'Routing and Remote Access (RemoteAccess)' is set to 'Disabled'
 [HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Services\RemoteAccess]
 ; 2 = Automatic
 ; 3 = Manual
 ; 4 = Disabled (Default, CIS L1)
-"Start"=dword:0000004
+;"Start"=dword:0000004
 
 ;;; 5.28 (L1) Ensure 'Simple TCP/IP Services (simptcp)' is set to 'Disabled' or 'Not Installed'
 [HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Services\simptcp]
@@ -553,7 +553,7 @@ Windows Registry Editor Version 5.00
 ; 3 = Manual (Default)
 ; 4 = Disabled (CIS L1)
 ; NON-COMPLIANCE TO NOT DISRUPT COMMON HOME FEATURES
-"Start"=dword:0000003
+;"Start"=dword:0000003
 
 ;;; 5.31 (L1) Ensure 'UPnP Device Host (upnphost)' is set to 'Disabled'
 [HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Services\upnphost]
@@ -561,7 +561,7 @@ Windows Registry Editor Version 5.00
 ; 3 = Manual (Default)
 ; 4 = Disabled (CIS L1)
 ; NON-COMPLIANCE TO NOT DISRUPT COMMON HOME FEATURES
-"Start"=dword:0000003
+;"Start"=dword:0000003
 
 ;;; 5.32 (L1) Ensure 'Web Management Service (WMSvc)' is set to 'Disabled' or 'Not Installed'
 [HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Services\WMSvc]
@@ -587,14 +587,14 @@ Windows Registry Editor Version 5.00
 ; 3 = Manual (Default)
 ; 4 = Disabled (CIS L1)
 ; NON-COMPLIANCE TO NOT DISRUPT COMMON HOME FEATURES
-"Start"=dword:0000003
+;"Start"=dword:0000003
 
 ;;; 5.38 (L1) Ensure 'WinHTTP Web Proxy Auto-Discovery Service (WinHttpAutoProxySvc)' is set to 'Disabled'
 [HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Services\WinHttpAutoProxySvc]
 ; 2 = Automatic
 ; 3 = Manual (Default)
 ; 4 = Disabled (CIS L1)
-"Start"=dword:0000004
+;"Start"=dword:0000004
 
 ;;; 5.39 (L1) Ensure 'World Wide Web Publishing Service (W3SVC)' is set to 'Disabled' or 'Not Installed'
 [HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Services\W3SVC]
@@ -673,19 +673,6 @@ Windows Registry Editor Version 5.00
 ; 1 = On (CIS L1)
 "SafeDllSearchMode"=dword:0000001
 
-;;; 18.4.4.1 (L1) Set 'NetBIOS node type' to 'P-node' (Ensure NetBT Parameter 'NodeType' is set to '0x2 (2)')
-[HKEY_LOCAL_MACHINE\System\CurrentControlSet\Services\Netbt\Parameters]
-; <deleted> = (Default)
-; 2 = (CIS L1)
-"NodeType"=dword:0000002
-
-;;; 18.4.8.1 (L1) Ensure 'Enable insecure guest logons' is set to 'Disabled'
-[HKEY_LOCAL_MACHINE\SOFTWARE\Policies\Microsoft\Windows\LanmanWorkstation]
-; <deleted> = (Default)
-; 0 = Off (CIS L1)
-; 1 = On
-"AllowInsecureGuestAuth"=dword:0000000
-
 ;;; 18.3.10 (L1) Ensure 'MSS: (ScreenSaverGracePeriod) The time in seconds before the screen saver grace period expires (0 recommended)' is set to 'Enabled: 5 or fewer seconds'
 [HKEY_LOCAL_MACHINE\Software\Microsoft\Windows NT\CurrentVersion\Winlogon]
 ; <deleted> = (Default)
@@ -700,6 +687,19 @@ Windows Registry Editor Version 5.00
 ; 80 (50) = 80%
 ; 90 (5a) = 90% (CIS L1)
 "WarningLevel"=dword:000005a
+
+;;; 18.4.4.1 (L1) Set 'NetBIOS node type' to 'P-node' (Ensure NetBT Parameter 'NodeType' is set to '0x2 (2)')
+[HKEY_LOCAL_MACHINE\System\CurrentControlSet\Services\Netbt\Parameters]
+; <deleted> = (Default)
+; 2 = (CIS L1)
+"NodeType"=dword:0000002
+
+;;; 18.4.8.1 (L1) Ensure 'Enable insecure guest logons' is set to 'Disabled'
+[HKEY_LOCAL_MACHINE\SOFTWARE\Policies\Microsoft\Windows\LanmanWorkstation]
+; <deleted> = (Default)
+; 0 = Off (CIS L1)
+; 1 = On
+"AllowInsecureGuestAuth"=dword:0000000
 
 ;;; 18.4.23.2.1 (L1) Ensure 'Allow Windows to automatically connect to suggested open hotspots, to networks shared by contacts, and to hotspots offering paid services' is set to 'Disabled'
 [HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\WcmSvc\wifinetworkmanager\config]
