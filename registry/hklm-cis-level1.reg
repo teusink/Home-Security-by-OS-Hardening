@@ -8,19 +8,16 @@ Windows Registry Editor Version 5.00
 ;;; Author: Joram Teusink
 
 ;;; Due to the target being Windows 10 Home the following parts are excluded from the CIS Level 1 baseline:
-;;; - Windows Firewall
+;;; - BitLocker Drive Encryption (see Pro registry file)
+;;; - Windows Firewall (see Pro registry file)
+;;; - Remote Desktop Services (formerly Terminal Services) (see Pro registry file)
+
+;;; Due to the target being Windows 10 Home and Pro the following parts are excluded from the CIS Level 1 baseline:
 ;;; - Local Administrator Password Solution (LAPS)
-;;; - BitLocker Drive Encryption
 ;;; - Microsoft Solutions for Security (MSS) (Legacy)
-;;; - Security Compliance Manager (SCM)
 ;;; - Windows Connection Manager (WCM)
 ;;; - Group Policy
-;;; - Sleep Settings
-;;; - Remote Assistance
-;;; - Remote Desktop Services (formerly Terminal Services)
-;;; - Remote Procedure Call (RPC)
 ;;; - Application, Security, Setup and System EventLog
-;;; - All user specific settings
 
 ;;; 2.3.1.2 (L1) Ensure 'Accounts: Block Microsoft accounts' is set to 'Users can't add or log on with Microsoft accounts'
 [HKEY_LOCAL_MACHINE\Software\Microsoft\Windows\CurrentVersion\Policies\System]
@@ -243,50 +240,50 @@ Windows Registry Editor Version 5.00
 ; <value> = see CLI baseline (Default, CIS L1)
 ; KEY DISABLED TO NOT INTERRUPT FUTURE UPDATES
 ; "Machine"=hex(7):53,00,79,00,73,00,74,00,65,00,6d,00,5c,00,43,00,75,00,72,00,\
-;  72,00,65,00,6e,00,74,00,43,00,6f,00,6e,00,74,00,72,00,6f,00,6c,00,53,00,65,\
-;  00,74,00,5c,00,43,00,6f,00,6e,00,74,00,72,00,6f,00,6c,00,5c,00,50,00,72,00,\
-;  69,00,6e,00,74,00,5c,00,50,00,72,00,69,00,6e,00,74,00,65,00,72,00,73,00,00,\
-;  00,53,00,79,00,73,00,74,00,65,00,6d,00,5c,00,43,00,75,00,72,00,72,00,65,00,\
-;  6e,00,74,00,43,00,6f,00,6e,00,74,00,72,00,6f,00,6c,00,53,00,65,00,74,00,5c,\
-;  00,53,00,65,00,72,00,76,00,69,00,63,00,65,00,73,00,5c,00,45,00,76,00,65,00,\
-;  6e,00,74,00,6c,00,6f,00,67,00,00,00,53,00,6f,00,66,00,74,00,77,00,61,00,72,\
-;  00,65,00,5c,00,4d,00,69,00,63,00,72,00,6f,00,73,00,6f,00,66,00,74,00,5c,00,\
-;  4f,00,4c,00,41,00,50,00,20,00,53,00,65,00,72,00,76,00,65,00,72,00,00,00,53,\
-;  00,6f,00,66,00,74,00,77,00,61,00,72,00,65,00,5c,00,4d,00,69,00,63,00,72,00,\
-;  6f,00,73,00,6f,00,66,00,74,00,5c,00,57,00,69,00,6e,00,64,00,6f,00,77,00,73,\
-;  00,20,00,4e,00,54,00,5c,00,43,00,75,00,72,00,72,00,65,00,6e,00,74,00,56,00,\
-;  65,00,72,00,73,00,69,00,6f,00,6e,00,5c,00,50,00,72,00,69,00,6e,00,74,00,00,\
-;  00,53,00,6f,00,66,00,74,00,77,00,61,00,72,00,65,00,5c,00,4d,00,69,00,63,00,\
-;  72,00,6f,00,73,00,6f,00,66,00,74,00,5c,00,57,00,69,00,6e,00,64,00,6f,00,77,\
-;  00,73,00,20,00,4e,00,54,00,5c,00,43,00,75,00,72,00,72,00,65,00,6e,00,74,00,\
-;  56,00,65,00,72,00,73,00,69,00,6f,00,6e,00,5c,00,57,00,69,00,6e,00,64,00,6f,\
-;  00,77,00,73,00,00,00,53,00,79,00,73,00,74,00,65,00,6d,00,5c,00,43,00,75,00,\
-;  72,00,72,00,65,00,6e,00,74,00,43,00,6f,00,6e,00,74,00,72,00,6f,00,6c,00,53,\
-;  00,65,00,74,00,5c,00,43,00,6f,00,6e,00,74,00,72,00,6f,00,6c,00,5c,00,43,00,\
-;  6f,00,6e,00,74,00,65,00,6e,00,74,00,49,00,6e,00,64,00,65,00,78,00,00,00,53,\
-;  00,79,00,73,00,74,00,65,00,6d,00,5c,00,43,00,75,00,72,00,72,00,65,00,6e,00,\
-;  74,00,43,00,6f,00,6e,00,74,00,72,00,6f,00,6c,00,53,00,65,00,74,00,5c,00,43,\
-;  00,6f,00,6e,00,74,00,72,00,6f,00,6c,00,5c,00,54,00,65,00,72,00,6d,00,69,00,\
-;  6e,00,61,00,6c,00,20,00,53,00,65,00,72,00,76,00,65,00,72,00,00,00,53,00,79,\
-;  00,73,00,74,00,65,00,6d,00,5c,00,43,00,75,00,72,00,72,00,65,00,6e,00,74,00,\
-;  43,00,6f,00,6e,00,74,00,72,00,6f,00,6c,00,53,00,65,00,74,00,5c,00,43,00,6f,\
-;  00,6e,00,74,00,72,00,6f,00,6c,00,5c,00,54,00,65,00,72,00,6d,00,69,00,6e,00,\
-;  61,00,6c,00,20,00,53,00,65,00,72,00,76,00,65,00,72,00,5c,00,55,00,73,00,65,\
-;  00,72,00,43,00,6f,00,6e,00,66,00,69,00,67,00,00,00,53,00,79,00,73,00,74,00,\
-;  65,00,6d,00,5c,00,43,00,75,00,72,00,72,00,65,00,6e,00,74,00,43,00,6f,00,6e,\
-;  00,74,00,72,00,6f,00,6c,00,53,00,65,00,74,00,5c,00,43,00,6f,00,6e,00,74,00,\
-;  72,00,6f,00,6c,00,5c,00,54,00,65,00,72,00,6d,00,69,00,6e,00,61,00,6c,00,20,\
-;  00,53,00,65,00,72,00,76,00,65,00,72,00,5c,00,44,00,65,00,66,00,61,00,75,00,\
-;  6c,00,74,00,55,00,73,00,65,00,72,00,43,00,6f,00,6e,00,66,00,69,00,67,00,75,\
-;  00,72,00,61,00,74,00,69,00,6f,00,6e,00,00,00,53,00,6f,00,66,00,74,00,77,00,\
-;  61,00,72,00,65,00,5c,00,4d,00,69,00,63,00,72,00,6f,00,73,00,6f,00,66,00,74,\
-;  00,5c,00,57,00,69,00,6e,00,64,00,6f,00,77,00,73,00,20,00,4e,00,54,00,5c,00,\
-;  43,00,75,00,72,00,72,00,65,00,6e,00,74,00,56,00,65,00,72,00,73,00,69,00,6f,\
-;  00,6e,00,5c,00,50,00,65,00,72,00,66,00,6c,00,69,00,62,00,00,00,53,00,79,00,\
-;  73,00,74,00,65,00,6d,00,5c,00,43,00,75,00,72,00,72,00,65,00,6e,00,74,00,43,\
-;  00,6f,00,6e,00,74,00,72,00,6f,00,6c,00,53,00,65,00,74,00,5c,00,53,00,65,00,\
-;  72,00,76,00,69,00,63,00,65,00,73,00,5c,00,53,00,79,00,73,00,6d,00,6f,00,6e,\
-;  00,4c,00,6f,00,67,00,00,00,00,00
+; 72,00,65,00,6e,00,74,00,43,00,6f,00,6e,00,74,00,72,00,6f,00,6c,00,53,00,65,\
+; 00,74,00,5c,00,43,00,6f,00,6e,00,74,00,72,00,6f,00,6c,00,5c,00,50,00,72,00,\
+; 69,00,6e,00,74,00,5c,00,50,00,72,00,69,00,6e,00,74,00,65,00,72,00,73,00,00,\
+; 00,53,00,79,00,73,00,74,00,65,00,6d,00,5c,00,43,00,75,00,72,00,72,00,65,00,\
+; 6e,00,74,00,43,00,6f,00,6e,00,74,00,72,00,6f,00,6c,00,53,00,65,00,74,00,5c,\
+; 00,53,00,65,00,72,00,76,00,69,00,63,00,65,00,73,00,5c,00,45,00,76,00,65,00,\
+; 6e,00,74,00,6c,00,6f,00,67,00,00,00,53,00,6f,00,66,00,74,00,77,00,61,00,72,\
+; 00,65,00,5c,00,4d,00,69,00,63,00,72,00,6f,00,73,00,6f,00,66,00,74,00,5c,00,\
+; 4f,00,4c,00,41,00,50,00,20,00,53,00,65,00,72,00,76,00,65,00,72,00,00,00,53,\
+; 00,6f,00,66,00,74,00,77,00,61,00,72,00,65,00,5c,00,4d,00,69,00,63,00,72,00,\
+; 6f,00,73,00,6f,00,66,00,74,00,5c,00,57,00,69,00,6e,00,64,00,6f,00,77,00,73,\
+; 00,20,00,4e,00,54,00,5c,00,43,00,75,00,72,00,72,00,65,00,6e,00,74,00,56,00,\
+; 65,00,72,00,73,00,69,00,6f,00,6e,00,5c,00,50,00,72,00,69,00,6e,00,74,00,00,\
+; 00,53,00,6f,00,66,00,74,00,77,00,61,00,72,00,65,00,5c,00,4d,00,69,00,63,00,\
+; 72,00,6f,00,73,00,6f,00,66,00,74,00,5c,00,57,00,69,00,6e,00,64,00,6f,00,77,\
+; 00,73,00,20,00,4e,00,54,00,5c,00,43,00,75,00,72,00,72,00,65,00,6e,00,74,00,\
+; 56,00,65,00,72,00,73,00,69,00,6f,00,6e,00,5c,00,57,00,69,00,6e,00,64,00,6f,\
+; 00,77,00,73,00,00,00,53,00,79,00,73,00,74,00,65,00,6d,00,5c,00,43,00,75,00,\
+; 72,00,72,00,65,00,6e,00,74,00,43,00,6f,00,6e,00,74,00,72,00,6f,00,6c,00,53,\
+; 00,65,00,74,00,5c,00,43,00,6f,00,6e,00,74,00,72,00,6f,00,6c,00,5c,00,43,00,\
+; 6f,00,6e,00,74,00,65,00,6e,00,74,00,49,00,6e,00,64,00,65,00,78,00,00,00,53,\
+; 00,79,00,73,00,74,00,65,00,6d,00,5c,00,43,00,75,00,72,00,72,00,65,00,6e,00,\
+; 74,00,43,00,6f,00,6e,00,74,00,72,00,6f,00,6c,00,53,00,65,00,74,00,5c,00,43,\
+; 00,6f,00,6e,00,74,00,72,00,6f,00,6c,00,5c,00,54,00,65,00,72,00,6d,00,69,00,\
+; 6e,00,61,00,6c,00,20,00,53,00,65,00,72,00,76,00,65,00,72,00,00,00,53,00,79,\
+; 00,73,00,74,00,65,00,6d,00,5c,00,43,00,75,00,72,00,72,00,65,00,6e,00,74,00,\
+; 43,00,6f,00,6e,00,74,00,72,00,6f,00,6c,00,53,00,65,00,74,00,5c,00,43,00,6f,\
+; 00,6e,00,74,00,72,00,6f,00,6c,00,5c,00,54,00,65,00,72,00,6d,00,69,00,6e,00,\
+; 61,00,6c,00,20,00,53,00,65,00,72,00,76,00,65,00,72,00,5c,00,55,00,73,00,65,\
+; 00,72,00,43,00,6f,00,6e,00,66,00,69,00,67,00,00,00,53,00,79,00,73,00,74,00,\
+; 65,00,6d,00,5c,00,43,00,75,00,72,00,72,00,65,00,6e,00,74,00,43,00,6f,00,6e,\
+; 00,74,00,72,00,6f,00,6c,00,53,00,65,00,74,00,5c,00,43,00,6f,00,6e,00,74,00,\
+; 72,00,6f,00,6c,00,5c,00,54,00,65,00,72,00,6d,00,69,00,6e,00,61,00,6c,00,20,\
+; 00,53,00,65,00,72,00,76,00,65,00,72,00,5c,00,44,00,65,00,66,00,61,00,75,00,\
+; 6c,00,74,00,55,00,73,00,65,00,72,00,43,00,6f,00,6e,00,66,00,69,00,67,00,75,\
+; 00,72,00,61,00,74,00,69,00,6f,00,6e,00,00,00,53,00,6f,00,66,00,74,00,77,00,\
+; 61,00,72,00,65,00,5c,00,4d,00,69,00,63,00,72,00,6f,00,73,00,6f,00,66,00,74,\
+; 00,5c,00,57,00,69,00,6e,00,64,00,6f,00,77,00,73,00,20,00,4e,00,54,00,5c,00,\
+; 43,00,75,00,72,00,72,00,65,00,6e,00,74,00,56,00,65,00,72,00,73,00,69,00,6f,\
+; 00,6e,00,5c,00,50,00,65,00,72,00,66,00,6c,00,69,00,62,00,00,00,53,00,79,00,\
+; 73,00,74,00,65,00,6d,00,5c,00,43,00,75,00,72,00,72,00,65,00,6e,00,74,00,43,\
+; 00,6f,00,6e,00,74,00,72,00,6f,00,6c,00,53,00,65,00,74,00,5c,00,53,00,65,00,\
+; 72,00,76,00,69,00,63,00,65,00,73,00,5c,00,53,00,79,00,73,00,6d,00,6f,00,6e,\
+; 00,4c,00,6f,00,67,00,00,00,00,00
 
 ;;; 2.3.10.9 (L1) Ensure 'Network access: Restrict anonymous access to Named Pipes and Shares' is set to 'Enabled'
 [HKEY_LOCAL_MACHINE\System\CurrentControlSet\Services\LanManServer\Parameters]
@@ -495,7 +492,7 @@ Windows Registry Editor Version 5.00
 
 ;;; 5.9 (L1) Ensure 'Infrared monitor service (irmon)' is set to 'Disabled'
 [HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Services\irmon]
-; 0 <deleted> = Off (Default)
+; <deleted> = (Default)
 ; 2 = Automatic
 ; 3 = Manual
 ; 4 = Disabled (CIS L1)
@@ -632,9 +629,53 @@ Windows Registry Editor Version 5.00
 ; NON-COMPLIANCE TO NOT DISRUPT COMMON HOME FEATURES
 ;"AllowInputPersonalization"=dword:0000001
 
+;;; 18.3.1 (L1) Ensure 'MSS: (AutoAdminLogon) Enable Automatic Logon (not recommended)' is set to 'Disabled'
+[HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Windows NT\CurrentVersion\Winlogon]
+; <deleted> = (Default)
+; 0 = Off (CIS L1)
+; 1 = On
+; NON-COMPLIANCE TO NOT DISRUPT COMMON HOME FEATURES
+;"AutoAdminLogon"=dword:0000001
+
+;;; 18.3.2 (L1) Ensure 'MSS: (DisableIPSourceRouting IPv6) IP source routing protection level (protects against packet spoofing)' is set to 'Enabled: Highest protection, source routing is completely disabled'
+[HKEY_LOCAL_MACHINE\System\CurrentControlSet\Services\Tcpip6\Parameters]
+; <deleted> = (Default)
+; 0 = No additional protection, source routed packets are allowed
+; 1 = Medium, source routed packets ignored when IP forwarding is enabled
+; 2 = Highest protection, source routing is completely disabled (CIS L1)
+"DisableIPSourceRouting"=dword:0000002
+
+;;; 18.3.3 (L1) Ensure 'MSS: (DisableIPSourceRouting) IP source routing protection level (protects against packet spoofing)' is set to 'Enabled: Highest protection, source routing is completely disabled'
+[HKEY_LOCAL_MACHINE\System\CurrentControlSet\Services\Tcpip\Parameters]
+; <deleted> = (Default)
+; 0 = No additional protection, source routed packets are allowed
+; 1 = Medium, source routed packets ignored when IP forwarding is enabled
+; 2 = Highest protection, source routing is completely disabled (CIS L1)
+"DisableIPSourceRouting"=dword:0000002
+
+;;; 18.3.5 (L1) Ensure 'MSS: (EnableICMPRedirect) Allow ICMP redirects to override OSPF generated routes' is set to 'Disabled'
+[HKEY_LOCAL_MACHINE\System\CurrentControlSet\Services\Tcpip\Parameters]
+; 0 = Off (CIS L1)
+; 1 = On (Default)
+"EnableICMPRedirect"=dword:0000000
+
+;;; 18.3.7 (L1) Ensure 'MSS: (NoNameReleaseOnDemand) Allow the computer to ignore NetBIOS name release requests except from WINS servers' is set to 'Enabled'
+[HKEY_LOCAL_MACHINE\System\CurrentControlSet\Services\NetBT\Parameters]
+; <deleted> = (Default)
+; 0 = Off
+; 1 = On (CIS L1)
+"nonamereleaseondemand"=dword:0000001
+
+;;; 18.3.9 (L1) Ensure 'MSS: (SafeDllSearchMode) Enable Safe DLL search mode (recommended)' is set to 'Enabled'
+[HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Control\Session Manager]
+; <deleted> = (Default)
+; 0 = Off
+; 1 = On (CIS L1)
+"SafeDllSearchMode"=dword:0000001
+
 ;;; 18.4.4.1 (L1) Set 'NetBIOS node type' to 'P-node' (Ensure NetBT Parameter 'NodeType' is set to '0x2 (2)')
 [HKEY_LOCAL_MACHINE\System\CurrentControlSet\Services\Netbt\Parameters]
-; <deleted> = Default
+; <deleted> = (Default)
 ; 2 = (CIS L1)
 "NodeType"=dword:0000002
 
@@ -645,12 +686,42 @@ Windows Registry Editor Version 5.00
 ; 1 = On
 "AllowInsecureGuestAuth"=dword:0000000
 
+;;; 18.3.10 (L1) Ensure 'MSS: (ScreenSaverGracePeriod) The time in seconds before the screen saver grace period expires (0 recommended)' is set to 'Enabled: 5 or fewer seconds'
+[HKEY_LOCAL_MACHINE\Software\Microsoft\Windows NT\CurrentVersion\Winlogon]
+; <deleted> = (Default)
+; 5 = 5 seconds (CIS L1)
+"ScreenSaverGracePeriod"=dword:0000005
+
+;;; 18.3.13 (L1) Ensure 'MSS: (WarningLevel) Percentage threshold for the security event log at which the system will generate a warning' is set to 'Enabled: 90% or less'
+[HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Services\Eventlog\Security]
+; 50 (32) = 50%
+; 60 (3c) = 60%
+; 70 (46) = 70%
+; 80 (50) = 80%
+; 90 (5a) = 90% (CIS L1)
+"WarningLevel"=dword:000005a
+
 ;;; 18.4.23.2.1 (L1) Ensure 'Allow Windows to automatically connect to suggested open hotspots, to networks shared by contacts, and to hotspots offering paid services' is set to 'Disabled'
 [HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\WcmSvc\wifinetworkmanager\config]
 ; 0 = Off (CIS L1)
 ; 1 = On (Default)
 ; NON-COMPLIANCE TO NOT DISRUPT COMMON HOME FEATURES
 "AutoConnectAllowedOEM"=dword:0000000
+
+;;; 18.6.1 (L1) Ensure 'Apply UAC restrictions to local accounts on network logons' is set to 'Enabled'
+[HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Windows\CurrentVersion\Policies\System]
+; <deleted> = (Default)
+; 0 = Off (CIS L1)
+; 1 = On
+; NON-COMPLIANCE TO NOT DISRUPT COMMON HOME FEATURES
+;"LocalAccountTokenFilterPolicy"=dword:0000001
+
+;;; 18.6.2 (L1) Ensure 'WDigest Authentication' is set to 'Disabled'
+[HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Control\SecurityProviders\WDigest]
+; <deleted> = (Default)
+; 0 = Off (CIS L1)
+; 1 = On
+"UseLogonCredential"=dword:0000000
 
 ;;; 18.8.3.1 (L1) Ensure 'Include command line in process creation events' is set to 'Disabled'
 [HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Windows\CurrentVersion\Policies\System\Audit]
@@ -719,10 +790,85 @@ Windows Registry Editor Version 5.00
 ;;; 18.8.26.1 (L1) Ensure 'Untrusted Font Blocking' is set to 'Enabled: Block untrusted fonts and log events'
 [HKEY_LOCAL_MACHINE\SOFTWARE\Policies\Microsoft\Windows NT\MitigationOptions]
 ; <deleted> = (Default)
-; hex(b):00,00,00,00,00,00,02,00 = Off
-; hex(b):00,00,00,00,00,00,01,00 = On
-; hex(b):00,00,00,00,00,00,03,00 = Audit
-"MitigationOptions_FontBocking"=hex(b):00,00,00,00,00,00,01,00
+; 00,10,a5,d4,e8,00,00,00 (1000000000000) = Block untrusted fonts and log events (CIS L1)
+; 00,20,4a,a9,d1,01,00,00 (2000000000000) = Do not block untrusted fonts
+; 00,30,ef,7d,ba,02,00,00 (3000000000000) = Log events without blocking untrusted fonts
+"MitigationOptions_FontBocking"=hex(b):00,10,a5,d4,e8,00,00,00
+
+;;; 18.8.29.5.1 (L1) Ensure 'Allow network connectivity during connected-standby (on battery)' is set to 'Disabled'
+[HKEY_LOCAL_MACHINE\SOFTWARE\Policies\Microsoft\Power\PowerSettings\f15576e8-98b7-4186-b944-eafa664402d9]
+; <deleted> = (Default)
+; 0 = Off (CIS L1)
+; 1 = On
+; NON-COMPLIANCE TO NOT DISRUPT COMMON HOME FEATURES
+;"DCSettingIndex"=dword:0000001
+
+;;; 18.8.29.5.2 (L1) Ensure 'Allow network connectivity during connected-standby (plugged in)' is set to 'Disabled'
+[HKEY_LOCAL_MACHINE\SOFTWARE\Policies\Microsoft\Power\PowerSettings\f15576e8-98b7-4186-b944-eafa664402d9]
+; <deleted> = (Default)
+; 0 = Off (CIS L1)
+; 1 = On
+; NON-COMPLIANCE TO NOT DISRUPT COMMON HOME FEATURES
+;"ACSettingIndex"=dword:0000001
+
+;;; 18.8.29.5.3 (BL) Ensure 'Allow standby states (S1-S3) when sleeping (on battery)' is set to 'Disabled'
+[HKEY_LOCAL_MACHINE\Software\Policies\Microsoft\Power\PowerSettings\abfc2519-3608-4c2a-94ea-171b0ed546ab]
+; <deleted> = (Default)
+; 0 = Off (CIS L1)
+; 1 = On
+; NON-COMPLIANCE TO NOT DISRUPT COMMON HOME FEATURES
+;"DCSettingIndex"=dword:0000001
+
+;;; 18.8.29.5.4 (BL) Ensure 'Allow standby states (S1-S3) when sleeping (plugged in)' is set to 'Disabled'
+[HKEY_LOCAL_MACHINE\Software\Policies\Microsoft\Power\PowerSettings\abfc2519-3608-4c2a-94ea-171b0ed546ab]
+; <deleted> = (Default)
+; 0 = Off (CIS L1)
+; 1 = On
+; NON-COMPLIANCE TO NOT DISRUPT COMMON HOME FEATURES
+;"ACSettingIndex"=dword:0000001
+
+;;; 18.8.29.5.5 (L1) Ensure 'Require a password when a computer wakes (on battery)' is set to 'Enabled'
+[HKEY_LOCAL_MACHINE\Software\Policies\Microsoft\Power\PowerSettings\0e796bdb-100d-47d6-a2d5-f7d2daa51f51]
+; <deleted> = (Default)
+; 0 = Off (CIS L1)
+; 1 = On
+"DCSettingIndex"=dword:0000001
+
+;;; 18.8.29.5.6 (L1) Ensure 'Require a password when a computer wakes (plugged in)' is set to 'Enabled'
+[HKEY_LOCAL_MACHINE\Software\Policies\Microsoft\Power\PowerSettings\0e796bdb-100d-47d6-a2d5-f7d2daa51f51]
+; <deleted> = (Default)
+; 0 = Off (CIS L1)
+; 1 = On
+"ACSettingIndex"=dword:0000001
+
+;;; 18.8.31.1 (L1) Ensure 'Configure Offer Remote Assistance' is set to 'Disabled'
+[HKEY_LOCAL_MACHINE\Software\policies\Microsoft\Windows NT\Terminal Services]
+; <deleted> = (Default)
+; 0 = Off (CIS L1)
+; 1 = On
+"fAllowUnsolicited"=dword:0000000
+
+;;; 18.8.31.2 (L1) Ensure 'Configure Solicited Remote Assistance' is set to 'Disabled'
+[HKEY_LOCAL_MACHINE\Software\policies\Microsoft\Windows NT\Terminal Services]
+; <deleted> = (Default)
+; 0 = Off (CIS L1)
+; 1 = On
+; NON-COMPLIANCE TO NOT DISRUPT COMMON HOME FEATURES
+;"fAllowToGetHelp"=dword:0000001
+
+;;; 18.8.32.1 (L1) Ensure 'Enable RPC Endpoint Mapper Client Authentication' is set to 'Enabled'
+[HKEY_LOCAL_MACHINE\Software\Policies\Microsoft\Windows NT\Rpc]
+; <deleted> = (Default)
+; 0 = Off
+; 1 = On (CIS L1)
+"EnableAuthEpResolution"=dword:0000001
+
+;;; 18.8.32.2 (L1) Ensure 'Restrict Unauthenticated RPC clients' is set to 'Enabled: Authenticated'
+[HKEY_LOCAL_MACHINE\Software\Policies\Microsoft\Windows NT\Rpc]
+; <deleted> = (Default)
+; 0 = Off
+; 1 = On (CIS L1)
+"RestrictRemoteClients"=dword:0000001
 
 ;;; 18.9.6.1 (L1) Ensure 'Allow Microsoft accounts to be optional' is set to 'Enabled'
 [HKEY_LOCAL_MACHINE\Software\Microsoft\Windows\CurrentVersion\Policies\System]
@@ -963,7 +1109,6 @@ Windows Registry Editor Version 5.00
 ; <deleted> = (Default)
 ; 0 = Off (CIS L1)
 ; 1 = On
-; NON-COMPLIANCE TO NOT DISRUPT COMMON HOME FEATURES
 "AllowIndexingEncryptedStoresOrItems"=dword:0000000
 
 ;;; 18.9.54.5 (L1) Ensure 'Allow search and Cortana to use location' is set to 'Disabled'
@@ -1093,20 +1238,20 @@ Windows Registry Editor Version 5.00
 ; 8 (8) = Release Preview
 ; 16 (10) = Semi-Annual Channel (Targeted)
 ; 32 (20) = Semi-Annual Channel (CIS L1)
-; NON-COMPLIANCE TO NOT DISRUPT COMMON HOME FEATURES
+; FEATURE DOES NOT EXISTS IN NON-CORPORATE ENVIRONMENT
 ;"BranchReadinessLevel"=dword:0000020
 [HKEY_LOCAL_MACHINE\SOFTWARE\Policies\Microsoft\Windows\WindowsUpdate]
 ; <deleted> = (Default)
 ; 0 (0) = 0 days (min)
 ; 180 (b4) = 180 days (CIS L1)
 ; 365 (16d) = 365 days (max)
-; NON-COMPLIANCE TO NOT DISRUPT COMMON HOME FEATURES
+; FEATURE DOES NOT EXISTS IN NON-CORPORATE ENVIRONMENT
 ;"DeferFeatureUpdatesPeriodInDays"=dword:0000000
 [HKEY_LOCAL_MACHINE\SOFTWARE\Policies\Microsoft\Windows\WindowsUpdate]
 ; <deleted> = (Default)
 ; 0 = Off
 ; 1 = On (CIS L1)
-; NON-COMPLIANCE TO NOT DISRUPT COMMON HOME FEATURES
+; FEATURE DOES NOT EXISTS IN NON-CORPORATE ENVIRONMENT
 ;"DeferFeatureUpdates"=dword:0000000
 
 ;;; 18.9.90.1.2 (L1) Ensure 'Select when Quality Updates are received' is set to 'Enabled: 0 days'
@@ -1115,13 +1260,13 @@ Windows Registry Editor Version 5.00
 ; 0 (0) = 0 days (min)
 ; 180 (b4) = 180 days (CIS L1)
 ; 365 (16d) = 365 days (max)
-; NON-COMPLIANCE TO NOT DISRUPT COMMON HOME FEATURES
+; FEATURE DOES NOT EXISTS IN NON-CORPORATE ENVIRONMENT
 ;"DeferQualityUpdatesPeriodInDays"=dword:0000000
 [HKEY_LOCAL_MACHINE\SOFTWARE\Policies\Microsoft\Windows\WindowsUpdate]
 ; <deleted> = (Default)
 ; 0 = Off (CIS L1)
 ; 1 = On
-; NON-COMPLIANCE TO NOT DISRUPT COMMON HOME FEATURES
+; FEATURE DOES NOT EXISTS IN NON-CORPORATE ENVIRONMENT
 ;"DeferQualityUpdates"=dword:0000000
 
 ;;; 18.9.90.2 (L1) Ensure 'Configure Automatic Updates' is set to 'Enabled'
@@ -1129,7 +1274,7 @@ Windows Registry Editor Version 5.00
 ; <deleted> = (Default)
 ; 0 = Off (CIS L1)
 ; 1 = On
-; NON-COMPLIANCE TO NOT DISRUPT COMMON HOME FEATURES
+; FEATURE DOES NOT EXISTS IN NON-CORPORATE ENVIRONMENT
 ;"NoAutoUpdate"=dword:0000000
 
 ;;; 18.9.90.3 (L1) Ensure 'Configure Automatic Updates: Scheduled install day' is set to '0 - Every day'
@@ -1143,7 +1288,7 @@ Windows Registry Editor Version 5.00
 ; 5 = Every Thursday
 ; 6 = Every Friday
 ; 7 = Every Saturday
-; NON-COMPLIANCE TO NOT DISRUPT COMMON HOME FEATURES
+; FEATURE DOES NOT EXISTS IN NON-CORPORATE ENVIRONMENT
 ;"ScheduledInstallDay"=dword:0000000
 
 ;;; 18.9.90.4 (L1) Ensure 'No auto-restart with logged on users for scheduled automatic updates installations' is set to 'Disabled'
@@ -1151,5 +1296,5 @@ Windows Registry Editor Version 5.00
 ; <deleted> = (Default)
 ; 0 = Off (CIS L1)
 ; 1 = On
-; NON-COMPLIANCE TO NOT DISRUPT COMMON HOME FEATURES
+; FEATURE DOES NOT EXISTS IN NON-CORPORATE ENVIRONMENT
 ;"NoAutoRebootWithLoggedOnUsers"=dword:0000000
