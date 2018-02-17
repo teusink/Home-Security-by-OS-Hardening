@@ -18,7 +18,6 @@ Windows Registry Editor Version 5.00
 ;;; - Windows Connection Manager (WCM)
 ;;; - Group Policy
 ;;; - Kerberos
-;;; - Application, Security, Setup and System EventLog
 
 ;;; 2.3.1.2 (L1) Ensure 'Accounts: Block Microsoft accounts' is set to 'Users can't add or log on with Microsoft accounts'
 [HKEY_LOCAL_MACHINE\Software\Microsoft\Windows\CurrentVersion\Policies\System]
@@ -995,6 +994,70 @@ Windows Registry Editor Version 5.00
 ; 99 = Simple download mode with no peering. Delivery Optimization downloads using HTTP only and does not attempt to contact the Delivery Optimization cloud services
 ; 100 = Bypass mode. Do not use Delivery Optimization and use BITS instead.
 "DODownloadMode"=dword:0000002
+
+;;; 18.9.26.1.1 (L1) Ensure 'Application: Control Event Log behavior when the log file reaches its maximum size' is set to 'Disabled'
+[HKEY_LOCAL_MACHINE\Software\Policies\Microsoft\Windows\EventLog\Application]
+; <deleted> = (Default)
+; 0 = Off (CIS L1)
+; 1 = On
+"Retention"=dword:0000000
+
+;;; 18.9.26.1.2 (L1) Ensure 'Application: Specify the maximum log file size (KB)' is set to 'Enabled: 32,768 or greater'
+[HKEY_LOCAL_MACHINE\Software\Policies\Microsoft\Windows\EventLog\Application]
+; <deleted> = (Default)
+; 1024 (400) = 1 MB (minimum)
+; 32768 (8000) = 32 MB (or greater) (CIS L1)
+; 65536 (10000) = 64 MB (double) (CIS L1)
+; 2147483647 (7ffffff) = 2 TB (maximum)
+"MaxSize"=dword:0010000
+
+;;; 18.9.26.2.1 (L1) Ensure 'Security: Control Event Log behavior when the log file reaches its maximum size' is set to 'Disabled'
+[HKEY_LOCAL_MACHINE\Software\Policies\Microsoft\Windows\EventLog\Security]
+; <deleted> = (Default)
+; 0 = Off (CIS L1)
+; 1 = On
+"Retention"=dword:0000000
+
+;;; 18.9.26.2.2 (L1) Ensure 'Security: Specify the maximum log file size (KB)' is set to 'Enabled: 196,608 or greater'
+[HKEY_LOCAL_MACHINE\Software\Policies\Microsoft\Windows\EventLog\Security]
+; <deleted> = (Default)
+; 1024 (400) = 1 MB (minimum)
+; 32768 (8000) = 32 MB (or greater) (CIS L1)
+; 65536 (10000) = 64 MB (double) (CIS L1)
+; 2147483647 (7ffffff) = 2 TB (maximum)
+"MaxSize"=dword:0010000
+
+;;; 18.9.26.3.1 (L1) Ensure 'Setup: Control Event Log behavior when the log file reaches its maximum size' is set to 'Disabled'
+[HKEY_LOCAL_MACHINE\Software\Policies\Microsoft\Windows\EventLog\Setup]
+; <deleted> = (Default)
+; 0 = Off (CIS L1)
+; 1 = On
+"Retention"=dword:0000000
+
+;;; 18.9.26.3.2 (L1) Ensure 'Setup: Specify the maximum log file size (KB)' is set to 'Enabled: 32,768 or greater'
+[HKEY_LOCAL_MACHINE\Software\Policies\Microsoft\Windows\EventLog\Setup]
+; <deleted> = (Default)
+; 1024 (400) = 1 MB (minimum)
+; 32768 (8000) = 32 MB (or greater) (CIS L1)
+; 65536 (10000) = 64 MB (double) (CIS L1)
+; 2147483647 (7ffffff) = 2 TB (maximum)
+"MaxSize"=dword:0010000
+
+;;; 18.9.26.4.1 (L1) Ensure 'System: Control Event Log behavior when the log file reaches its maximum size' is set to 'Disabled'
+[HKEY_LOCAL_MACHINE\Software\Policies\Microsoft\Windows\EventLog\System]
+; <deleted> = (Default)
+; 0 = Off (CIS L1)
+; 1 = On
+"Retention"=dword:0000000
+
+;;; 18.9.26.4.2 (L1) Ensure 'System: Specify the maximum log file size (KB)' is set to 'Enabled: 32,768 or greater'
+[HKEY_LOCAL_MACHINE\Software\Policies\Microsoft\Windows\EventLog\System]
+; <deleted> = (Default)
+; 1024 (400) = 1 MB (minimum)
+; 32768 (8000) = 32 MB (or greater) (CIS L1)
+; 65536 (10000) = 64 MB (double) (CIS L1)
+; 2147483647 (7ffffff) = 2 TB (maximum)
+"MaxSize"=dword:0010000
 
 ;;; 18.9.30.2 (L1) Ensure 'Configure Windows SmartScreen' is set to 'Enabled'
 [HKEY_LOCAL_MACHINE\Software\Policies\Microsoft\Windows\System]
