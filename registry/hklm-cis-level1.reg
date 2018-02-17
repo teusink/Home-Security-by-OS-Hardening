@@ -18,6 +18,7 @@ Windows Registry Editor Version 5.00
 ;;; - Windows Connection Manager (WCM)
 ;;; - Group Policy
 ;;; - Kerberos
+;;; - Application, Security, Setup and System Event Log Service
 
 ;;; 2.3.1.2 (L1) Ensure 'Accounts: Block Microsoft accounts' is set to 'Users can't add or log on with Microsoft accounts'
 [HKEY_LOCAL_MACHINE\Software\Microsoft\Windows\CurrentVersion\Policies\System]
