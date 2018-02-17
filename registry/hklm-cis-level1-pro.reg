@@ -9,6 +9,7 @@ Windows Registry Editor Version 5.00
 
 ;;; The following elements from the CIS Level 1 baseline are included:
 ;;; - Windows Firewall
+;;; - Remote Desktop Services (formerly Terminal Services) & RemoteFX USB Device Redirection
 
 ;;; 9.1.1 (L1) Ensure 'Windows Firewall: Domain: Firewall state' is set to 'On (recommended)'
 [HKEY_LOCAL_MACHINE\Software\Policies\Microsoft\WindowsFirewall\DomainProfile]
