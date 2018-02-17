@@ -681,15 +681,6 @@ Windows Registry Editor Version 5.00
 ; 5 = 5 seconds (CIS L1)
 "ScreenSaverGracePeriod"=dword:0000005
 
-;;; 18.3.13 (L1) Ensure 'MSS: (WarningLevel) Percentage threshold for the security event log at which the system will generate a warning' is set to 'Enabled: 90% or less'
-[HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Services\Eventlog\Security]
-; 50 (32) = 50%
-; 60 (3c) = 60%
-; 70 (46) = 70%
-; 80 (50) = 80%
-; 90 (5a) = 90% (CIS L1)
-"WarningLevel"=dword:000005a
-
 ;;; 18.4.4.1 (L1) Set 'NetBIOS node type' to 'P-node' (Ensure NetBT Parameter 'NodeType' is set to '0x2 (2)')
 [HKEY_LOCAL_MACHINE\System\CurrentControlSet\Services\Netbt\Parameters]
 ; <deleted> = (Default)
