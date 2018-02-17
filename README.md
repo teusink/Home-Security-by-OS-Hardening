@@ -241,6 +241,9 @@ If you have Windows 10 Pro:
 - HKEY_LOCAL_MACHINE - Windows 10 Pro CIS Level 1 [[REG]](https://github.com/teusink/Home-Security-by-W10-Hardening/blob/master/registry/hklm-cis-level1-pro.reg)
 - HKEY_LOCAL_MACHINE - Windows 10 Pro CIS Level 2 [[REG]](https://github.com/teusink/Home-Security-by-W10-Hardening/blob/master/registry/hklm-cis-level2-pro.reg)
 
+If you have Windows 10 Pro and BitLocker (carefull, keys not validated yet!):
+- HKEY_LOCAL_MACHINE - Windows 10 Pro CIS BitLocker [[REG]](https://github.com/teusink/Home-Security-by-W10-Hardening/blob/master/registry/hklm-cis-level1-pro-bitlocker.reg)
+
 If you use Google Chrome:
 - HKEY_LOCAL_MACHINE - Google Chrome hardening [[REG]](https://github.com/teusink/Home-Security-by-W10-Hardening/blob/master/registry/hklm-cis-level1-2-chrome.reg)
 
