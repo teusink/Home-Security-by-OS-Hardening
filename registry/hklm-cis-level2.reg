@@ -18,7 +18,6 @@ Windows Registry Editor Version 5.00
 ;;; - Windows Connection Manager (WCM)
 ;;; - Group Policy
 ;;; - Kerberos
-;;; - Application, Security, Setup and System EventLog
 
 ;;; 2.3.4.2 (L2) Ensure 'Devices: Prevent users from installing printer drivers' is set to 'Enabled'
 ;[HKEY_LOCAL_MACHINE\System\CurrentControlSet\Control\Print\Providers\LanMan Print Services\Servers]
