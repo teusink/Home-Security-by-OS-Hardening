@@ -9,7 +9,6 @@ Windows Registry Editor Version 5.00
 
 ;;; Due to the target being Windows 10 Home the following parts are excluded from the CIS Level 2 baseline:
 ;;; - BitLocker Drive Encryption (see Pro registry file)
-;;; - Windows Firewall (see Pro registry file)
 ;;; - Remote Desktop Services (formerly Terminal Services) (see Pro registry file)
 
 ;;; Due to the target being Windows 10 Home and Pro the following parts are excluded from the CIS Level 2 baseline:
