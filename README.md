@@ -230,6 +230,7 @@ In order to even more harden your system, add the registry key-sets below to you
 
 ## Registry Files
 - HKEY_LOCAL_MACHINE - CIS Level 1 (not fully compliant) [[REG]](https://github.com/teusink/Home-Security-by-W10-Hardening/blob/master/registry/hklm-cis-level1.reg)
+- HKEY_LOCAL_MACHINE - CIS Level 2 (not fully compliant) [[REG]](https://github.com/teusink/Home-Security-by-W10-Hardening/blob/master/registry/hklm-cis-level2.reg)
 - HKEY_LOCAL_MACHINE - Custom hardening [[REG]](https://github.com/teusink/Home-Security-by-W10-Hardening/blob/master/registry/hklm-custom.reg)
 - HKEY_LOCAL_MACHINE - Google Chrome hardening [[REG]](https://github.com/teusink/Home-Security-by-W10-Hardening/blob/master/registry/hklm-cis-level1-2-chrome.reg)
 - HKEY_LOCAL_MACHINE - Client and Server Encryption hardening [[REG]](https://github.com/teusink/Home-Security-by-W10-Hardening/blob/master/registry/hklm-encryption.reg)
