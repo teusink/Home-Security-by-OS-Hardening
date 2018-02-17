@@ -10,6 +10,7 @@ Description on how I configured the installation and Security of Windows 10 Home
 - [2 - Settings](#settings)
 - [3 - Registry](#registry)
 - [4 - Additional software](#additional-software)
+- [5 - Repair](#systems-repair)
 
 # Introduction
 The goal of this project is to make a secure (or at least secure within a reasonable amount of effort) Windows 10 Home installation to ensure a secure environment to consume and produce content. It is possible that by gaining new insights hardening-options are either removed or added.
@@ -245,6 +246,24 @@ If you don't need the software mentioned below, really remove it!
 - Microsoft Silverlight
 - Adobe Reader (PDF files can be opened in Google Chrome, Mozilla Firefox and Microsoft Edge)
 - Java Runtime Environment (JRE)
+
+# Systems repair
+Sometimes a system needs repair. Try the following commands to check and fix the integrity of your system files.
+
+## Start Command Prompt in privileged mode
+- Press ⊞ (Windows logo) in the taskbar, and type 'cmd'.
+- Right-click `Command Prompt`, and press `Run as administrator`.
+- Press `Yes` in case of User Account Control (UAC) pop-up.
+
+## SFC
+- Type in `sfc /scannow` and press Enter to initiate the integrity check and fix.
+- Wait for it to finish and reboot.
+
+## DISM
+- Type in `dism /online /cleanup-image /checkhealth` and press Enter to check for known corruptions.
+- Type in `dism /online /cleanup-image /scanhealth` and press Enter to scan for new corruptions.
+- Type in `dism /online /cleanup-image /restorehealth` and press Enter to fix the known corruptions.
+- Wait for it to finish and reboot.
 
 # Licensing
 All the licensing and copyrights of any of the code and applications belong to their respective owners. All other coding falls under the MIT-license: https://github.com/teusink/Home-Security-by-W10-Hardening/blob/master/LICENSE
