@@ -229,12 +229,20 @@ In order to even more harden your system, add the registry key-sets below to you
 - Automatic installation of Windows Store apps disabled.
 
 ## Registry Files
+If you have Windows 10 Home:
 - HKEY_LOCAL_MACHINE - Windows 10 Home CIS Level 1 (not fully compliant) [[REG]](https://github.com/teusink/Home-Security-by-W10-Hardening/blob/master/registry/hklm-cis-level1.reg)
 - HKEY_LOCAL_MACHINE - Windows 10 Home CIS Level 2 (not fully compliant) [[REG]](https://github.com/teusink/Home-Security-by-W10-Hardening/blob/master/registry/hklm-cis-level2.reg)
 - HKEY_LOCAL_MACHINE - Windows 10 Custom hardening [[REG]](https://github.com/teusink/Home-Security-by-W10-Hardening/blob/master/registry/hklm-custom.reg)
-- HKEY_LOCAL_MACHINE - Google Chrome hardening [[REG]](https://github.com/teusink/Home-Security-by-W10-Hardening/blob/master/registry/hklm-cis-level1-2-chrome.reg)
 - HKEY_LOCAL_MACHINE - Windows Client and Server Encryption hardening [[REG]](https://github.com/teusink/Home-Security-by-W10-Hardening/blob/master/registry/hklm-encryption.reg)
 - HKEY_CURRENT_USER - Windows 10 User level settings hardening [[REG]](https://github.com/teusink/Home-Security-by-W10-Hardening/blob/master/registry/hkcu-custom.reg)
+
+If you have Windows 10 Pro:
+- Run registry keys of Windows 10 Home +
+- HKEY_LOCAL_MACHINE - Windows 10 Pro CIS Level 1 [[REG]](https://github.com/teusink/Home-Security-by-W10-Hardening/blob/master/registry/hklm-cis-level1-pro.reg)
+- HKEY_LOCAL_MACHINE - Windows 10 Pro CIS Level 2 [[REG]](https://github.com/teusink/Home-Security-by-W10-Hardening/blob/master/registry/hklm-cis-level2-pro.reg)
+
+If you use Google Chrome:
+- HKEY_LOCAL_MACHINE - Google Chrome hardening [[REG]](https://github.com/teusink/Home-Security-by-W10-Hardening/blob/master/registry/hklm-cis-level1-2-chrome.reg)
 
 # Additional software
 
