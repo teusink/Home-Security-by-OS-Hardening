@@ -779,12 +779,12 @@ Windows Registry Editor Version 5.00
 ;"RemoveWindowsStore"=dword:0000000
 
 ;;; 18.9.69.3.1 (L2) Ensure 'Join Microsoft MAPS' is set to 'Disabled'
-[HKEY_LOCAL_MACHINE\Software\Microsoft\Windows Defender\Spynet]
-; 0 = Off (Default)
+;[HKEY_LOCAL_MACHINE\Software\Microsoft\Windows Defender\Spynet]
+; 0 = Off
 ; 1 = Basic MAPS
-; 2 = Advanced MAPS (CIS L2)
-; NON-COMPLIANCE TO NOT DISRUPT COMMON HOME FEATURES
-"SpynetReporting"=dword:0000000
+; 2 = Advanced MAPS (Default, CIS L2)
+; CANNOT EDIT VALUE DUE TO INSUFFIECENT RIGHTS
+;"SpynetReporting"=dword:0000000
 
 ;;; 18.9.69.8.1 (L2) Ensure 'Configure Watson events' is set to 'Disabled'
 [HKEY_LOCAL_MACHINE\SOFTWARE\Policies\Microsoft\Windows Defender\Reporting]
