@@ -17,6 +17,7 @@ Windows Registry Editor Version 5.00
 ;;; - Microsoft Solutions for Security (MSS) (Legacy)
 ;;; - Windows Connection Manager (WCM)
 ;;; - Group Policy
+;;; - Kerberos
 ;;; - Application, Security, Setup and System EventLog
 
 ;;; 2.3.1.2 (L1) Ensure 'Accounts: Block Microsoft accounts' is set to 'Users can't add or log on with Microsoft accounts'
@@ -34,7 +35,7 @@ Windows Registry Editor Version 5.00
 "LimitBlankPasswordUse"=dword:0000000
 
 ;;; 2.3.2.1 (L1) Ensure 'Audit: Force audit policy subcategory settings (Windows Vista or later) to override audit policy category settings' is set to 'Enabled'
-[HKEY_LOCAL_MACHINE\System\CurrentControlSet\Control\Lsa]
+;[HKEY_LOCAL_MACHINE\System\CurrentControlSet\Control\Lsa]
 ; <deleted> = (Default)
 ; 0 = Off
 ; 1 = On (CIS L1)
@@ -67,6 +68,7 @@ Windows Registry Editor Version 5.00
 "SealSecureChannel"=dword:0000001
 
 ;;; 2.3.6.3 (L1) Ensure 'Domain member: Digitally sign secure channel data (when possible)' is set to 'Enabled'
+[HKEY_LOCAL_MACHINE\System\CurrentControlSet\Services\Netlogon\Parameters]
 ; 0 = Off
 ; 1 = On (Default + CIS L1)
 "SignSecureChannel"=dword:0000001
@@ -97,7 +99,7 @@ Windows Registry Editor Version 5.00
 "DontDisplayLastUserName"=dword:0000000
 
 ;;; 2.3.7.2 (L1) Ensure 'Interactive logon: Do not require CTRL+ALT+DEL' is set to 'Disabled'
-[HKEY_LOCAL_MACHINE\Software\Microsoft\Windows\CurrentVersion\Policies\System]
+;[HKEY_LOCAL_MACHINE\Software\Microsoft\Windows\CurrentVersion\Policies\System]
 ; <deleted> = (Default)
 ; 0 = Off
 ; 1 = On (CIS L1)
@@ -180,7 +182,7 @@ Windows Registry Editor Version 5.00
 "enableforcedlogoff"=dword:0000001
 
 ;;; 2.3.9.5 (L1) Ensure 'Microsoft network server: Server SPN target name validation level' is set to 'Accept if provided by client' or higher
-[HKEY_LOCAL_MACHINE\System\CurrentControlSet\Services\LanManServer\Parameters]
+;[HKEY_LOCAL_MACHINE\System\CurrentControlSet\Services\LanManServer\Parameters]
 ; <deleted> = (Default)
 ; 0 = No validation
 ; 1 = Validate if provided by client (CIS L1)
@@ -219,7 +221,7 @@ Windows Registry Editor Version 5.00
 "NullSessionPipes"=hex(7):00,00
 
 ;;; 2.3.10.7 (L1) Ensure 'Network access: Remotely accessible registry paths'
-[HKEY_LOCAL_MACHINE\System\CurrentControlSet\Control\SecurePipeServers\Winreg\AllowedExactPaths]
+;[HKEY_LOCAL_MACHINE\System\CurrentControlSet\Control\SecurePipeServers\Winreg\AllowedExactPaths]
 ; <value> = see CLI baseline (Default, CIS L1)
 ; KEY DISABLED TO NOT INTERRUPT FUTURE UPDATES
 ;"Machine"=hex(7):53,00,79,00,73,00,74,00,65,00,6d,00,5c,00,43,00,75,00,72,00,\
@@ -236,7 +238,7 @@ Windows Registry Editor Version 5.00
 ; 65,00,6e,00,74,00,56,00,65,00,72,00,73,00,69,00,6f,00,6e,00,00,00,00,00
 
 ;;; 2.3.10.8 (L1) Ensure 'Network access: Remotely accessible registry paths and sub-paths'
-[HKEY_LOCAL_MACHINE\System\CurrentControlSet\Control\SecurePipeServers\Winreg\AllowedPaths]
+;[HKEY_LOCAL_MACHINE\System\CurrentControlSet\Control\SecurePipeServers\Winreg\AllowedPaths]
 ; <value> = see CLI baseline (Default, CIS L1)
 ; KEY DISABLED TO NOT INTERRUPT FUTURE UPDATES
 ; "Machine"=hex(7):53,00,79,00,73,00,74,00,65,00,6d,00,5c,00,43,00,75,00,72,00,\
@@ -457,7 +459,7 @@ Windows Registry Editor Version 5.00
 "EnableVirtualization"=dword:0000001
 
 ;;; 5.3 (L1) Ensure 'Computer Browser (Browser)' is set to 'Disabled'
-[HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Services\Browser]
+;[HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Services\Browser]
 ; <deleted> = (Default)
 ; 2 = Automatic
 ; 3 = Manual
@@ -466,7 +468,7 @@ Windows Registry Editor Version 5.00
 ;"Start"=dword:0000003
 
 ;;; 5.6 (L1) Ensure 'HomeGroup Listener (HomeGroupListener)' is set to 'Disabled'
-[HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Services\HomeGroupListener]
+;[HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Services\HomeGroupListener]
 ; 2 = Automatic
 ; 3 = Manual (Default)
 ; 4 = Disabled (CIS L1)
@@ -474,7 +476,7 @@ Windows Registry Editor Version 5.00
 ;"Start"=dword:0000003
 
 ;;; 5.7 (L1) Ensure 'HomeGroup Provider (HomeGroupProvider)' is set to 'Disabled'
-[HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Services\HomeGroupProvider]
+;[HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Services\HomeGroupProvider]
 ; 2 = Automatic
 ; 3 = Manual (Default)
 ; 4 = Disabled (CIS L1)
@@ -482,7 +484,7 @@ Windows Registry Editor Version 5.00
 ;"Start"=dword:0000003
 
 ;;; 5.8 (L1) Ensure 'IIS Admin Service (IISADMIN)' is set to 'Disabled' or 'Not Installed'
-[HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Services\IISADMIN]
+;[HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Services\IISADMIN]
 ; <deleted> = (Default)
 ; 2 = Automatic
 ; 3 = Manual
@@ -491,7 +493,7 @@ Windows Registry Editor Version 5.00
 ;"Start"=dword:0000003
 
 ;;; 5.9 (L1) Ensure 'Infrared monitor service (irmon)' is set to 'Disabled'
-[HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Services\irmon]
+;[HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Services\irmon]
 ; <deleted> = (Default)
 ; 2 = Automatic
 ; 3 = Manual
@@ -499,7 +501,7 @@ Windows Registry Editor Version 5.00
 ;"Start"=dword:0000004
 
 ;;; 5.10 (L1) Ensure 'Internet Connection Sharing (ICS) (SharedAccess) ' is set to 'Disabled'
-[HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Services\SharedAccess]
+;[HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Services\SharedAccess]
 ; <deleted> = (Default)
 ; 2 = Automatic
 ; 3 = Manual
@@ -507,7 +509,7 @@ Windows Registry Editor Version 5.00
 ;"Start"=dword:0000004
 
 ;;; 5.12 (L1) Ensure 'LxssManager (LxssManager)' is set to 'Disabled' or 'Not Installed'
-[HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Services\LxssManager]
+;[HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Services\LxssManager]
 ; <deleted> = (Default)
 ; 2 = Automatic
 ; 3 = Manual
@@ -516,7 +518,7 @@ Windows Registry Editor Version 5.00
 ;"Start"=dword:0000003
 
 ;;; 5.13 (L1) Ensure 'Microsoft FTP Service (FTPSVC)' is set to 'Disabled' or 'Not Installed'
-[HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Services\FTPSVC]
+;[HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Services\FTPSVC]
 ; <deleted> = (Default)
 ; 2 = Automatic
 ; 3 = Manual
@@ -525,21 +527,21 @@ Windows Registry Editor Version 5.00
 ;"Start"=dword:0000003
 
 ;;; 5.24 (L1) Ensure 'Remote Procedure Call (RPC) Locator (RpcLocator)' is set to 'Disabled'
-[HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Services\RpcLocator]
+;[HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Services\RpcLocator]
 ; 2 = Automatic
 ; 3 = Manual (Default)
 ; 4 = Disabled (CIS L1)
 ;"Start"=dword:0000004
 
 ;;; 5.26 (L1) Ensure 'Routing and Remote Access (RemoteAccess)' is set to 'Disabled'
-[HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Services\RemoteAccess]
+;[HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Services\RemoteAccess]
 ; 2 = Automatic
 ; 3 = Manual
 ; 4 = Disabled (Default, CIS L1)
 ;"Start"=dword:0000004
 
 ;;; 5.28 (L1) Ensure 'Simple TCP/IP Services (simptcp)' is set to 'Disabled' or 'Not Installed'
-[HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Services\simptcp]
+;[HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Services\simptcp]
 ; <deleted> = (Default)
 ; 2 = Automatic
 ; 3 = Manual
@@ -548,7 +550,7 @@ Windows Registry Editor Version 5.00
 ;"Start"=dword:0000003
 
 ;;; 5.30 (L1) Ensure 'SSDP Discovery (SSDPSRV)' is set to 'Disabled'
-[HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Services\SSDPSRV]
+;[HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Services\SSDPSRV]
 ; 2 = Automatic
 ; 3 = Manual (Default)
 ; 4 = Disabled (CIS L1)
@@ -556,7 +558,7 @@ Windows Registry Editor Version 5.00
 ;"Start"=dword:0000003
 
 ;;; 5.31 (L1) Ensure 'UPnP Device Host (upnphost)' is set to 'Disabled'
-[HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Services\upnphost]
+;[HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Services\upnphost]
 ; 2 = Automatic
 ; 3 = Manual (Default)
 ; 4 = Disabled (CIS L1)
@@ -564,7 +566,7 @@ Windows Registry Editor Version 5.00
 ;"Start"=dword:0000003
 
 ;;; 5.32 (L1) Ensure 'Web Management Service (WMSvc)' is set to 'Disabled' or 'Not Installed'
-[HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Services\WMSvc]
+;[HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Services\WMSvc]
 ; <deleted> = (Default)
 ; 2 = Automatic
 ; 3 = Manual
@@ -573,7 +575,7 @@ Windows Registry Editor Version 5.00
 ;"Start"=dword:0000003
 
 ;;; 5.35 (L1) Ensure 'Windows Media Player Network Sharing Service (WMPNetworkSvc)' is set to 'Disabled'
-[HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Services\WMPNetworkSvc]
+;[HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Services\WMPNetworkSvc]
 ; <deleted> = (Default)
 ; 2 = Automatic
 ; 3 = Manual
@@ -582,7 +584,7 @@ Windows Registry Editor Version 5.00
 ;"Start"=dword:0000003
 
 ;;; 5.36 (L1) Ensure 'Windows Mobile Hotspot Service (icssvc)' is set to 'Disabled'
-[HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Services\icssvc]
+;[HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Services\icssvc]
 ; 2 = Automatic
 ; 3 = Manual (Default)
 ; 4 = Disabled (CIS L1)
@@ -590,14 +592,14 @@ Windows Registry Editor Version 5.00
 ;"Start"=dword:0000003
 
 ;;; 5.38 (L1) Ensure 'WinHTTP Web Proxy Auto-Discovery Service (WinHttpAutoProxySvc)' is set to 'Disabled'
-[HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Services\WinHttpAutoProxySvc]
+;[HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Services\WinHttpAutoProxySvc]
 ; 2 = Automatic
 ; 3 = Manual (Default)
 ; 4 = Disabled (CIS L1)
 ;"Start"=dword:0000004
 
 ;;; 5.39 (L1) Ensure 'World Wide Web Publishing Service (W3SVC)' is set to 'Disabled' or 'Not Installed'
-[HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Services\W3SVC]
+;[HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Services\W3SVC]
 ; <deleted> = (Default)
 ; 2 = Automatic
 ; 3 = Manual
@@ -606,7 +608,7 @@ Windows Registry Editor Version 5.00
 ;"Start"=dword:0000003
 
 ;;; 18.1.1.1 (L1) Ensure 'Prevent enabling lock screen camera' is set to 'Enabled'
-[HKEY_LOCAL_MACHINE\Software\Policies\Microsoft\Windows\Personalization]
+;[HKEY_LOCAL_MACHINE\Software\Policies\Microsoft\Windows\Personalization]
 ; <deleted> = (Default)
 ; 0 = Off
 ; 1 = On (CIS L1)
@@ -614,7 +616,7 @@ Windows Registry Editor Version 5.00
 ;"NoLockScreenCamera"=dword:0000000
 
 ;;; 18.1.1.2 (L1) Ensure 'Prevent enabling lock screen slide show' is set to 'Enabled'
-[HKEY_LOCAL_MACHINE\Software\Policies\Microsoft\Windows\Personalization]
+;[HKEY_LOCAL_MACHINE\Software\Policies\Microsoft\Windows\Personalization]
 ; <deleted> = (Default)
 ; 0 = Off
 ; 1 = On (CIS L1)
@@ -622,7 +624,7 @@ Windows Registry Editor Version 5.00
 ;"NoLockScreenSlideshow"=dword:0000000
 
 ;;; 18.1.2.1 (L1) Ensure 'Allow Input Personalization' is set to 'Disabled'
-[HKEY_LOCAL_MACHINE\SOFTWARE\Policies\Microsoft\InputPersonalization]
+;[HKEY_LOCAL_MACHINE\SOFTWARE\Policies\Microsoft\InputPersonalization]
 ; <deleted> = (Default)
 ; 0 = Off (CIS L1)
 ; 1 = On
@@ -630,7 +632,7 @@ Windows Registry Editor Version 5.00
 ;"AllowInputPersonalization"=dword:0000001
 
 ;;; 18.3.1 (L1) Ensure 'MSS: (AutoAdminLogon) Enable Automatic Logon (not recommended)' is set to 'Disabled'
-[HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Windows NT\CurrentVersion\Winlogon]
+;[HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Windows NT\CurrentVersion\Winlogon]
 ; <deleted> = (Default)
 ; 0 = Off (CIS L1)
 ; 1 = On
@@ -709,7 +711,7 @@ Windows Registry Editor Version 5.00
 "AutoConnectAllowedOEM"=dword:0000000
 
 ;;; 18.6.1 (L1) Ensure 'Apply UAC restrictions to local accounts on network logons' is set to 'Enabled'
-[HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Windows\CurrentVersion\Policies\System]
+;[HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Windows\CurrentVersion\Policies\System]
 ; <deleted> = (Default)
 ; 0 = Off (CIS L1)
 ; 1 = On
@@ -740,7 +742,7 @@ Windows Registry Editor Version 5.00
 "DriverLoadPolicy"=dword:0000003
 
 ;;; 18.8.25.1 (L1) Ensure 'Block user from showing account details on sign-in' is set to 'Enabled'
-[HKEY_LOCAL_MACHINE\SOFTWARE\Policies\Microsoft\Windows\System]
+;[HKEY_LOCAL_MACHINE\SOFTWARE\Policies\Microsoft\Windows\System]
 ; <deleted> = (Default)
 ; 0 = Off
 ; 1 = On (CIS L1)
@@ -748,7 +750,7 @@ Windows Registry Editor Version 5.00
 ;"BlockUserFromShowingAccountDetailsOnSignin"=dword:0000000
 
 ;;; 18.8.25.2 (L1) Ensure 'Do not display network selection UI' is set to 'Enabled'
-[HKEY_LOCAL_MACHINE\SOFTWARE\Policies\Microsoft\Windows\System]
+;[HKEY_LOCAL_MACHINE\SOFTWARE\Policies\Microsoft\Windows\System]
 ; <deleted> = (Default)
 ; 0 = Off
 ; 1 = On (CIS L1)
@@ -756,7 +758,7 @@ Windows Registry Editor Version 5.00
 ;"DontDisplayNetworkSelectionUI"=dword:0000000
 
 ;;; 18.8.25.3 (L1) Ensure 'Do not enumerate connected users on domain-joined computers' is set to 'Enabled'
-[HKEY_LOCAL_MACHINE\SOFTWARE\Policies\Microsoft\Windows\System]
+;[HKEY_LOCAL_MACHINE\SOFTWARE\Policies\Microsoft\Windows\System]
 ; <deleted> = (Default)
 ; 0 = Off
 ; 1 = On (CIS L1)
@@ -764,7 +766,7 @@ Windows Registry Editor Version 5.00
 ;"DontEnumerateConnectedUsers"=dword:0000001
 
 ;;; 18.8.25.4 (L1) Ensure 'Enumerate local users on domain-joined computers' is set to 'Disabled'
-[HKEY_LOCAL_MACHINE\SOFTWARE\Policies\Microsoft\Windows\System]
+;[HKEY_LOCAL_MACHINE\SOFTWARE\Policies\Microsoft\Windows\System]
 ; <deleted> = (Default)
 ; 0 = Off (CIS L1)
 ; 1 = On
@@ -772,7 +774,7 @@ Windows Registry Editor Version 5.00
 ;"EnumerateLocalUsers"=dword:0000000
 
 ;;; 18.8.25.5 (L1) Ensure 'Turn off app notifications on the lock screen' is set to 'Enabled'
-[HKEY_LOCAL_MACHINE\SOFTWARE\Policies\Microsoft\Windows\System]
+;[HKEY_LOCAL_MACHINE\SOFTWARE\Policies\Microsoft\Windows\System]
 ; <deleted> = (Default)
 ; 0 = Off
 ; 1 = On (CIS L1)
@@ -780,7 +782,7 @@ Windows Registry Editor Version 5.00
 ;"DisableLockScreenAppNotifications"=dword:0000000
 
 ;;; 18.8.25.6 (L1) Ensure 'Turn on convenience PIN sign-in' is set to 'Disabled'
-[HKEY_LOCAL_MACHINE\SOFTWARE\Policies\Microsoft\Windows\System]
+;[HKEY_LOCAL_MACHINE\SOFTWARE\Policies\Microsoft\Windows\System]
 ; <deleted> = (Default)
 ; 0 = Off (CIS L1)
 ; 1 = On
@@ -796,7 +798,7 @@ Windows Registry Editor Version 5.00
 "MitigationOptions_FontBocking"=hex(b):00,10,a5,d4,e8,00,00,00
 
 ;;; 18.8.29.5.1 (L1) Ensure 'Allow network connectivity during connected-standby (on battery)' is set to 'Disabled'
-[HKEY_LOCAL_MACHINE\SOFTWARE\Policies\Microsoft\Power\PowerSettings\f15576e8-98b7-4186-b944-eafa664402d9]
+;[HKEY_LOCAL_MACHINE\SOFTWARE\Policies\Microsoft\Power\PowerSettings\f15576e8-98b7-4186-b944-eafa664402d9]
 ; <deleted> = (Default)
 ; 0 = Off (CIS L1)
 ; 1 = On
@@ -804,7 +806,7 @@ Windows Registry Editor Version 5.00
 ;"DCSettingIndex"=dword:0000001
 
 ;;; 18.8.29.5.2 (L1) Ensure 'Allow network connectivity during connected-standby (plugged in)' is set to 'Disabled'
-[HKEY_LOCAL_MACHINE\SOFTWARE\Policies\Microsoft\Power\PowerSettings\f15576e8-98b7-4186-b944-eafa664402d9]
+;[HKEY_LOCAL_MACHINE\SOFTWARE\Policies\Microsoft\Power\PowerSettings\f15576e8-98b7-4186-b944-eafa664402d9]
 ; <deleted> = (Default)
 ; 0 = Off (CIS L1)
 ; 1 = On
@@ -812,7 +814,7 @@ Windows Registry Editor Version 5.00
 ;"ACSettingIndex"=dword:0000001
 
 ;;; 18.8.29.5.3 (BL) Ensure 'Allow standby states (S1-S3) when sleeping (on battery)' is set to 'Disabled'
-[HKEY_LOCAL_MACHINE\Software\Policies\Microsoft\Power\PowerSettings\abfc2519-3608-4c2a-94ea-171b0ed546ab]
+;[HKEY_LOCAL_MACHINE\Software\Policies\Microsoft\Power\PowerSettings\abfc2519-3608-4c2a-94ea-171b0ed546ab]
 ; <deleted> = (Default)
 ; 0 = Off (CIS L1)
 ; 1 = On
@@ -820,7 +822,7 @@ Windows Registry Editor Version 5.00
 ;"DCSettingIndex"=dword:0000001
 
 ;;; 18.8.29.5.4 (BL) Ensure 'Allow standby states (S1-S3) when sleeping (plugged in)' is set to 'Disabled'
-[HKEY_LOCAL_MACHINE\Software\Policies\Microsoft\Power\PowerSettings\abfc2519-3608-4c2a-94ea-171b0ed546ab]
+;[HKEY_LOCAL_MACHINE\Software\Policies\Microsoft\Power\PowerSettings\abfc2519-3608-4c2a-94ea-171b0ed546ab]
 ; <deleted> = (Default)
 ; 0 = Off (CIS L1)
 ; 1 = On
@@ -849,7 +851,7 @@ Windows Registry Editor Version 5.00
 "fAllowUnsolicited"=dword:0000000
 
 ;;; 18.8.31.2 (L1) Ensure 'Configure Solicited Remote Assistance' is set to 'Disabled'
-[HKEY_LOCAL_MACHINE\Software\policies\Microsoft\Windows NT\Terminal Services]
+;[HKEY_LOCAL_MACHINE\Software\policies\Microsoft\Windows NT\Terminal Services]
 ; <deleted> = (Default)
 ; 0 = Off (CIS L1)
 ; 1 = On
@@ -871,7 +873,7 @@ Windows Registry Editor Version 5.00
 "RestrictRemoteClients"=dword:0000001
 
 ;;; 18.9.6.1 (L1) Ensure 'Allow Microsoft accounts to be optional' is set to 'Enabled'
-[HKEY_LOCAL_MACHINE\Software\Microsoft\Windows\CurrentVersion\Policies\System]
+;[HKEY_LOCAL_MACHINE\Software\Microsoft\Windows\CurrentVersion\Policies\System]
 ; <deleted> = (Default)
 ; 0 = Off
 ; 1 = On (CIS L1)
@@ -936,7 +938,7 @@ Windows Registry Editor Version 5.00
 "RequirePinForPairing"=dword:0000001
 
 ;;; 18.9.15.1 (L1) Ensure 'Do not display the password reveal button' is set to 'Enabled'
-[HKEY_LOCAL_MACHINE\Software\Policies\Microsoft\Windows\CredUI]
+;[HKEY_LOCAL_MACHINE\Software\Policies\Microsoft\Windows\CredUI]
 ; <deleted> = (Default)
 ; 0 = Off
 ; 1 = On (CIS L1)
@@ -944,7 +946,7 @@ Windows Registry Editor Version 5.00
 ;"DisablePasswordReveal"=dword:0000000
 
 ;;; 18.9.15.2 (L1) Ensure 'Enumerate administrator accounts on elevation' is set to 'Disabled'
-[HKEY_LOCAL_MACHINE\Software\Policies\Microsoft\Windows\CredUI]
+;[HKEY_LOCAL_MACHINE\Software\Policies\Microsoft\Windows\CredUI]
 ; <deleted> = (Default)
 ; 0 = Off (CIS L1)
 ; 1 = On
@@ -961,7 +963,7 @@ Windows Registry Editor Version 5.00
 "AllowTelemetry"=dword:0000000
 
 ;;; 18.9.16.2 (L1) Ensure 'Disable pre-release features or settings' is set to 'Disabled'
-[HKEY_LOCAL_MACHINE\SOFTWARE\Policies\Microsoft\Windows\PreviewBuilds]
+;[HKEY_LOCAL_MACHINE\SOFTWARE\Policies\Microsoft\Windows\PreviewBuilds]
 ; <deleted> = (Default)
 ; 0 = Off (CIS L1)
 ; 1 = On
@@ -976,7 +978,7 @@ Windows Registry Editor Version 5.00
 "DoNotShowFeedbackNotifications"=dword:0000001
 
 ;;; 18.9.16.4 (L1) Ensure 'Toggle user control over Insider builds' is set to 'Disabled'
-[HKEY_LOCAL_MACHINE\SOFTWARE\Policies\Microsoft\Windows\PreviewBuilds]
+;[HKEY_LOCAL_MACHINE\SOFTWARE\Policies\Microsoft\Windows\PreviewBuilds]
 ; <deleted> = (Default)
 ; 0 = Off (CIS L1)
 ; 1 = On
@@ -1025,7 +1027,7 @@ Windows Registry Editor Version 5.00
 "PreXPSP2ShellProtocolBehavior"=dword:0000000
 
 ;;; 18.9.33.1 (L1) Ensure 'Prevent the computer from joining a homegroup' is set to 'Enabled'
-[HKEY_LOCAL_MACHINE\Software\Policies\Microsoft\Windows\HomeGroup]
+;[HKEY_LOCAL_MACHINE\Software\Policies\Microsoft\Windows\HomeGroup]
 ; <deleted> = (Default)
 ; 0 = Off
 ; 1 = On (CIS L1)
@@ -1033,7 +1035,7 @@ Windows Registry Editor Version 5.00
 ;"DisableHomeGroup"=dword:0000000
 
 ;;; 18.9.75.1 (L1) Ensure 'Sign-in last interactive user automatically after a system-initiated restart' is set to 'Disabled'
-[HKEY_LOCAL_MACHINE\Software\Microsoft\Windows\CurrentVersion\Policies\System]
+;[HKEY_LOCAL_MACHINE\Software\Microsoft\Windows\CurrentVersion\Policies\System]
 ; <deleted> = (Default)
 ; 0 = Off
 ; 1 = On (CIS L1)
@@ -1041,7 +1043,7 @@ Windows Registry Editor Version 5.00
 ;"DisableAutomaticRestartSignOn"=dword:0000000
 
 ;;; 18.9.41.3 (L1) Ensure 'Configure cookies' is set to 'Enabled: Block only 3rd-party cookies' or higher
-[HKEY_LOCAL_MACHINE\SOFTWARE\Policies\Microsoft\MicrosoftEdge\Main]
+;[HKEY_LOCAL_MACHINE\SOFTWARE\Policies\Microsoft\MicrosoftEdge\Main]
 ; <deleted> = (Default)
 ; 0 = Block all cookies
 ; 1 = Block only 3rd-party cookies (CIS L1)
@@ -1050,7 +1052,7 @@ Windows Registry Editor Version 5.00
 ;"Cookies"=dword:0000000
 
 ;;; 18.9.41.4 (L1) Ensure 'Configure Password Manager' is set to 'Disabled'
-[HKEY_LOCAL_MACHINE\SOFTWARE\Policies\Microsoft\MicrosoftEdge\Main]
+;[HKEY_LOCAL_MACHINE\SOFTWARE\Policies\Microsoft\MicrosoftEdge\Main]
 ; <deleted> = (Default)
 ; no = Off (CIS L1)
 ; yes = On
@@ -1058,7 +1060,7 @@ Windows Registry Editor Version 5.00
 ;"FormSuggest Passwords"=""
 
 ;;; 18.9.41.6 (L1) Ensure 'Configure search suggestions in Address bar' is set to 'Disabled'
-[HKEY_LOCAL_MACHINE\SOFTWARE\Policies\Microsoft\MicrosoftEdge\SearchScopes]
+;[HKEY_LOCAL_MACHINE\SOFTWARE\Policies\Microsoft\MicrosoftEdge\SearchScopes]
 ; <deleted> = (Default)
 ; 0 = Off (CIS L1)
 ; 1 = On
@@ -1073,7 +1075,7 @@ Windows Registry Editor Version 5.00
 "EnabledV9"=dword:0000000
 
 ;;; 18.9.47.1 (L1) Ensure 'Prevent the usage of OneDrive for file storage' is set to 'Enabled'
-[HKEY_LOCAL_MACHINE\Software\Policies\Microsoft\Windows\OneDrive]
+;[HKEY_LOCAL_MACHINE\Software\Policies\Microsoft\Windows\OneDrive]
 ; <deleted> = (Default)
 ; 0 = Off
 ; 1 = On (CIS L1)
@@ -1081,7 +1083,7 @@ Windows Registry Editor Version 5.00
 ;"DisableFileSyncNGSC"=dword:0000000
 
 ;;; 18.9.53.1 (L1) Ensure 'Prevent downloading of enclosures' is set to 'Enabled'
-[HKEY_LOCAL_MACHINE\SOFTWARE\Policies\Microsoft\Internet Explorer\Feeds]
+;[HKEY_LOCAL_MACHINE\SOFTWARE\Policies\Microsoft\Internet Explorer\Feeds]
 ; <deleted> = (Default)
 ; 0 = Off
 ; 1 = On (CIS L1)
@@ -1089,7 +1091,7 @@ Windows Registry Editor Version 5.00
 ;"DisableEnclosureDownload"=dword:0000000
 
 ;;; 18.9.54.2 (L1) Ensure 'Allow Cortana' is set to 'Disabled'
-[HKEY_LOCAL_MACHINE\SOFTWARE\Policies\Microsoft\Windows\Windows Search]
+;[HKEY_LOCAL_MACHINE\SOFTWARE\Policies\Microsoft\Windows\Windows Search]
 ; <deleted> = (Default)
 ; 0 = Off (CIS L1)
 ; 1 = On
@@ -1097,7 +1099,7 @@ Windows Registry Editor Version 5.00
 ;"AllowCortana"=dword:0000001
 
 ;;; 18.9.54.3 (L1) Ensure 'Allow Cortana above lock screen' is set to 'Disabled'
-[HKEY_LOCAL_MACHINE\SOFTWARE\Policies\Microsoft\Windows\Windows Search]
+;[HKEY_LOCAL_MACHINE\SOFTWARE\Policies\Microsoft\Windows\Windows Search]
 ; <deleted> = (Default)
 ; 0 = Off (CIS L1)
 ; 1 = On
@@ -1112,7 +1114,7 @@ Windows Registry Editor Version 5.00
 "AllowIndexingEncryptedStoresOrItems"=dword:0000000
 
 ;;; 18.9.54.5 (L1) Ensure 'Allow search and Cortana to use location' is set to 'Disabled'
-[HKEY_LOCAL_MACHINE\SOFTWARE\Policies\Microsoft\Windows\Windows Search]
+;[HKEY_LOCAL_MACHINE\SOFTWARE\Policies\Microsoft\Windows\Windows Search]
 ; <deleted> = (Default)
 ; 0 = Off (CIS L1)
 ; 1 = On
@@ -1127,7 +1129,7 @@ Windows Registry Editor Version 5.00
 "AutoDownload"=dword:0000004
 
 ;;; 18.9.61.3 (L1) Ensure 'Turn off the offer to update to the latest version of Windows' is set to 'Enabled'
-[HKEY_LOCAL_MACHINE\SOFTWARE\Policies\Microsoft\WindowsStore]
+;[HKEY_LOCAL_MACHINE\SOFTWARE\Policies\Microsoft\WindowsStore]
 ; <deleted> = (Default)
 ; 0 = Off (CIS L1)
 ; 1 = On
@@ -1135,7 +1137,7 @@ Windows Registry Editor Version 5.00
 ;"DisableOSUpgrade"=dword:0000001
 
 ;;; 18.9.71.1 (L1) Ensure 'Enables or disables Windows Game Recording and Broadcasting' is set to 'Disabled'
-[HKEY_LOCAL_MACHINE\SOFTWARE\Policies\Microsoft\Windows\GameDVR]
+;[HKEY_LOCAL_MACHINE\SOFTWARE\Policies\Microsoft\Windows\GameDVR]
 ; <deleted> = (Default)
 ; 0 = Off (CIS L1)
 ; 1 = On
@@ -1143,7 +1145,7 @@ Windows Registry Editor Version 5.00
 ;"AllowGameDVR"=dword:0000001
 
 ;;; 18.9.73.2 (L1) Ensure 'Allow Windows Ink Workspace' is set to 'Enabled: On, but disallow access above lock' OR 'Disabled' but not 'Enabled: On'
-[HKEY_LOCAL_MACHINE\SOFTWARE\Policies\Microsoft\WindowsInkWorkspace]
+;[HKEY_LOCAL_MACHINE\SOFTWARE\Policies\Microsoft\WindowsInkWorkspace]
 ; <deleted> = (Default)
 ; 0 = Off (CIS L1)
 ; 1 = On
@@ -1151,7 +1153,7 @@ Windows Registry Editor Version 5.00
 ;"AllowWindowsInkWorkspace"=dword:0000001
 
 ;;; 18.9.74.1 (L1) Ensure 'Allow user control over installs' is set to 'Disabled'
-[HKEY_LOCAL_MACHINE\Software\Policies\Microsoft\Windows\Installer]
+;[HKEY_LOCAL_MACHINE\Software\Policies\Microsoft\Windows\Installer]
 ; <deleted> = (Default)
 ; 0 = Off (CIS L1)
 ; 1 = On
@@ -1159,7 +1161,7 @@ Windows Registry Editor Version 5.00
 ;"EnableUserControl"=dword:0000001
 
 ;;; 18.9.74.2 (L1) Ensure 'Always install with elevated privileges' is set to 'Disabled'
-[HKEY_LOCAL_MACHINE\Software\Policies\Microsoft\Windows\Installer]
+;[HKEY_LOCAL_MACHINE\Software\Policies\Microsoft\Windows\Installer]
 ; <deleted> = (Default)
 ; 0 = Off (CIS L1)
 ; 1 = On
@@ -1167,7 +1169,7 @@ Windows Registry Editor Version 5.00
 ;"AlwaysInstallElevated"=dword:0000000
 
 ;;; 18.9.75.1 (L1) Ensure 'Sign-in last interactive user automatically after a system-initiated restart' is set to 'Disabled'
-[HKEY_LOCAL_MACHINE\Software\Microsoft\Windows\CurrentVersion\Policies\System]
+;[HKEY_LOCAL_MACHINE\Software\Microsoft\Windows\CurrentVersion\Policies\System]
 ; <deleted> = (Default)
 ; 0 = Off (CIS L1)
 ; 1 = On
@@ -1231,7 +1233,7 @@ Windows Registry Editor Version 5.00
 "DisableRunAs"=dword:0000000
 
 ;;; 18.9.90.1.1 (L1) Ensure 'Select when Feature Updates are received' is set to 'Enabled: Current Branch for Business, 180 days'
-[HKEY_LOCAL_MACHINE\SOFTWARE\Policies\Microsoft\Windows\WindowsUpdate]
+;[HKEY_LOCAL_MACHINE\SOFTWARE\Policies\Microsoft\Windows\WindowsUpdate]
 ; <deleted> = (Default)
 ; 2 (2) = Preview Build - Fast
 ; 4 (4) = Preview Build - Slow 
@@ -1240,14 +1242,14 @@ Windows Registry Editor Version 5.00
 ; 32 (20) = Semi-Annual Channel (CIS L1)
 ; FEATURE DOES NOT EXISTS IN NON-CORPORATE ENVIRONMENT
 ;"BranchReadinessLevel"=dword:0000020
-[HKEY_LOCAL_MACHINE\SOFTWARE\Policies\Microsoft\Windows\WindowsUpdate]
+;[HKEY_LOCAL_MACHINE\SOFTWARE\Policies\Microsoft\Windows\WindowsUpdate]
 ; <deleted> = (Default)
 ; 0 (0) = 0 days (min)
 ; 180 (b4) = 180 days (CIS L1)
 ; 365 (16d) = 365 days (max)
 ; FEATURE DOES NOT EXISTS IN NON-CORPORATE ENVIRONMENT
 ;"DeferFeatureUpdatesPeriodInDays"=dword:0000000
-[HKEY_LOCAL_MACHINE\SOFTWARE\Policies\Microsoft\Windows\WindowsUpdate]
+;[HKEY_LOCAL_MACHINE\SOFTWARE\Policies\Microsoft\Windows\WindowsUpdate]
 ; <deleted> = (Default)
 ; 0 = Off
 ; 1 = On (CIS L1)
@@ -1255,14 +1257,14 @@ Windows Registry Editor Version 5.00
 ;"DeferFeatureUpdates"=dword:0000000
 
 ;;; 18.9.90.1.2 (L1) Ensure 'Select when Quality Updates are received' is set to 'Enabled: 0 days'
-[HKEY_LOCAL_MACHINE\SOFTWARE\Policies\Microsoft\Windows\WindowsUpdate]
+;[HKEY_LOCAL_MACHINE\SOFTWARE\Policies\Microsoft\Windows\WindowsUpdate]
 ; <deleted> = (Default)
 ; 0 (0) = 0 days (min)
 ; 180 (b4) = 180 days (CIS L1)
 ; 365 (16d) = 365 days (max)
 ; FEATURE DOES NOT EXISTS IN NON-CORPORATE ENVIRONMENT
 ;"DeferQualityUpdatesPeriodInDays"=dword:0000000
-[HKEY_LOCAL_MACHINE\SOFTWARE\Policies\Microsoft\Windows\WindowsUpdate]
+;[HKEY_LOCAL_MACHINE\SOFTWARE\Policies\Microsoft\Windows\WindowsUpdate]
 ; <deleted> = (Default)
 ; 0 = Off (CIS L1)
 ; 1 = On
@@ -1270,7 +1272,7 @@ Windows Registry Editor Version 5.00
 ;"DeferQualityUpdates"=dword:0000000
 
 ;;; 18.9.90.2 (L1) Ensure 'Configure Automatic Updates' is set to 'Enabled'
-[HKEY_LOCAL_MACHINE\Software\Policies\Microsoft\Windows\WindowsUpdate\AU]
+;[HKEY_LOCAL_MACHINE\Software\Policies\Microsoft\Windows\WindowsUpdate\AU]
 ; <deleted> = (Default)
 ; 0 = Off (CIS L1)
 ; 1 = On
@@ -1278,7 +1280,7 @@ Windows Registry Editor Version 5.00
 ;"NoAutoUpdate"=dword:0000000
 
 ;;; 18.9.90.3 (L1) Ensure 'Configure Automatic Updates: Scheduled install day' is set to '0 - Every day'
-[HKEY_LOCAL_MACHINE\Software\Policies\Microsoft\Windows\WindowsUpdate\AU]
+;[HKEY_LOCAL_MACHINE\Software\Policies\Microsoft\Windows\WindowsUpdate\AU]
 ; <deleted> = (Default)
 ; 0 = Every day (CIS L1)
 ; 1 = Every Sunday
@@ -1292,7 +1294,7 @@ Windows Registry Editor Version 5.00
 ;"ScheduledInstallDay"=dword:0000000
 
 ;;; 18.9.90.4 (L1) Ensure 'No auto-restart with logged on users for scheduled automatic updates installations' is set to 'Disabled'
-[HKEY_LOCAL_MACHINE\Software\Policies\Microsoft\Windows\WindowsUpdate\AU]
+;[HKEY_LOCAL_MACHINE\Software\Policies\Microsoft\Windows\WindowsUpdate\AU]
 ; <deleted> = (Default)
 ; 0 = Off (CIS L1)
 ; 1 = On
