@@ -251,18 +251,18 @@ If you don't need the software mentioned below, really remove it!
 Sometimes a system needs repair. Try the following commands to check and fix the integrity of your system files.
 
 ## Start Command Prompt in privileged mode
-- Press ⊞ (Windows logo) in the taskbar, and type 'cmd'.
+- Press `⊞` (Windows logo) in the taskbar, and type `cmd`.
 - Right-click `Command Prompt`, and press `Run as administrator`.
 - Press `Yes` in case of User Account Control (UAC) pop-up.
 
 ## SFC
-- Type in `sfc /scannow` and press Enter to initiate the integrity check and fix.
+- Type in `sfc /scannow` and press `Enter` to initiate the integrity check and fix.
 - Wait for it to finish and reboot.
 
 ## DISM
-- Type in `dism /online /cleanup-image /checkhealth` and press Enter to check for known corruptions.
-- Type in `dism /online /cleanup-image /scanhealth` and press Enter to scan for new corruptions.
-- Type in `dism /online /cleanup-image /restorehealth` and press Enter to fix the known corruptions.
+- Type in `dism /online /cleanup-image /checkhealth` and press `Enter` to check for known corruptions.
+- Type in `dism /online /cleanup-image /scanhealth` and press `Enter` to scan for new corruptions.
+- Type in `dism /online /cleanup-image /restorehealth` and press `Enter` to fix the known corruptions.
 - Wait for it to finish and reboot.
 
 # Licensing
