@@ -1,0 +1,153 @@
+Windows Registry Editor Version 5.00
+
+;;; Google Chrome Hardening
+;;; Repository: https://github.com/teusink/Home-Security-by-W10-Hardening/
+
+;;; Registry target: HKEY_LOCAL_MACHINE
+;;; Source: Computer Internet Security (CIS) - Level 1 & 2
+;;; Author: Joram Teusink
+
+;;; 1.1.1 (L2) Ensure 'Allow invocation of file selection dialogs' is set to 'Enabled'
+;[HKEY_LOCAL_MACHINE\SOFTWARE\Policies\Google\Chrome]
+; <deleted> = (Default)
+; 0 = Off
+; 1 = On (CIS L2)
+;"AllowFileSelectionDialogs"=dword:00000001
+
+;;; 1.1.2 (L1) Ensure 'Allow running plugins that are outdated' is set to 'Disabled'
+[HKEY_LOCAL_MACHINE\SOFTWARE\Policies\Google\Chrome]
+; <deleted> = (Default)
+; 0 = Off (CIS L1)
+; 1 = On
+"AllowOutdatedPlugins"=dword:00000001
+
+;;; 1.1.3 (L1) Ensure 'Always runs plugins that require authorization' is set to 'Disabled'
+[HKEY_LOCAL_MACHINE\SOFTWARE\Policies\Google\Chrome]
+; <deleted> = (Default)
+; 0 = Off (CIS L1)
+; 1 = On
+"AlwaysAuthorizePlugins"=dword:00000000
+
+;;; 1.1.4 (L1) Ensure 'Block third party cookies' is set to 'Enabled'
+;[HKEY_LOCAL_MACHINE\SOFTWARE\Policies\Google\Chrome]
+; <deleted> = (Default)
+; 0 = Off
+; 1 = On (CIS L1)
+; NON-COMPLIANCE TO NOT DISRUPT COMMON HOME FEATURES
+;"BlockThirdPartyCookies"=dword:00000000
+
+;;; 1.1.5 (L1) Ensure 'Continue running background apps when Google Chrome is closed' is set to 'Disabled'
+;[HKEY_LOCAL_MACHINE\SOFTWARE\Policies\Google\Chrome]
+; <deleted> = (Default)
+; 0 = Off (CIS L1)
+; 1 = On
+; NON-COMPLIANCE TO NOT DISRUPT COMMON HOME FEATURES
+;"BackgroundModeEnabled"=dword:00000001
+
+;;; 1.1.6 (L1) Ensure 'Enable AutoFill' is set to 'Disabled'
+;[HKEY_LOCAL_MACHINE\SOFTWARE\Policies\Google\Chrome]
+; <deleted> = (Default)
+; 0 = Off (CIS L1)
+; 1 = On
+; NON-COMPLIANCE TO NOT DISRUPT COMMON HOME FEATURES
+;"AutoFillEnabled"=dword:00000001
+
+;;; 1.1.7 (L1) Ensure 'Enable Google Cloud Print Proxy' is set to 'Disabled'
+;[HKEY_LOCAL_MACHINE\SOFTWARE\Policies\Google\Chrome]
+; <deleted> = (Default)
+; 0 = Off (CIS L1)
+; 1 = On
+; NON-COMPLIANCE TO NOT DISRUPT COMMON HOME FEATURES
+;"CloudPrintProxyEnabled"=dword:00000001
+
+;;; 1.1.8 (L1) Ensure 'Enable reporting of usage and crash-related data' is set to 'Disabled'
+[HKEY_LOCAL_MACHINE\SOFTWARE\Policies\Google\Chrome]
+; <deleted> = (Default)
+; 0 = Off (CIS L1)
+; 1 = On
+"MetricsReportingEnabled"=dword:00000000
+
+;;; 1.1.9 (L1) Ensure 'Enable submission of documents to Google Cloud print' is set to 'Disabled'
+;[HKEY_LOCAL_MACHINE\SOFTWARE\Policies\Google\Chrome]
+; <deleted> = (Default)
+; 0 = Off (CIS L1)
+; 1 = On
+; NON-COMPLIANCE TO NOT DISRUPT COMMON HOME FEATURES
+;"CloudPrintSubmitEnabled"=dword:00000001
+
+;;; 1.1.10 (L1) Ensure 'Import saved passwords from default browser on first run' is set to 'Disabled'
+;[HKEY_LOCAL_MACHINE\SOFTWARE\Policies\Google\Chrome]
+; <deleted> = (Default)
+; 0 = Off (CIS L1)
+; 1 = On
+; NON-COMPLIANCE TO NOT DISRUPT COMMON HOME FEATURES
+;"ImportSavedPasswords"=dword:00000001
+
+;;; 1.1.11 (L1) Ensure 'Specify whether the plugin finder should be disabled' is set to 'Enabled'
+;[HKEY_LOCAL_MACHINE\SOFTWARE\Policies\Google\Chrome]
+; <deleted> = (Default)
+; 0 = Off (CIS L1)
+; 1 = On
+; NON-COMPLIANCE TO NOT DISRUPT COMMON HOME FEATURES
+;"DisablePluginFinder"=dword:00000001
+
+;;; 1.3.1 (L1) Ensure 'Configure the required domain name for remote access hosts' is set to 'Enabled'
+;[HKEY_LOCAL_MACHINE\SOFTWARE\Policies\Google\Chrome]
+; <deleted> = (Default)
+; .+ = (CIS L1)
+; NON-COMPLIANCE TO NOT DISRUPT COMMON HOME FEATURES
+;"RemoteAccessHostDomain"=".+"
+
+;;; 1.3.2 (L1) Ensure 'Enable curtaining of remote access hosts' is set to 'Enabled'
+;[HKEY_LOCAL_MACHINE\SOFTWARE\Policies\Google\Chrome]
+; <deleted> = (Default)
+; 0 = Off
+; 1 = On (CIS L1)
+; NON-COMPLIANCE TO NOT DISRUPT COMMON HOME FEATURES
+;"RemoteAccessHostRequireCurtain"=dword:00000000
+
+;;; 1.3.3 (L1) Ensure 'Enable firewall traversal from remote access host' is set to 'Disabled'
+;[HKEY_LOCAL_MACHINE\SOFTWARE\Policies\Google\Chrome]
+; <deleted> = (Default)
+; 0 = Off (CIS L1)
+; 1 = On
+; NON-COMPLIANCE TO NOT DISRUPT COMMON HOME FEATURES
+;"RemoteAccessHostFirewallTraversal"=dword:00000001
+
+;;; 1.3.4 (L1) Ensure 'Enable or disable PIN-less authentication for remote access hosts' is set to 'Disabled'
+[HKEY_LOCAL_MACHINE\SOFTWARE\Policies\Google\Chrome]
+; <deleted> = (Default)
+; 0 = Off (CIS L1)
+; 1 = On
+"RemoteAccessHostAllowClientPairing"=dword:00000000
+
+;;; 1.4.1 (L2) Ensure 'Default cookies setting' is set to 'Enabled' (Keep cookies for the duration of the session)
+;[HKEY_LOCAL_MACHINE\SOFTWARE\Policies\Google\Chrome]
+; 1 = Allow all sites to set local data
+; 2 = Do not allow any site to set local data
+; 4 = Keep cookies for the duration of the session (CIS L2)
+; NON-COMPLIANCE TO NOT DISRUPT COMMON HOME FEATURES
+;"DefaultCookiesSetting"=dword:00000001
+
+;;; 1.4.2 (L1) Ensure 'Default Plugin Setting' is set to 'Enabled' (Click to Play)
+[HKEY_LOCAL_MACHINE\SOFTWARE\Policies\Google\Chrome]
+; <deleted> = (Default)
+; 1 = Allow all sites to automatically run plugins
+; 2 = Block all plugins
+; 3 = Click to play
+"DefaultPluginsSetting"=dword:00000003
+
+;;; 1.7.1 (L1) Ensure 'Configure extension installation blacklist' is set to 'Enabled' ("*" for all extensions)
+;[HKEY_LOCAL_MACHINE\SOFTWARE\Policies\Google\Chrome\ExtensionInstallBlacklist]
+; <deleted> = (Default)
+; * = (CIS L1)
+; NON-COMPLIANCE TO NOT DISRUPT COMMON HOME FEATURES
+;"1"="*"
+
+;;; 1.11.1 (L1) Ensure 'Enable the password manager' is set to 'Disabled'
+;[HKEY_LOCAL_MACHINE\SOFTWARE\Policies\Google\Chrome]
+; <deleted> = (Default)
+; 0 = Off (CIS L1)
+; 1 = On
+; NON-COMPLIANCE TO NOT DISRUPT COMMON HOME FEATURES
+;"PasswordManagerEnabled"=dword:00000001
