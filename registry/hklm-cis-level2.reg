@@ -1,0 +1,823 @@
+Windows Registry Editor Version 5.00
+
+;;; Windows 10 Home Hardening
+;;; Repository: https://github.com/teusink/Home-Security-by-W10-Hardening/
+
+;;; Registry target: HKEY_LOCAL_MACHINE
+;;; Source: Computer Internet Security (CIS) - Level 2
+;;; Author: Joram Teusink
+
+;;; Due to the target being Windows 10 Home the following parts are excluded from the CIS Level 2 baseline:
+;;; - BitLocker Drive Encryption (see Pro registry file)
+;;; - Windows Firewall (see Pro registry file)
+;;; - Remote Desktop Services (formerly Terminal Services) (see Pro registry file)
+
+;;; Due to the target being Windows 10 Home and Pro the following parts are excluded from the CIS Level 2 baseline:
+;;; - Local Administrator Password Solution (LAPS)
+;;; - Microsoft Solutions for Security (MSS) (Legacy)
+;;; - Windows Connection Manager (WCM)
+;;; - Group Policy
+;;; - Kerberos
+;;; - Application, Security, Setup and System EventLog
+
+;;; 2.3.4.2 (L2) Ensure 'Devices: Prevent users from installing printer drivers' is set to 'Enabled'
+;[HKEY_LOCAL_MACHINE\System\CurrentControlSet\Control\Print\Providers\LanMan Print Services\Servers]
+; 0 = Off
+; 1 = On (CIS L2)
+; NON-COMPLIANCE TO NOT DISRUPT COMMON HOME FEATURES
+;"AddPrinterDrivers"=dword:0000000
+
+;;; 2.3.7.7 (L2) Ensure 'Interactive logon: Number of previous logons to cache (in case domain controller is not available)' is set to '4 or fewer logon(s)'
+[HKEY_LOCAL_MACHINE\Software\Microsoft\Windows NT\CurrentVersion\Winlogon]
+; 10 = 10 or fewer logon(s) (Default)
+; 4 = 4 or fewer logon(s) (CIS L2)
+"CachedLogonsCount"="4"
+
+;;; 2.3.14.1 (L2) Ensure 'System cryptography: Force strong key protection for user keys stored on the computer' is set to 'User is prompted when the key is first used' or higher
+;[HKEY_LOCAL_MACHINE\Software\Policies\Microsoft\Cryptography]
+; <deleted> = (Default)
+; 1 = User input is not required when new keys are stored and used.
+; 2 = User is prompted when the key is first used. (CIS L2)
+; 3 = User must enter the password each time they use a key.
+; NON-COMPLIANCE TO NOT DISRUPT COMMON HOME FEATURES
+;"ForceKeyProtection"=dword:0000001
+
+;;; 5.1 (L2) Ensure 'Bluetooth Handsfree Service (BthHFSrv)' is set to 'Disabled'
+;[HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Services\BthHFSrv]
+; 2 = Automatic
+; 3 = Manual (Default)
+; 4 = Disabled (CIS L2)
+; NON-COMPLIANCE TO NOT DISRUPT COMMON HOME FEATURES
+;"Start"=dword:0000003
+
+;;; 5.5 (L2) Ensure 'Geolocation Service (lfsvc)' is set to 'Disabled'
+;[HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Services\lfsvc]
+; 2 = Automatic
+; 3 = Manual (Default)
+; 4 = Disabled (CIS L2)
+; NON-COMPLIANCE TO NOT DISRUPT COMMON HOME FEATURES
+;"Start"=dword:0000003
+
+;;; 5.11 (L2) Ensure 'Link-Layer Topology Discovery Mapper (lltdsvc)' is set to 'Disabled'
+;[HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Services\lltdsvc]
+; 2 = Automatic
+; 3 = Manual (Default)
+; 4 = Disabled (CIS L2)
+; NON-COMPLIANCE TO NOT DISRUPT COMMON HOME FEATURES
+;"Start"=dword:0000003
+
+;;; 5.14 (L2) Ensure 'Microsoft iSCSI Initiator Service (MSiSCSI)' is set to 'Disabled'
+;[HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Services\MSiSCSI]
+; 2 = Automatic
+; 3 = Manual (Default)
+; 4 = Disabled (CIS L2)
+; NON-COMPLIANCE TO NOT DISRUPT COMMON HOME FEATURES
+;"Start"=dword:0000003
+
+;;; 5.15 (L2) Ensure 'Peer Name Resolution Protocol (PNRPsvc)' is set to 'Disabled'
+;[HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Services\PNRPsvc]
+; 2 = Automatic
+; 3 = Manual (Default)
+; 4 = Disabled (CIS L2)
+; NON-COMPLIANCE TO NOT DISRUPT COMMON HOME FEATURES
+;"Start"=dword:0000003
+
+;;; 5.16 (L2) Ensure 'Peer Networking Grouping (p2psvc)' is set to 'Disabled'
+;[HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Services\p2psvc]
+; 2 = Automatic
+; 3 = Manual (Default)
+; 4 = Disabled (CIS L2)
+; NON-COMPLIANCE TO NOT DISRUPT COMMON HOME FEATURES
+;"Start"=dword:0000003
+
+;;; 5.17 (L2) Ensure 'Peer Networking Identity Manager (p2pimsvc)' is set to 'Disabled'
+;[HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Services\p2pimsvc]
+; 2 = Automatic
+; 3 = Manual (Default)
+; 4 = Disabled (CIS L2)
+; NON-COMPLIANCE TO NOT DISRUPT COMMON HOME FEATURES
+;"Start"=dword:0000003
+
+;;; 5.18 (L2) Ensure 'PNRP Machine Name Publication Service (PNRPAutoReg)' is set to 'Disabled'
+;[HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Services\PNRPAutoReg]
+; 2 = Automatic
+; 3 = Manual (Default)
+; 4 = Disabled (CIS L2)
+; NON-COMPLIANCE TO NOT DISRUPT COMMON HOME FEATURES
+;"Start"=dword:0000003
+
+;;; 5.19 (L2) Ensure 'Problem Reports and Solutions Control Panel Support (wercplsupport)' is set to 'Disabled'
+;[HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Services\wercplsupport]
+; 2 = Automatic
+; 3 = Manual (Default)
+; 4 = Disabled (CIS L2)
+; NON-COMPLIANCE TO NOT DISRUPT COMMON HOME FEATURES
+;"Start"=dword:0000003
+
+;;; 5.20 (L2) Ensure 'Remote Access Auto Connection Manager (RasAuto)' is set to 'Disabled'
+;[HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Services\RasAuto]
+; 2 = Automatic
+; 3 = Manual (Default)
+; 4 = Disabled (CIS L2)
+; NON-COMPLIANCE TO NOT DISRUPT COMMON HOME FEATURES
+;"Start"=dword:0000003
+
+;;; 5.21 (L2) Ensure 'Remote Desktop Configuration (SessionEnv)' is set to 'Disabled'
+;[HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Services\SessionEnv]
+; 2 = Automatic
+; 3 = Manual (Default)
+; 4 = Disabled (CIS L2)
+; NON-COMPLIANCE TO NOT DISRUPT COMMON HOME FEATURES
+;"Start"=dword:0000003
+
+;;; 5.22 (L2) Ensure 'Remote Desktop Services (TermService)' is set to 'Disabled'
+;[HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Services\TermService]
+; 2 = Automatic
+; 3 = Manual (Default)
+; 4 = Disabled (CIS L2)
+; NON-COMPLIANCE TO NOT DISRUPT COMMON HOME FEATURES
+;"Start"=dword:0000003
+
+;;; 5.23 (L2) Ensure 'Remote Desktop Services UserMode Port Redirector (UmRdpService)' is set to 'Disabled'
+;[HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Services\UmRdpService]
+; 2 = Automatic
+; 3 = Manual
+; 4 = Disabled (Default, CIS L2)
+;"Start"=dword:0000004
+
+;;; 5.25 (L2) Ensure 'Remote Registry (RemoteRegistry)' is set to 'Disabled'
+;[HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Services\RemoteRegistry]
+; 2 = Automatic
+; 3 = Manual
+; 4 = Disabled (Default, CIS L2)
+;"Start"=dword:0000004
+
+;;; 5.27 (L2) Ensure 'Server (LanmanServer)' is set to 'Disabled'
+;[HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Services\LanmanServer]
+; 2 = Automatic (Default)
+; 3 = Manual
+; 4 = Disabled (CIS L2)
+; NON-COMPLIANCE TO NOT DISRUPT COMMON HOME FEATURES
+;"Start"=dword:0000002
+
+;;; 5.29 (L2) Ensure 'SNMP Service (SNMP)' is set to 'Disabled' or 'Not Installed'
+;[HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Services\SNMP]
+; <deleted> = (Default)
+; 2 = Automatic
+; 3 = Manual
+; 4 = Disabled (CIS L2)
+;"Start"=dword:0000004
+
+;;; 5.33 (L2) Ensure 'Windows Error Reporting Service (WerSvc)' is set to 'Disabled'
+;[HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Services\WerSvc]
+; 2 = Automatic
+; 3 = Manual (Default)
+; 4 = Disabled (CIS L2)
+; NON-COMPLIANCE TO NOT DISRUPT COMMON HOME FEATURES
+;"Start"=dword:0000003
+
+;;; 5.34 (L2) Ensure 'Windows Event Collector (Wecsvc)' is set to 'Disabled'
+;[HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Services\Wecsvc]
+; 2 = Automatic (Default)
+; 3 = Manual
+; 4 = Disabled (CIS L2)
+; NON-COMPLIANCE TO NOT DISRUPT COMMON HOME FEATURES
+;"Start"=dword:0000002
+
+;;; 5.37 (L2) Ensure 'Windows Remote Management (WS-Management) (WinRM)' is set to 'Disabled'
+;[HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Services\WinRM]
+; 2 = Automatic
+; 3 = Manual (Default)
+; 4 = Disabled (CIS L2)
+; NON-COMPLIANCE TO NOT DISRUPT COMMON HOME FEATURES
+;"Start"=dword:0000003
+
+;;; 5.40 (L2) Ensure 'Xbox Live Auth Manager (XblAuthManager)' is set to 'Disabled'
+;[HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Services\XblAuthManager]
+; 2 = Automatic
+; 3 = Manual (Default)
+; 4 = Disabled (CIS L2)
+; NON-COMPLIANCE TO NOT DISRUPT COMMON HOME FEATURES
+;"Start"=dword:0000003
+
+;;; 5.41 (L2) Ensure 'Xbox Live Game Save (XblGameSave)' is set to 'Disabled'
+;[HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Services\XblGameSave]
+; 2 = Automatic
+; 3 = Manual (Default)
+; 4 = Disabled (CIS L2)
+; NON-COMPLIANCE TO NOT DISRUPT COMMON HOME FEATURES
+;"Start"=dword:0000003
+
+;;; 5.42 (L2) Ensure 'Xbox Live Networking Service (XboxNetApiSvc)' is set to 'Disabled'
+;[HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Services\XboxNetApiSvc]
+; 2 = Automatic
+; 3 = Manual (Default)
+; 4 = Disabled (CIS L2)
+; NON-COMPLIANCE TO NOT DISRUPT COMMON HOME FEATURES
+;"Start"=dword:0000003
+
+;;; 18.3.4 (L2) Ensure 'MSS: (DisableSavePassword) Prevent the dial-up password from being saved' is set to 'Enabled'
+;[HKEY_LOCAL_MACHINE\System\CurrentControlSet\Services\RasMan\Parameters]
+; <deleted> = (Default)
+; 0 = Off
+; 1 = On (CIS L2)
+; NON-COMPLIANCE TO NOT DISRUPT COMMON HOME FEATURES
+;"disablesavepassword"=dword:0000000
+
+;;; 18.3.6 (L2) Ensure 'MSS: (KeepAliveTime) How often keep-alive packets are sent in milliseconds' is set to 'Enabled: 300,000 or 5 minutes (recommended)'
+;[HKEY_LOCAL_MACHINE\System\CurrentControlSet\Services\Tcpip\Parameters]
+; <deleted> = (Default)
+; 0 = 0 seconds
+; 300000 (493e0) = 300.000 seconds, 5 minutes (CIS L2)
+; NON-COMPLIANCE TO NOT DISRUPT COMMON HOME FEATURES
+;"KeepAliveTime"=dword:00493e0
+
+;;; 18.3.8 (L2) Ensure 'MSS: (PerformRouterDiscovery) Allow IRDP to detect and configure Default Gateway addresses (could lead to DoS)' is set to 'Disabled'
+;[HKEY_LOCAL_MACHINE\System\CurrentControlSet\Services\Tcpip\Parameters]
+; <deleted> = (Default)
+; 0 = Off
+; 1 = On (CIS L2)
+; NON-COMPLIANCE TO NOT DISRUPT COMMON HOME FEATURES
+;"PerformRouterDiscovery"=dword:0000001
+
+;;; 18.3.11 (L2) Ensure 'MSS: (TcpMaxDataRetransmissions IPv6) How many times unacknowledged data is retransmitted' is set to 'Enabled: 3'
+[HKEY_LOCAL_MACHINE\System\CurrentControlSet\Services\TCPIP6\Parameters]
+; <deleted> = (Default)
+; 0 = 0 times
+; 3 = 3 times (CIS L2)
+"tcpmaxdataretransmissions"=dword:0000003
+
+;;; 18.3.12 (L2) Ensure 'MSS: (TcpMaxDataRetransmissions) How many times unacknowledged data is retransmitted' is set to 'Enabled: 3'
+[HKEY_LOCAL_MACHINE\System\CurrentControlSet\Services\Tcpip\Parameters]
+; <deleted> = (Default)
+; 0 = 0 times
+; 3 = 3 times (CIS L2)
+"tcpmaxdataretransmissions"=dword:0000003
+
+;;; 18.4.5.1 (L2) Ensure 'Enable Font Providers' is set to 'Disabled'
+[HKEY_LOCAL_MACHINE\SOFTWARE\Policies\Microsoft\Windows\System]
+; <deleted> = (Default)
+; 0 = Off (CIS L2)
+; 1 = On
+"EnableFontProviders"=dword:0000000
+
+;;; 18.4.9.1 (L2) Ensure 'Turn on Mapper I/O (LLTDIO) driver' is set to 'Disabled'
+;[HKEY_LOCAL_MACHINE\Software\Policies\Microsoft\Windows\LLTD]
+; <deleted> = (Default)
+; 0 = Off (CIS L2)
+; 1 = On
+; NON-COMPLIANCE TO NOT DISRUPT COMMON HOME FEATURES
+;"AllowLLTDIOOnDomain"=dword:0000000
+;[HKEY_LOCAL_MACHINE\Software\Policies\Microsoft\Windows\LLTD]
+; <deleted> = (Default)
+; 0 = Off (CIS L2)
+; 1 = On
+; NON-COMPLIANCE TO NOT DISRUPT COMMON HOME FEATURES
+;"AllowLLTDIOOnPublicNet"=dword:0000000
+;[HKEY_LOCAL_MACHINE\Software\Policies\Microsoft\Windows\LLTD]
+; <deleted> = (Default)
+; 0 = Off (CIS L2)
+; 1 = On
+; NON-COMPLIANCE TO NOT DISRUPT COMMON HOME FEATURES
+;"LLTD:EnableLLTDIO"=dword:0000000
+;[HKEY_LOCAL_MACHINE\Software\Policies\Microsoft\Windows\LLTD]
+; <deleted> = (Default)
+; 0 = Off (CIS L2)
+; 1 = On
+; NON-COMPLIANCE TO NOT DISRUPT COMMON HOME FEATURES
+;"ProhibitLLTDIOOnPrivateNet"=dword:0000000
+
+;;; 18.4.9.2 (L2) Ensure 'Turn on Responder (RSPNDR) driver' is set to 'Disabled'
+;[HKEY_LOCAL_MACHINE\Software\Policies\Microsoft\Windows\LLTD]
+; <deleted> = (Default)
+; 0 = Off (CIS L2)
+; 1 = On
+; NON-COMPLIANCE TO NOT DISRUPT COMMON HOME FEATURES
+;"AllowRspndrOnDomain"=dword:0000000
+;[HKEY_LOCAL_MACHINE\Software\Policies\Microsoft\Windows\LLTD]
+; <deleted> = (Default)
+; 0 = Off (CIS L2)
+; 1 = On
+; NON-COMPLIANCE TO NOT DISRUPT COMMON HOME FEATURES
+;"AllowRspndrOnPublicNet"=dword:0000000
+;[HKEY_LOCAL_MACHINE\Software\Policies\Microsoft\Windows\LLTD]
+; <deleted> = (Default)
+; 0 = Off (CIS L2)
+; 1 = On
+; NON-COMPLIANCE TO NOT DISRUPT COMMON HOME FEATURES
+;"LLTD:EnableRspndr"=dword:0000000
+;[HKEY_LOCAL_MACHINE\Software\Policies\Microsoft\Windows\LLTD]
+; <deleted> = (Default)
+; 0 = Off (CIS L2)
+; 1 = On
+; NON-COMPLIANCE TO NOT DISRUPT COMMON HOME FEATURES
+;"ProhibitRspndrOnPrivateNet"=dword:0000000
+
+;;; 18.4.10.2 (L2) Ensure 'Turn off Microsoft Peer-to-Peer Networking Services' is set to 'Enabled'
+;[HKEY_LOCAL_MACHINE\Software\Policies\Microsoft\Peernet]
+; 0 = Off (Default)
+; 1 = On (CIS L2)
+; NON-COMPLIANCE TO NOT DISRUPT COMMON HOME FEATURES
+;"Disabled"=dword:0000000
+
+;;; 18.4.19.2.1 (L2) Disable IPv6 (Ensure TCPIP6 Parameter 'DisabledComponents' is set to '0xff (255)')
+;[HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Services\TCPIP6\Parameters]
+; <deleted> = (Default)
+; 0 (0) = Enable all IPv6 components
+; 255 (0xff) = Disable all IPv6 components (CIS L2)
+; 2 (2) = Disable 6to4
+; 4 (4) = Disable ISATAP
+; 8 (8) = Disable Teredo
+; 10 (a) = Disable Teredo and 6to4
+; 1 (1) = Disable all tunnel interfaces
+; 16 (10) = Disable all LAN and PPP interfaces
+; 17 (11) = Disable all LAN, PPP and tunnel interfaces
+; 32 (20) = Prefer IPv4 over IPv6
+; NON-COMPLIANCE TO NOT DISRUPT COMMON HOME FEATURES
+;"DisabledComponents"=dword:0000000
+
+;;; 18.4.20.1 (L2) Ensure 'Configuration of wireless settings using Windows Connect Now' is set to 'Disabled'
+;[HKEY_LOCAL_MACHINE\Software\Policies\Microsoft\Windows\WCN\Registrars]
+; <deleted> = (Default)
+; 0 = Off (CIS L2)
+; 1 = On
+; NON-COMPLIANCE TO NOT DISRUPT COMMON HOME FEATURES
+;"EnableRegistrars"=dword:0000000
+;[HKEY_LOCAL_MACHINE\Software\Policies\Microsoft\Windows\WCN\Registrars]
+; <deleted> = (Default)
+; 0 = Off (CIS L2)
+; 1 = On
+; NON-COMPLIANCE TO NOT DISRUPT COMMON HOME FEATURES
+;"DisableUPnPRegistrar"=dword:0000000
+;[HKEY_LOCAL_MACHINE\Software\Policies\Microsoft\Windows\WCN\Registrars]
+; <deleted> = (Default)
+; 0 = Off (CIS L2)
+; 1 = On
+; NON-COMPLIANCE TO NOT DISRUPT COMMON HOME FEATURES
+;"DisableInBand802DOT11Registrar"=dword:0000000
+;[HKEY_LOCAL_MACHINE\Software\Policies\Microsoft\Windows\WCN\Registrars]
+; <deleted> = (Default)
+; 0 = Off (CIS L2)
+; 1 = On
+; NON-COMPLIANCE TO NOT DISRUPT COMMON HOME FEATURES
+;"DisableFlashConfigRegistrar"=dword:0000000
+;[HKEY_LOCAL_MACHINE\Software\Policies\Microsoft\Windows\WCN\Registrars]
+; <deleted> = (Default)
+; 0 = Off (CIS L2)
+; 1 = On
+; NON-COMPLIANCE TO NOT DISRUPT COMMON HOME FEATURES
+;"DisableWPDRegistrar"=dword:0000000
+
+;;; 18.4.20.2 (L2) Ensure 'Prohibit access of the Windows Connect Now wizards' is set to 'Enabled'
+;[HKEY_LOCAL_MACHINE\Software\Policies\Microsoft\Windows\WCN\UI]
+; <deleted> = (Default)
+; 0 = Off
+; 1 = On (CIS L2)
+; NON-COMPLIANCE TO NOT DISRUPT COMMON HOME FEATURES
+;"DisableWcnUi"=dword:0000000
+
+;;; 18.8.20.1.1 (L2) Ensure 'Turn off access to the Store' is set to 'Enabled'
+;[HKEY_LOCAL_MACHINE\SOFTWARE\Policies\Microsoft\Windows\Explorer]
+; <deleted> = (Default)
+; 0 = Off
+; 1 = On (CIS L2)
+; NON-COMPLIANCE TO NOT DISRUPT COMMON HOME FEATURES
+;"NoUseStoreOpenWith"=dword:0000000
+
+;;; 18.8.20.1.2 (L2) Ensure 'Turn off downloading of print drivers over HTTP' is set to 'Enabled'
+[HKEY_LOCAL_MACHINE\Software\Policies\Microsoft\Windows NT\Printers]
+; <deleted> = (Default)
+; 0 = Off
+; 1 = On (CIS L2)
+"DisableWebPnPDownload"=dword:0000001
+
+;;; 18.8.20.1.3 (L2) Ensure 'Turn off handwriting personalization data sharing' is set to 'Enabled'
+[HKEY_LOCAL_MACHINE\Software\Policies\Microsoft\Windows\TabletPC]
+; <deleted> = (Default)
+; 0 = Off
+; 1 = On (CIS L2)
+"PreventHandwritingDataSharing"=dword:0000001
+
+;;; 18.8.20.1.4 (L2) Ensure 'Turn off handwriting recognition error reporting' is set to 'Enabled'
+[HKEY_LOCAL_MACHINE\Software\Policies\Microsoft\Windows\HandwritingErrorReports]
+; <deleted> = (Default)
+; 0 = Off
+; 1 = On (CIS L2)
+"PreventHandwritingErrorReports"=dword:0000001
+
+;;; 18.8.20.1.5 (L2) Ensure 'Turn off Internet Connection Wizard if URL connection is referring to Microsoft.com' is set to 'Enabled'
+;[HKEY_LOCAL_MACHINE\Software\Policies\Microsoft\Windows\Internet Connection Wizard]
+; <deleted> = (Default)
+; 0 = Off
+; 1 = On (CIS L2)
+; NON-COMPLIANCE TO NOT DISRUPT COMMON HOME FEATURES
+;"ExitOnMSICW"=dword:0000000
+
+;;; 18.8.20.1.6 (L2) Ensure 'Turn off Internet download for Web publishing and online ordering wizards' is set to 'Enabled'
+;[HKEY_LOCAL_MACHINE\Software\Microsoft\Windows\CurrentVersion\Policies\Explorer]
+; <deleted> = (Default)
+; 0 = Off
+; 1 = On (CIS L2)
+; NON-COMPLIANCE TO NOT DISRUPT COMMON HOME FEATURES
+;"NoWebServices"=dword:0000000
+
+;;; 18.8.20.1.7 (L2) Ensure 'Turn off printing over HTTP' is set to 'Enabled'
+[HKEY_LOCAL_MACHINE\Software\Policies\Microsoft\Windows NT\Printers]
+; <deleted> = (Default)
+; 0 = Off
+; 1 = On (CIS L2)
+"DisableHTTPPrinting"=dword:0000001
+
+;;; 18.8.20.1.8 (L2) Ensure 'Turn off Registration if URL connection is referring to Microsoft.com' is set to 'Enabled'
+;[HKEY_LOCAL_MACHINE\Software\Policies\Microsoft\Windows\Registration Wizard Control]
+; <deleted> = (Default)
+; 0 = Off
+; 1 = On (CIS L2)
+; NON-COMPLIANCE TO NOT DISRUPT COMMON HOME FEATURES
+;"NoRegistration"=dword:0000000
+
+;;; 18.8.20.1.9 (L2) Ensure 'Turn off Search Companion content file updates' is set to 'Enabled'
+;[HKEY_LOCAL_MACHINE\Software\Policies\Microsoft\SearchCompanion]
+; <deleted> = (Default)
+; 0 = Off
+; 1 = On (CIS L2)
+; NON-COMPLIANCE TO NOT DISRUPT COMMON HOME FEATURES
+;"DisableContentFileUpdates"=dword:0000000
+
+;;; 18.8.20.1.10 (L2) Ensure 'Turn off the "Order Prints" picture task' is set to 'Enabled'
+;[HKEY_LOCAL_MACHINE\Software\Microsoft\Windows\CurrentVersion\Policies\Explorer]
+; <deleted> = (Default)
+; 0 = Off
+; 1 = On (CIS L2)
+; NON-COMPLIANCE TO NOT DISRUPT COMMON HOME FEATURES
+;"NoOnlinePrintsWizard"=dword:0000000
+
+;;; 18.8.20.1.11 (L2) Ensure 'Turn off the "Publish to Web" task for files and folders' is set to 'Enabled'
+;[HKEY_LOCAL_MACHINE\Software\Microsoft\Windows\CurrentVersion\Policies\Explorer]
+; <deleted> = (Default)
+; 0 = Off
+; 1 = On (CIS L2)
+; NON-COMPLIANCE TO NOT DISRUPT COMMON HOME FEATURES
+;"NoPublishingWizard"=dword:0000000
+
+;;; 18.8.20.1.12 (L2) Ensure 'Turn off the Windows Messenger Customer Experience Improvement Program' is set to 'Enabled'
+;[HKEY_LOCAL_MACHINE\Software\Policies\Microsoft\Messenger\Client]
+; <deleted> = (Default)
+; 1 = Off
+; 2 = On (CIS L2)
+; NON-COMPLIANCE TO NOT DISRUPT COMMON HOME FEATURES
+;"CEIP"=dword:0000001
+
+;;; 18.8.20.1.13 (L2) Ensure 'Turn off Windows Customer Experience Improvement Program' is set to 'Enabled'
+;[HKEY_LOCAL_MACHINE\Software\Policies\Microsoft\SQMClient\Windows]
+; <deleted> = (Default)
+; 0 = Off (CIS L2)
+; 1 = On
+; NON-COMPLIANCE TO NOT DISRUPT COMMON HOME FEATURES
+;"CEIPEnable"=dword:0000001
+
+;;; 18.8.20.1.14 (L2) Ensure 'Turn off Windows Error Reporting' is set to 'Enabled'
+[HKEY_LOCAL_MACHINE\Software\Policies\Microsoft\Windows\Windows Error Reporting]
+; <deleted> = (Default)
+; 0 = Off
+; 1 = On (CIS L2)
+"Disabled"=dword:0000001
+
+;;; 18.8.24.1 (L2) Ensure 'Disallow copying of user input methods to the system account for sign-in' is set to 'Enabled'
+;[HKEY_LOCAL_MACHINE\Software\Policies\Microsoft\Control Panel\International]
+; <deleted> = (Default)
+; 0 = Off
+; 1 = On (CIS L2)
+; NON-COMPLIANCE TO NOT DISRUPT COMMON HOME FEATURES
+;"BlockUserInputMethodsForSignIn"=dword:0000000
+
+;;; 18.8.39.5.1 (L2) Ensure 'Microsoft Support Diagnostic Tool: Turn on MSDT interactive communication with support provider' is set to 'Disabled'
+;[HKEY_LOCAL_MACHINE\SOFTWARE\Policies\Microsoft\Windows\ScriptedDiagnosticsProvider\Policy]
+; <deleted> = (Default)
+; 0 = Off (CIS L2)
+; 1 = On
+; NON-COMPLIANCE TO NOT DISRUPT COMMON HOME FEATURES
+;"DisableQueryRemoteServer"=dword:0000000
+
+;;; 18.8.39.11.1 (L2) Ensure 'Enable/Disable PerfTrack' is set to 'Disabled'
+[HKEY_LOCAL_MACHINE\Software\Policies\Microsoft\Windows\WDI\{9c5a40da-b965-4fc3-8781-88dd50a6299d}]
+; 0 = Off (CIS L2)
+; 1 = On
+"ScenarioExecutionEnabled"=dword:0000000
+
+;;; 18.8.41.1 (L2) Ensure 'Turn off the advertising ID' is set to 'Enabled'
+[HKEY_LOCAL_MACHINE\SOFTWARE\policies\Microsoft\Windows\AdvertisingInfo]
+; <deleted> = (Default)
+; 0 = Off
+; 1 = On (CIS L2)
+"DisabledByGroupPolicy"=dword:0000001
+
+;;; 18.8.44.1.1 (L2) Ensure 'Enable Windows NTP Client' is set to 'Enabled'
+;[HKEY_LOCAL_MACHINE\SOFTWARE\Policies\Microsoft\W32Time\TimeProviders\NtpClient]
+; <deleted> = (Default)
+; 0 = Off
+; 1 = On (CIS L2)
+;"Enabled"=dword:0000001
+
+;;; 18.8.44.1.2 (L2) Ensure 'Enable Windows NTP Server' is set to 'Disabled'
+;[HKEY_LOCAL_MACHINE\SOFTWARE\Policies\Microsoft\W32Time\TimeProviders\NtpServer]
+; <deleted> = (Default)
+; 0 = Off (CIS L2)
+; 1 = On
+;"Enabled"=dword:0000000
+
+;;; 18.9.4.1 (L2) Ensure 'Allow a Windows app to share application data between users' is set to 'Disabled'
+[HKEY_LOCAL_MACHINE\SOFTWARE\Policies\Microsoft\Windows\CurrentVersion\AppModel\StateManager]
+; <deleted> = (Default)
+; 0 = Off (CIS L2)
+; 1 = On
+"AllowSharedLocalAppData"=dword:0000000
+
+;;; 18.9.5.1 (L2) Ensure 'Let Windows apps access account information' is set to 'Enabled: Force Deny'
+;[HKEY_LOCAL_MACHINE\SOFTWARE\Policies\Microsoft\Windows\AppPrivacy]
+; <deleted> = (Default)
+; 0 = User is in control
+; 1 = Force Allow
+; 2 = Force Deny (CIS L2)
+; NON-COMPLIANCE TO NOT DISRUPT COMMON HOME FEATURES
+;"LetAppsAccessAccountInfo"=dword:0000000
+
+;;; 18.9.5.2 (L2) Ensure 'Let Windows apps access call history' is set to 'Enabled: Force Deny'
+;[HKEY_LOCAL_MACHINE\SOFTWARE\Policies\Microsoft\Windows\AppPrivacy]
+; <deleted> = (Default)
+; 0 = User is in control
+; 1 = Force Allow
+; 2 = Force Deny (CIS L2)
+; NON-COMPLIANCE TO NOT DISRUPT COMMON HOME FEATURES
+;"LetAppsAccessCallHistory"=dword:0000000
+
+;;; 18.9.5.3 (L2) Ensure 'Let Windows apps access contacts' is set to 'Enabled: Force Deny'
+;[HKEY_LOCAL_MACHINE\SOFTWARE\Policies\Microsoft\Windows\AppPrivacy]
+; <deleted> = (Default)
+; 0 = User is in control
+; 1 = Force Allow
+; 2 = Force Deny (CIS L2)
+; NON-COMPLIANCE TO NOT DISRUPT COMMON HOME FEATURES
+;"LetAppsAccessContacts"=dword:0000000
+
+;;; 18.9.5.4 (L2) Ensure 'Let Windows apps access email' is set to 'Enabled: Force Deny'
+;[HKEY_LOCAL_MACHINE\SOFTWARE\Policies\Microsoft\Windows\AppPrivacy]
+; <deleted> = (Default)
+; 0 = User is in control
+; 1 = Force Allow
+; 2 = Force Deny (CIS L2)
+; NON-COMPLIANCE TO NOT DISRUPT COMMON HOME FEATURES
+;"LetAppsAccessEmail"=dword:0000000
+
+;;; 18.9.5.5 (L2) Ensure 'Let Windows apps access location' is set to 'Enabled: Force Deny'
+;[HKEY_LOCAL_MACHINE\SOFTWARE\Policies\Microsoft\Windows\AppPrivacy]
+; <deleted> = (Default)
+; 0 = User is in control
+; 1 = Force Allow
+; 2 = Force Deny (CIS L2)
+; NON-COMPLIANCE TO NOT DISRUPT COMMON HOME FEATURES
+;"LetAppsAccessLocation"=dword:0000000
+
+;;; 18.9.5.6 (L2) Ensure 'Let Windows apps access messaging' is set to 'Enabled: Force Deny'
+;[HKEY_LOCAL_MACHINE\SOFTWARE\Policies\Microsoft\Windows\AppPrivacy]
+; <deleted> = (Default)
+; 0 = User is in control
+; 1 = Force Allow
+; 2 = Force Deny (CIS L2)
+; NON-COMPLIANCE TO NOT DISRUPT COMMON HOME FEATURES
+;"LetAppsAccessMessaging"=dword:0000000
+
+;;; 18.9.5.7 (L2) Ensure 'Let Windows apps access motion' is set to 'Enabled: Force Deny'
+;[HKEY_LOCAL_MACHINE\SOFTWARE\Policies\Microsoft\Windows\AppPrivacy]
+; <deleted> = (Default)
+; 0 = User is in control
+; 1 = Force Allow
+; 2 = Force Deny (CIS L2)
+; NON-COMPLIANCE TO NOT DISRUPT COMMON HOME FEATURES
+;"LetAppsAccessMotion"=dword:0000000
+
+;;; 18.9.5.8 (L2) Ensure 'Let Windows apps access the calendar' is set to 'Enabled: Force Deny'
+;[HKEY_LOCAL_MACHINE\SOFTWARE\Policies\Microsoft\Windows\AppPrivacy]
+; <deleted> = (Default)
+; 0 = User is in control
+; 1 = Force Allow
+; 2 = Force Deny (CIS L2)
+; NON-COMPLIANCE TO NOT DISRUPT COMMON HOME FEATURES
+;"LetAppsAccessCalendar"=dword:0000000
+
+;;; 18.9.5.9 (L2) Ensure 'Let Windows apps access the camera' is set to 'Enabled: Force Deny'
+;[HKEY_LOCAL_MACHINE\SOFTWARE\Policies\Microsoft\Windows\AppPrivacy]
+; <deleted> = (Default)
+; 0 = User is in control
+; 1 = Force Allow
+; 2 = Force Deny (CIS L2)
+; NON-COMPLIANCE TO NOT DISRUPT COMMON HOME FEATURES
+;"LetAppsAccessCamera"=dword:0000000
+
+;;; 18.9.5.10 (L2) Ensure 'Let Windows apps access the microphone' is set to 'Enabled: Force Deny'
+;[HKEY_LOCAL_MACHINE\SOFTWARE\Policies\Microsoft\Windows\AppPrivacy]
+; <deleted> = (Default)
+; 0 = User is in control
+; 1 = Force Allow
+; 2 = Force Deny (CIS L2)
+; NON-COMPLIANCE TO NOT DISRUPT COMMON HOME FEATURES
+;"LetAppsAccessMicrophone"=dword:0000000
+
+;;; 18.9.5.11 (L2) Ensure 'Let Windows apps access trusted devices' is set to 'Enabled: Force Deny'
+;[HKEY_LOCAL_MACHINE\SOFTWARE\Policies\Microsoft\Windows\AppPrivacy]
+; <deleted> = (Default)
+; 0 = User is in control
+; 1 = Force Allow
+; 2 = Force Deny (CIS L2)
+; NON-COMPLIANCE TO NOT DISRUPT COMMON HOME FEATURES
+;"LetAppsAccessTrustedDevices"=dword:0000000
+
+;;; 18.9.5.12 (L2) Ensure 'Let Windows apps control radios' is set to 'Enabled: Force Deny'
+;[HKEY_LOCAL_MACHINE\SOFTWARE\Policies\Microsoft\Windows\AppPrivacy]
+; <deleted> = (Default)
+; 0 = User is in control
+; 1 = Force Allow
+; 2 = Force Deny (CIS L2)
+; NON-COMPLIANCE TO NOT DISRUPT COMMON HOME FEATURES
+;"LetAppsAccessRadios"=dword:0000000
+
+;;; 18.9.5.13 (L2) Ensure 'Let Windows apps sync with devices' is set to 'Enabled: Force Deny'
+;[HKEY_LOCAL_MACHINE\SOFTWARE\Policies\Microsoft\Windows\AppPrivacy]
+; <deleted> = (Default)
+; 0 = User is in control
+; 1 = Force Allow
+; 2 = Force Deny (CIS L2)
+; NON-COMPLIANCE TO NOT DISRUPT COMMON HOME FEATURES
+;"LetAppsSyncWithDevices"=dword:0000000
+
+;;; 18.9.5.14 (L2) Ensure 'Let Windows apps make phone calls' is set to 'Enabled: Force Deny'
+;[HKEY_LOCAL_MACHINE\SOFTWARE\Policies\Microsoft\Windows\AppPrivacy]
+; <deleted> = (Default)
+; 0 = User is in control
+; 1 = Force Allow
+; 2 = Force Deny (CIS L2)
+; NON-COMPLIANCE TO NOT DISRUPT COMMON HOME FEATURES
+;"LetAppsAccessPhone"=dword:0000000
+
+;;; 18.9.5.15 (L2) Ensure 'Let Windows apps access notifications' is set to 'Enabled: Force Deny'
+;[HKEY_LOCAL_MACHINE\SOFTWARE\Policies\Microsoft\Windows\AppPrivacy]
+; <deleted> = (Default)
+; 0 = User is in control
+; 1 = Force Allow
+; 2 = Force Deny (CIS L2)
+; NON-COMPLIANCE TO NOT DISRUPT COMMON HOME FEATURES
+;"LetAppsAccessNotifications"=dword:0000000
+
+;;; 18.9.6.2 (L2) Ensure 'Block launching Windows Store apps with Windows Runtime API access from hosted content.' is set to 'Enabled'
+;[HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Windows\CurrentVersion\Policies\System]
+; <deleted> = (Default)
+; 0 = Off
+; 1 = On (CIS L2)
+; NON-COMPLIANCE TO NOT DISRUPT COMMON HOME FEATURES
+;"BlockHostedAppAccessWinRT	"=dword:0000000
+
+;;; 18.9.12.1 (L2) Ensure 'Allow Use of Camera' is set to 'Disabled'
+;[HKEY_LOCAL_MACHINE\SOFTWARE\Policies\Microsoft\Camera]
+; <deleted> = (Default)
+; 0 = Off (CIS L2)
+; 1 = On
+; NON-COMPLIANCE TO NOT DISRUPT COMMON HOME FEATURES
+;"AllowCamera"=dword:0000001
+
+;;; 18.9.37.2 (L2) Ensure 'Turn off location' is set to 'Enabled'
+;[HKEY_LOCAL_MACHINE\SOFTWARE\Policies\Microsoft\Windows\LocationAndSensors]
+; <deleted> = (Default)
+; 0 = Off
+; 1 = On (CIS L2)
+; NON-COMPLIANCE TO NOT DISRUPT COMMON HOME FEATURES
+;"DisableWindowsLocationProvider	"=dword:0000000
+
+;;; 18.9.41.1 (L2) Ensure 'Allow Extensions' is set to 'Disabled'
+;[HKEY_LOCAL_MACHINE\SOFTWARE\Policies\Microsoft\MicrosoftEdge\Extensions]
+; <deleted> = (Default)
+; 0 = Off (CIS L2)
+; 1 = On
+; NON-COMPLIANCE TO NOT DISRUPT COMMON HOME FEATURES
+;"ExtensionsEnabled"=dword:0000001
+
+;;; 18.9.41.2 (L2) Ensure 'Allow InPrivate Browsing' is set to 'Disabled'
+;[HKEY_LOCAL_MACHINE\SOFTWARE\Policies\Microsoft\MicrosoftEdge\Main]
+; <deleted> = (Default)
+; 0 = Off (CIS L2)
+; 1 = On
+; NON-COMPLIANCE TO NOT DISRUPT COMMON HOME FEATURES
+;"AllowInPrivate"=dword:0000001
+
+;;; 18.9.41.5 (L2) Ensure 'Configure Pop-up Blocker' is set to 'Enabled'
+;[HKEY_LOCAL_MACHINE\SOFTWARE\Policies\Microsoft\MicrosoftEdge\Main]
+; <deleted> = (Default)
+; no = Off
+; yes = On (CIS L2)
+;"AllowPopups"="yes"
+
+;;; 18.9.41.8 (L2) Ensure 'Prevent access to the about:flags page in Microsoft Edge' is set to 'Enabled'
+;[HKEY_LOCAL_MACHINE\SOFTWARE\Policies\Microsoft\MicrosoftEdge\Main]
+; <deleted> = (Default)
+; 0 = Off
+; 1 = On (CIS L2)
+; NON-COMPLIANCE TO NOT DISRUPT COMMON HOME FEATURES
+;"PreventAccessToAboutFlagsInMicrosoftEdge"=dword:0000000
+
+;;; 18.9.41.9 (L2) Ensure 'Prevent bypassing SmartScreen prompts for files' is set to 'Enabled'
+;[HKEY_LOCAL_MACHINE\SOFTWARE\Policies\Microsoft\MicrosoftEdge\PhishingFilter]
+; <deleted> = (Default)
+; 0 = Off
+; 1 = On (CIS L2)
+; NON-COMPLIANCE TO NOT DISRUPT COMMON HOME FEATURES
+;"PreventOverrideAppRepUnknown"=dword:0000000
+
+;;; 18.9.41.10 (L2) Ensure 'Prevent bypassing SmartScreen prompts for sites' is set to 'Enabled'
+;[HKEY_LOCAL_MACHINE\SOFTWARE\Policies\Microsoft\MicrosoftEdge\PhishingFilter]
+; <deleted> = (Default)
+; 0 = Off
+; 1 = On (CIS L2)
+; NON-COMPLIANCE TO NOT DISRUPT COMMON HOME FEATURES
+;"PreventOverride"=dword:0000000
+
+;;; 18.9.41.11 (L2) Ensure 'Prevent using Localhost IP address for WebRTC' is set to 'Enabled'
+;[HKEY_LOCAL_MACHINE\SOFTWARE\Policies\Microsoft\MicrosoftEdge\Main]
+; <deleted> = (Default)
+; 0 = Off
+; 1 = On (CIS L2)
+; NON-COMPLIANCE TO NOT DISRUPT COMMON HOME FEATURES
+;"HideLocalHostIP"=dword:0000000
+
+;;; 18.9.52.3.2.1 (L2) Ensure 'Allow users to connect remotely by using Remote Desktop Services' is set to 'Disabled'
+[HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Control\Terminal Server]
+; 0 = Off (CIS L2)
+; 1 = On (Default)
+; NON-COMPLIANCE TO NOT DISRUPT COMMON HOME FEATURES
+"fDenyTSConnections"=dword:0000001
+
+;;; 18.9.59.1 (L2) Ensure 'Turn off KMS Client Online AVS Validation' is set to 'Enabled'
+;[HKEY_LOCAL_MACHINE\SOFTWARE\Policies\Microsoft\Windows NT\CurrentVersion\Software Protection Platform]
+; <deleted> = (Default)
+; 0 = Off
+; 1 = On (CIS L2)
+; NON-COMPLIANCE TO NOT DISRUPT COMMON HOME FEATURES
+;"NoGenTicket"=dword:0000000
+
+;;; 18.9.61.1 (L2) Ensure 'Disable all apps from Windows Store' is set to 'Enabled'
+;[HKEY_LOCAL_MACHINE\SOFTWARE\Policies\Microsoft\WindowsStore]
+; <deleted> = (Default)
+; 0 = On (CIS L2)
+; 1 = Off
+; NON-COMPLIANCE TO NOT DISRUPT COMMON HOME FEATURES
+;"DisableStoreApps"=dword:0000001
+
+;;; 18.9.61.4 (L2) Ensure 'Turn off the Store application' is set to 'Enabled'
+;[HKEY_LOCAL_MACHINE\SOFTWARE\Policies\Microsoft\WindowsStore]
+; <deleted> = (Default)
+; 0 = Off
+; 1 = On (CIS L2)
+; NON-COMPLIANCE TO NOT DISRUPT COMMON HOME FEATURES
+;"RemoveWindowsStore"=dword:0000000
+
+;;; 18.9.69.3.1 (L2) Ensure 'Join Microsoft MAPS' is set to 'Disabled'
+[HKEY_LOCAL_MACHINE\Software\Microsoft\Windows Defender\Spynet]
+; 0 = Off (Default)
+; 1 = Basic MAPS
+; 2 = Advanced MAPS (CIS L2)
+; NON-COMPLIANCE TO NOT DISRUPT COMMON HOME FEATURES
+"SpynetReporting"=dword:0000000
+
+;;; 18.9.69.8.1 (L2) Ensure 'Configure Watson events' is set to 'Disabled'
+[HKEY_LOCAL_MACHINE\SOFTWARE\Policies\Microsoft\Windows Defender\Reporting]
+; <deleted> = (Default)
+; 0 = Off
+; 1 = On (CIS L2)
+; NON-COMPLIANCE TO NOT DISRUPT COMMON HOME FEATURES
+"DisableGenericReports"=dword:0000000
+
+;;; 18.9.73.1 (L2) Ensure 'Allow suggested apps in Windows Ink Workspace' is set to 'Disabled'
+[HKEY_LOCAL_MACHINE\SOFTWARE\Policies\Microsoft\WindowsInkWorkspace]
+; <deleted> = (Default)
+; 0 = Off (CIS L2)
+; 1 = On
+"AllowSuggestedAppsInWindowsInkWorkspace"=dword:0000000
+
+;;; 18.9.74.3 (L2) Ensure 'Prevent Internet Explorer security prompt for Windows Installer scripts' is set to 'Disabled'
+[HKEY_LOCAL_MACHINE\Software\Policies\Microsoft\Windows\Installer]
+; <deleted> = (Default)
+; 0 = Off (CIS L2)
+; 1 = On
+"SafeForScripting"=dword:0000000
+
+;;; 18.9.86.2.2 (L2) Ensure 'Allow remote server management through WinRM' is set to 'Disabled'
+[HKEY_LOCAL_MACHINE\SOFTWARE\Policies\Microsoft\Windows\WinRM\Service]
+; <deleted> = (Default)
+; 0 = Off (CIS L2)
+; 1 = On
+"AllowAutoConfig"=dword:0000000
+
+;;; 18.9.87.1 (L2) Ensure 'Allow Remote Shell Access' is set to 'Disabled'
+[HKEY_LOCAL_MACHINE\Software\Policies\Microsoft\Windows\WinRM\Service\WinRS]
+; <deleted> = (Default)
+; 0 = Off (CIS L2)
+; 1 = On
+"AllowRemoteShellAccess"=dword:0000000
