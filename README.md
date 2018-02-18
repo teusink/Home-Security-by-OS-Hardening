@@ -279,6 +279,11 @@ Sometimes a system needs repair. Try the following commands to check and fix the
 - Type in `dism /online /cleanup-image /restorehealth` and press `Enter` to fix the known corruptions.
 - Wait for it to finish and reboot.
 
+# Word of thanks
+A special word of thanks goes to Center for Internet Security (CIS) (https://www.cisecurity.org/), the Group Policy Administrative Templates Catalog site (https://getadmx.com/), and Ali Robertson with his/her Reclaim Windows script (https://gist.github.com/alirobe/7f3b34ad89a159e6daa1).
+
+Their contributions to (not only) this guide is worth my sincere gratitude. Thanks!
+
 # Licensing
 All the licensing and copyrights of any of the code and applications belong to their respective owners. All other coding falls under the MIT-license: https://github.com/teusink/Home-Security-by-W10-Hardening/blob/master/LICENSE
 
