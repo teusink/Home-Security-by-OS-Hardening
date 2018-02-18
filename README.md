@@ -214,6 +214,15 @@ This setting can be set through Windows Explorer.
 
 - File Extensions: Show [[hkcu-custom]](https://github.com/teusink/Home-Security-by-W10-Hardening/blob/master/registry/hkcu-custom.reg)
 
+Now change the default filehandler of all `.js` and `.jse` files to Notepad, to prevent malware from executing malicious scripts.
+- Create a file called `nomalware.js`.
+- Now right-click on that file, and click on `Open with` and then `Choose another app`.
+- Tick the box in front of `Always use this app to open .js files`.
+- Click on more `More apps`.
+- Click on `Notepad`.
+- Click on `OK`.
+- Repeat the same when you have created a file called `nomalware.jse`.
+
 # Registry
 
 In order to even more harden your system, add the registry key-sets below to your register. They also incorporate most of the settings above. But they also incorporate security improvements that cannot be set through an interface. Usability is considered when deciding if it should be more or less secure.
