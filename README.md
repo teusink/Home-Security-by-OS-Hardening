@@ -210,9 +210,10 @@ This setting can only be set when running a game.
 
 # Explorer
 
-This setting can be set through Windows Explorer.
-
-- File Extensions: Show [[hkcu-custom]](https://github.com/teusink/Home-Security-by-W10-Hardening/blob/master/registry/hkcu-custom.reg)
+Seeing all extensions of all files is important to recognize malicious files.
+- Open `Windows Explorer`.
+- Click on the tab `View`.
+- Tick the box `File name extensions`. [[hkcu-custom]](https://github.com/teusink/Home-Security-by-W10-Hardening/blob/master/registry/hkcu-custom.reg)
 
 Now change the default filehandler of all `.js` and `.jse` files to Notepad, to prevent malware from executing malicious scripts.
 - Create a file called `nomalware.js`.
