@@ -8,9 +8,11 @@ Description on how I configured the installation and Security of Windows 10 Home
   - [Steps to take](#steps-to-take)
 - [1 - Control Panel](#control-panel)
 - [2 - Settings](#settings)
-- [3 - Registry](#registry)
-- [4 - Additional software](#additional-software)
-- [5 - Systems repair](#systems-repair)
+- [3 - Xbox Game Bar](#xbox-game-bar)
+- [4 - Explorer](#explorer)
+- [5 - Registry](#registry)
+- [6 - Additional software](#additional-software)
+- [7 - Systems repair](#systems-repair)
 
 # Introduction
 The goal of this project is to make a secure (or at least secure within a reasonable amount of effort) Windows 10 Home installation to ensure a secure environment to consume and produce content. It is possible that by gaining new insights hardening-options are either removed or added.
