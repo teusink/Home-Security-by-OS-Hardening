@@ -1,5 +1,5 @@
 # Home-Security-by-W10-Hardening
-Description on how I configured the installation and Security of Windows 10 Home, and how I keep it fit for use and purpose.
+Description on how I configured the installation and Security of Windows 10 Home and Pro, and how I keep it fit for use and purpose.
 
 **Table of Contents**
 - Introduction
@@ -15,7 +15,7 @@ Description on how I configured the installation and Security of Windows 10 Home
 - [7 - Systems repair](#systems-repair)
 
 # Introduction
-The goal of this project is to make a secure (or at least secure within a reasonable amount of effort) Windows 10 Home installation to ensure a secure environment to consume and produce content. It is possible that by gaining new insights hardening-options are either removed or added.
+The goal of this project is to make a secure (or at least secure within a reasonable amount of effort) Windows 10 installation to ensure a secure environment to consume and produce content. It is possible that by gaining new insights hardening-options are either removed or added.
 
 My other goal is to gain a good understanding on Windows 10 Hardening and other Security-related aspects. I feel that as a Lead Information Security Officer it is important to upkeep (general) knowledge about Technology and it's Security.
 
