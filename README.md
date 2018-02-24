@@ -4,7 +4,6 @@ Description on how I configured the installation and Security of Windows 10 Home
 **Table of Contents**
 - Introduction
   - [The Scope](#the-scope)
-  - [The Software](#the-software)
   - [Steps to take](#steps-to-take)
 - [1 - Control Panel](#control-panel)
 - [2 - Settings](#settings)
@@ -23,13 +22,10 @@ My other goal is to gain a good understanding on Windows 10 Hardening and other 
 Scope is an important part for this project. Otherwise you can endlessly install security tools and solutions which in the end have a trade-off. This might be resources and performance, but also your own precious time to keep it running :).
 
 The constraints are:
-- Windows 10 Home & Pro
-- For the larger part, the settings needs to be able to be set through a GUI. I'll make some exceptions here and there (because there was never a GUI and it's impact is rather important).
+- Windows 10 Home & Pro Build 1709
+- For the larger part, the settings needs to be able to be set through a GUI. I'll make some exceptions here and there (because there was never a GUI and its impact is rather important).
 - Some settings can also be set by using a registry-key file (.reg). I will supply these files.
 - Settings must be able to be set without using Group Policy Object (GPO), because that is not present (by default) on Windows 10 Home.
-
-## The Software
-- Windows 10 Home & Pro Build 1709
 
 I focus on Home, but why? The Home edition is by far the most used edition by regular consumers (even small business uses it sometimes due to buying their laptops or desktops at the local retailer...). Pro is more focused on the core IT, and Enterprise is, well, for enterprises. The GPO is only present on Pro and above. Where possible I take Pro into account also.
 
