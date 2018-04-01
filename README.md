@@ -246,11 +246,11 @@ If you have Windows 10 Home:
 
 If you have Windows 10 Pro:
 - Run registry keys of Windows 10 Home +
-- HKEY_LOCAL_MACHINE - Windows 10 Pro CIS Level 1 [[REG]](https://github.com/teusink/Home-Security-by-W10-Hardening/blob/master/registry/hklm-cis-level1-pro.reg)
-- HKEY_LOCAL_MACHINE - Windows 10 Pro CIS Level 2 [[REG]](https://github.com/teusink/Home-Security-by-W10-Hardening/blob/master/registry/hklm-cis-level2-pro.reg)
+- HKEY_LOCAL_MACHINE - Windows 10 Pro CIS Level 1 (not fully compliant) [[REG]](https://github.com/teusink/Home-Security-by-W10-Hardening/blob/master/registry/hklm-cis-level1-pro.reg)
+- HKEY_LOCAL_MACHINE - Windows 10 Pro CIS Level 2 (not fully compliant) [[REG]](https://github.com/teusink/Home-Security-by-W10-Hardening/blob/master/registry/hklm-cis-level2-pro.reg)
 
 If you use BitLocker with your Windows installment:
-- HKEY_LOCAL_MACHINE - Windows 10 CIS BitLocker [[REG]](https://github.com/teusink/Home-Security-by-W10-Hardening/blob/master/registry/hklm-cis-bitlocker.reg)
+- HKEY_LOCAL_MACHINE - Windows 10 CIS BitLocker (not fully compliant) [[REG]](https://github.com/teusink/Home-Security-by-W10-Hardening/blob/master/registry/hklm-cis-bitlocker.reg)
 
 If you use Google Chrome:
 - HKEY_LOCAL_MACHINE - Google Chrome hardening [[REG]](https://github.com/teusink/Home-Security-by-W10-Hardening/blob/master/registry/hklm-cis-chrome.reg)
