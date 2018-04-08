@@ -56,7 +56,7 @@ These are the settings that are done through the use of the Control Panel. Set i
   - Playback: Block all sites from using peer-assisted networking
 
 ## Programs
-- Programs and Features: Turn Windows features on or off:
+- Programs and Features: Turn Windows features off:
   - .NET Framework 3.5 (includes .NET 2.0 and 3.0): Windows Communication Foundation HTTP Activation
   - .NET Framework 3.5 (includes .NET 2.0 and 3.0): Windows Communication Foundation Non-HTTP Activation
   - .NET Framework 4.7 Advanced Services: ASP.NET 4.7 (.NET)
