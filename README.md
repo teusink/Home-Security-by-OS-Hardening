@@ -10,7 +10,7 @@ Description on how I configured the installation and Security of Windows 10 Home
 - [3 - Xbox Game Bar](#xbox-game-bar)
 - [4 - Explorer](#explorer)
 - [5 - Registry](#registry)
-- [6 - Additional software](#additional-software)
+- [6 - Remove third-party software](#remove-third-party-software)
 - [7 - Systems repair](#systems-repair)
 
 # Introduction
@@ -255,13 +255,7 @@ If you use BitLocker with your Windows installment:
 If you use Google Chrome:
 - HKEY_LOCAL_MACHINE - Google Chrome hardening [[REG]](https://github.com/teusink/Home-Security-by-W10-Hardening/blob/master/registry/hklm-cis-chrome.reg)
 
-# Additional software
-
-## Add third-party software
-If you want to further improve your security, you could install the software below!
-- [Personal Software Inspector (PSI) Secunia](https://www.flexera.com/enterprise/products/software-vulnerability-management/personal-software-inspector/)
-
-## Remove third-party software
+# Remove third-party software
 If you don't need the software mentioned below, really remove it!
 - Adobe Shockwave Player
 - Adobe Flash Player (it is built-in into Google Chrome, Mozilla Firefox and Microsoft Edge)
