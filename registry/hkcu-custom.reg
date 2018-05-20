@@ -110,13 +110,18 @@ Windows Registry Editor Version 5.00
 ; 1 = On (Secure & Default)
 "EnableWebContentEvaluation"=dword:00000001
 
-;;; Turn on "Storage sense" and delete Temporary files and empty Recycle bin
+;;; Turn on "Storage sense" and delete Temporary files and empty Recycle bin after 30 days
 [HKEY_CURRENT_USER\Software\Microsoft\Windows\CurrentVersion\StorageSense\Parameters\StoragePolicy]
 "01"=dword:00000001
-"02"=dword:00000001
 "04"=dword:00000001
 "08"=dword:00000001
+"02"=dword:00000001
 "32"=dword:00000000
+"1024"=dword:00000001
+"2048"=dword:00000000
+"256"=dword:0000001e
+"512"=dword:00000000
+"128"=dword:0000001e
 
 ;;; Turn on "File extensions for known file types"
 [HKEY_CURRENT_USER\Software\Microsoft\Windows\CurrentVersion\Explorer\Advanced]
@@ -124,10 +129,18 @@ Windows Registry Editor Version 5.00
 ; 1 = On (Default)
 "HideFileExt"=dword:00000000
 
+;;; Set to "My devices only" for Nearby sharing: "I can share and receive from"
+[HKEY_CURRENT_USER\Software\Microsoft\Windows\CurrentVersion\CDP]
+; 0 = Off (Secure, Default)
+; 1 = My devices only
+; 2 = Everyone nearby
+"NearShareChannelUserAuthzPolicy"=dword:00000000
+
 ;;; Set to "My devices only" for Shared Experiences: "I can share and receive from"
 [HKEY_CURRENT_USER\Software\Microsoft\Windows\CurrentVersion\CDP]
 ; 0 = Off (Secure)
-; 1 = On (Default)
+; 1 = My devices only (Default)
+; 2 = Everyone nearby
 "CdpSessionUserAuthzPolicy"=dword:00000001
 
 ;;; Turn on "Sync your settings: Ease of Access"

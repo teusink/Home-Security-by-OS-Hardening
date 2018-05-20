@@ -22,7 +22,7 @@ My other goal is to gain a good understanding on Windows 10 Hardening and other 
 Scope is an important part for this project. Otherwise you can endlessly install security tools and solutions which in the end have a trade-off. This might be resources and performance, but also your own precious time to keep it running :).
 
 The constraints are:
-- Windows 10 Home & Pro Build 1709
+- Windows 10 Home & Pro Build 1803
 - For the larger part, the settings needs to be able to be set through a GUI. I'll make some exceptions here and there (because there was never a GUI and its impact is rather important).
 - Some settings can also be set by using a registry-key file (.reg). I will supply these files.
 - Settings must be able to be set without using Group Policy Object (GPO), because that is not present (by default) on Windows 10 Home.
@@ -35,6 +35,13 @@ From a Graphical User Interface (GUI) perspective I will touch every relevant se
 
 - HKLM stands for HKEY_LOCAL_MACHINE. It's about settings that are applied system wide. Adding it once to a system is enough.
 - HKCU stands for HKEY_CURRENT_USER. It's about settings that are applied per user. These needs to be added per user.
+
+# Upgrades to newer Windows 10 builds
+
+Whenever you upgrade to a newer build, sometimes there are keys and entries going obsolete. Through this registry file you can remove them safely: [[hk-remove-obsolete-entries]](https://github.com/teusink/Home-Security-by-W10-Hardening/blob/master/registry/hk-remove-obsolete-entries.reg)
+
+Upgrades included in the Registry file:
+- From 1709 to 1803
 
 # Control Panel
 
@@ -96,14 +103,16 @@ These are the settings that are done through the use of the new Windows Settings
 ## System
 - Notifications & actions: Show me the Windows welcome experience: Off [[hklm-cis-level1]](https://github.com/teusink/Home-Security-by-W10-Hardening/blob/master/registry/hklm-cis-level1.reg) & [[hkcu-custom]](https://github.com/teusink/Home-Security-by-W10-Hardening/blob/master/registry/hkcu-custom.reg)
 - Notifications & actions: Get tips, tricks, and suggestions as you use Windows: Off [[hkcu-custom]](https://github.com/teusink/Home-Security-by-W10-Hardening/blob/master/registry/hkcu-custom.reg)
-- Storage sense: On [[hklm-cis-level1]](https://github.com/teusink/Home-Security-by-W10-Hardening/blob/master/registry/hklm-cis-level1.reg)
-- Storage sense: Delete temporary files that my apps aren't using: On [[hklm-cis-level1]](https://github.com/teusink/Home-Security-by-W10-Hardening/blob/master/registry/hklm-cis-level1.reg)
-- Storage sense: Delete files that have been in the recycle bin for over 30 days: On [[hklm-cis-level1]](https://github.com/teusink/Home-Security-by-W10-Hardening/blob/master/registry/hklm-cis-level1.reg)
-- Storage sense: Delete files in the Download folder that haven't changed in 30 days: Off [[hklm-cis-level1]](https://github.com/teusink/Home-Security-by-W10-Hardening/blob/master/registry/hklm-cis-level1.reg)
+- Storage (Sense): On [[hkcu-custom]](https://github.com/teusink/Home-Security-by-W10-Hardening/blob/master/registry/hkcu-custom.reg)
+- Storage (Sense): Delete temporary files that my apps aren't using: On [[hkcu-custom]](https://github.com/teusink/Home-Security-by-W10-Hardening/blob/master/registry/hkcu-custom.reg)
+- Storage (Sense): Delete files that have been in the recycle bin for over: 30 days [[hkcu-custom]](https://github.com/teusink/Home-Security-by-W10-Hardening/blob/master/registry/hkcu-custom.reg)
+- Storage (Sense): Delete files in the Download folder that have been there for over: Never [[hkcu-custom]](https://github.com/teusink/Home-Security-by-W10-Hardening/blob/master/registry/hkcu-custom.reg)
 - Projecting to this PC: Always off [[hklm-cis-level1]](https://github.com/teusink/Home-Security-by-W10-Hardening/blob/master/registry/hklm-cis-level1.reg) & [[hkcu-custom]](https://github.com/teusink/Home-Security-by-W10-Hardening/blob/master/registry/hkcu-custom.reg)
 - Projecting to this PC: Ask to project to this PC: Every time [[hkcu-custom]](https://github.com/teusink/Home-Security-by-W10-Hardening/blob/master/registry/hkcu-custom.reg)
 - Projecting to this PC: Require PIN for sharing: On [[hklm-cis-level1]](https://github.com/teusink/Home-Security-by-W10-Hardening/blob/master/registry/hklm-cis-level1.reg)
 - Projecting to this PC: This PC can be discovered for projection only when it is plugged in: Off [[hklm-cis-level1]](https://github.com/teusink/Home-Security-by-W10-Hardening/blob/master/registry/hklm-cis-level1.reg) & [[hkcu-custom]](https://github.com/teusink/Home-Security-by-W10-Hardening/blob/master/registry/hkcu-custom.reg)
+- Shared experiences: Nearby sharing: Off
+- Shared experiences: I can share or receive from: My devices only [[hkcu-custom]](https://github.com/teusink/Home-Security-by-W10-Hardening/blob/master/registry/hkcu-custom.reg)
 - Shared experiences: Share across devices: On
 - Shared experiences: I can share or receive from: My devices only [[hkcu-custom]](https://github.com/teusink/Home-Security-by-W10-Hardening/blob/master/registry/hkcu-custom.reg)
 
@@ -113,15 +122,17 @@ These are the settings that are done through the use of the new Windows Settings
 - AutoPlay: Removable drive: Take no action
 - AutoPlay: Memory card: Take no action
 
+## Phone
+- No Security or Privacy settings to mention
+
 ## Network & Internet
 - Status: Adapter options: [Every Adapter]: Microsoft Network Adapter Multiplexor Protocol: Disabled
 - Status: Adapter options: [Every Adapter]: Microsoft LLDP Protocol Driver: Disabled
 - Status: Adapter options: [Every Adapter]: TCP/IPv4: Properties: Advanced: WINS: NetBIOS over TCP/IP: Disabled
 - Status: Adapter options: [Every Adapter]: TCP/IPv4: Properties: Advanced: WINS: LMHOSTS Lookup: Disabled [[hklm-custom]](https://github.com/teusink/Home-Security-by-W10-Hardening/blob/master/registry/hklm-custom.reg)
-- Wi-Fi: Find paid plans: Off [[hklm-cis-level1]](https://github.com/teusink/Home-Security-by-W10-Hardening/blob/master/registry/hklm-cis-level1.reg) & [[hkcu-custom]](https://github.com/teusink/Home-Security-by-W10-Hardening/blob/master/registry/hkcu-custom.reg)
-- Wi-Fi: Connect open hotspots: Off [[hklm-cis-level1]](https://github.com/teusink/Home-Security-by-W10-Hardening/blob/master/registry/hklm-cis-level1.reg) & [[hkcu-custom]](https://github.com/teusink/Home-Security-by-W10-Hardening/blob/master/registry/hkcu-custom.reg)
-- Wi-Fi: Online Sign-Up: Off [[hkcu-custom]](https://github.com/teusink/Home-Security-by-W10-Hardening/blob/master/registry/hkcu-custom.reg)
-- Mobile hotspot: Off [[hkcu-custom]](https://github.com/teusink/Home-Security-by-W10-Hardening/blob/master/registry/hkcu-custom.reg)
+- Wi-Fi: Use random hardware addresses: Off
+- Wi-Fi: Let me use Online Sign-Up to get connected: On
+- Mobile hotspot: Off
 - Mobile hotspot: Turn On Remotely: Off
 
 ## Personalization
@@ -146,6 +157,15 @@ These are the settings that are done through the use of the new Windows Settings
 - Sync your settings: Ease of Access: On [[hkcu-custom]](https://github.com/teusink/Home-Security-by-W10-Hardening/blob/master/registry/hkcu-custom.reg)
 - Sync your settings: Other Windows settings: On [[hkcu-custom]](https://github.com/teusink/Home-Security-by-W10-Hardening/blob/master/registry/hkcu-custom.reg)
 
+## Time & Language
+- No Security or Privacy settings to mention
+
+## Gaming
+- No Security or Privacy settings to mention
+
+## Ease of Access
+- No Security or Privacy settings to mention
+
 ## Cortana / Search
 - Talk to Cortana: It can be fully disabled if you like (but not through GUI) [[hklm-cis-level1]](https://github.com/teusink/Home-Security-by-W10-Hardening/blob/master/registry/hklm-cis-level1.reg)
 - Talk to Cortana: Let Cortana respond to "Hey Cortana": Off [[hkcu-custom]](https://github.com/teusink/Home-Security-by-W10-Hardening/blob/master/registry/hkcu-custom.reg)
@@ -154,28 +174,38 @@ These are the settings that are done through the use of the new Windows Settings
 - Permissions & History: SafeSearch: Moderate
 - Permissions & History: CloudSearch: On
 - Permissions & History: Device History: On
-- Notifications: Send notifications between devices: On
+- Cortana across my devices: Get phone notifications on this PC: On
+- Cortana across my devices: Help me pick up where I left off on other devices: On
+- Cortana across my devices: Get list suggestions: Off
 
 ## Privacy
+
+### Windows Permissions
 - General: Let apps use advert ID: Off [[hklm-custom]](https://github.com/teusink/Home-Security-by-W10-Hardening/blob/master/registry/hklm-custom.reg)
 - General: Let websites access language list: Off [[hkcu-custom]](https://github.com/teusink/Home-Security-by-W10-Hardening/blob/master/registry/hkcu-custom.reg)
 - General: Let Windows track app launches: Off [[hkcu-custom]](https://github.com/teusink/Home-Security-by-W10-Hardening/blob/master/registry/hkcu-custom.reg)
 - General: Show suggested content in Settings: Off [[hkcu-custom]](https://github.com/teusink/Home-Security-by-W10-Hardening/blob/master/registry/hkcu-custom.reg)
+- Diagnostics & feedback: Basic (Level Security is only possible through Registry) [[hklm-cis-level1]](https://github.com/teusink/Home-Security-by-W10-Hardening/blob/master/registry/hklm-cis-level1.reg)
+- Diagnostics & feedback: Improve inking & typing recognition: Off
+- Diagnostics & feedback: Tailored experiences: Off
+- Diagnostics & feedback: Diagnostic data viewer: Off
+- Diagnostics & feedback: Feedback frequency: Never [[hklm-cis-level1]](https://github.com/teusink/Home-Security-by-W10-Hardening/blob/master/registry/hklm-cis-level1.reg)
+- Activity history: Let Windows collect my activities from this PC: On
+- Activity history: Let Windows sync my activities from this PC to the cloud: Off
+
+### App permissions
 - Categories from `Location` to `Radios`: Configure it to your needs (the more Off is better privacy protection)
 - Other devices: Let apps share & sync: Off [[hkcu-custom]](https://github.com/teusink/Home-Security-by-W10-Hardening/blob/master/registry/hkcu-custom.reg)
-- Feedback & diagnostics: Basic (Security is only possible through Registry) [[hklm-cis-level1]](https://github.com/teusink/Home-Security-by-W10-Hardening/blob/master/registry/hklm-cis-level1.reg)
-- Feedback & diagnostics: Let MS use diagnostics data: Off [[hklm-custom]](https://github.com/teusink/Home-Security-by-W10-Hardening/blob/master/registry/hklm-custom.reg)
-- Feedback & diagnostics: Feedback: Never [[hklm-cis-level1]](https://github.com/teusink/Home-Security-by-W10-Hardening/blob/master/registry/hklm-cis-level1.reg)
 
 ## Update & Security
 - Windows Update: Set `Active hours` to your likings
 - Windows Update: Set `Restart options` to your likings
-- Windows Update: Advanced options: Give updates other MS products: On
+- Windows Update: Advanced options: Give updates other Microsoft products when I update Windows: On
 - Windows Update: Advanced options: Delivery optimizations: Allow downloads from other PCs: On [[hklm-cis-level1]](https://github.com/teusink/Home-Security-by-W10-Hardening/blob/master/registry/hklm-cis-level1.reg)
 - Windows Update: Advanced options: Delivery optimizations: PCs on my local network: On [[hklm-cis-level1]](https://github.com/teusink/Home-Security-by-W10-Hardening/blob/master/registry/hklm-cis-level1.reg)
 - Windows Update: Advanced options: Delivery optimizations: PCs on my local network, and PCs on the Internet: Off [[hklm-cis-level1]](https://github.com/teusink/Home-Security-by-W10-Hardening/blob/master/registry/hklm-cis-level1.reg)
-- Windows Defender: Windows Defender Security Center
-- Windows Defender: Antivirus options: Period scanning: Off (NOTE: setting only available when third-party anti-malware is installed)
+- Windows Security: Windows Defender Security Center
+- Windows Security: Antivirus options: Period scanning: Off (NOTE: setting only available when third-party anti-malware is installed)
 - Find my device: On [[hklm-custom]](https://github.com/teusink/Home-Security-by-W10-Hardening/blob/master/registry/hklm-custom.reg)
 - Device encryption: On
 

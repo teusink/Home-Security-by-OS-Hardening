@@ -913,11 +913,7 @@ Windows Registry Editor Version 5.00
 "AllowInsecureGuestAuth"=dword:0000000
 
 ;;; 18.4.23.2.1 (L1) Ensure 'Allow Windows to automatically connect to suggested open hotspots, to networks shared by contacts, and to hotspots offering paid services' is set to 'Disabled'
-[HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\WcmSvc\wifinetworkmanager\config]
-; 0 = Off (CIS L1)
-; 1 = On (Default)
-; NON-COMPLIANCE TO NOT DISRUPT COMMON HOME FEATURES
-"AutoConnectAllowedOEM"=dword:0000000
+; OBSOLETE SINCE Windows 10, version 1803
 
 ;;; 18.6.1 (L1) Ensure 'Apply UAC restrictions to local accounts on network logons' is set to 'Enabled'
 ;[HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Windows\CurrentVersion\Policies\System]

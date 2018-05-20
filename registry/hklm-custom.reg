@@ -79,13 +79,6 @@ Windows Registry Editor Version 5.00
 
 ;;; WARNING: THE SETTINGS BELOW CANNOT BE UNDONE THROUGH A GUI!
 
-;;; Wi-Fi services Hotspots: Off
-;;; NOTE: This disables resetting it through GUI
-[HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\WcmSvc\wifinetworkmanager\config\]
-; 0 = Off (Secure)
-; 1 = On (Default)
-"AutoConnectAllowedOEM"=dword:00000000
-
 ;;; Windows Error Reporting: Off
 [HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Windows\Windows Error Reporting]
 ; 0 = Off (Default)
