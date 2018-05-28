@@ -41,6 +41,7 @@ Windows Registry Editor Version 5.00
 ; 0 = Off (Secure)
 ; 1 = On (Default)
 "SubscribedContent-338393Enabled"=dword:00000000
+"SubscribedContent-353694Enabled"=dword:00000000
 
 ;;; Turn off "Fun facts and tips"
 [HKEY_CURRENT_USER\SOFTWARE\Microsoft\Windows\CurrentVersion\ContentDeliveryManager]
