@@ -123,6 +123,7 @@ Windows Registry Editor Version 5.00
 
 ;;; 1.4.1 (L2) Ensure 'Default cookies setting' is set to 'Enabled' (Keep cookies for the duration of the session)
 ;[HKEY_LOCAL_MACHINE\SOFTWARE\Policies\Google\Chrome]
+; <deleted> = (Default)
 ; 1 = Allow all sites to set local data
 ; 2 = Do not allow any site to set local data
 ; 4 = Keep cookies for the duration of the session (CIS L2)
@@ -133,7 +134,7 @@ Windows Registry Editor Version 5.00
 [HKEY_LOCAL_MACHINE\SOFTWARE\Policies\Google\Chrome]
 ; <deleted> = (Default)
 ; 1 = Allow all sites to automatically run plugins
-; 2 = Block all plugins
+; 2 = Block all plugins (CIS L1)
 ; 3 = Click to play
 "DefaultPluginsSetting"=dword:00000003
 

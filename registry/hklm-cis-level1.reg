@@ -29,8 +29,8 @@ Windows Registry Editor Version 5.00
 
 ;;; 2.3.1.4 (L1) Ensure 'Accounts: Limit local account use of blank passwords to console logon only' is set to 'Enabled'
 [HKEY_LOCAL_MACHINE\System\CurrentControlSet\Control\Lsa]
-; 0 = Off
-; 1 = On (Default + CIS L1)
+; 0 = Off (Default)
+; 1 = On (CIS L1)
 "LimitBlankPasswordUse"=dword:0000000
 
 ;;; 2.3.2.1 (L1) Ensure 'Audit: Force audit policy subcategory settings (Windows Vista or later) to override audit policy category settings' is set to 'Enabled'
@@ -366,7 +366,7 @@ Windows Registry Editor Version 5.00
 
 ;;; 2.3.11.9 (L1) Ensure 'Network security: Minimum session security for NTLM SSP based (including secure RPC) clients' is set to 'Require NTLMv2 session security, Require 128-bit encryption'
 [HKEY_LOCAL_MACHINE\System\CurrentControlSet\Control\Lsa\MSV1_0]
-; 0 = Off
+; 0 = Off (Default)
 ; 10 = Require message integrity
 ; 20 = Require message confidentiality
 ; 80000 = Require NTLMv2 session security
@@ -376,7 +376,7 @@ Windows Registry Editor Version 5.00
 
 ;;; 2.3.11.10 (L1) Ensure 'Network security: Minimum session security for NTLM SSP based (including secure RPC) servers' is set to 'Require NTLMv2 session security, Require 128-bit encryption'
 [HKEY_LOCAL_MACHINE\System\CurrentControlSet\Control\Lsa\MSV1_0]
-; 0 = Off
+; 0 = Off (Default)
 ; 10 = Require message integrity
 ; 20 = Require message confidentiality
 ; 80000 = Require NTLMv2 session security

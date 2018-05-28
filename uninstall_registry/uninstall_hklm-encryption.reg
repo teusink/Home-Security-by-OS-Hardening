@@ -1,43 +1,40 @@
 Windows Registry Editor Version 5.00
 
-;;; Windows 10 Encryption Hardening
+;;; Windows 10 Encryption Hardening - UNINSTALLER
 ;;; Repository: https://github.com/teusink/Home-Security-by-W10-Hardening/
 
 ;;; Registry target: HKEY_LOCAL_MACHINE
-;;; Source: NARTAC IIS Crypto https://www.nartac.com/Products/IISCrypto
 ;;; Author: Joram Teusink
 
-;;; WARNING: THE SETTINGS BELOW CANNOT BE UNDONE THROUGH A GUI!
-
-;;; Encryption - Ciphers: AES only
+;;; Encryption - Ciphers: All allowed
 [HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Control\SecurityProviders\SCHANNEL\Ciphers\AES 128/128]
 "Enabled"=dword:ffffffff
 [HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Control\SecurityProviders\SCHANNEL\Ciphers\AES 256/256]
 "Enabled"=dword:ffffffff
 [HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Control\SecurityProviders\SCHANNEL\Ciphers\DES 56/56]
-"Enabled"=dword:00000000
+"Enabled"=dword:ffffffff
 [HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Control\SecurityProviders\SCHANNEL\Ciphers\NULL]
-"Enabled"=dword:00000000
+"Enabled"=dword:ffffffff
 [HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Control\SecurityProviders\SCHANNEL\Ciphers\RC2 128/128]
-"Enabled"=dword:00000000
+"Enabled"=dword:ffffffff
 [HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Control\SecurityProviders\SCHANNEL\Ciphers\RC2 40/128]
-"Enabled"=dword:00000000
+"Enabled"=dword:ffffffff
 [HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Control\SecurityProviders\SCHANNEL\Ciphers\RC2 56/128]
-"Enabled"=dword:00000000
+"Enabled"=dword:ffffffff
 [HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Control\SecurityProviders\SCHANNEL\Ciphers\RC4 128/128]
-"Enabled"=dword:00000000
+"Enabled"=dword:ffffffff
 [HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Control\SecurityProviders\SCHANNEL\Ciphers\RC4 40/128]
-"Enabled"=dword:00000000
+"Enabled"=dword:ffffffff
 [HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Control\SecurityProviders\SCHANNEL\Ciphers\RC4 56/128]
-"Enabled"=dword:00000000
+"Enabled"=dword:ffffffff
 [HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Control\SecurityProviders\SCHANNEL\Ciphers\RC4 64/128]
-"Enabled"=dword:00000000
+"Enabled"=dword:ffffffff
 [HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Control\SecurityProviders\SCHANNEL\Ciphers\Triple DES 168]
-"Enabled"=dword:00000000
+"Enabled"=dword:ffffffff
 
-;;; Encryption - Hashes: SHA only
+;;; Encryption - Hashes: All allowed
 [HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Control\SecurityProviders\SCHANNEL\Hashes\MD5]
-"Enabled"=dword:00000000
+"Enabled"=dword:ffffffff
 [HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Control\SecurityProviders\SCHANNEL\Hashes\SHA]
 "Enabled"=dword:ffffffff
 [HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Control\SecurityProviders\SCHANNEL\Hashes\SHA256]
@@ -55,31 +52,31 @@ Windows Registry Editor Version 5.00
 [HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Control\SecurityProviders\SCHANNEL\KeyExchangeAlgorithms\PKCS]
 "Enabled"=dword:ffffffff
 
-;;; Encryption - Protocols: TLS 1.0 and higher
+;;; Encryption - Protocols: All allowed
 [HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Control\SecurityProviders\SCHANNEL\Protocols\Multi-Protocol Unified Hello\Client]
-"Enabled"=dword:00000000
-"DisabledByDefault"=dword:00000001
+"Enabled"=dword:ffffffff
+"DisabledByDefault"=dword:00000000
 [HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Control\SecurityProviders\SCHANNEL\Protocols\Multi-Protocol Unified Hello\Server]
-"Enabled"=dword:00000000
-"DisabledByDefault"=dword:00000001
+"Enabled"=dword:ffffffff
+"DisabledByDefault"=dword:00000000
 [HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Control\SecurityProviders\SCHANNEL\Protocols\PCT 1.0\Client]
-"Enabled"=dword:00000000
-"DisabledByDefault"=dword:00000001
+"Enabled"=dword:ffffffff
+"DisabledByDefault"=dword:00000000
 [HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Control\SecurityProviders\SCHANNEL\Protocols\PCT 1.0\Server]
-"Enabled"=dword:00000000
-"DisabledByDefault"=dword:00000001
+"Enabled"=dword:ffffffff
+"DisabledByDefault"=dword:00000000
 [HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Control\SecurityProviders\SCHANNEL\Protocols\SSL 2.0\Client]
-"Enabled"=dword:00000000
-"DisabledByDefault"=dword:00000001
+"Enabled"=dword:ffffffff
+"DisabledByDefault"=dword:00000000
 [HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Control\SecurityProviders\SCHANNEL\Protocols\SSL 2.0\Server]
-"Enabled"=dword:00000000
-"DisabledByDefault"=dword:00000001
+"Enabled"=dword:ffffffff
+"DisabledByDefault"=dword:00000000
 [HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Control\SecurityProviders\SCHANNEL\Protocols\SSL 3.0\Client]
-"Enabled"=dword:00000000
-"DisabledByDefault"=dword:00000001
+"Enabled"=dword:ffffffff
+"DisabledByDefault"=dword:00000000
 [HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Control\SecurityProviders\SCHANNEL\Protocols\SSL 3.0\Server]
-"Enabled"=dword:00000000
-"DisabledByDefault"=dword:00000001
+"Enabled"=dword:ffffffff
+"DisabledByDefault"=dword:00000000
 [HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Control\SecurityProviders\SCHANNEL\Protocols\TLS 1.0\Client]
 "Enabled"=dword:ffffffff
 "DisabledByDefault"=dword:00000000
@@ -101,4 +98,4 @@ Windows Registry Editor Version 5.00
 
 ;;; Encryption - Cipher Suites (order)
 [HKEY_LOCAL_MACHINE\SOFTWARE\Policies\Microsoft\Cryptography\Configuration\SSL\00010002]
-"Functions"="TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384,TLS_ECDHE_RSA_WITH_AES_128_GCM_SHA256,TLS_ECDHE_RSA_WITH_AES_256_CBC_SHA384,TLS_ECDHE_RSA_WITH_AES_128_CBC_SHA256,TLS_ECDHE_RSA_WITH_AES_256_CBC_SHA,TLS_ECDHE_RSA_WITH_AES_128_CBC_SHA,TLS_ECDHE_ECDSA_WITH_AES_256_GCM_SHA384,TLS_ECDHE_ECDSA_WITH_AES_128_GCM_SHA256,TLS_ECDHE_ECDSA_WITH_AES_256_CBC_SHA384,TLS_ECDHE_ECDSA_WITH_AES_128_CBC_SHA256,TLS_ECDHE_ECDSA_WITH_AES_256_CBC_SHA,TLS_ECDHE_ECDSA_WITH_AES_128_CBC_SHA,TLS_RSA_WITH_AES_256_GCM_SHA384,TLS_RSA_WITH_AES_128_GCM_SHA256,TLS_RSA_WITH_AES_256_CBC_SHA256,TLS_RSA_WITH_AES_128_CBC_SHA256,TLS_RSA_WITH_AES_256_CBC_SHA,TLS_RSA_WITH_AES_128_CBC_SHA"
+"Functions"="TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384,TLS_ECDHE_RSA_WITH_AES_128_GCM_SHA256,TLS_ECDHE_RSA_WITH_AES_256_CBC_SHA384,TLS_ECDHE_RSA_WITH_AES_128_CBC_SHA256,TLS_ECDHE_RSA_WITH_AES_256_CBC_SHA,TLS_ECDHE_RSA_WITH_AES_128_CBC_SHA,TLS_ECDHE_ECDSA_WITH_AES_256_GCM_SHA384,TLS_ECDHE_ECDSA_WITH_AES_128_GCM_SHA256,TLS_ECDHE_ECDSA_WITH_AES_256_CBC_SHA384,TLS_ECDHE_ECDSA_WITH_AES_128_CBC_SHA256,TLS_ECDHE_ECDSA_WITH_AES_256_CBC_SHA,TLS_ECDHE_ECDSA_WITH_AES_128_CBC_SHA,TLS_RSA_WITH_AES_256_GCM_SHA384,TLS_RSA_WITH_AES_128_GCM_SHA256,TLS_RSA_WITH_AES_256_CBC_SHA256,TLS_RSA_WITH_AES_128_CBC_SHA256,TLS_RSA_WITH_AES_256_CBC_SHA,TLS_RSA_WITH_AES_128_CBC_SHA,TLS_AES_256_GCM_SHA384,TLS_AES_128_GCM_SHA256,TLS_DHE_RSA_WITH_AES_256_GCM_SHA384,TLS_DHE_RSA_WITH_AES_128_GCM_SHA256,TLS_RSA_WITH_3DES_EDE_CBC_SHA,TLS_RSA_WITH_NULL_SHA256,TLS_RSA_WITH_NULL_SHA,TLS_PSK_WITH_AES_256_GCM_SHA384,TLS_PSK_WITH_AES_128_GCM_SHA256,TLS_PSK_WITH_AES_256_CBC_SHA384,TLS_PSK_WITH_AES_128_CBC_SHA256,TLS_PSK_WITH_NULL_SHA384,TLS_PSK_WITH_NULL_SHA256"

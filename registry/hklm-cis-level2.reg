@@ -21,7 +21,7 @@ Windows Registry Editor Version 5.00
 
 ;;; 2.3.4.2 (L2) Ensure 'Devices: Prevent users from installing printer drivers' is set to 'Enabled'
 ;[HKEY_LOCAL_MACHINE\System\CurrentControlSet\Control\Print\Providers\LanMan Print Services\Servers]
-; 0 = Off
+; 0 = Off (Default)
 ; 1 = On (CIS L2)
 ; NON-COMPLIANCE TO NOT DISRUPT COMMON HOME FEATURES
 ;"AddPrinterDrivers"=dword:0000000
@@ -501,7 +501,7 @@ Windows Registry Editor Version 5.00
 ;;; 18.8.39.11.1 (L2) Ensure 'Enable/Disable PerfTrack' is set to 'Disabled'
 [HKEY_LOCAL_MACHINE\Software\Policies\Microsoft\Windows\WDI\{9c5a40da-b965-4fc3-8781-88dd50a6299d}]
 ; 0 = Off (CIS L2)
-; 1 = On
+; 1 = On (Default)
 "ScenarioExecutionEnabled"=dword:0000000
 
 ;;; 18.8.41.1 (L2) Ensure 'Turn off the advertising ID' is set to 'Enabled'
@@ -673,7 +673,7 @@ Windows Registry Editor Version 5.00
 ; 0 = Off
 ; 1 = On (CIS L2)
 ; NON-COMPLIANCE TO NOT DISRUPT COMMON HOME FEATURES
-;"BlockHostedAppAccessWinRT	"=dword:0000000
+;"BlockHostedAppAccessWinRT"=dword:0000000
 
 ;;; 18.9.12.1 (L2) Ensure 'Allow Use of Camera' is set to 'Disabled'
 ;[HKEY_LOCAL_MACHINE\SOFTWARE\Policies\Microsoft\Camera]
@@ -689,7 +689,7 @@ Windows Registry Editor Version 5.00
 ; 0 = Off
 ; 1 = On (CIS L2)
 ; NON-COMPLIANCE TO NOT DISRUPT COMMON HOME FEATURES
-;"DisableWindowsLocationProvider	"=dword:0000000
+;"DisableWindowsLocationProvider"=dword:0000000
 
 ;;; 18.9.41.1 (L2) Ensure 'Allow Extensions' is set to 'Disabled'
 ;[HKEY_LOCAL_MACHINE\SOFTWARE\Policies\Microsoft\MicrosoftEdge\Extensions]

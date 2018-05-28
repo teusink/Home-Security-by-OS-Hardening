@@ -285,6 +285,9 @@ If you use BitLocker with your Windows installment:
 If you use Google Chrome:
 - HKEY_LOCAL_MACHINE - Google Chrome hardening [[REG]](https://github.com/teusink/Home-Security-by-W10-Hardening/blob/master/registry/hklm-cis-chrome.reg)
 
+If you want to uninstall all keys and get back to the default:
+- Uninstaller [[REG]](https://github.com/teusink/Home-Security-by-W10-Hardening/blob/master/uninstall_registry/)
+
 # Remove third-party software
 If you don't need the software mentioned below, really remove it!
 - Adobe Shockwave Player

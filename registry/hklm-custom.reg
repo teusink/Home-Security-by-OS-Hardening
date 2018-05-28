@@ -1,6 +1,6 @@
 Windows Registry Editor Version 5.00
 
-;;; Windows 10 Home Hardening
+;;; Windows 10 Home & Pro Hardening
 ;;; Repository: https://github.com/teusink/Home-Security-by-W10-Hardening/
 
 ;;; Registry target: HKEY_LOCAL_MACHINE
@@ -11,21 +11,21 @@ Windows Registry Editor Version 5.00
 
 ;;; Startup and Recovery - Debug Information: None
 [HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Control\CrashControl]
-"AutoReboot"=dword:00000001
-"LogEvent"=dword:00000001
-"MinidumpsCount"=dword:00000005
-"Overwrite"=dword:00000001
-"CrashDumpEnabled"=dword:00000000
-"AlwaysKeepMemoryDump"=dword:00000000
+"AutoReboot"=dword:00000001						; Default: 1
+"LogEvent"=dword:00000001						; Default: 1
+"MinidumpsCount"=dword:00000001					; Default: 5
+"Overwrite"=dword:00000001						; Default: 1
+"CrashDumpEnabled"=dword:00000000				; Default: 1
+"AlwaysKeepMemoryDump"=dword:00000000			; Default: 1
 
 ;;; Remote Assistance: Disable
 [HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Control\Remote Assistance]
-"CreateEncryptedOnlyTickets"=dword:00000001
-"fAllowFullControl"=dword:00000001
-"fAllowToGetHelp"=dword:00000000
-"fEnableChatControl"=dword:00000001
-"MaxTicketExpiry"=dword:00000001
-"MaxTicketExpiryUnits"=dword:00000001
+"CreateEncryptedOnlyTickets"=dword:00000001		; Default: 0
+"fAllowFullControl"=dword:00000001				; Default: 1
+"fAllowToGetHelp"=dword:00000000				; Default: 1
+"fEnableChatControl"=dword:00000001				; Default: 1
+"MaxTicketExpiry"=dword:00000001				; Default: 1
+"MaxTicketExpiryUnits"=dword:00000001			; Default: 1
 
 ;;; Find my device: On
 [HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Settings\FindMyDevice]
@@ -41,12 +41,12 @@ Windows Registry Editor Version 5.00
 
 ;;; Project to this PC: Off
 [HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\MiracastReceiver]
-"NetworkQualificationEnabled"=dword:00000000
-"ConsentToast"=dword:00000002
-"Primary Authorization Method"=dword:00000003
-"Secondary Authorization Method"=dword:00000000
-"Tertiary Authorization Method"=dword:00000000
-"EnabledOnACOnly"=dword:00000000
+"NetworkQualificationEnabled"=dword:00000000	; Default: 1
+"ConsentToast"=dword:00000002					; Default: 0
+"Primary Authorization Method"=dword:00000003	; Default: 2
+"Secondary Authorization Method"=dword:00000000	; Default: 3
+"Tertiary Authorization Method"=dword:00000000	; Default: 0
+"EnabledOnACOnly"=dword:00000000				; Default: 1
 [HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\PlayToReceiver]
 ; 0 = Off (Secure)
 ; 1 = On (Default)
