@@ -308,6 +308,10 @@ Sometimes a system needs repair. Try the following commands to check and fix the
 - Type in `sfc /scannow` and press `Enter` to initiate the integrity check and fix.
 - Wait for it to finish and reboot.
 
+## MDSCHED
+- Type in `mdsched.exe` and press `Enter` to initiate Windows Memory Diagnostic.
+- Reboot to execute the test.
+
 ## DISM
 - Type in `dism /online /cleanup-image /checkhealth` and press `Enter` to check for known corruptions.
 - Type in `dism /online /cleanup-image /scanhealth` and press `Enter` to scan for new corruptions.
