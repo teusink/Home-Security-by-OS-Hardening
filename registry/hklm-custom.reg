@@ -99,3 +99,7 @@ Windows Registry Editor Version 5.00
 ; 2: Allows DLL Load from the current working directory if the current working directory is set to a remote folder (such as a WebDAV or UNC location) (most Secure)
 [HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Control\Session Manager]
 "CWDIllegalInDllSearch"=dword:00000000
+
+;;; Disable Fast Restart to prevent disk encryption errors with third party tools
+[HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Control\Session Manager\Power]
+"HiberbootEnabled"=dword:00000000

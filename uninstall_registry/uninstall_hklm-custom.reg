@@ -66,3 +66,7 @@ Windows Registry Editor Version 5.00
 ;;; DLL search path algorithm: Strict DLL search order
 [HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Control\Session Manager]
 "CWDIllegalInDllSearch"=-
+
+;;; Disable Fast Restart to prevent disk encryption errors with third party tools
+[HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Control\Session Manager\Power]
+"HiberbootEnabled"=dword:00000001
