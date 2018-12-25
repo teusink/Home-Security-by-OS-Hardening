@@ -102,4 +102,18 @@ Windows Registry Editor Version 5.00
 
 ;;; Disable Fast Restart to prevent disk encryption errors with third party tools
 [HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Control\Session Manager\Power]
+; 0 = Off (Secure)
+; 1 = On (Default)
 "HiberbootEnabled"=dword:00000000
+
+;;; Disable Domain Name Devolution
+[HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Services\Tcpip\Parameters]
+; 0 = Off (Secure)
+; 1 = On (Default)
+"UseDomainNameDevolution"=dword:00000000
+
+;;; Disable Cortana
+[HKEY_LOCAL_MACHINE\SOFTWARE\Policies\Microsoft\Windows\Windows Search]
+; 0 = Off (Secure)
+; 1 = On (Default)
+"AllowCortana"=dword:00000000
