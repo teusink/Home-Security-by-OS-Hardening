@@ -196,6 +196,21 @@ Windows Registry Editor Version 5.00
 ; 1 = On
 "VoiceActivationEnableAboveLockscreen"=dword:00000000
 
+;;; Enable Clipboard History Feature
+[HKEY_CURRENT_USER\Software\Microsoft\Clipboard]
+; <deleted> = (Default)
+; 0 = Off (Secure)
+; 1 = On
+"EnableClipboardHistory"=dword:00000001
+
+;;; Disable Clipboard Cloud Sync Feature
+[HKEY_CURRENT_USER\Software\Microsoft\Clipboard]
+; <deleted> = (Default)
+; 0 = Off (Secure)
+; 1 = On
+"EnableCloudClipboard"=dword:00000000
+"CloudClipboardAutomaticUpload"=dword:00000000
+
 ;;; WARNING: THE SETTINGS BELOW CANNOT BE UNDONE THROUGH A GUI!
 
 ;;; Turn off "Automatic installation apps"

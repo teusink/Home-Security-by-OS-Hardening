@@ -144,3 +144,12 @@ Windows Registry Editor Version 5.00
 "OemPreInstalledAppsEnabled"=dword:00000001
 "SilentInstalledAppsEnabled"=dword:00000001
 "ContentDeliveryAllowed"=dword:00000001
+
+;;; Enable Clipboard History Feature
+[HKEY_CURRENT_USER\Software\Microsoft\Clipboard]
+"EnableClipboardHistory"=-
+
+;;; Disable Clipboard Cloud Sync Feature
+[HKEY_CURRENT_USER\Software\Microsoft\Clipboard]
+"EnableCloudClipboard"=-
+"CloudClipboardAutomaticUpload"=-

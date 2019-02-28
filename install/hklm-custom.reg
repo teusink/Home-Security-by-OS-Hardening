@@ -117,3 +117,10 @@ Windows Registry Editor Version 5.00
 ; 0 = Off (Secure)
 ; 1 = On (Default)
 "AllowCortana"=dword:00000000
+
+;;; Enable Clipboard History capability
+[HKEY_LOCAL_MACHINE\SOFTWARE\Policies\Microsoft\Windows\System]
+; <deleted> = (Default)
+; 0 = Off (Secure)
+; 1 = On
+"AllowClipboardHistory"=dword:00000001
