@@ -22,12 +22,12 @@ My other goal is to gain a good understanding on Windows 10 Hardening and other 
 Scope is an important part for this project. Otherwise you can endlessly install security tools and solutions which in the end all have a trade-off. This might be resources and performance, but also your own precious time to keep it running :).
 
 The constraints are:
-- Windows 10 Home & Pro Build 1803
+- Windows 10 Home & Pro Build 1809 (compatible with 1803)
 - For the larger part, the settings needs to be able to be set through a GUI. I'll make some exceptions here and there (because there was never a GUI and its impact is rather important).
 - Some settings can also be set by using a registry-key file (.reg). I will supply these files.
 - Settings must be able to be set without using Group Policy Object (GPO), because that is not present (by default) on Windows 10 Home.
 
-I focus on Home, but why? The Home edition is by far the most used edition by regular consumers (even small business uses it sometimes due to buying their laptops or desktops at the local retailer...). Pro is more focused on the core IT, and Enterprise is, well, for enterprises. The GPO is only present on Pro and above. Where possible I take Pro into account also.
+I focus on Home, but why? The Home edition is by far the most used edition by regular consumers (even small business uses it sometimes due to buying their laptops or desktops at the local retailer...). Pro is more focused on the core IT, and Enterprise is, well, for enterprises. The GPO is only present on Pro and above. Though, where possible I take Pro into account also.
 
 ## Read instructions
 
@@ -41,7 +41,8 @@ From a Graphical User Interface (GUI) perspective I will touch every relevant se
 Whenever you upgrade to a newer build, sometimes there are keys and entries going obsolete. Through this registry file you can remove them safely: [[hk-remove-obsolete-entries]](https://github.com/teusink/Home-Security-by-W10-Hardening/blob/master/install/hk-remove-obsolete-entries.reg)
 
 Upgrades included in the Registry file:
-- From 1709 to 1803
+- From 1803 to 1809: not needed
+- From 1709 to 1803: included
 
 # Control Panel
 
@@ -231,8 +232,8 @@ Note: Settings below only available when third-party anti-malware is NOT install
 - Virus & threat Protection: Settings: Notifications: Domain firewall: On
 - Virus & threat Protection: Settings: Notifications: Private firewall: On
 - Virus & threat Protection: Settings: Notifications: Public firewall: On
-- App & browser control: Check apps and files: Warn [[hklm-custom]](https://github.com/teusink/Home-Security-by-W10-Hardening/blob/master/install/hklm-custom.reg)
-- App & browser control: SmartScreen for Edge: Warn [[hkcu-custom]](https://github.com/teusink/Home-Security-by-W10-Hardening/blob/master/install/hkcu-custom.reg)
+- App & browser control: Check apps and files: Warn [[hklm-cis-level1]](https://github.com/teusink/Home-Security-by-W10-Hardening/blob/master/install/hklm-cis-level1.reg) & [[hklm-custom]](https://github.com/teusink/Home-Security-by-W10-Hardening/blob/master/install/hklm-custom.reg)
+- App & browser control: SmartScreen for Edge: Block [[hklm-cis-level1]](https://github.com/teusink/Home-Security-by-W10-Hardening/blob/master/install/hklm-cis-level1.reg) & [[hkcu-custom]](https://github.com/teusink/Home-Security-by-W10-Hardening/blob/master/install/hkcu-custom.reg)
 - App & browser control: SmartScreen for Windows Store apps: Warn [[hkcu-custom]](https://github.com/teusink/Home-Security-by-W10-Hardening/blob/master/install/hkcu-custom.reg)
 - App & browser control: Exploit protection: Control Flow Gaurd (CFG): On by default
 - App & browser control: Exploit protection: Data Execution Prevention (DEP): On by default

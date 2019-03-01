@@ -728,7 +728,7 @@ Windows Registry Editor Version 5.00
 ; 0 = Off
 ; 1 = On (CIS L2)
 ; NON-COMPLIANCE TO NOT DISRUPT COMMON HOME FEATURES
-;"PreventOverrideAppRepUnknown"=dword:0000000
+"PreventOverrideAppRepUnknown"=dword:0000001
 
 ;;; 18.9.41.10 (L2) Ensure 'Prevent bypassing SmartScreen prompts for sites' is set to 'Enabled'
 ;[HKEY_LOCAL_MACHINE\SOFTWARE\Policies\Microsoft\MicrosoftEdge\PhishingFilter]
@@ -736,7 +736,7 @@ Windows Registry Editor Version 5.00
 ; 0 = Off
 ; 1 = On (CIS L2)
 ; NON-COMPLIANCE TO NOT DISRUPT COMMON HOME FEATURES
-;"PreventOverride"=dword:0000000
+"PreventOverride"=dword:0000001
 
 ;;; 18.9.41.11 (L2) Ensure 'Prevent using Localhost IP address for WebRTC' is set to 'Enabled'
 ;[HKEY_LOCAL_MACHINE\SOFTWARE\Policies\Microsoft\MicrosoftEdge\Main]

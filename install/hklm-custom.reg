@@ -65,6 +65,12 @@ Windows Registry Editor Version 5.00
 ; Off: Turn off
 "SmartScreenEnabled"="Warn"
 
+;;; SmartScreen Edge: Enabled
+[HKEY_LOCAL_MACHINE\SOFTWARE\Policies\Microsoft\MicrosoftEdge\PhishingFilter]
+; 0 = Off (Default)
+; 1 = On (Secure)
+"EnabledV9"=dword:00000001
+
 ;;; Sign-in after Windows Update: On
 [HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Windows NT\CurrentVersion\Winlogon]
 ; 0 = Off (Secure)
