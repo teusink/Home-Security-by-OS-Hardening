@@ -303,23 +303,23 @@ In order to even more harden your system, add the registry key-sets below to you
 - Automatic installation of Windows Store apps disabled.
 
 ## Registry Files
-All settings mentioned above followed with an asterisk (*) can also be found below in the registry files. Keep in mind they are based on the CIS Benchmarks, that neither registry file receives 100% compliance!
+All settings mentioned above followed with an asterisk (*) can also be found below in the registry files. Keep in mind the the files below are based on the CIS Benchmarks, that neither registry file receives 100% compliance!
 
 If you have Windows 10 Home/Pro:
-- HKEY_LOCAL_MACHINE - Windows 10 CIS Level 1 & 2 () [[REG]](https://github.com/teusink/Home-Security-by-W10-Hardening/blob/master/files/hklm-cis-windows.reg)
-- HKEY_CURRENT_USER - Windows 10 CIS Level 1 & 2 () [[REG]](https://github.com/teusink/Home-Security-by-W10-Hardening/blob/master/files/hkcu-cis-windows.reg)
+- HKEY_LOCAL_MACHINE - Windows 10 CIS Level 1 & 2 [[REG]](https://github.com/teusink/Home-Security-by-W10-Hardening/blob/master/files/hklm-cis-windows.reg)
+- HKEY_CURRENT_USER - Windows 10 CIS Level 1 & 2 [[REG]](https://github.com/teusink/Home-Security-by-W10-Hardening/blob/master/files/hkcu-cis-windows.reg)
 - HKEY_LOCAL_MACHINE - Windows 10 Custom hardening [[REG]](https://github.com/teusink/Home-Security-by-W10-Hardening/blob/master/files/hklm-custom.reg)
 - HKEY_LOCAL_MACHINE - Windows Client and Server Encryption hardening [[REG]](https://github.com/teusink/Home-Security-by-W10-Hardening/blob/master/files/hklm-encryption.reg)
 - HKEY_CURRENT_USER - Windows 10 User level settings hardening [[REG]](https://github.com/teusink/Home-Security-by-W10-Hardening/blob/master/files/hkcu-custom.reg)
 
 If you use Windows Defender with your Windows installment:
-- HKEY_LOCAL_MACHINE - Windows 10 CIS L1 & L2 - Windows Defender () [[REG]](https://github.com/teusink/Home-Security-by-W10-Hardening/blob/master/files/hklm-cis-defender.reg)
+- HKEY_LOCAL_MACHINE - Windows 10 CIS L1 & L2 - Windows Defender [[REG]](https://github.com/teusink/Home-Security-by-W10-Hardening/blob/master/files/hklm-cis-defender.reg)
 
 If you use BitLocker with your Windows installment:
-- HKEY_LOCAL_MACHINE - Windows 10 CIS BitLocker () [[REG]](https://github.com/teusink/Home-Security-by-W10-Hardening/blob/master/files/hklm-cis-bitlocker.reg)
+- HKEY_LOCAL_MACHINE - Windows 10 CIS BitLocker [[REG]](https://github.com/teusink/Home-Security-by-W10-Hardening/blob/master/files/hklm-cis-bitlocker.reg)
 
 If you use Windows Local Firewall with your Windows installment:
-- HKEY_LOCAL_MACHINE - Windows 10 CIS L1 & L2 - Windows Local Firewall() [[REG]](https://github.com/teusink/Home-Security-by-W10-Hardening/blob/master/files/hklm-cis-firewall.reg)
+- HKEY_LOCAL_MACHINE - Windows 10 CIS L1 & L2 - Windows Local Firewall [[REG]](https://github.com/teusink/Home-Security-by-W10-Hardening/blob/master/files/hklm-cis-firewall.reg)
 
 If you use Google Chrome:
 - HKEY_LOCAL_MACHINE - Google Chrome hardening [[REG]](https://github.com/teusink/Home-Security-by-W10-Hardening/blob/master/files/hklm-cis-chrome.reg)
