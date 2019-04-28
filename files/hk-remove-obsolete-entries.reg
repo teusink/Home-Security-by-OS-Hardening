@@ -1,0 +1,32 @@
+Windows Registry Editor Version 5.00
+
+;;; Windows 10 Home & Pro Hardening
+;;; Repository: https://github.com/teusink/Home-Security-by-W10-Hardening/
+
+;;; Registry target: HKEY_LOCAL_MACHINE & HKEY_CURRENT_USER
+;;; Source: Various online sources
+;;; Author: Joram Teusink
+
+;;; NOTICE: THE SETTINGS BELOW CANNOT BE UNDONE THROUGH A GUI!
+
+;;; Remove all wrongfully added keys in earlier registry files (my bad)
+
+[HKEY_LOCAL_MACHINE\SOFTWARE\Policies\Microsoft\Windows\CurrentVersion\AppModel\StateManager]
+"PreventOverride"=-
+"PreventOverrideAppRepUnknown"=-
+
+[HKEY_LOCAL_MACHINE\SOFTWARE\Policies\Microsoft\Windows\Windows Search]
+"AllowIndexingEncryptedStoresOrItems"=-
+
+[HKEY_LOCAL_MACHINE\SOFTWARE\Policies\Microsoft\WindowsStore]
+"AutoDownload"=-
+
+;;; Remove all obsolete keys since Windows 10, version 1803
+
+[HKEY_LOCAL_MACHINE\SOFTWARE\Policies\Microsoft\Windows\PreviewBuilds]
+"EnableConfigFlighting"=-
+
+;;; Remove all obsolete keys since Windows 10, version 1709
+
+[HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\WcmSvc\wifinetworkmanager\config]
+"AutoConnectAllowedOEM"=-

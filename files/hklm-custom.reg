@@ -1,0 +1,271 @@
+Windows Registry Editor Version 5.00
+
+;;; Windows 10 Home & Pro Hardening
+;;; Repository: https://github.com/teusink/Home-Security-by-W10-Hardening/
+
+;;; Registry target: HKEY_LOCAL_MACHINE
+;;; Source: Various online sources
+;;; Author: Joram Teusink
+
+;;; Startup and Recovery - Debug Information: None
+[HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Control\CrashControl]
+"AutoReboot"=dword:0000001						; Default: 1
+"LogEvent"=dword:0000001						; Default: 1
+"MinidumpsCount"=dword:0000001					; Default: 5
+"Overwrite"=dword:0000001						; Default: 1
+"CrashDumpEnabled"=dword:0000000				; Default: 1
+"AlwaysKeepMemoryDump"=dword:0000000			; Default: 1
+
+;;; Remote Assistance: Disable
+[HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Control\Remote Assistance]
+"CreateEncryptedOnlyTickets"=dword:0000001		; Default: 0
+"fAllowFullControl"=dword:0000001				; Default: 1
+"fAllowToGetHelp"=dword:0000000					; Default: 1
+"fEnableChatControl"=dword:0000001				; Default: 1
+"MaxTicketExpiry"=dword:0000001					; Default: 1
+"MaxTicketExpiryUnits"=dword:0000001			; Default: 1
+
+;;; Find my device: On
+[HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Settings\FindMyDevice]
+; 0000000 = Off (Default)
+; 0000001 = On (Secure)
+"LocationSyncEnabled"=dword:0000001
+
+;;; App Advertising ID: Off
+[HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Windows\CurrentVersion\AdvertisingInfo]
+; 0000000 = Off (Secure)
+; 0000001 = On (Default)
+"Enabled"=dword:0000000
+
+;;; Project to this PC: Off
+[HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\MiracastReceiver]
+"NetworkQualificationEnabled"=dword:0000000		; Default: 0000001
+"ConsentToast"=dword:0000002					; Default: 0000000
+"Primary Authorization Method"=dword:0000003	; Default: 0000002
+"Secondary Authorization Method"=dword:0000000	; Default: 0000003
+"Tertiary Authorization Method"=dword:0000000	; Default: 0000000
+"EnabledOnACOnly"=dword:0000000					; Default: 0000001
+[HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\PlayToReceiver]
+; 0000000 = Off (Secure)
+; 0000001 = On (Default)
+"AutoEnabled"=dword:0000000
+
+;;; Hotspots 2.0 networks: Off
+[HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\WlanSvc\AnqpCache]
+; 0000000 = Off (Secure)
+; 0000001 = On (Default)
+"OsuRegistrationStatus"=dword:0000000
+
+;;; SmartScreen Apps and Files: Warn
+[HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Windows\CurrentVersion\Explorer]
+; Block = Block execution/opening (Secure)
+; Warn = Warn before execution/opening (Default)
+; Off = Turn off
+"SmartScreenEnabled"="Warn"
+
+;;; Sign-in after Windows Update: On
+[HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Windows NT\CurrentVersion\Winlogon]
+; 0000000 = Off (Secure)
+; 0000001 = On (Default)
+"ARSOUserConsent"=dword:0000001
+
+;;; LMHOSTS lookup: Off
+[HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Services\NetBT\Parameters]
+; 0000000 = Off (Secure)
+; 0000001 = On (Default)
+"EnableLMHOSTS"=dword:0000000
+
+;;; WARNING: THE SETTINGS BELOW CANNOT BE UNDONE THROUGH A GUI!
+
+;;; Windows Error Reporting: Off
+[HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Windows\Windows Error Reporting]
+; 0000000 = Off (Default)
+; 0000001 = On (Secure)
+"Disabled"=dword:0000001
+
+;;; DLL search path algorithm: Strict DLL search order
+;; All scenarios
+; <deleted> = (Default)
+; FFFFFFF = Removes the current working directory from the default DLL search order
+;; Scenario 1: The application is started from a local folder, such as C:\Program Files
+; 0000000: Uses the default DLL search path that was mentioned earlier
+; 0000001: Blocks a DLL Load from the current working directory if the current working directory is set to a WebDAV folder
+; 0000002: Blocks a DLL Load from the current working directory if the current working directory is set to a remote folder (such as a WebDAV or UNC location) (most Secure)
+;; Scenario 2: The application is started from a remote folder, such as \\remote\shareremote\share)
+; 0000000: Uses the default DLL search path that was mentioned earlier
+; 0000001: Blocks a DLL Load from the current working directory if the current working directory is set to a WebDAV folder
+; 0000002: Allows DLL Load from the current working directory if the current working directory is set to a remote folder (such as a WebDAV or UNC location) (most Secure)
+[HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Control\Session Manager]
+"CWDIllegalInDllSearch"=dword:0000000
+
+;;; Disable Fast Restart to prevent disk encryption errors with third party tools
+[HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Control\Session Manager\Power]
+; 0000000 = Off (Secure)
+; 0000001 = On (Default)
+"HiberbootEnabled"=dword:0000000
+
+;;; Disable Domain Name Devolution
+[HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Services\Tcpip\Parameters]
+; 0000000 = Off (Secure)
+; 0000001 = On (Default)
+"UseDomainNameDevolution"=dword:0000000
+
+;;; Enable Clipboard History capability
+[HKEY_LOCAL_MACHINE\SOFTWARE\Policies\Microsoft\Windows\System]
+; <deleted> = (Default)
+; 0000000 = Off (Secure)
+; 0000001 = On
+"AllowClipboardHistory"=dword:0000001
+
+;;; WARNING: Settings below are gone in newer CIS Benchmarks, but seemingly still supported
+
+;;; (CIS-1709): 18.8.26.1 (L1) Ensure 'Untrusted Font Blocking' is set to 'Enabled: Block untrusted fonts and log events'
+[HKEY_LOCAL_MACHINE\SOFTWARE\Policies\Microsoft\Windows NT\MitigationOptions]
+; <deleted> = (Default)
+; 00,10,a5,d4,e8,00,00,00 (1000000000000) = Block untrusted fonts and log events (CIS)
+; 00,20,4a,a9,d1,01,00,00 (2000000000000) = Do not block untrusted fonts
+; 00,30,ef,7d,ba,02,00,00 (3000000000000) = Log events without blocking untrusted fonts
+"MitigationOptions_FontBocking"=hex(b):00,10,a5,d4,e8,00,00,00
+
+;;; (CIS-1709): 18.9.5.1 (L2) Ensure 'Let Windows apps access account information' is set to 'Enabled: Force Deny'
+;[HKEY_LOCAL_MACHINE\SOFTWARE\Policies\Microsoft\Windows\AppPrivacy]
+; <deleted> = (Default)
+; 0000000 = User is in control
+; 0000001 = Force Allow
+; 0000002 = Force Deny (CIS)
+; NON-COMPLIANCE TO NOT DISRUPT COMMON HOME FEATURES
+;"LetAppsAccessAccountInfo"=dword:0000000
+
+;;; (CIS-1709): 18.9.5.2 (L2) Ensure 'Let Windows apps access call history' is set to 'Enabled: Force Deny'
+;[HKEY_LOCAL_MACHINE\SOFTWARE\Policies\Microsoft\Windows\AppPrivacy]
+; <deleted> = (Default)
+; 0000000 = User is in control
+; 0000001 = Force Allow
+; 0000002 = Force Deny (CIS)
+; NON-COMPLIANCE TO NOT DISRUPT COMMON HOME FEATURES
+;"LetAppsAccessCallHistory"=dword:0000000
+
+;;; (CIS-1709): 18.9.5.3 (L2) Ensure 'Let Windows apps access contacts' is set to 'Enabled: Force Deny'
+;[HKEY_LOCAL_MACHINE\SOFTWARE\Policies\Microsoft\Windows\AppPrivacy]
+; <deleted> = (Default)
+; 0000000 = User is in control
+; 0000001 = Force Allow
+; 0000002 = Force Deny (CIS)
+; NON-COMPLIANCE TO NOT DISRUPT COMMON HOME FEATURES
+;"LetAppsAccessContacts"=dword:0000000
+
+;;; (CIS-1709): 18.9.5.4 (L2) Ensure 'Let Windows apps access email' is set to 'Enabled: Force Deny'
+;[HKEY_LOCAL_MACHINE\SOFTWARE\Policies\Microsoft\Windows\AppPrivacy]
+; <deleted> = (Default)
+; 0000000 = User is in control
+; 0000001 = Force Allow
+; 0000002 = Force Deny (CIS)
+; NON-COMPLIANCE TO NOT DISRUPT COMMON HOME FEATURES
+;"LetAppsAccessEmail"=dword:0000000
+
+;;; (CIS-1709): 18.9.5.5 (L2) Ensure 'Let Windows apps access location' is set to 'Enabled: Force Deny'
+;[HKEY_LOCAL_MACHINE\SOFTWARE\Policies\Microsoft\Windows\AppPrivacy]
+; <deleted> = (Default)
+; 0000000 = User is in control
+; 0000001 = Force Allow
+; 0000002 = Force Deny (CIS)
+; NON-COMPLIANCE TO NOT DISRUPT COMMON HOME FEATURES
+;"LetAppsAccessLocation"=dword:0000000
+
+;;; (CIS-1709): 18.9.5.6 (L2) Ensure 'Let Windows apps access messaging' is set to 'Enabled: Force Deny'
+;[HKEY_LOCAL_MACHINE\SOFTWARE\Policies\Microsoft\Windows\AppPrivacy]
+; <deleted> = (Default)
+; 0000000 = User is in control
+; 0000001 = Force Allow
+; 0000002 = Force Deny (CIS)
+; NON-COMPLIANCE TO NOT DISRUPT COMMON HOME FEATURES
+;"LetAppsAccessMessaging"=dword:0000000
+
+;;; (CIS-1709): 18.9.5.7 (L2) Ensure 'Let Windows apps access motion' is set to 'Enabled: Force Deny'
+;[HKEY_LOCAL_MACHINE\SOFTWARE\Policies\Microsoft\Windows\AppPrivacy]
+; <deleted> = (Default)
+; 0000000 = User is in control
+; 0000001 = Force Allow
+; 0000002 = Force Deny (CIS)
+; NON-COMPLIANCE TO NOT DISRUPT COMMON HOME FEATURES
+;"LetAppsAccessMotion"=dword:0000000
+
+;;; (CIS-1709): 18.9.5.8 (L2) Ensure 'Let Windows apps access the calendar' is set to 'Enabled: Force Deny'
+;[HKEY_LOCAL_MACHINE\SOFTWARE\Policies\Microsoft\Windows\AppPrivacy]
+; <deleted> = (Default)
+; 0000000 = User is in control
+; 0000001 = Force Allow
+; 0000002 = Force Deny (CIS)
+; NON-COMPLIANCE TO NOT DISRUPT COMMON HOME FEATURES
+;"LetAppsAccessCalendar"=dword:0000000
+
+;;; (CIS-1709): 18.9.5.9 (L2) Ensure 'Let Windows apps access the camera' is set to 'Enabled: Force Deny'
+;[HKEY_LOCAL_MACHINE\SOFTWARE\Policies\Microsoft\Windows\AppPrivacy]
+; <deleted> = (Default)
+; 0000000 = User is in control
+; 0000001 = Force Allow
+; 0000002 = Force Deny (CIS)
+; NON-COMPLIANCE TO NOT DISRUPT COMMON HOME FEATURES
+;"LetAppsAccessCamera"=dword:0000000
+
+;;; (CIS-1709): 18.9.5.10 (L2) Ensure 'Let Windows apps access the microphone' is set to 'Enabled: Force Deny'
+;[HKEY_LOCAL_MACHINE\SOFTWARE\Policies\Microsoft\Windows\AppPrivacy]
+; <deleted> = (Default)
+; 0000000 = User is in control
+; 0000001 = Force Allow
+; 0000002 = Force Deny (CIS)
+; NON-COMPLIANCE TO NOT DISRUPT COMMON HOME FEATURES
+;"LetAppsAccessMicrophone"=dword:0000000
+
+;;; (CIS-1709): 18.9.5.11 (L2) Ensure 'Let Windows apps access trusted devices' is set to 'Enabled: Force Deny'
+;[HKEY_LOCAL_MACHINE\SOFTWARE\Policies\Microsoft\Windows\AppPrivacy]
+; <deleted> = (Default)
+; 0000000 = User is in control
+; 0000001 = Force Allow
+; 0000002 = Force Deny (CIS)
+; NON-COMPLIANCE TO NOT DISRUPT COMMON HOME FEATURES
+;"LetAppsAccessTrustedDevices"=dword:0000000
+
+;;; (CIS-1709): 18.9.5.12 (L2) Ensure 'Let Windows apps control radios' is set to 'Enabled: Force Deny'
+;[HKEY_LOCAL_MACHINE\SOFTWARE\Policies\Microsoft\Windows\AppPrivacy]
+; <deleted> = (Default)
+; 0000000 = User is in control
+; 0000001 = Force Allow
+; 0000002 = Force Deny (CIS)
+; NON-COMPLIANCE TO NOT DISRUPT COMMON HOME FEATURES
+;"LetAppsAccessRadios"=dword:0000000
+
+;;; (CIS-1709): 18.9.5.13 (L2) Ensure 'Let Windows apps sync with devices' is set to 'Enabled: Force Deny'
+;[HKEY_LOCAL_MACHINE\SOFTWARE\Policies\Microsoft\Windows\AppPrivacy]
+; <deleted> = (Default)
+; 0000000 = User is in control
+; 0000001 = Force Allow
+; 0000002 = Force Deny (CIS)
+; NON-COMPLIANCE TO NOT DISRUPT COMMON HOME FEATURES
+;"LetAppsSyncWithDevices"=dword:0000000
+
+;;; (CIS-1709): 18.9.5.14 (L2) Ensure 'Let Windows apps make phone calls' is set to 'Enabled: Force Deny'
+;[HKEY_LOCAL_MACHINE\SOFTWARE\Policies\Microsoft\Windows\AppPrivacy]
+; <deleted> = (Default)
+; 0000000 = User is in control
+; 0000001 = Force Allow
+; 0000002 = Force Deny (CIS)
+; NON-COMPLIANCE TO NOT DISRUPT COMMON HOME FEATURES
+;"LetAppsAccessPhone"=dword:0000000
+
+;;; (CIS-1709): 18.9.5.15 (L2) Ensure 'Let Windows apps access notifications' is set to 'Enabled: Force Deny'
+;[HKEY_LOCAL_MACHINE\SOFTWARE\Policies\Microsoft\Windows\AppPrivacy]
+; <deleted> = (Default)
+; 0000000 = User is in control
+; 0000001 = Force Allow
+; 0000002 = Force Deny (CIS)
+; NON-COMPLIANCE TO NOT DISRUPT COMMON HOME FEATURES
+;"LetAppsAccessNotifications"=dword:0000000
+
+;;; (CIS-1709): 18.9.41.1 (L2) Ensure 'Allow Extensions' is set to 'Disabled'
+;[HKEY_LOCAL_MACHINE\SOFTWARE\Policies\Microsoft\MicrosoftEdge\Extensions]
+; <deleted> = (Default)
+; 0000000 = Off (CIS)
+; 0000001 = On
+; NON-COMPLIANCE TO NOT DISRUPT COMMON HOME FEATURES
+;"ExtensionsEnabled"=dword:0000001

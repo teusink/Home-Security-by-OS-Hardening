@@ -1,4 +1,4 @@
-# Home-Security-by-W10-Hardening
+﻿# Home-Security-by-W10-Hardening
 Description on how I configured the installation and Security of Windows 10 Home and Pro, and how I keep it fit for use and purpose.
 
 **Table of Contents**
@@ -22,41 +22,44 @@ My other goal is to gain a good understanding on Windows 10 Hardening and other 
 Scope is an important part for this project. Otherwise you can endlessly install security tools and solutions which in the end all have a trade-off. This might be resources and performance, but also your own precious time to keep it running :).
 
 The constraints are:
-- Windows 10 Home & Pro Build 1809 (compatible with 1803)
+- Windows 10 Home and Pro Build 1809 (compatible with 1803)
 - For the larger part, the settings needs to be able to be set through a GUI. I'll make some exceptions here and there (because there was never a GUI and its impact is rather important).
-- Some settings can also be set by using a registry-key file (.reg). I will supply these files.
+- Many settings can also (and sometimes only) be set by using a registry-key file (.reg). I will supply these files.
 - Settings must be able to be set without using Group Policy Object (GPO), because that is not present (by default) on Windows 10 Home.
 
-I focus on Home, but why? The Home edition is by far the most used edition by regular consumers (even small business uses it sometimes due to buying their laptops or desktops at the local retailer...). Pro is more focused on the core IT, and Enterprise is, well, for enterprises. The GPO is only present on Pro and above. Though, where possible I take Pro into account also.
+The reason why I focus on the Home edition, is that it is by far the most used edition by regular consumers (even small business uses it sometimes due to buying their laptops or desktops at the local retailer...). Pro is more focused on the core IT, and Enterprise is, well, for enterprises. The GPO is only present on Pro and above. Though, where possible I take Pro into account also. It might be so that this guide also works for Education editions, but I have NOT tested it!
+
+In all cases, using this guide is entirely your own responsibility. Be careful and test it first yourself.
 
 ## Read instructions
 
-From a Graphical User Interface (GUI) perspective I will touch every relevant setting. Whenever there is a mention of, for instance, [[hklm-cis-level1]](https://github.com/teusink/Home-Security-by-W10-Hardening/blob/master/install/hklm-cis-level1.reg) then you can also set the setting through the use of the Windows Registry.
+From a Graphical User Interface (GUI) perspective I will touch every relevant setting. Whenever possible I have added the setting in a registry file. Those will be marked with an asterisk (*).
 
 - HKLM stands for HKEY_LOCAL_MACHINE. It's about settings that are applied system wide. Adding it once to a system is enough.
 - HKCU stands for HKEY_CURRENT_USER. It's about settings that are applied per user. These needs to be added per user.
 
 # Upgrades to newer Windows 10 builds
 
-Whenever you upgrade to a newer build, sometimes there are keys and entries going obsolete. Through this registry file you can remove them safely: [[hk-remove-obsolete-entries]](https://github.com/teusink/Home-Security-by-W10-Hardening/blob/master/install/hk-remove-obsolete-entries.reg)
+Whenever you upgrade to a newer build, sometimes there are keys and entries going obsolete. Through this registry file you can remove them safely: [[hk-remove-obsolete-entries]](https://github.com/teusink/Home-Security-by-W10-Hardening/blob/master/files/hk-remove-obsolete-entries.reg)
 
 Upgrades included in the Registry file:
-- From 1803 to 1809: not needed
-- From 1709 to 1803: included
+- From CIS 1709 to CIS 1803: included
+- From Windows 1803 to Windows 1809: not needed
+- From Windows 1709 to Windows 1803: included
 
 # Control Panel
 
-These are the settings that are done through the use of the Control Panel. Set it's view to `Large icons` to better see all options.
+These are the settings that are done through the use of the Control Panel. Set it's view to `Large icons` to better see all options. Only settings that are different from the default are mentioned here.
 
 ## System and Security
-- Security and Maintenance: User Account Control: Always notify [[hklm-cis-level1]](https://github.com/teusink/Home-Security-by-W10-Hardening/blob/master/install/hklm-cis-level1.reg)
-- System: Advanced system settings: Advanced: Performance Settings: Visual Effects: Adjust for best appearance [[hkcu-custom]](https://github.com/teusink/Home-Security-by-W10-Hardening/blob/master/install/hkcu-custom.reg)
+- Security and Maintenance: User Account Control: Always notify *
+- System: Advanced system settings: Advanced: Performance Settings: Visual Effects: Adjust for best appearance *
 - System: Advanced system settings: Advanced: Performance Settings: Advanced: Virtual memory: Fixed size for recommended values
 - System: Advanced system settings: Advanced: Performance Settings: Data Execution Prevention: Turn on DEP for all
-- System: Advanced system settings: Advanced: Startup and Recovery settings: Write debug information: None [[hklm-custom]](https://github.com/teusink/Home-Security-by-W10-Hardening/blob/master/install/hklm-custom.reg)
-- System: Advanced system settings: Remote: Remote Assistance: Advanced: Set the maximum amount of time invitations can remain open: 1 Hours [[hklm-custom]](https://github.com/teusink/Home-Security-by-W10-Hardening/blob/master/install/hklm-custom.reg)
-- System: Advanced system settings: Remote: Remote Assistance: Advanced: Create invitations that can only be used from computers running Windows Vista or later: On [[hklm-custom]](https://github.com/teusink/Home-Security-by-W10-Hardening/blob/master/install/hklm-custom.reg)
-- System: Advanced system settings: Remote: Remote Assistance: Disable [[hklm-custom]](https://github.com/teusink/Home-Security-by-W10-Hardening/blob/master/install/hklm-custom.reg)
+- System: Advanced system settings: Advanced: Startup and Recovery settings: Write debug information: None *
+- System: Advanced system settings: Remote: Remote Assistance: Advanced: Set the maximum amount of time invitations can remain open: 1 Hours *
+- System: Advanced system settings: Remote: Remote Assistance: Advanced: Create invitations that can only be used from computers running Windows Vista or later: On *
+- System: Advanced system settings: Remote: Remote Assistance: Disable *
 - Device Encryption: Back up recovery key
 - Flash Player (if present)
   - Storage: Block all sites from storing
@@ -98,38 +101,42 @@ These are the settings that are done through the use of the Control Panel. Set i
   - Security: Enable Java content for browser and Web Start applications: Off
   - Security: Security level for applications not on the Exception Site list: High
 
-For automated enabling/disabling Windows Features, execute this file in the Command Promt with Administrative Privileges (right-click -> Run as Administrator): [[windows-features.bat]](https://github.com/teusink/Home-Security-by-W10-Hardening/blob/master/install/)
+For automated enabling/disabling Windows Features, execute this file in the Command Promt with Administrative Privileges (right-click -> Run as Administrator): [[windows-features.bat]](https://github.com/teusink/Home-Security-by-W10-Hardening/blob/master/files/)
 
 ## Network and Internet
 - Internet Options: Connections: LAN settings:
   - Automatically detect settings: Off
-  - Use automatic configuration script: Off (unless explicitly used!)
+  - Use automatic configuration script: Off (unless explicitly required)
+- Advanced
+  - Security: Block unsecured images with other mixed content
+  - Security: Send Do Not Track requests to sites you visit in Internet Explorer: On
+  - Security: Warn if changing between secure and not secure mode: On
   
 # Settings
 
 These are the settings that are done through the use of the new Windows Settings interface.
 
 ## System
-- Notifications & actions: Show me the Windows welcome experience: Off [[hklm-cis-level1]](https://github.com/teusink/Home-Security-by-W10-Hardening/blob/master/install/hklm-cis-level1.reg) & [[hkcu-custom]](https://github.com/teusink/Home-Security-by-W10-Hardening/blob/master/install/hkcu-custom.reg)
-- Notifications & actions: Get tips, tricks, and suggestions as you use Windows: Off [[hkcu-custom]](https://github.com/teusink/Home-Security-by-W10-Hardening/blob/master/install/hkcu-custom.reg)
-- Storage (Sense): On [[hkcu-custom]](https://github.com/teusink/Home-Security-by-W10-Hardening/blob/master/install/hkcu-custom.reg)
-- Storage (Sense): Delete temporary files that my apps aren't using: On [[hkcu-custom]](https://github.com/teusink/Home-Security-by-W10-Hardening/blob/master/install/hkcu-custom.reg)
-- Storage (Sense): Delete files that have been in the recycle bin for over: 30 days [[hkcu-custom]](https://github.com/teusink/Home-Security-by-W10-Hardening/blob/master/install/hkcu-custom.reg)
-- Storage (Sense): Delete files in the Download folder that have been there for over: Never [[hkcu-custom]](https://github.com/teusink/Home-Security-by-W10-Hardening/blob/master/install/hkcu-custom.reg)
-- Projecting to this PC: Always off [[hklm-cis-level1]](https://github.com/teusink/Home-Security-by-W10-Hardening/blob/master/install/hklm-cis-level1.reg) & [[hkcu-custom]](https://github.com/teusink/Home-Security-by-W10-Hardening/blob/master/install/hkcu-custom.reg)
-- Projecting to this PC: Ask to project to this PC: Every time [[hkcu-custom]](https://github.com/teusink/Home-Security-by-W10-Hardening/blob/master/install/hkcu-custom.reg)
-- Projecting to this PC: Require PIN for sharing: On [[hklm-cis-level1]](https://github.com/teusink/Home-Security-by-W10-Hardening/blob/master/install/hklm-cis-level1.reg)
-- Projecting to this PC: This PC can be discovered for projection only when it is plugged in: Off [[hklm-cis-level1]](https://github.com/teusink/Home-Security-by-W10-Hardening/blob/master/install/hklm-cis-level1.reg) & [[hkcu-custom]](https://github.com/teusink/Home-Security-by-W10-Hardening/blob/master/install/hkcu-custom.reg)
+- Notifications & actions: Show me the Windows welcome experience: Off *
+- Notifications & actions: Get tips, tricks, and suggestions as you use Windows: Off *
+- Storage (Sense): On *
+- Storage (Sense): Delete temporary files that my apps aren't using: On *
+- Storage (Sense): Delete files that have been in the recycle bin for over: 30 days *
+- Storage (Sense): Delete files in the Download folder that have been there for over: Never *
+- Projecting to this PC: Always off *
+- Projecting to this PC: Ask to project to this PC: Every time *
+- Projecting to this PC: Require PIN for sharing: On *
+- Projecting to this PC: This PC can be discovered for projection only when it is plugged in: Off *
 - Shared experiences: Nearby sharing: Off
-- Shared experiences: I can share or receive from: My devices only [[hkcu-custom]](https://github.com/teusink/Home-Security-by-W10-Hardening/blob/master/install/hkcu-custom.reg)
+- Shared experiences: I can share or receive from: My devices only *
 - Shared experiences: Share across devices: On
-- Shared experiences: I can share or receive from: My devices only [[hkcu-custom]](https://github.com/teusink/Home-Security-by-W10-Hardening/blob/master/install/hkcu-custom.reg)
-- Clipboard: Clipboard history: On [[hkcu-custom]](https://github.com/teusink/Home-Security-by-W10-Hardening/blob/master/install/hkcu-custom.reg) & [[hkcu-custom]](https://github.com/teusink/Home-Security-by-W10-Hardening/blob/master/install/hkcu-custom.reg)
-- Clipboard: Sync across devices: Off [[hkcu-custom]](https://github.com/teusink/Home-Security-by-W10-Hardening/blob/master/install/hkcu-custom.reg)
+- Shared experiences: I can share or receive from: My devices only *
+- Clipboard: Clipboard history: On *
+- Clipboard: Sync across devices: Off *
 
 ## Devices
 - Bluetooth & other devices: Off (unless needed!)
-- AutoPlay: Off [[hklm-cis-level1]](https://github.com/teusink/Home-Security-by-W10-Hardening/blob/master/install/hklm-cis-level1.reg) & [[hkcu-custom]](https://github.com/teusink/Home-Security-by-W10-Hardening/blob/master/install/hkcu-custom.reg)
+- AutoPlay: Off *
 - AutoPlay: Removable drive: Take no action
 - AutoPlay: Memory card: Take no action
 
@@ -140,33 +147,36 @@ These are the settings that are done through the use of the new Windows Settings
 - Status: Adapter options: [Every Adapter]: Microsoft Network Adapter Multiplexor Protocol: Disabled
 - Status: Adapter options: [Every Adapter]: Microsoft LLDP Protocol Driver: Disabled
 - Status: Adapter options: [Every Adapter]: TCP/IPv4: Properties: Advanced: WINS: NetBIOS over TCP/IP: Disabled
-- Status: Adapter options: [Every Adapter]: TCP/IPv4: Properties: Advanced: WINS: LMHOSTS Lookup: Disabled [[hklm-custom]](https://github.com/teusink/Home-Security-by-W10-Hardening/blob/master/install/hklm-custom.reg)
+- Status: Adapter options: [Every Adapter]: TCP/IPv4: Properties: Advanced: WINS: LMHOSTS Lookup: Disabled *
 - Wi-Fi: Use random hardware addresses: Off
-- Wi-Fi: Let me use Online Sign-Up to get connected: On
+- Wi-Fi: Let me use Online Sign-Up to get connected: Off
 - Mobile hotspot: Off
 - Mobile hotspot: Turn On Remotely: Off
+- Proxy: Automaticall detect settings: Off
+- Proxy: Use setup script: Off (unless specifically required)
+- Proxy: Use a proxy server: Off (unless specifically required)
 
 ## Personalization
-- Lock screen: Get fun fact & tips: Off [[hkcu-custom]](https://github.com/teusink/Home-Security-by-W10-Hardening/blob/master/install/hkcu-custom.reg)
+- Lock screen: Get fun fact & tips and more on your lock screen: Off *
 - Lock screen: Screen saver settings: Blank - 10 minutes, on resume logon
-- Start: Show most used apps: Off [[hkcu-custom]](https://github.com/teusink/Home-Security-by-W10-Hardening/blob/master/install/hkcu-custom.reg)
-- Start: Occasionally show suggestions in Start: Off [[hkcu-custom]](https://github.com/teusink/Home-Security-by-W10-Hardening/blob/master/install/hkcu-custom.reg)
+- Start: Show most used apps: On
+- Start: Show suggestions occasionally in Start: Off *
 
 ## Apps
 - Apps & features: Installing apps: Warn me before installing apps from outside the Store
 
 ## Accounts
-- Sign-in options: Require sign-in: When PC wakes up from sleep [[hklm-cis-level1]](https://github.com/teusink/Home-Security-by-W10-Hardening/blob/master/install/hklm-cis-level1.reg)
+- Sign-in options: Require sign-in: When PC wakes up from sleep *
 - Sign-in options: PIN: On
-- Sign-in options: Show account details: On [[hklm-cis-level1]](https://github.com/teusink/Home-Security-by-W10-Hardening/blob/master/install/hklm-cis-level1.reg)
-- Sign-in options: Use sign-in after update: On [[hklm-cis-level1]](https://github.com/teusink/Home-Security-by-W10-Hardening/blob/master/install/hklm-cis-level1.reg)
+- Sign-in options: Show account details: On *
+- Sign-in options: Use sign-in after update: On *
 - Sync your settings: Sync settings: On
-- Sync your settings: Theme: On [[hkcu-custom]](https://github.com/teusink/Home-Security-by-W10-Hardening/blob/master/install/hkcu-custom.reg)
-- Sync your settings: Internet Explorer settings: On [[hkcu-custom]](https://github.com/teusink/Home-Security-by-W10-Hardening/blob/master/install/hkcu-custom.reg)
-- Sync your settings: Passwords: On [[hkcu-custom]](https://github.com/teusink/Home-Security-by-W10-Hardening/blob/master/install/hkcu-custom.reg)
-- Sync your settings: Language preferences: On [[hkcu-custom]](https://github.com/teusink/Home-Security-by-W10-Hardening/blob/master/install/hkcu-custom.reg)
-- Sync your settings: Ease of Access: On [[hkcu-custom]](https://github.com/teusink/Home-Security-by-W10-Hardening/blob/master/install/hkcu-custom.reg)
-- Sync your settings: Other Windows settings: On [[hkcu-custom]](https://github.com/teusink/Home-Security-by-W10-Hardening/blob/master/install/hkcu-custom.reg)
+- Sync your settings: Theme: On *
+- Sync your settings: Internet Explorer settings: On *
+- Sync your settings: Passwords: On *
+- Sync your settings: Language preferences: On *
+- Sync your settings: Ease of Access: On *
+- Sync your settings: Other Windows settings: On *
 
 ## Time & Language
 - No Security or Privacy settings to mention
@@ -178,82 +188,96 @@ These are the settings that are done through the use of the new Windows Settings
 - No Security or Privacy settings to mention
 
 ## Cortana / Search
-- Talk to Cortana: It can be fully disabled if you like (but not through GUI) [[hklm-cis-level1]](https://github.com/teusink/Home-Security-by-W10-Hardening/blob/master/install/hklm-cis-level1.reg)
-- Talk to Cortana: Let Cortana respond to "Hey Cortana": Off [[hkcu-custom]](https://github.com/teusink/Home-Security-by-W10-Hardening/blob/master/install/hkcu-custom.reg)
-- Talk to Cortana: Let Cortana listen for my commands when I press the Windows logo key + C: On [[hkcu-custom]](https://github.com/teusink/Home-Security-by-W10-Hardening/blob/master/install/hkcu-custom.reg)
-- Talk to Cortana: Use Cortana even when my device is locked: Off [[hkcu-custom]](https://github.com/teusink/Home-Security-by-W10-Hardening/blob/master/install/hkcu-custom.reg)
+- Talk to Cortana: It can be fully disabled if you like (but not through GUI) *
+- Talk to Cortana: Let Cortana respond to "Hey Cortana": Off *
+- Talk to Cortana: Let Cortana listen for my commands when I press the Windows logo key + C: Off *
+- Talk to Cortana: Use Cortana even when my device is locked: Off *
+- Talk to Cortana: Manage the information Cortana can access from this device: Location: Off
+- Talk to Cortana: Manage the information Cortana can access from this device: Contacts, email, calendar & communication history: Off
+- Talk to Cortana: Manage the information Cortana can access from this device: Browsing history: Off
 - Permissions & History: SafeSearch: Moderate
-- Permissions & History: CloudSearch: On
-- Permissions & History: Device History: On
-- Cortana across my devices: Get phone notifications on this PC: On
-- Cortana across my devices: Help me pick up where I left off on other devices: On
+- Permissions & History: Windows Cloud Search: On
+- Permissions & History: Activity Recommendations: On
+- Permissions & History: My device History: On
+- Permissions & History: My search History: On
+- Cortana across my devices: Get phone notifications on this PC: Off
+- Cortana across my devices: Help me pick up where I left off on other devices: Off
 - Cortana across my devices: Get list suggestions: Off
-Note: Cortana can only be disabled through the use of registry.
+Note: Cortana can only be fully disabled through the use of registry.
 
 ## Privacy
 
 ### Windows Permissions
-- General: Let apps use advert ID: Off [[hklm-custom]](https://github.com/teusink/Home-Security-by-W10-Hardening/blob/master/install/hklm-custom.reg)
-- General: Let websites access language list: Off [[hkcu-custom]](https://github.com/teusink/Home-Security-by-W10-Hardening/blob/master/install/hkcu-custom.reg)
-- General: Let Windows track app launches: Off [[hkcu-custom]](https://github.com/teusink/Home-Security-by-W10-Hardening/blob/master/install/hkcu-custom.reg)
-- General: Show suggested content in Settings: Off [[hkcu-custom]](https://github.com/teusink/Home-Security-by-W10-Hardening/blob/master/install/hkcu-custom.reg)
-- Diagnostics & feedback: Basic (Level Security is only possible through Registry) [[hklm-cis-level1]](https://github.com/teusink/Home-Security-by-W10-Hardening/blob/master/install/hklm-cis-level1.reg)
+- General: Let apps use advert ID: Off *
+- General: Let websites access language list: Off *
+- General: Let Windows track app launches: On *
+- General: Show suggested content in Settings: Off *
+- Diagnostics & feedback: Basic (Level Security is only possible through Registry) *
 - Diagnostics & feedback: Improve inking & typing recognition: Off
 - Diagnostics & feedback: Tailored experiences: Off
 - Diagnostics & feedback: Diagnostic data viewer: Off
-- Diagnostics & feedback: Feedback frequency: Never [[hklm-cis-level1]](https://github.com/teusink/Home-Security-by-W10-Hardening/blob/master/install/hklm-cis-level1.reg)
-- Activity history: Let Windows collect my activities from this PC: On
-- Activity history: Let Windows sync my activities from this PC to the cloud: Off
+- Diagnostics & feedback: Feedback frequency: Never *
+- Activity history: Store my activity history on this device: On
+- Activity history: Send my activity history to Microsoft: Off
 
 ### App permissions
 - Categories from `Location` to `Radios`: Configure it to your needs (the more Off is better privacy protection)
-- Other devices: Let apps share & sync: Off [[hkcu-custom]](https://github.com/teusink/Home-Security-by-W10-Hardening/blob/master/install/hkcu-custom.reg)
+- Communicate with unpaired devices: Off *
 
 ## Update & Security
-- Windows Update: Set `Active hours` to your likings
-- Windows Update: Set `Restart options` to your likings
+- Windows Update: Set `Active hours` to your liking
 - Windows Update: Advanced options: Give updates other Microsoft products when I update Windows: On
-- Windows Update: Advanced options: Delivery optimizations: Allow downloads from other PCs: On [[hklm-cis-level1]](https://github.com/teusink/Home-Security-by-W10-Hardening/blob/master/install/hklm-cis-level1.reg)
-- Windows Update: Advanced options: Delivery optimizations: PCs on my local network: On [[hklm-cis-level1]](https://github.com/teusink/Home-Security-by-W10-Hardening/blob/master/install/hklm-cis-level1.reg)
-- Windows Update: Advanced options: Delivery optimizations: PCs on my local network, and PCs on the Internet: Off [[hklm-cis-level1]](https://github.com/teusink/Home-Security-by-W10-Hardening/blob/master/install/hklm-cis-level1.reg)
+- Windows Update: Advanced options: Delivery optimizations: Allow downloads from other PCs: On *
+- Windows Update: Advanced options: Delivery optimizations: PCs on my local network: On *
+- Windows Update: Advanced options: Delivery optimizations: PCs on my local network, and PCs on the Internet: Off *
 - Windows Security: Windows Defender Security Center
 - Windows Security: Antivirus options: Period scanning: Off (NOTE: setting only available when third-party anti-malware is installed)
-- Find my device: On [[hklm-custom]](https://github.com/teusink/Home-Security-by-W10-Hardening/blob/master/install/hklm-custom.reg)
+- Find my device: On *
 - Device encryption: On
 
 ### Update & Security - Windows Defender Security Center
-Note: Settings below only available when third-party anti-malware is NOT installed
+Note: The Virus & threat Protection settings are only available when third-party anti-malware is NOT installed
 - Virus & threat Protection: Settings: Real-time protection: On
 - Virus & threat Protection: Settings: Cloud-delivered protection: On
 - Virus & threat Protection: Settings: Automatic sample submission: On
 - Virus & threat Protection: Settings: Controlled folder access: On
 - Virus & threat Protection: Settings: Notifications: Receive recent activity and scan results: On
-- Virus & threat Protection: Settings: Notifications: Notify when Windows Defender Firewall blocks a new app: On
-- Virus & threat Protection: Settings: Notifications: Domain firewall: On
-- Virus & threat Protection: Settings: Notifications: Private firewall: On
-- Virus & threat Protection: Settings: Notifications: Public firewall: On
-- App & browser control: Check apps and files: Warn [[hklm-cis-level1]](https://github.com/teusink/Home-Security-by-W10-Hardening/blob/master/install/hklm-cis-level1.reg) & [[hklm-custom]](https://github.com/teusink/Home-Security-by-W10-Hardening/blob/master/install/hklm-custom.reg)
-- App & browser control: SmartScreen for Edge: Block [[hklm-cis-level1]](https://github.com/teusink/Home-Security-by-W10-Hardening/blob/master/install/hklm-cis-level1.reg) & [[hkcu-custom]](https://github.com/teusink/Home-Security-by-W10-Hardening/blob/master/install/hkcu-custom.reg)
-- App & browser control: SmartScreen for Windows Store apps: Warn [[hkcu-custom]](https://github.com/teusink/Home-Security-by-W10-Hardening/blob/master/install/hkcu-custom.reg)
-- App & browser control: Exploit protection: Control Flow Gaurd (CFG): On by default
+- Firewall & network protection: Domain network: Windows Defender Firewall: On
+- Firewall & network protection: Domain network: Blocks all incoming connections: On
+- Firewall & network protection: Private network: Windows Defender Firewall: On 
+- Firewall & network protection: Private network: Blocks all incoming connections: On
+- Firewall & network protection: Public network: Windows Defender Firewall: On
+- Firewall & network protection: Public network: Blocks all incoming connections: On
+- Firewall & network protection: Firewall notification settings: Notifications: Notify me when there are problems with Dynamic Lock: On
+- Firewall & network protection: Firewall notification settings: Notifications: Notify me when WDF blocks a new app: On
+- Firewall & network protection: Firewall notification settings: Notifications: Domain firewall: On
+- Firewall & network protection: Firewall notification settings: Notifications: Private firewall: On
+- Firewall & network protection: Firewall notification settings: Notifications: Public firewall: On
+- App & browser control: Check apps and files: Block *
+- App & browser control: SmartScreen for Microsoft Edge: Block *
+- App & browser control: SmartScreen for Microsoft Store apps: Warn *
+- App & browser control: Exploit protection: Control Flow Guard (CFG): On by default
 - App & browser control: Exploit protection: Data Execution Prevention (DEP): On by default
 - App & browser control: Exploit protection: Force randomization for images (Mandatory ASLR): On by default
 - App & browser control: Exploit protection: Randomize memory allocation (Bottom-up ASLR): On by default
 - App & browser control: Exploit protection: Validate exception chains (SEHOP): On by default
 - App & browser control: Exploit protection: Validate heap integrity: On by default
+- Device security: Core isolation: Memory integrity: On (if available)
+   - You might get error in your eventlog: `Event 157, Hyper-V-Hypervisor: The hypervisor did not enable mitigations for CVE-2018-3646 for virtual machines because HyperThreading is enabled and the hypervisor core scheduler is not enabled. To enable mitigations for CVE-2018-3646 for virtual machines, enable the core scheduler by running "bcdedit /set hypervisorschedulertype core" from an elevated command prompt and reboot.`.
+   - Run this command with elevated privileges in CMD to fix that: `bcdedit /set hypervisorschedulertype core`
 
 # Xbox Game bar
 
 This setting can only be set when running a game.
 
-- Settings: General: Show tips when I start a game: Off [[hkcu-custom]](https://github.com/teusink/Home-Security-by-W10-Hardening/blob/master/install/hkcu-custom.reg)
+- Settings: General: Show tips when I start a game: Off *
 
 # Explorer
 
 Seeing all extensions of all files is important to recognize malicious files.
 - Open `Windows Explorer`.
 - Click on the tab `View`.
-- Tick the box `File name extensions`. [[hkcu-custom]](https://github.com/teusink/Home-Security-by-W10-Hardening/blob/master/install/hkcu-custom.reg)
+- Tick the box `File name extensions` on. *
 
 Now change the default filehandler of all `.js` and `.jse` files to Notepad, to prevent malware from executing malicious scripts.
 - Create a file called `nomalware.js`.
@@ -279,30 +303,30 @@ In order to even more harden your system, add the registry key-sets below to you
 - Automatic installation of Windows Store apps disabled.
 
 ## Registry Files
-If you have Windows 10 Home:
-- HKEY_LOCAL_MACHINE - Windows 10 Home CIS Level 1 (not fully compliant) [[REG]](https://github.com/teusink/Home-Security-by-W10-Hardening/blob/master/install/hklm-cis-level1.reg)
-- HKEY_LOCAL_MACHINE - Windows 10 Home CIS Level 2 (not fully compliant) [[REG]](https://github.com/teusink/Home-Security-by-W10-Hardening/blob/master/install/hklm-cis-level2.reg)
-- HKEY_LOCAL_MACHINE - Windows 10 Custom hardening [[REG]](https://github.com/teusink/Home-Security-by-W10-Hardening/blob/master/install/hklm-custom.reg)
-- HKEY_LOCAL_MACHINE - Windows Client and Server Encryption hardening [[REG]](https://github.com/teusink/Home-Security-by-W10-Hardening/blob/master/install/hklm-encryption.reg)
-- HKEY_CURRENT_USER - Windows 10 User level settings hardening [[REG]](https://github.com/teusink/Home-Security-by-W10-Hardening/blob/master/install/hkcu-custom.reg)
+All settings mentioned above followed with an asteriks (*) can also be found below in the registry files.
 
-If you have Windows 10 Pro:
-- Run registry keys of Windows 10 Home +
-- HKEY_LOCAL_MACHINE - Windows 10 Pro CIS Level 1 (not fully compliant) [[REG]](https://github.com/teusink/Home-Security-by-W10-Hardening/blob/master/install/hklm-cis-level1-pro.reg)
-- HKEY_LOCAL_MACHINE - Windows 10 Pro CIS Level 2 (not fully compliant) [[REG]](https://github.com/teusink/Home-Security-by-W10-Hardening/blob/master/install/hklm-cis-level2-pro.reg)
+If you have Windows 10 Home/Pro:
+- HKEY_LOCAL_MACHINE - Windows 10 CIS Level 1 & 2 (not fully compliant) [[REG]](https://github.com/teusink/Home-Security-by-W10-Hardening/blob/master/files/hklm-cis-windows.reg)
+- HKEY_CURRENT_USER - Windows 10 CIS Level 1 & 2 (not fully compliant) [[REG]](https://github.com/teusink/Home-Security-by-W10-Hardening/blob/master/files/hkcu-cis-windows.reg)
+- HKEY_LOCAL_MACHINE - Windows 10 Custom hardening [[REG]](https://github.com/teusink/Home-Security-by-W10-Hardening/blob/master/files/hklm-custom.reg)
+- HKEY_LOCAL_MACHINE - Windows Client and Server Encryption hardening [[REG]](https://github.com/teusink/Home-Security-by-W10-Hardening/blob/master/files/hklm-encryption.reg)
+- HKEY_CURRENT_USER - Windows 10 User level settings hardening [[REG]](https://github.com/teusink/Home-Security-by-W10-Hardening/blob/master/files/hkcu-custom.reg)
+
+If you use Windows Defender with your Windows installment:
+- HKEY_LOCAL_MACHINE - Windows 10 CIS L1 & L2 - Windows Defender (not fully compliant) [[REG]](https://github.com/teusink/Home-Security-by-W10-Hardening/blob/master/files/hklm-cis-defender.reg)
 
 If you use BitLocker with your Windows installment:
-- HKEY_LOCAL_MACHINE - Windows 10 CIS BitLocker (not fully compliant) [[REG]](https://github.com/teusink/Home-Security-by-W10-Hardening/blob/master/install/hklm-cis-bitlocker.reg)
+- HKEY_LOCAL_MACHINE - Windows 10 CIS BitLocker (not fully compliant) [[REG]](https://github.com/teusink/Home-Security-by-W10-Hardening/blob/master/files/hklm-cis-bitlocker.reg)
+
+If you use Windows Local Firewall with your Windows installment:
+- HKEY_LOCAL_MACHINE - Windows 10 CIS L1 & L2 - Windows Local Firewall(not fully compliant) [[REG]](https://github.com/teusink/Home-Security-by-W10-Hardening/blob/master/files/hklm-cis-firewall.reg)
 
 If you use Google Chrome:
-- HKEY_LOCAL_MACHINE - Google Chrome hardening [[REG]](https://github.com/teusink/Home-Security-by-W10-Hardening/blob/master/install/hklm-cis-chrome.reg)
-
-If you want to uninstall all keys and get back to the default:
-- Uninstaller [[REG]](https://github.com/teusink/Home-Security-by-W10-Hardening/blob/master/uninstall/)
+- HKEY_LOCAL_MACHINE - Google Chrome hardening [[REG]](https://github.com/teusink/Home-Security-by-W10-Hardening/blob/master/files/hklm-cis-chrome.reg)
 
 # hosts file
 To disable the wpad requests (automatic proxy server configuration) without breaking the IP Helper service of Windows, you will need to add a value to your hosts file.
-- This can be done by replacing your hosts file with this [[hosts]](https://github.com/teusink/Home-Security-by-W10-Hardening/blob/master/install/hosts)) file.
+- This can be done by replacing your hosts file with this [[hosts]](https://github.com/teusink/Home-Security-by-W10-Hardening/blob/master/files/hosts)) file.
 - Or you can manually add this line to your existing hosts file: `255.255.255.255 wpad.`.
 
 The hosts file is located in: `C:\Windows\System32\drivers\etc`
@@ -332,9 +356,18 @@ Sometimes a system needs repair. Try the following commands to check and fix the
 - Reboot to execute the test.
 
 ## DISM
-- Type in `dism /online /cleanup-image /checkhealth` and press `Enter` to check for known corruptions.
-- Type in `dism /online /cleanup-image /scanhealth` and press `Enter` to scan for new corruptions.
-- Type in `dism /online /cleanup-image /restorehealth` and press `Enter` to fix the known corruptions.
+
+### Find and fix corruptions
+- Type in `Dism.exe /online /Cleanup-Image /CheckHealth` and press `Enter` to check for known corruptions.
+- Type in `Dism.exe /online /Cleanup-Image /ScanHealth` and press `Enter` to scan for new corruptions.
+- Type in `Dism.exe /online /Cleanup-Image /RestoreHealth` and press `Enter` to fix the known corruptions.
+
+- Wait for it to finish and reboot.
+
+### Clean-up the component store (WinSxS folder)
+- Type in `Dism.exe /online /Cleanup-Image /StartComponentCleanup` clean-up (immediately delete) previous versions of updated components (without a 30 day grace period).
+- Type in `Dism.exe /online /Cleanup-Image /StartComponentCleanup /ResetBase` to remove all superseded versions of every component in the component store.
+
 - Wait for it to finish and reboot.
 
 # Word of thanks

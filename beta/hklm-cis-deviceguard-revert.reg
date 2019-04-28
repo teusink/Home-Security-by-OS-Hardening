@@ -1,0 +1,90 @@
+Windows Registry Editor Version 5.00
+
+;;; Windows 10 Home & Pro Device Guard Hardening
+;;; Repository: https://github.com/teusink/Home-Security-by-W10-Hardening/
+
+;;; Registry target: HKEY_LOCAL_MACHINE
+;;; Source: Computer Internet Security (CIS) - Device Guard
+;;; Author: Joram Teusink
+
+;;; The following elements from the Windows CIS Level Device Guard baseline are included:
+;;; - Device Guard
+
+;;; WARNING: DO NOT USE, if your system does not support Device Guard for 100%!!
+
+;;; 18.8.5.1 (NG) Ensure 'Turn On Virtualization Based Security' is set to 'Enabled'
+[HKEY_LOCAL_MACHINE\SOFTWARE\Policies\Microsoft\Windows\DeviceGuard]
+; <deleted> = (Default)
+; 0000000 = Off
+; 0000001 = On (CIS)
+"EnableVirtualizationBasedSecurity"=dword:0000000
+
+;;; 18.8.5.2 (NG) Ensure 'Turn On Virtualization Based Security: Select Platform Security Level' is set to 'Secure Boot and DMA Protection'
+[HKEY_LOCAL_MACHINE\SOFTWARE\Policies\Microsoft\Windows\DeviceGuard]
+; <deleted> = (Default)
+; 0000001 = Secure Boot
+; 0000003 = Secure Boot and DMA Protection (CIS)
+; NON-COMPLIANCE TO NOT DISRUPT COMMON HOME FEATURES
+"RequirePlatformSecurityFeatures"=dword:0000001
+
+;;; 18.8.5.3 (NG) Ensure 'Turn On Virtualization Based Security: Virtualization Based Protection of Code Integrity' is set to 'Enabled with UEFI lock'
+[HKEY_LOCAL_MACHINE\SOFTWARE\Policies\Microsoft\Windows\DeviceGuard]
+; <deleted> = (Default)
+; 0000000 = Disabled
+; 0000001 = Enabled with UEFI lock (CIS)
+; 0000002 = Enabled without lock
+; 0000003 = Not Configured
+"HypervisorEnforcedCodeIntegrity"=dword:0000000
+
+;;; 18.8.5.4 (NG) Ensure 'Turn On Virtualization Based Security: Require UEFI Memory Attributes Table' is set to 'True (checked)'
+[HKEY_LOCAL_MACHINE\SOFTWARE\Policies\Microsoft\Windows\DeviceGuard]
+; <deleted> = (Default)
+; 0000000 = Off
+; 0000001 = On (CIS)
+"HVCIMATRequired"=dword:0000000
+
+;;; 18.8.5.5 (NG) Ensure 'Turn On Virtualization Based Security: Credential Guard Configuration' is set to 'Enabled with UEFI lock'
+[HKEY_LOCAL_MACHINE\SOFTWARE\Policies\Microsoft\Windows\DeviceGuard]
+; <deleted> = (Default)
+; 0000000 = Disabled
+; 0000001 = Enabled with UEFI lock (CIS)
+; 0000002 = Enabled without lock
+; 0000003 = Not Configured
+"LsaCfgFlags"=dword:0000000
+
+;;; 18.9.77.1 (NG) Ensure 'Allow auditing events in Windows Defender Application Guard' is set to 'Enabled'
+[HKEY_LOCAL_MACHINE\SOFTWARE\Policies\Microsoft\AppHVSI]
+; <deleted> = (Default)
+; 0000000 = Off
+; 0000001 = On (CIS)
+"AuditApplicationGuard"=dword:0000000
+
+;;; 18.9.77.2 (NG) Ensure 'Allow data persistence for Windows Defender Application Guard' is set to 'Disabled'
+[HKEY_LOCAL_MACHINE\SOFTWARE\Policies\Microsoft\AppHVSI]
+; <deleted> = (Default)
+; 0000000 = Off (Default / CIS)
+; 0000001 = On
+"AllowPersistence"=dword:0000000
+
+;;; 18.9.77.3 (NG) Ensure 'Allow files to download and save to the host operating system from Windows Defender Application Guard' is set to 'Disabled'
+[HKEY_LOCAL_MACHINE\SOFTWARE\Policies\Microsoft\AppHVSI]
+; <deleted> = (Default)
+; 0000000 = Off (Default / CIS)
+; 0000001 = On
+"SaveFilesToHost"=dword:0000000
+
+;;; 18.9.77.4 (NG) Ensure 'Configure Windows Defender Application Guard clipboard settings: Clipboard behavior setting' is set to 'Enabled: Enable clipboard operation from an isolated session to the host'
+[HKEY_LOCAL_MACHINE\SOFTWARE\Policies\Microsoft\AppHVSI]
+; <deleted> = (Default)
+; 0000000 = Off
+; 0000001 = On (CIS)
+"AppHVSIClipboardSettings"=dword:0000000
+
+;;; 18.9.77.5 (NG) Ensure 'Turn on Windows Defender Application Guard in Enterprise Mode' is set to 'Enabled'
+[HKEY_LOCAL_MACHINE\SOFTWARE\Policies\Microsoft\AppHVSI]
+; <deleted> = (Default)
+; 0000000 = Disable Windows Defender Application Guard
+; 0000001 = Enable Windows Defender Application Guard for Microsoft Edge ONLY (CIS)
+; 0000002 = Enable Windows Defender Application Guard for Microsoft Office ONLY
+; 0000003 = Enable Windows Defender Application Guard for Microsoft Edge AND Microsoft Office
+"AllowAppHVSI_ProviderSet"=dword:0000000

@@ -1,0 +1,53 @@
+Windows Registry Editor Version 5.00
+
+;;; Windows 10 Home & Pro Device Guard Hardening
+;;; Repository: https://github.com/teusink/Home-Security-by-W10-Hardening/
+
+;;; Registry target: HKEY_LOCAL_MACHINE
+;;; Source: Computer Internet Security (CIS) - Device Guard
+;;; Author: Joram Teusink
+
+;;; The following elements from the Windows CIS Level Device Guard baseline are included:
+;;; - Device Guard
+
+;;; WARNING: DO NOT USE, if your system does not support Device Guard for 100%!!
+
+;;; 18.8.5.1 (NG) Ensure 'Turn On Virtualization Based Security' is set to 'Enabled'
+[HKEY_LOCAL_MACHINE\SOFTWARE\Policies\Microsoft\Windows\DeviceGuard]
+"EnableVirtualizationBasedSecurity"=-
+
+;;; 18.8.5.2 (NG) Ensure 'Turn On Virtualization Based Security: Select Platform Security Level' is set to 'Secure Boot and DMA Protection'
+[HKEY_LOCAL_MACHINE\SOFTWARE\Policies\Microsoft\Windows\DeviceGuard]
+"RequirePlatformSecurityFeatures"=-
+
+;;; 18.8.5.3 (NG) Ensure 'Turn On Virtualization Based Security: Virtualization Based Protection of Code Integrity' is set to 'Enabled with UEFI lock'
+[HKEY_LOCAL_MACHINE\SOFTWARE\Policies\Microsoft\Windows\DeviceGuard]
+"HypervisorEnforcedCodeIntegrity"=-
+
+;;; 18.8.5.4 (NG) Ensure 'Turn On Virtualization Based Security: Require UEFI Memory Attributes Table' is set to 'True (checked)'
+[HKEY_LOCAL_MACHINE\SOFTWARE\Policies\Microsoft\Windows\DeviceGuard]
+"HVCIMATRequired"=-
+
+;;; 18.8.5.5 (NG) Ensure 'Turn On Virtualization Based Security: Credential Guard Configuration' is set to 'Enabled with UEFI lock'
+[HKEY_LOCAL_MACHINE\SOFTWARE\Policies\Microsoft\Windows\DeviceGuard]
+"LsaCfgFlags"=-
+
+;;; 18.9.77.1 (NG) Ensure 'Allow auditing events in Windows Defender Application Guard' is set to 'Enabled'
+[HKEY_LOCAL_MACHINE\SOFTWARE\Policies\Microsoft\AppHVSI]
+"AuditApplicationGuard"=-
+
+;;; 18.9.77.2 (NG) Ensure 'Allow data persistence for Windows Defender Application Guard' is set to 'Disabled'
+[HKEY_LOCAL_MACHINE\SOFTWARE\Policies\Microsoft\AppHVSI]
+"AllowPersistence"=-
+
+;;; 18.9.77.3 (NG) Ensure 'Allow files to download and save to the host operating system from Windows Defender Application Guard' is set to 'Disabled'
+[HKEY_LOCAL_MACHINE\SOFTWARE\Policies\Microsoft\AppHVSI]
+"SaveFilesToHost"=-
+
+;;; 18.9.77.4 (NG) Ensure 'Configure Windows Defender Application Guard clipboard settings: Clipboard behavior setting' is set to 'Enabled: Enable clipboard operation from an isolated session to the host'
+[HKEY_LOCAL_MACHINE\SOFTWARE\Policies\Microsoft\AppHVSI]
+"AppHVSIClipboardSettings"=-
+
+;;; 18.9.77.5 (NG) Ensure 'Turn on Windows Defender Application Guard in Enterprise Mode' is set to 'Enabled'
+[HKEY_LOCAL_MACHINE\SOFTWARE\Policies\Microsoft\AppHVSI]
+"AllowAppHVSI_ProviderSet"=-

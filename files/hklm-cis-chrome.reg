@@ -1,0 +1,162 @@
+Windows Registry Editor Version 5.00
+
+;;; Google Chrome for Windows 10 Home & Pro Hardening
+;;; Repository: https://github.com/teusink/Home-Security-by-W10-Hardening/
+
+;;; Registry target: HKEY_LOCAL_MACHINE
+;;; Source: Computer Internet Security (CIS) - Level 1 & 2
+;;; Author: Joram Teusink
+
+;;; 1.1.1.1 (L1) Ensure 'Configure the required domain names for remote access hosts' is set to 'Enabled'
+;[HKEY_LOCAL_MACHINE\SOFTWARE\Policies\Google\Chrome\RemoteAccessHostDomainList]
+; <deleted> = (Default)
+; .+ = Enabled (CIS)
+; NON-COMPLIANCE TO NOT DISRUPT COMMON HOME FEATURES
+;"1"=".+"
+
+;;; 1.1.1.2 (L1) Ensure 'Enable curtaining of remote access hosts' is set to 'Enabled'
+;[HKEY_LOCAL_MACHINE\SOFTWARE\Policies\Google\Chrome]
+; <deleted> = (Default)
+; 0000000 = Off
+; 0000001 = On (CIS)
+; NON-COMPLIANCE TO NOT DISRUPT COMMON HOME FEATURES
+;"RemoteAccessHostRequireCurtain"=dword:0000000
+
+;;; 1.1.1.3 (L1) Ensure 'Enable firewall traversal from remote access host' is set to 'Disabled'
+;[HKEY_LOCAL_MACHINE\SOFTWARE\Policies\Google\Chrome]
+; <deleted> = (Default)
+; 0000000 = Off (CIS)
+; 0000001 = On
+; NON-COMPLIANCE TO NOT DISRUPT COMMON HOME FEATURES
+;"RemoteAccessHostFirewallTraversal"=dword:0000001
+
+;;; 1.1.1.4 (L1) Ensure 'Enable or disable PIN-less authentication for remote access hosts' is set to 'Disabled'
+[HKEY_LOCAL_MACHINE\SOFTWARE\Policies\Google\Chrome]
+; <deleted> = (Default)
+; 0000000 = Off (CIS)
+; 0000001 = On
+"RemoteAccessHostAllowClientPairing"=dword:0000000
+
+;;; 1.1.2.1 (L2) Ensure 'Default cookies setting' is set to 'Enabled' (Keep cookies for the duration of the session)
+;[HKEY_LOCAL_MACHINE\SOFTWARE\Policies\Google\Chrome]
+; <deleted> = (Default)
+; 0000001 = Allow all sites to set local data
+; 0000002 = Do not allow any site to set local data
+; 0000004 = Keep cookies for the duration of the session (CIS)
+; NON-COMPLIANCE TO NOT DISRUPT COMMON HOME FEATURES
+;"DefaultCookiesSetting"=dword:0000001
+
+;;; 1.1.2.2 (L1) Ensure 'Default Flash Setting' is set to 'Enabled' (Click to Play)
+[HKEY_LOCAL_MACHINE\SOFTWARE\Policies\Google\Chrome]
+; <deleted> = (Default)
+; 0000001 = Allow all sites to automatically run plugins
+; 0000002 = Block all plugins
+; 0000003 = Click to play (CIS)
+"DefaultPluginsSetting"=dword:0000003
+
+;;; 1.1.4.1 (L1) Ensure 'Configure extension installation blacklist' is set to 'Enabled' ("*" for all extensions)
+;[HKEY_LOCAL_MACHINE\SOFTWARE\Policies\Google\Chrome\ExtensionInstallBlacklist]
+; <deleted> = (Default)
+; * = Enabled (CIS)
+; NON-COMPLIANCE TO NOT DISRUPT COMMON HOME FEATURES
+;"1"="*"
+
+;;; 1.1.8.1 (L1) Ensure `Configure native messaging blacklist` is set to 'Enabled' ("*" for all messaging applications)
+;[HKEY_LOCAL_MACHINE\SOFTWARE\Policies\Google\Chrome\NativeMessagingBlacklist]
+; <deleted> = (Default)
+; * = Enabled (CIS)
+; NON-COMPLIANCE TO NOT DISRUPT COMMON HOME FEATURES
+;"1"="*"
+
+;;; 1.1.10.1 (L1) Ensure 'Enable saving passwords to the password manager' is set to 'Disabled'
+;[HKEY_LOCAL_MACHINE\SOFTWARE\Policies\Google\Chrome]
+; <deleted> = (Default)
+; 0000000 = Off (CIS)
+; 0000001 = On
+; NON-COMPLIANCE TO NOT DISRUPT COMMON HOME FEATURES
+;"PasswordManagerEnabled"=dword:0000000
+
+;;; 1.1.11.1 (L1) Ensure 'Supported authentication schemes' is set to 'Enabled' (ntlm, negotiate)
+;[HKEY_LOCAL_MACHINE\SOFTWARE\Policies\Google\Chrome]
+; <deleted> = (Default)
+; basic, digest = Insecure
+; ntlm, negotiate = Secure (CIS)
+; basic, digest, ntlm, negotiate = All
+; NON-COMPLIANCE TO NOT DISRUPT COMMON HOME FEATURES
+;"AuthSchemes"="ntlm, negotiate"
+
+1.1.15 (L2) Ensure 'Allow invocation of file selection dialogs' is set to 'Enabled'
+;[HKEY_LOCAL_MACHINE\SOFTWARE\Policies\Google\Chrome]
+; <deleted> = (Default)
+; 0000000 = Off
+; 0000001 = On (CIS)
+; NON-COMPLIANCE TO NOT DISRUPT COMMON HOME FEATURES
+;"AllowFileSelectionDialogs"=dword:0000001
+
+;;; 1.1.16 (L1) Ensure 'Allow running plugins that are outdated' is set to 'Disabled'
+[HKEY_LOCAL_MACHINE\SOFTWARE\Policies\Google\Chrome]
+; <deleted> = (Default)
+; 0000000 = Off (CIS)
+; 0000001 = On
+"AllowOutdatedPlugins"=dword:0000000
+
+;;; 1.1.17 (L1) Ensure 'Block third party cookies' is set to 'Enabled'
+;[HKEY_LOCAL_MACHINE\SOFTWARE\Policies\Google\Chrome]
+; <deleted> = (Default)
+; 0000000 = Off
+; 0000001 = On (CIS)
+; NON-COMPLIANCE TO NOT DISRUPT COMMON HOME FEATURES
+;"BlockThirdPartyCookies"=dword:0000001
+
+;;; 1.1.18 (L1) Ensure 'Continue running background apps when Google Chrome is closed' is set to 'Disabled'
+;[HKEY_LOCAL_MACHINE\SOFTWARE\Policies\Google\Chrome]
+; <deleted> = (Default)
+; 0000000 = Off (CIS)
+; 0000001 = On
+; NON-COMPLIANCE TO NOT DISRUPT COMMON HOME FEATURES
+;"BackgroundModeEnabled"=dword:0000000
+
+;;; 1.1.19 (L1) Ensure 'Enable AutoFill' is set to 'Disabled'
+;[HKEY_LOCAL_MACHINE\SOFTWARE\Policies\Google\Chrome]
+; <deleted> = (Default)
+; 0000000 = Off (CIS)
+; 0000001 = On
+; NON-COMPLIANCE TO NOT DISRUPT COMMON HOME FEATURES
+;"AutoFillEnabled"=dword:0000000
+
+;;; 1.1.20 (L1) Ensure 'Enable Google Cloud Print Proxy' is set to 'Disabled'
+;[HKEY_LOCAL_MACHINE\SOFTWARE\Policies\Google\Chrome]
+; <deleted> = (Default)
+; 0000000 = Off (CIS)
+; 0000001 = On
+; NON-COMPLIANCE TO NOT DISRUPT COMMON HOME FEATURES
+;"CloudPrintProxyEnabled"=dword:0000000
+
+;;; 1.1.21 (L1) Ensure 'Enable reporting of usage and crash-related data' is set to 'Disabled'
+[HKEY_LOCAL_MACHINE\SOFTWARE\Policies\Google\Chrome]
+; <deleted> = (Default)
+; 0000000 = Off (CIS)
+; 0000001 = On
+"MetricsReportingEnabled"=dword:0000000
+
+;;; 1.1.22 (L1) Ensure 'Enable Site Isolation for every site' is set to 'Enabled'
+[HKEY_LOCAL_MACHINE\SOFTWARE\Policies\Google\Chrome]
+; <deleted> = (Default)
+; 0000000 = Off
+; 0000001 = On (CIS)
+"SitePerProcess"=dword:0000001
+
+;;; 1.1.23 (L1) Ensure 'Enable submission of documents to Google Cloud print' is set to 'Disabled'
+;[HKEY_LOCAL_MACHINE\SOFTWARE\Policies\Google\Chrome]
+; <deleted> = (Default)
+; 0000000 = Off (CIS)
+; 0000001 = On
+; NON-COMPLIANCE TO NOT DISRUPT COMMON HOME FEATURES
+;"CloudPrintSubmitEnabled"=dword:0000000
+
+;;; 1.1.24 (L1) Ensure 'Import saved passwords from default browser on first run' is set to 'Disabled'
+[HKEY_LOCAL_MACHINE\SOFTWARE\Policies\Google\Chrome]
+; <deleted> = (Default)
+; 0000000 = Off (CIS)
+; 0000001 = On
+"ImportSavedPasswords"=dword:0000000
