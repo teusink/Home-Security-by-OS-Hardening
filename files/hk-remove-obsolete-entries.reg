@@ -21,12 +21,16 @@ Windows Registry Editor Version 5.00
 [HKEY_LOCAL_MACHINE\SOFTWARE\Policies\Microsoft\WindowsStore]
 "AutoDownload"=-
 
-;;; Remove all obsolete keys since Windows 10, version 1803
+;;; Remove all obsolete keys from 1809 to 1903
+
+;; N/A
+
+;;; Remove all obsolete keys from 1803 to 1809
 
 [HKEY_LOCAL_MACHINE\SOFTWARE\Policies\Microsoft\Windows\PreviewBuilds]
 "EnableConfigFlighting"=-
 
-;;; Remove all obsolete keys since Windows 10, version 1709
+;;; Remove all obsolete keys from 1709 to 1803
 
 [HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\WcmSvc\wifinetworkmanager\config]
 "AutoConnectAllowedOEM"=-

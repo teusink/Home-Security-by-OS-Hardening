@@ -22,7 +22,7 @@ My other goal is to gain a good understanding on Windows 10 Hardening and other 
 Scope is an important part for this project. Otherwise you can endlessly install security tools and solutions which in the end all have a trade-off. This might be resources and performance, but also your own precious time to keep it running :).
 
 The constraints are:
-- Windows 10 Home and Pro Build 1809 (compatible with 1803)
+- Windows 10 Home and Pro Build 1903 (compatible with 1803 & 1809)
 - For the larger part, the settings needs to be able to be set through a GUI. I'll make some exceptions here and there (because there was never a GUI and its impact is rather important).
 - Many settings can also (and sometimes only) be set by using a registry-key file (.reg). I will supply these files.
 - Settings must be able to be set without using Group Policy Object (GPO), because that is not present (by default) on Windows 10 Home.
@@ -117,14 +117,18 @@ For automated enabling/disabling Windows Features, execute this file in the Comm
 These are the settings that are done through the use of the new Windows Settings interface.
 
 ## System
+- Notifications & actions: Get notifications from apps and other senders: On
+- Notifications & actions: Show notifications on the lock screen: On
+- Notifications & actions: Show reminders and incoming VoIP calls on the lock screen: On
 - Notifications & actions: Show me the Windows welcome experience: Off *
 - Notifications & actions: Get tips, tricks, and suggestions as you use Windows: Off *
-- Storage (Sense): On *
-- Storage (Sense): Delete temporary files that my apps aren't using: On *
-- Storage (Sense): Delete files that have been in the recycle bin for over: 30 days *
-- Storage (Sense): Delete files in the Download folder that have been there for over: Never *
+- Storage: Storage Sense: On *
+- Storage: Storage Sense: Run Storage Sense: Every month
+- Storage: Storage Sense: Delete temporary files that my apps aren't using: On *
+- Storage: Storage Sense: Delete files that have been in the recycle bin for over: 30 days *
+- Storage: Storage Sense: Delete files in the Download folder that have been there for over: Never *
 - Projecting to this PC: Always off *
-- Projecting to this PC: Ask to project to this PC: Every time *
+- Projecting to this PC: Ask to project to this PC: Every time a connection is requested *
 - Projecting to this PC: Require PIN for sharing: On *
 - Projecting to this PC: This PC can be discovered for projection only when it is plugged in: Off *
 - Shared experiences: Nearby sharing: Off
@@ -152,7 +156,7 @@ These are the settings that are done through the use of the new Windows Settings
 - Wi-Fi: Let me use Online Sign-Up to get connected: Off
 - Mobile hotspot: Off
 - Mobile hotspot: Turn On Remotely: Off
-- Proxy: Automaticall detect settings: Off
+- Proxy: Automatically detect settings: Off
 - Proxy: Use setup script: Off (unless specifically required)
 - Proxy: Use a proxy server: Off (unless specifically required)
 
@@ -187,7 +191,7 @@ These are the settings that are done through the use of the new Windows Settings
 ## Ease of Access
 - No Security or Privacy settings to mention
 
-## Cortana / Search
+## Cortana
 - Talk to Cortana: It can be fully disabled if you like (but not through GUI) *
 - Talk to Cortana: Let Cortana respond to "Hey Cortana": Off *
 - Talk to Cortana: Let Cortana listen for my commands when I press the Windows logo key + C: Off *
@@ -195,15 +199,18 @@ These are the settings that are done through the use of the new Windows Settings
 - Talk to Cortana: Manage the information Cortana can access from this device: Location: Off
 - Talk to Cortana: Manage the information Cortana can access from this device: Contacts, email, calendar & communication history: Off
 - Talk to Cortana: Manage the information Cortana can access from this device: Browsing history: Off
-- Permissions & History: SafeSearch: Moderate
-- Permissions & History: Windows Cloud Search: On
-- Permissions & History: Activity Recommendations: On
-- Permissions & History: My device History: On
-- Permissions & History: My search History: On
 - Cortana across my devices: Get phone notifications on this PC: Off
 - Cortana across my devices: Help me pick up where I left off on other devices: Off
 - Cortana across my devices: Get list suggestions: Off
 Note: Cortana can only be fully disabled through the use of registry.
+
+## Search
+- Permissions & History: SafeSearch: Moderate
+- Permissions & History: Cloud content search: Microsoft account: On
+- Permissions & History: Cloud content search: Work or School account: On
+- Permissions & History: My device History: On
+- Permissions & History: My search History: On
+- Searching Windows: Find My Files: Classic
 
 ## Privacy
 
@@ -226,10 +233,12 @@ Note: Cortana can only be fully disabled through the use of registry.
 
 ## Update & Security
 - Windows Update: Set `Active hours` to your liking
-- Windows Update: Advanced options: Give updates other Microsoft products when I update Windows: On
-- Windows Update: Advanced options: Delivery optimizations: Allow downloads from other PCs: On *
-- Windows Update: Advanced options: Delivery optimizations: PCs on my local network: On *
-- Windows Update: Advanced options: Delivery optimizations: PCs on my local network, and PCs on the Internet: Off *
+- Windows Update: Advanced options: Reveive updates for other Microsoft products: On
+- Windows Update: Advanced options: Restart this device a.s.a.p.: Off
+- Windows Update: Advanced options: Show a notification when your PC requires a restart: On
+- Windows Update: Delivery optimization: Allow downloads from other PCs: On *
+- Windows Update: Delivery optimization: PCs on my local network: On *
+- Windows Update: Delivery optimization: PCs on my local network, and PCs on the Internet: Off *
 - Windows Security: Windows Defender Security Center
 - Windows Security: Antivirus options: Period scanning: Off (NOTE: setting only available when third-party anti-malware is installed)
 - Find my device: On *
