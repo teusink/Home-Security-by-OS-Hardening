@@ -85,7 +85,7 @@ Windows Registry Editor Version 5.00
 ; NON-COMPLIANCE TO NOT DISRUPT COMMON HOME FEATURES
 ;"AuthSchemes"="ntlm, negotiate"
 
-1.1.15 (L2) Ensure 'Allow invocation of file selection dialogs' is set to 'Enabled'
+;;; 1.1.15 (L2) Ensure 'Allow invocation of file selection dialogs' is set to 'Enabled'
 ;[HKEY_LOCAL_MACHINE\SOFTWARE\Policies\Google\Chrome]
 ; <deleted> = (Default)
 ; 0000000 = Off
