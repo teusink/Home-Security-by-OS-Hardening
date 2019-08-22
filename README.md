@@ -327,6 +327,9 @@ If you use Windows Defender with your Windows installment:
 If you use BitLocker with your Windows installment:
 - HKEY_LOCAL_MACHINE - Windows 10 CIS BitLocker [[REG]](https://github.com/teusink/Home-Security-by-W10-Hardening/blob/master/files/hklm-cis-bitlocker.reg)
 
+If you use BitLocker with your Windows installment, but DO NOT have a TPM chip:
+- HKEY_LOCAL_MACHINE - Windows 10 CIS BitLocker No TPM [[REG]](https://github.com/teusink/Home-Security-by-W10-Hardening/blob/master/files/hklm-cis-bitlocker-no-tpm.reg)
+
 If you use Windows Local Firewall with your Windows installment:
 - HKEY_LOCAL_MACHINE - Windows 10 CIS L1 & L2 - Windows Local Firewall [[REG]](https://github.com/teusink/Home-Security-by-W10-Hardening/blob/master/files/hklm-cis-firewall.reg)
 
