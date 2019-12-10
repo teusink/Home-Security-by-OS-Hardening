@@ -252,11 +252,11 @@ Note: The Virus & threat Protection settings are only available when third-party
 - Virus & threat Protection: Settings: Controlled folder access: On
 - Virus & threat Protection: Settings: Notifications: Receive recent activity and scan results: On
 - Firewall & network protection: Domain network: Windows Defender Firewall: On
-- Firewall & network protection: Domain network: Blocks all incoming connections: On
+- Firewall & network protection: Domain network: Blocks all incoming connections: Off
 - Firewall & network protection: Private network: Windows Defender Firewall: On 
-- Firewall & network protection: Private network: Blocks all incoming connections: On
+- Firewall & network protection: Private network: Blocks all incoming connections: Off
 - Firewall & network protection: Public network: Windows Defender Firewall: On
-- Firewall & network protection: Public network: Blocks all incoming connections: On
+- Firewall & network protection: Public network: Blocks all incoming connections: Off
 - Firewall & network protection: Firewall notification settings: Notifications: Notify me when there are problems with Dynamic Lock: On
 - Firewall & network protection: Firewall notification settings: Notifications: Notify me when WDF blocks a new app: On
 - Firewall & network protection: Firewall notification settings: Notifications: Domain firewall: On
