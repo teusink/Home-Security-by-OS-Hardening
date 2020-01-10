@@ -117,6 +117,23 @@ Windows Registry Editor Version 5.00
 ; 0000001 = On
 "AllowClipboardHistory"=dword:0000001
 
+;;; Disable VBScript in all zones in Internet Explorer
+; Computer - default: 00000000
+[HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Windows\CurrentVersion\Internet Settings\Zones\0]
+"140C"=dword:00000003
+; Local intranet - default: 00000000
+[HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Windows\CurrentVersion\Internet Settings\Zones\1]
+"140C"=dword:00000003
+; Trusted sites - default: 00000000
+[HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Windows\CurrentVersion\Internet Settings\Zones\2]
+"140C"=dword:00000003
+; Internet Zone - default: 00000003
+[HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Windows\CurrentVersion\Internet Settings\Zones\3]
+"140C"=dword:00000003
+; Restricted Sites Zone - default: 00000003
+[HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Windows\CurrentVersion\Internet Settings\Zones\4]
+"140C"=dword:00000003
+
 ;;; WARNING: Settings below are gone in newer CIS Benchmarks, but seemingly still supported
 
 ;;; (CIS-1709): 18.8.26.1 (L1) Ensure 'Untrusted Font Blocking' is set to 'Enabled: Block untrusted fonts and log events'
