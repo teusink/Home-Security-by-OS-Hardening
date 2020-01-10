@@ -538,4 +538,11 @@ Windows Registry Editor Version 5.00
 ; 000004 = AES-CBC 256-bit
 ; 000006 = XTS-AES 128-bit
 ; 000007 = XTS-AES 256-bit (CIS)
-"EncryptionMethodWithXtsRdv"=dword:0000004
+"EncryptionMethodWithXtsFdv"=dword:0000007
+[HKEY_LOCAL_MACHINE\SOFTWARE\Policies\Microsoft\FVE]
+; <deleted> = (Default)
+; 000003 = AES-CBC 128-bit
+; 000004 = AES-CBC 256-bit
+; 000006 = XTS-AES 128-bit
+; 000007 = XTS-AES 256-bit (CIS)
+"EncryptionMethodWithXtsRdv"=dword:0000007
