@@ -118,13 +118,13 @@ Windows Registry Editor Version 5.00
 "AllowClipboardHistory"=dword:0000001
 
 ;;; Disable VBScript in all zones in Internet Explorer
-; Computer - default: 00000000
+; My Computer - default: 00000000
 [HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Windows\CurrentVersion\Internet Settings\Zones\0]
 "140C"=dword:00000003
-; Local intranet - default: 00000000
+; Local Intranet Zone - default: 00000000
 [HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Windows\CurrentVersion\Internet Settings\Zones\1]
 "140C"=dword:00000003
-; Trusted sites - default: 00000000
+; Trusted Sites Zone - default: 00000000
 [HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Windows\CurrentVersion\Internet Settings\Zones\2]
 "140C"=dword:00000003
 ; Internet Zone - default: 00000003
