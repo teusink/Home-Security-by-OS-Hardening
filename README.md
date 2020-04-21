@@ -335,6 +335,7 @@ If you use Windows Local Firewall with your Windows installment:
 
 If you use Google Chrome:
 - HKEY_LOCAL_MACHINE - Google Chrome hardening [[REG]](https://github.com/teusink/Home-Security-by-W10-Hardening/blob/master/files/hklm-cis-chrome.reg)
+- HKEY_LOCAL_MACHINE - Google Chrome hardening (flash enabled) [[REG]](https://github.com/teusink/Home-Security-by-W10-Hardening/blob/master/files/hklm-cis-chrome-flash.reg)
 
 # hosts file
 To disable the wpad requests (automatic proxy server configuration) without breaking the IP Helper service of Windows, you will need to add a value to your hosts file.
