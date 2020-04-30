@@ -7,13 +7,6 @@ Windows Registry Editor Version 5.00
 ;;; Source: Various online sources
 ;;; Author: Joram Teusink
 
-;;; Performance - Visual Effects: Best performance
-[HKEY_CURRENT_USER\Software\Microsoft\Windows\CurrentVersion\Explorer\VisualEffects]
-; 000000 = Let Windows choose what’s best for my computer (Default)
-; 000001 = Adjust for best appearance
-; 000002 = Adjust for best performance
-"VisualFXSetting"=dword:0000001
-
 ;;; Turn off "File Explorer ads"
 [HKEY_CURRENT_USER\SOFTWARE\Microsoft\Windows\CurrentVersion\Explorer\Advanced]
 ; 0000000 = Off (Secure)
