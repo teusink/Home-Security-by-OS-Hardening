@@ -16,9 +16,16 @@ Windows Registry Editor Version 5.00
 ; 000002 = Adjust for best performance
 "VisualFXSetting"=dword:0000001
 
-;;; Functionality - Active Last Window on Taskbar Click
+;;; Functionality - Click to Activate Last Window on Taskbar Click
 [HKEY_CURRENT_USER\Software\Microsoft\Windows\CurrentVersion\Explorer\Advanced]
 ; <deleted> = Off (Default)
 ; 000000 = Off
 ; 000001 = On
 "LastActiveClick"=dword:0000001
+
+;;; Functionality - Active Tumbnail Preview on Taskbar, while having "Click to Activate" enabled
+[HKEY_CURRENT_USER\Software\Microsoft\Windows\CurrentVersion\Explorer\Advanced]
+; <deleted> = Off (Default)
+; 000000 = Off
+; 000001 = On
+"ExtendedUIHoverTime"=dword:0000001
