@@ -16,7 +16,7 @@ Description on how I configured the installation and Security of Windows 10 Home
 # Introduction
 The goal of this project is to make a secure (or at least secure within a reasonable amount of effort) Windows 10 installation to ensure a secure environment to consume and produce content. It is possible that by gaining new insights hardening-options are either removed or added.
 
-My other goal is to gain a good understanding on Windows 10 Hardening and other Security-related aspects. I think that as an Information Security Officer and Director of the Cybersecurity Company [Digicy.Cloud](https://www.digicy.cloud/en/) it is important to upkeep (general) knowledge about Technology and it's Security.
+My other goal is to gain a good understanding on Windows 10 Hardening and other Security-related aspects. I think that as an Information Security Officer and Director of the Cybersecurity Company [MITE3 Cybersecurity](https://www.mite3.nl/en/) it is important to upkeep (general) knowledge about Technology and it's Security.
 
 ## The Scope
 Scope is an important part for this project. Otherwise you can endlessly install security tools and solutions which in the end all have a trade-off. This might be resources and performance, but also your own precious time to keep it running :).
