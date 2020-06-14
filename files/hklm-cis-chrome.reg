@@ -54,14 +54,14 @@ Windows Registry Editor Version 5.00
 ; 0000003 = Click to play (CIS)
 "DefaultPluginsSetting"=dword:0000003
 
-;;; 1.1.4.1 (L1) Ensure 'Configure extension installation blacklist' is set to 'Enabled' ("*" for all extensions)
+;;; 1.1.4.1 (L1) Ensure 'Configure extension installation blocklist' is set to 'Enabled' ("*" for all extensions)
 ;[HKEY_LOCAL_MACHINE\SOFTWARE\Policies\Google\Chrome\ExtensionInstallBlacklist]
 ; <deleted> = (Default)
 ; * = Enabled (CIS)
 ; NON-COMPLIANCE TO NOT DISRUPT COMMON HOME FEATURES
 ;"1"="*"
 
-;;; 1.1.8.1 (L1) Ensure `Configure native messaging blacklist` is set to 'Enabled' ("*" for all messaging applications)
+;;; 1.1.8.1 (L1) Ensure `Configure native messaging blocklist` is set to 'Enabled' ("*" for all messaging applications)
 ;[HKEY_LOCAL_MACHINE\SOFTWARE\Policies\Google\Chrome\NativeMessagingBlacklist]
 ; <deleted> = (Default)
 ; * = Enabled (CIS)
