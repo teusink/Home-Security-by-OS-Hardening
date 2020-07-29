@@ -43,9 +43,11 @@ From a Graphical User Interface (GUI) perspective I will touch every relevant se
 Whenever you upgrade to a newer build, sometimes there are keys and entries going obsolete. Through this registry file you can remove them safely: [[hk-remove-obsolete-entries]](https://github.com/teusink/Home-Security-by-W10-Hardening/blob/master/files/hk-remove-obsolete-entries.reg)
 
 Upgrades included in the Registry file:
-- From CIS 1709 to CIS 1803: included
-- From Windows 1803 to Windows 1809: not needed
-- From Windows 1709 to Windows 1803: included
+- From 1909 to 2004: not included yet (if applicable even)
+- From 1903 to 1909: not needed
+- From 1809 to 1903: not needed
+- From 1803 to 1809: not needed
+- From 1709 to 1803: included
 
 # Control Panel
 

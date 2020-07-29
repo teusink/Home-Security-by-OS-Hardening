@@ -21,8 +21,10 @@ Windows Registry Editor Version 5.00
 [HKEY_LOCAL_MACHINE\SOFTWARE\Policies\Microsoft\WindowsStore]
 "AutoDownload"=-
 
-;;; Remove all obsolete keys from 1809 to 1903
+;;; Remove all obsolete keys from 1903 to 1909
+;; N/A
 
+;;; Remove all obsolete keys from 1809 to 1903
 ;; N/A
 
 ;;; Remove all obsolete keys from 1803 to 1809
