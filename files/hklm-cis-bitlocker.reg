@@ -158,9 +158,9 @@ Windows Registry Editor Version 5.00
 ;;; 18.9.11.1.10 (BL) Ensure 'Configure use of hardware-based encryption for fixed data drives' is set to 'Enabled'
 [HKEY_LOCAL_MACHINE\SOFTWARE\Policies\Microsoft\FVE]
 ; <deleted> = (Default)
-; 0000000 = Off
+; 0000000 = Off (Microsoft Security Guideline: https://portal.msrc.microsoft.com/en-us/security-guidance/advisory/ADV180028)
 ; 0000001 = On (CIS)
-"FDVHardwareEncryption"=dword:0000001
+"FDVHardwareEncryption"=dword:0000000
 
 ;;; 18.9.11.1.11 (BL) Ensure 'Configure use of hardware-based encryption for fixed data drives: Use BitLocker software-based encryption when hardware encryption is not available' is set to 'Enabled: True'
 [HKEY_LOCAL_MACHINE\SOFTWARE\Policies\Microsoft\FVE]
@@ -299,9 +299,9 @@ Windows Registry Editor Version 5.00
 ;;; 18.9.11.2.12 (BL) Ensure 'Configure use of hardware-based encryption for operating system drives' is set to 'Enabled'
 [HKEY_LOCAL_MACHINE\SOFTWARE\Policies\Microsoft\FVE]
 ; <deleted> = (Default)
-; 0000000 = Off
+; 0000000 = Off (Microsoft Security Guideline: https://portal.msrc.microsoft.com/en-us/security-guidance/advisory/ADV180028)
 ; 0000001 = On (CIS)
-"OSHardwareEncryption"=dword:0000001
+"OSHardwareEncryption"=dword:0000000
 
 ;;; 18.9.11.2.13 (BL) Ensure 'Configure use of hardware-based encryption for operating system drives: Use BitLocker software-based encryption when hardware encryption is not available' is set to 'Enabled: True'
 [HKEY_LOCAL_MACHINE\SOFTWARE\Policies\Microsoft\FVE]
@@ -459,9 +459,9 @@ Windows Registry Editor Version 5.00
 ;;; 18.9.11.3.10 (BL) Ensure 'Configure use of hardware-based encryption for removable data drives' is set to 'Enabled'
 [HKEY_LOCAL_MACHINE\SOFTWARE\Policies\Microsoft\FVE]
 ; <deleted> = (Default)
-; 0000000 = Off
+; 0000000 = Off (Microsoft Security Guideline: https://portal.msrc.microsoft.com/en-us/security-guidance/advisory/ADV180028)
 ; 0000001 = On (CIS)
-"RDVHardwareEncryption"=dword:0000001
+"RDVHardwareEncryption"=dword:0000000
 
 ;;; 18.9.11.3.11 (BL) Ensure 'Configure use of hardware-based encryption for removable data drives: Use BitLocker software-based encryption when hardware encryption is not available' is set to 'Enabled: True'
 [HKEY_LOCAL_MACHINE\SOFTWARE\Policies\Microsoft\FVE]
