@@ -12,6 +12,10 @@ Windows Registry Editor Version 5.00
 
 ;;; WARNING: Do not use, if you do not use Windows Defender!!
 
+;;; 18 Administrative Templates (Computer)
+
+;;; 18.3 MS Security Guide
+
 ;;; 18.3.5 (L1) Ensure 'Turn on Windows Defender protection against Potentially Unwanted Applications' is set to 'Enabled'
 [HKEY_LOCAL_MACHINE\SOFTWARE\Policies\Microsoft\Windows Defender\MpEngine]
 ; <deleted> = Default
@@ -19,14 +23,26 @@ Windows Registry Editor Version 5.00
 ; 0000001 = On (CIS)
 "MpEnablePus"=dword:0000000
 
-;;; 18.9.76.3.1 (L1) Ensure 'Configure local setting override for reporting to Microsoft MAPS' is set to 'Disabled'
+;;; 18.9 Windows Components
+
+;;; 18.9.45 Microsoft Defender Antivirus (formerly Windows Defender and Windows Defender Antivirus)
+
+;;; 18.9.45.1 Client Interface
+;;; Paragraph skipped due to no registry keys available
+
+;;; 18.9.45.2 Exclusions
+;;; Paragraph skipped due to no registry keys available
+
+;;; 18.9.45.3 MAPS
+
+;;; 18.9.45.3.1 (L1) Ensure 'Configure local setting override for reporting to Microsoft MAPS' is set to 'Disabled'
 [HKEY_LOCAL_MACHINE\SOFTWARE\Policies\Microsoft\Windows Defender\Spynet]
 ; <deleted> = (Default)
 ; 0000000 = Off (Default / CIS)
 ; 0000001 = On
 "LocalSettingOverrideSpynetReporting"=dword:0000000
 
-;;; 18.9.76.3.2 (L2) Ensure 'Join Microsoft MAPS' is set to 'Disabled'
+;;; 18.9.45.3.2 (L2) Ensure 'Join Microsoft MAPS' is set to 'Disabled'
 [HKEY_LOCAL_MACHINE\Software\Microsoft\Windows Defender\Spynet]
 ; <deleted> = (Default)
 ; 0000000 = Off (CIS)
@@ -34,42 +50,18 @@ Windows Registry Editor Version 5.00
 ; 0000002 = Advanced MAPS
 "SpynetReporting"=dword:0000000
 
-;;; 18.9.76.7.1 (L1) Ensure 'Turn on behavior monitoring' is set to 'Enabled'
-[HKEY_LOCAL_MACHINE\SOFTWARE\Policies\Microsoft\Windows Defender\Real-Time Protection]
-; <deleted> = (Default)
-; 0000000 = Off (Default / CIS)
-; 0000001 = On
-"DisableBehaviorMonitoring"=dword:0000000
+;;; 18.9.45.4 Microsoft Defender Exploit Guard (formerly Windows Defender Exploit Guard)
 
-;;; 18.9.76.9.1 (L2) Ensure 'Configure Watson events' is set to 'Disabled'
-[HKEY_LOCAL_MACHINE\SOFTWARE\Policies\Microsoft\Windows Defender\Reporting]
-; <deleted> = (Default)
-; 0000000 = Off
-; 0000001 = On (CIS)
-"DisableGenericReports"=dword:0000001
+;;; 18.9.45.4.1 Attack Surface Reduction
 
-;;; 18.9.76.10.1 (L1) Ensure 'Scan removable drives' is set to 'Enabled'
-[HKEY_LOCAL_MACHINE\SOFTWARE\Policies\Microsoft\Windows Defender\Scan]
-; <deleted> = (Default)
-; 0000000 = Off (CIS)
-; 0000001 = On
-"DisableRemovableDriveScanning"=dword:0000000
-
-;;; 18.9.76.10.2 (L1) Ensure 'Turn on e-mail scanning' is set to 'Enabled'
-[HKEY_LOCAL_MACHINE\SOFTWARE\Policies\Microsoft\Windows Defender\Scan]
-; <deleted> = (Default)
-; 0000000 = Off (CIS)
-; 0000001 = On
-"DisableEmailScanning"=dword:0000000
-
-;;; 18.9.76.13.1.1 (L1) Ensure 'Configure Attack Surface Reduction rules' is set to 'Enabled'
+;;; 18.9.45.4.1.1 (L1) Ensure 'Configure Attack Surface Reduction rules' is set to 'Enabled'
 [HKEY_LOCAL_MACHINE\SOFTWARE\Policies\Microsoft\Windows Defender\Windows Defender Exploit Guard\ASR]
 ; <deleted> = (Default)
 ; 0000000 = Off
 ; 0000001 = On (CIS)
 "ExploitGuard_ASR_Rules"=dword:0000001
 
-;;; 18.9.76.13.1.2 (L1) Ensure 'Configure Attack Surface Reduction rules: Set the state for each ASR rule' is 'configured'
+;;; 18.9.45.4.1.2 (L1) Ensure 'Configure Attack Surface Reduction rules: Set the state for each ASR rule' is 'configured'
 [HKEY_LOCAL_MACHINE\SOFTWARE\Policies\Microsoft\Windows Defender\Windows Defender Exploit Guard\ASR\Rules]
 ; <deleted> = (Default)
 ; 0000000 = Off
@@ -126,23 +118,89 @@ Windows Registry Editor Version 5.00
 ; 0000001 = On (CIS)
 "9e6c4e1f-7d60-472f-ba1a-a39ef669e4b2"=dword:0000001
 
-;;; 18.9.76.13.3.1 (L1) Ensure 'Prevent users and apps from accessing dangerous websites' is set to 'Enabled: Block'
+;;; 18.9.45 Microsoft Defender Antivirus (formerly Windows Defender and Windows Defender Antivirus)
+
+;;; 18.9.45.4.2 Controlled Folder Access
+;;; Paragraph skipped due to no registry keys available
+
+;;; 18.9.45.4.3 Network Protection
+
+;;; 18.9.45.4.3.1 (L1) Ensure 'Prevent users and apps from accessing dangerous websites' is set to 'Enabled: Block'
 [HKEY_LOCAL_MACHINE\SOFTWARE\Policies\Microsoft\Windows Defender\Windows Defender Exploit Guard\Network Protection]
 ; <deleted> = (Default)
 ; 0000000 = Off
 ; 0000001 = On (CIS)
 "EnableNetworkProtection"=dword:0000001
 
-;;; 18.9.76.14 (L1) Ensure 'Turn off Windows Defender AntiVirus' is set to 'Disabled'
+;;; 18.9.45.5 MpEngine
+
+;;; 18.9.45.5.1 (L2) Ensure 'Enable file hash computation feature' is set to 'Enabled' (Automated)
+;[HKEY_LOCAL_MACHINE\SOFTWARE\Policies\Microsoft\Windows Defender\MpEngine]
+; <deleted> = (Default)
+; 0000000 = Off
+; 0000001 = On (CIS)
+;"FileHashComputation"=dword:0000001
+
+;;; 18.9.45.6 Network Inspection System
+;;; Paragraph skipped due to no registry keys available
+
+;;; 18.9.45.7 Quarantine
+;;; Paragraph skipped due to no registry keys available
+
+;;; 18.9.45.8 Real-time Protection
+
+;;; 18.9.45.8.1 (L1) Ensure 'Turn on behavior monitoring' is set to 'Enabled'
+[HKEY_LOCAL_MACHINE\SOFTWARE\Policies\Microsoft\Windows Defender\Real-Time Protection]
+; <deleted> = (Default)
+; 0000000 = Off (Default / CIS)
+; 0000001 = On
+"DisableBehaviorMonitoring"=dword:0000000
+
+;;; 18.9.45.9 Remediation
+;;; Paragraph skipped due to no registry keys available
+
+;;; 18.9.45.10 Reporting
+
+;;; 18.9.45.10.1 (L2) Ensure 'Configure Watson events' is set to 'Disabled'
+[HKEY_LOCAL_MACHINE\SOFTWARE\Policies\Microsoft\Windows Defender\Reporting]
+; <deleted> = (Default)
+; 0000000 = Off
+; 0000001 = On (CIS)
+"DisableGenericReports"=dword:0000001
+
+;;; 18.9.45.11 Scan
+
+;;; 18.9.45.11.1 (L1) Ensure 'Scan removable drives' is set to 'Enabled'
+[HKEY_LOCAL_MACHINE\SOFTWARE\Policies\Microsoft\Windows Defender\Scan]
+; <deleted> = (Default)
+; 0000000 = Off (CIS)
+; 0000001 = On
+"DisableRemovableDriveScanning"=dword:0000000
+
+;;; 18.9.45.11.2 (L1) Ensure 'Turn on e-mail scanning' is set to 'Enabled'
+[HKEY_LOCAL_MACHINE\SOFTWARE\Policies\Microsoft\Windows Defender\Scan]
+; <deleted> = (Default)
+; 0000000 = Off (CIS)
+; 0000001 = On
+"DisableEmailScanning"=dword:0000000
+
+;;; 18.9.45.12 Security Intelligence Updates (formerly Signature Updates)
+;;; Paragraph skipped due to no registry keys available
+
+;;; 18.9.45.13 Threats
+;;; Paragraph skipped due to no registry keys available
+
+;;; 18.9.45.14 (L1) Ensure 'Configure detection for potentially unwanted applications' is set to 'Enabled: Block'
+[HKEY_LOCAL_MACHINE\SOFTWARE\Policies\Microsoft\Windows Defender]
+; <deleted> = (Default)
+; 0000000 = Disable (Default)
+; 0000001 = Block (CIS)
+; 0000001 = Audit Mode
+"PUAProtection"=dword:0000000
+
+;;; 18.9.45.15 (L1) Ensure 'Turn off Windows Defender AntiVirus' is set to 'Disabled'
 [HKEY_LOCAL_MACHINE\SOFTWARE\Policies\Microsoft\Windows Defender]
 ; <deleted> = (Default)
 ; 0000000 = Off (Default / CIS)
 ; 0000001 = On
 "DisableAntiSpyware"=dword:0000000
-
-;;; 18.9.79.2.1 (L1) Ensure 'Prevent users from modifying settings' is set to 'Enabled'
-[HKEY_LOCAL_MACHINE\SOFTWARE\Policies\Microsoft\Windows Defender Security Center\App and Browser protection]
-; <deleted> = (Default)
-; 0000000 = Off (CIS)
-; 0000001 = On
-"DisallowExploitProtectionOverride"=dword:0000000

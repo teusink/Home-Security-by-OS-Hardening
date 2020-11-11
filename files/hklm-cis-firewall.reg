@@ -12,6 +12,10 @@ Windows Registry Editor Version 5.00
 
 ;;; WARNING: Do not use, if you do not use Windows Local Firewall!!
 
+;;; 9 Windows Firewall with Advanced Security
+
+;;; 9.1 Domain Profile
+
 ;;; 9.1.1 (L1) Ensure 'Windows Firewall: Domain: Firewall state' is set to 'On (recommended)'
 [HKEY_LOCAL_MACHINE\Software\Policies\Microsoft\WindowsFirewall\DomainProfile]
 ; <deleted> = (Default)
@@ -71,6 +75,8 @@ Windows Registry Editor Version 5.00
 ; FEATURE DOES NOT EXISTS IN NON-CORPORATE ENVIRONMENT
 ;"LogSuccessfulConnections"=dword:0000001
 
+;;; 9.2 Private Profile
+
 ;;; 9.2.1 (L1) Ensure 'Windows Firewall: Private: Firewall state' is set to 'On (recommended)'
 [HKEY_LOCAL_MACHINE\Software\Policies\Microsoft\WindowsFirewall\PrivateProfile]
 ; <deleted> = (Default)
@@ -128,6 +134,8 @@ Windows Registry Editor Version 5.00
 ; 0000001 = On (CIS)
 ; FEATURE DOES NOT EXISTS IN NON-CORPORATE ENVIRONMENT
 ;"LogSuccessfulConnections"=dword:0000001
+
+;;; 9.3 Public Profile
 
 ;;; 9.3.1 (L1) Ensure 'Windows Firewall: Public: Firewall state' is set to 'On (recommended)'
 [HKEY_LOCAL_MACHINE\Software\Policies\Microsoft\WindowsFirewall\PublicProfile]
@@ -201,6 +209,10 @@ Windows Registry Editor Version 5.00
 ; 0000001 = On (CIS)
 ; FEATURE DOES NOT EXISTS IN NON-CORPORATE ENVIRONMENT
 ;"LogSuccessfulConnections"=dword:0000001
+
+;;; 18.5.11 Network Connections
+
+;;; 18.5.11.1 Windows Defender Firewall (formerly Windows Firewall)
 
 ;;; 18.5.11.2 (L1) Ensure 'Prohibit installation and configuration of Network Bridge on your DNS domain network' is set to 'Enabled'
 ;[HKEY_LOCAL_MACHINE\SOFTWARE\Policies\Microsoft\Windows\Network Connections]

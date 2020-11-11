@@ -12,6 +12,12 @@ Windows Registry Editor Version 5.00
 
 ;;; WARNING: DO NOT USE, if your system does not support Device Guard for 100%!!
 
+;;; 18 Administrative Templates (Computer)
+
+;;; 18.8 System
+
+;;; 18.8.5 Device Guard
+
 ;;; 18.8.5.1 (NG) Ensure 'Turn On Virtualization Based Security' is set to 'Enabled'
 [HKEY_LOCAL_MACHINE\SOFTWARE\Policies\Microsoft\Windows\DeviceGuard]
 "EnableVirtualizationBasedSecurity"=-
@@ -32,22 +38,39 @@ Windows Registry Editor Version 5.00
 [HKEY_LOCAL_MACHINE\SOFTWARE\Policies\Microsoft\Windows\DeviceGuard]
 "LsaCfgFlags"=-
 
-;;; 18.9.77.1 (NG) Ensure 'Allow auditing events in Windows Defender Application Guard' is set to 'Enabled'
+;;; 18.8.5.6 (NG) Ensure 'Turn On Virtualization Based Security: Secure Launch Configuration' is set to 'Enabled'
+[HKEY_LOCAL_MACHINE\SOFTWARE\Policies\Microsoft\Windows\DeviceGuard]
+"ConfigureSystemGuardLaunch"=-
+
+;;; 18 Administrative Templates (Computer)
+
+;;; 18.9 Windows Components
+
+;;; 18.9.46 Microsoft Defender Application Guard (formerly Windows Defender Application Guard)
+
+;;; 18.9.46.1 (NG) Ensure 'Allow auditing events in Windows Defender Application Guard' is set to 'Enabled'
 [HKEY_LOCAL_MACHINE\SOFTWARE\Policies\Microsoft\AppHVSI]
 "AuditApplicationGuard"=-
 
-;;; 18.9.77.2 (NG) Ensure 'Allow data persistence for Windows Defender Application Guard' is set to 'Disabled'
+;;; 18.9.46.2 (NG) Ensure 'Allow camera and microphone access in Microsoft Defender Application Guard' is set to 'Disabled'
+[HKEY_LOCAL_MACHINE\SOFTWARE\Policies\Microsoft\AppHVSI]
+"AllowCameraMicrophoneRedirection"=-
+
+;;; 18.9.46.3 (NG) Ensure 'Allow data persistence for Windows Defender Application Guard' is set to 'Disabled'
 [HKEY_LOCAL_MACHINE\SOFTWARE\Policies\Microsoft\AppHVSI]
 "AllowPersistence"=-
 
-;;; 18.9.77.3 (NG) Ensure 'Allow files to download and save to the host operating system from Windows Defender Application Guard' is set to 'Disabled'
+;;; 18.9.46.4 (NG) Ensure 'Allow files to download and save to the host operating system from Windows Defender Application Guard' is set to 'Disabled'
 [HKEY_LOCAL_MACHINE\SOFTWARE\Policies\Microsoft\AppHVSI]
 "SaveFilesToHost"=-
 
-;;; 18.9.77.4 (NG) Ensure 'Configure Windows Defender Application Guard clipboard settings: Clipboard behavior setting' is set to 'Enabled: Enable clipboard operation from an isolated session to the host'
+;;; 18.9.46.5 (NG) Ensure 'Configure Windows Defender Application Guard clipboard settings: Clipboard behavior setting' is set to 'Enabled: Enable clipboard operation from an isolated session to the host'
 [HKEY_LOCAL_MACHINE\SOFTWARE\Policies\Microsoft\AppHVSI]
 "AppHVSIClipboardSettings"=-
 
-;;; 18.9.77.5 (NG) Ensure 'Turn on Windows Defender Application Guard in Enterprise Mode' is set to 'Enabled'
+;;; 18.9.46.6 (NG) Ensure 'Turn on Windows Defender Application Guard in Enterprise Mode' is set to 'Enabled'
 [HKEY_LOCAL_MACHINE\SOFTWARE\Policies\Microsoft\AppHVSI]
 "AllowAppHVSI_ProviderSet"=-
+
+;;; 18.9.47 Microsoft Defender Exploit Guard (formerly Windows Defender Exploit Guard)
+;;; Paragraph skipped due to no registry keys available

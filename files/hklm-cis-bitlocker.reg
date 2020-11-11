@@ -12,12 +12,24 @@ Windows Registry Editor Version 5.00
 
 ;;; WARNING: Do not use, if you do not use Windows BitLocker!!
 
+;;; 2.3 Security Options
+
+;;; 2.3.7 Interactive logon
+
 ;;; 2.3.7.3 (BL) Ensure 'Interactive logon: Machine account lockout threshold' is set to '10 or fewer invalid logon attempts, but not 0'
 [HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Windows\CurrentVersion\Policies\System]
 ; <deleted> = (Default)
 ; 0000000 = Off
 ; 000000a = 10 attempts (CIS)
 "MaxDevicePasswordFailedAttempts"=dword:000000a
+
+;;; 18 Administrative Templates (Computer)
+
+;;; 18.8 System
+
+;;; 18.8.7 Device Installation
+
+;;; 18.8.7.1 Device Installation Restrictions
 
 ;;; 18.8.7.1.1 (BL) Ensure 'Prevent installation of devices that match any of these device IDs' is set to 'Enabled'
 ;[HKEY_LOCAL_MACHINE\Software\Policies\Microsoft\Windows\DeviceInstall\Restrictions]
@@ -73,19 +85,25 @@ Windows Registry Editor Version 5.00
 ; NON-COMPLIANCE TO NOT DISRUPT COMMON HOME FEATURES
 ;"DenyDeviceClassesRetroactive"=dword:0000000
 
-;;; 18.8.33.6.3 (BL) Ensure 'Allow standby states (S1-S3) when sleeping (on battery)' is set to 'Disabled'
+;;; 18.8.34.6 Sleep Settings
+
+;;; 18.8.34.6.3 (BL) Ensure 'Allow standby states (S1-S3) when sleeping (on battery)' is set to 'Disabled'
 [HKEY_LOCAL_MACHINE\Software\Policies\Microsoft\Power\PowerSettings\abfc2519-3608-4c2a-94ea-171b0ed546ab]
 ; <deleted> = (Default)
 ; 0000000 = Off (Default / CIS)
 ; 0000001 = On
 "DCSettingIndex"=dword:0000000
 
-;;; 18.8.33.6.4 (BL) Ensure 'Allow standby states (S1-S3) when sleeping (plugged in)' is set to 'Disabled'
+;;; 18.8.34.6.4 (BL) Ensure 'Allow standby states (S1-S3) when sleeping (plugged in)' is set to 'Disabled'
 [HKEY_LOCAL_MACHINE\Software\Policies\Microsoft\Power\PowerSettings\abfc2519-3608-4c2a-94ea-171b0ed546ab]
 ; <deleted> = (Default)
 ; 0000000 = Off (Default / CIS)
 ; 0000001 = On
 "ACSettingIndex"=dword:0000000
+
+;;; 18.9.11 BitLocker Drive Encryption
+
+;;; 18.9.11.1 Fixed Data Drives
 
 ;;; 18.9.11.1.1 (BL) Ensure 'Allow access to BitLocker-protected fixed data drives from earlier versions of Windows' is set to 'Disabled'
 [HKEY_LOCAL_MACHINE\Software\Policies\Microsoft\FVE]
@@ -208,6 +226,8 @@ Windows Registry Editor Version 5.00
 ; NON-COMPLIANCE TO NOT DISRUPT COMMON HOME FEATURES
 ;"FDVEnforceUserCert"=dword:0000000
 
+;;; 18.9.11.2 Operating System Drives
+
 ;;; 18.9.11.2.1 (BL) Ensure 'Allow enhanced PINs for startup' is set to 'Enabled'
 [HKEY_LOCAL_MACHINE\SOFTWARE\Policies\Microsoft\FVE]
 ; <deleted> = (Default)
@@ -288,36 +308,28 @@ Windows Registry Editor Version 5.00
 ; FEATURE DOES NOT EXISTS IN NON-CORPORATE ENVIRONMENT
 ;"OSRequireActiveDirectoryBackup"=dword:0000000
 
-;;; 18.9.11.2.11 (BL) Ensure 'Configure minimum PIN length for startup' is set to 'Enabled: 7 or more characters'
-[HKEY_LOCAL_MACHINE\SOFTWARE\Policies\Microsoft\FVE]
-; <deleted> = (Default)
-; 000004 = 4-digits or more (minimum)
-; 000007 = 7-digits or more (CIS)
-; 000020 = 20-digits (maximum)
-"MinimumPIN"=dword:0000007
-
-;;; 18.9.11.2.12 (BL) Ensure 'Configure use of hardware-based encryption for operating system drives' is set to 'Enabled'
+;;; 18.9.11.2.11 (BL) Ensure 'Configure use of hardware-based encryption for operating system drives' is set to 'Enabled'
 [HKEY_LOCAL_MACHINE\SOFTWARE\Policies\Microsoft\FVE]
 ; <deleted> = (Default)
 ; 0000000 = Off (Microsoft Security Guideline: https://portal.msrc.microsoft.com/en-us/security-guidance/advisory/ADV180028)
 ; 0000001 = On (CIS)
 "OSHardwareEncryption"=dword:0000000
 
-;;; 18.9.11.2.13 (BL) Ensure 'Configure use of hardware-based encryption for operating system drives: Use BitLocker software-based encryption when hardware encryption is not available' is set to 'Enabled: True'
+;;; 18.9.11.2.12 (BL) Ensure 'Configure use of hardware-based encryption for operating system drives: Use BitLocker software-based encryption when hardware encryption is not available' is set to 'Enabled: True'
 [HKEY_LOCAL_MACHINE\SOFTWARE\Policies\Microsoft\FVE]
 ; <deleted> = (Default)
 ; 0000000 = Off
 ; 0000001 = On (Default / CIS)
 "OSAllowSoftwareEncryptionFailover"=dword:0000001
 
-;;; 18.9.11.2.14 (BL) Ensure 'Configure use of hardware-based encryption for operating system drives: Restrict encryption algorithms and cipher suites allowed for hardware-based encryption' is set to 'Enabled: False'
+;;; 18.9.11.2.13 (BL) Ensure 'Configure use of hardware-based encryption for operating system drives: Restrict encryption algorithms and cipher suites allowed for hardware-based encryption' is set to 'Enabled: False'
 [HKEY_LOCAL_MACHINE\SOFTWARE\Policies\Microsoft\FVE]
 ; <deleted> = (Default)
 ; 0000000 = Off (Default / CIS)
 ; 0000001 = On
 "OSRestrictHardwareEncryptionAlgorithms"=dword:0000000
 
-;;; 18.9.11.2.15 (BL) Ensure 'Configure use of hardware-based encryption for operating system drives: Restrict crypto algorithms or cipher suites to the following:' is set to 'Enabled: 2.16.840.1.101.3.4.1.2;2.16.840.1.101.3.4.1.42'
+;;; 18.9.11.2.14 (BL) Ensure 'Configure use of hardware-based encryption for operating system drives: Restrict crypto algorithms or cipher suites to the following:' is set to 'Enabled: 2.16.840.1.101.3.4.1.2;2.16.840.1.101.3.4.1.42'
 [HKEY_LOCAL_MACHINE\SOFTWARE\Policies\Microsoft\FVE]
 ; <deleted> = (Default)
 ; 2.16.840.1.101.3.4.1.2;2.16.840.1.101.3.4.1.42 = Best practice (CIS)
@@ -326,7 +338,7 @@ Windows Registry Editor Version 5.00
  32,00,2e,00,31,00,36,00,2e,00,38,00,34,00,30,00,2e,00,31,00,2e,00,31,00,30,\
  00,31,00,2e,00,33,00,2e,00,34,00,2e,00,31,00,2e,00,34,00,32,00,00,00,00,00
 
-;;; 18.9.11.2.16 (BL) Ensure 'Configure use of passwords for operating system drives' is set to 'Disabled'
+;;; 18.9.11.2.15 (BL) Ensure 'Configure use of passwords for operating system drives' is set to 'Disabled'
 ;[HKEY_LOCAL_MACHINE\SOFTWARE\Policies\Microsoft\FVE]
 ; <deleted> = (Default)
 ; 0000000 = Off (CIS)
@@ -334,7 +346,7 @@ Windows Registry Editor Version 5.00
 ; NON-COMPLIANCE TO NOT DISRUPT COMMON HOME FEATURES
 ;"OSPassphrase"=dword:0000000
 
-;;; 18.9.11.2.17 (BL) Ensure 'Require additional authentication at startup' is set to 'Enabled'
+;;; 18.9.11.2.16 (BL) Ensure 'Require additional authentication at startup' is set to 'Enabled'
 ;[HKEY_LOCAL_MACHINE\SOFTWARE\Policies\Microsoft\FVE]
 ; <deleted> = (Default)
 ; 0000000 = Off
@@ -342,7 +354,7 @@ Windows Registry Editor Version 5.00
 ; NON-COMPLIANCE TO NOT DISRUPT COMMON HOME FEATURES
 ;"UseAdvancedStartup"=dword:0000001
 
-;;; 18.9.11.2.18 (BL) Ensure 'Require additional authentication at startup: Allow BitLocker without a compatible TPM' is set to 'Enabled: False'
+;;; 18.9.11.2.17 (BL) Ensure 'Require additional authentication at startup: Allow BitLocker without a compatible TPM' is set to 'Enabled: False'
 ;[HKEY_LOCAL_MACHINE\SOFTWARE\Policies\Microsoft\FVE]
 ; <deleted> = (Default)
 ; 0000000 = Off (CIS)
@@ -350,41 +362,7 @@ Windows Registry Editor Version 5.00
 ; NON-COMPLIANCE TO NOT DISRUPT COMMON HOME FEATURES
 ;"EnableBDEWithNoTPM"=dword:0000000
 
-;;; 18.9.11.2.19 (BL) Ensure 'Require additional authentication at startup: Configure TPM startup:' is set to 'Enabled: Do not allow TPM'
-;[HKEY_LOCAL_MACHINE\SOFTWARE\Policies\Microsoft\FVE]
-; <deleted> = (Default)
-; 0000000 = Do not allow TPM (CIS)
-; 0000001 = Require TPM
-; 0000002 = Allow TPM
-; NON-COMPLIANCE TO NOT DISRUPT COMMON HOME FEATURES
-;"UseTPM"=dword:0000000
-
-;;; 18.9.11.2.20 (BL) Ensure 'Require additional authentication at startup: Configure TPM startup PIN:' is set to 'Enabled: Require startup PIN with TPM'
-;[HKEY_LOCAL_MACHINE\SOFTWARE\Policies\Microsoft\FVE]
-; <deleted> = (Default)
-; 0000000 = Do not allow startup PIN with TPM
-; 0000001 = Require startup PIN with TPM (CIS)
-; 0000002 = Allow startup PIN with TPM
-; NON-COMPLIANCE TO NOT DISRUPT COMMON HOME FEATURES
-;"UseTPMPIN"=dword:0000001
-
-;;; 18.9.11.2.21 (BL) Ensure 'Require additional authentication at startup: Configure TPM startup key:' is set to 'Enabled: Do not allow startup key with TPM'
-;[HKEY_LOCAL_MACHINE\SOFTWARE\Policies\Microsoft\FVE]
-; <deleted> = (Default)
-; 0000000 = Do not allow startup key with TPM (CIS)
-; 0000001 = Require startup key with TPM 
-; 0000002 = Allow startup key with TPM
-; NON-COMPLIANCE TO NOT DISRUPT COMMON HOME FEATURES
-;"UseTPMKey"=dword:0000000
-
-;;; 18.9.11.2.22 (BL) Ensure 'Require additional authentication at startup: Configure TPM startup key and PIN:' is set to 'Enabled: Do not allow startup key and PIN with TPM'
-;[HKEY_LOCAL_MACHINE\SOFTWARE\Policies\Microsoft\FVE]
-; <deleted> = (Default)
-; 0000000 = Do not allow startup key and PIN with TPM (CIS)
-; 0000001 = Require startup key and PIN with TPM 
-; 0000002 = Allow startup key and PIN with TPM
-; NON-COMPLIANCE TO NOT DISRUPT COMMON HOME FEATURES
-;"UseTPMKeyPIN"=dword:0000000
+;;; 18.9.11.3 Removable Data Drives
 
 ;;; 18.9.11.3.1 (BL) Ensure 'Allow access to BitLocker-protected removable data drives from earlier versions of Windows' is set to 'Disabled'
 [HKEY_LOCAL_MACHINE\SOFTWARE\Policies\Microsoft\FVE]
@@ -524,25 +502,9 @@ Windows Registry Editor Version 5.00
 ; 0000001 = On
 "RDVDenyCrossOrg"=dword:0000000
 
-;;; 18.9.11.4 (BL) Ensure 'Choose drive encryption method and cipher strength (Windows 10 [Version 1511] and later)' is set to 'Enabled: XTS-AES 256-bit'
+;;; 18.9.11.4 (BL) Ensure 'Disable new DMA devices when this computer is locked' is set to 'Enabled'
 [HKEY_LOCAL_MACHINE\SOFTWARE\Policies\Microsoft\FVE]
 ; <deleted> = (Default)
-; 000003 = AES-CBC 128-bit
-; 000004 = AES-CBC 256-bit
-; 000006 = XTS-AES 128-bit
-; 000007 = XTS-AES 256-bit (CIS)
-"EncryptionMethodWithXtsOs"=dword:0000007
-[HKEY_LOCAL_MACHINE\SOFTWARE\Policies\Microsoft\FVE]
-; <deleted> = (Default)
-; 000003 = AES-CBC 128-bit
-; 000004 = AES-CBC 256-bit
-; 000006 = XTS-AES 128-bit
-; 000007 = XTS-AES 256-bit (CIS)
-"EncryptionMethodWithXtsFdv"=dword:0000007
-[HKEY_LOCAL_MACHINE\SOFTWARE\Policies\Microsoft\FVE]
-; <deleted> = (Default)
-; 000003 = AES-CBC 128-bit
-; 000004 = AES-CBC 256-bit
-; 000006 = XTS-AES 128-bit
-; 000007 = XTS-AES 256-bit (CIS)
-"EncryptionMethodWithXtsRdv"=dword:0000007
+; 0000000 = Off (Default)
+; 0000001 = On (CIS)
+"DisableExternalDMAUnderLock"=dword:0000001

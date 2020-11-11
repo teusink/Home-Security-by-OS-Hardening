@@ -286,3 +286,83 @@ Windows Registry Editor Version 5.00
 ; 0000001 = On
 ; NON-COMPLIANCE TO NOT DISRUPT COMMON HOME FEATURES
 ;"ExtensionsEnabled"=dword:0000001
+
+;;; (CIS-1803): 2.3.17.2 (L1) Ensure 'User Account Control: Allow UIAccess applications to prompt for elevation without using the secure desktop' is set to 'Disabled'
+[HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Windows\CurrentVersion\Policies\System]
+; 0000000 = Off (Default / CIS)
+; 0000001 = On
+"EnableUIADesktopToggle"=dword:0000000
+
+;;; (CIS-1803): 18.9.11.2.11 (BL) Ensure 'Configure minimum PIN length for startup' is set to 'Enabled: 7 or more characters'
+[HKEY_LOCAL_MACHINE\SOFTWARE\Policies\Microsoft\FVE]
+; <deleted> = (Default)
+; 000004 = 4-digits or more (minimum)
+; 000007 = 7-digits or more (CIS)
+; 000020 = 20-digits (maximum)
+"MinimumPIN"=dword:0000007
+
+;;; (CIS-1803): 18.9.11.2.19 (BL) Ensure 'Require additional authentication at startup: Configure TPM startup:' is set to 'Enabled: Do not allow TPM'
+;[HKEY_LOCAL_MACHINE\SOFTWARE\Policies\Microsoft\FVE]
+; <deleted> = (Default)
+; 0000000 = Do not allow TPM (CIS)
+; 0000001 = Require TPM
+; 0000002 = Allow TPM
+; NON-COMPLIANCE TO NOT DISRUPT COMMON HOME FEATURES
+;"UseTPM"=dword:0000000
+
+;;; (CIS-1803): 18.9.11.2.20 (BL) Ensure 'Require additional authentication at startup: Configure TPM startup PIN:' is set to 'Enabled: Require startup PIN with TPM'
+;[HKEY_LOCAL_MACHINE\SOFTWARE\Policies\Microsoft\FVE]
+; <deleted> = (Default)
+; 0000000 = Do not allow startup PIN with TPM
+; 0000001 = Require startup PIN with TPM (CIS)
+; 0000002 = Allow startup PIN with TPM
+; NON-COMPLIANCE TO NOT DISRUPT COMMON HOME FEATURES
+;"UseTPMPIN"=dword:0000001
+
+;;; (CIS-1803): 18.9.11.2.21 (BL) Ensure 'Require additional authentication at startup: Configure TPM startup key:' is set to 'Enabled: Do not allow startup key with TPM'
+;[HKEY_LOCAL_MACHINE\SOFTWARE\Policies\Microsoft\FVE]
+; <deleted> = (Default)
+; 0000000 = Do not allow startup key with TPM (CIS)
+; 0000001 = Require startup key with TPM
+; 0000002 = Allow startup key with TPM
+; NON-COMPLIANCE TO NOT DISRUPT COMMON HOME FEATURES
+;"UseTPMKey"=dword:0000000
+
+;;; (CIS-1803): 18.9.11.2.22 (BL) Ensure 'Require additional authentication at startup: Configure TPM startup key and PIN:' is set to 'Enabled: Do not allow startup key and PIN with TPM'
+;[HKEY_LOCAL_MACHINE\SOFTWARE\Policies\Microsoft\FVE]
+; <deleted> = (Default)
+; 0000000 = Do not allow startup key and PIN with TPM (CIS)
+; 0000001 = Require startup key and PIN with TPM
+; 0000002 = Allow startup key and PIN with TPM
+; NON-COMPLIANCE TO NOT DISRUPT COMMON HOME FEATURES
+;"UseTPMKeyPIN"=dword:0000000
+
+;;; (CIS-1809): 18.9.11.4 (BL) Ensure 'Choose drive encryption method and cipher strength (Windows 10 [Version 1511] and later)' is set to 'Enabled: XTS-AES 256-bit'
+[HKEY_LOCAL_MACHINE\SOFTWARE\Policies\Microsoft\FVE]
+; <deleted> = (Default)
+; 000003 = AES-CBC 128-bit
+; 000004 = AES-CBC 256-bit
+; 000006 = XTS-AES 128-bit
+; 000007 = XTS-AES 256-bit (CIS)
+"EncryptionMethodWithXtsOs"=dword:0000007
+[HKEY_LOCAL_MACHINE\SOFTWARE\Policies\Microsoft\FVE]
+; <deleted> = (Default)
+; 000003 = AES-CBC 128-bit
+; 000004 = AES-CBC 256-bit
+; 000006 = XTS-AES 128-bit
+; 000007 = XTS-AES 256-bit (CIS)
+"EncryptionMethodWithXtsFdv"=dword:0000007
+[HKEY_LOCAL_MACHINE\SOFTWARE\Policies\Microsoft\FVE]
+; <deleted> = (Default)
+; 000003 = AES-CBC 128-bit
+; 000004 = AES-CBC 256-bit
+; 000006 = XTS-AES 128-bit
+; 000007 = XTS-AES 256-bit (CIS)
+"EncryptionMethodWithXtsRdv"=dword:0000007
+
+;;; (CIS-1909) 18.9.59.3.11.2 (L1) Ensure 'Do not use temporary folders per session' is set to 'Disabled'
+[HKEY_LOCAL_MACHINE\SOFTWARE\Policies\Microsoft\Windows NT\Terminal Services]
+; <deleted> = (Default)
+; 0000000 = Off
+; 0000001 = On (Default / CIS)
+"PerSessionTempDir"=dword:0000001

@@ -10,16 +10,22 @@ Windows Registry Editor Version 5.00
 ;;; NOTICE: THE SETTINGS BELOW CANNOT BE UNDONE THROUGH A GUI!
 
 ;;; Remove all wrongfully added keys in earlier registry files (my bad)
-
 [HKEY_LOCAL_MACHINE\SOFTWARE\Policies\Microsoft\Windows\CurrentVersion\AppModel\StateManager]
 "PreventOverride"=-
 "PreventOverrideAppRepUnknown"=-
-
 [HKEY_LOCAL_MACHINE\SOFTWARE\Policies\Microsoft\Windows\Windows Search]
 "AllowIndexingEncryptedStoresOrItems"=-
-
 [HKEY_LOCAL_MACHINE\SOFTWARE\Policies\Microsoft\WindowsStore]
 "AutoDownload"=-
+
+;;; Remove keys due to possible functional issues
+[HKEY_LOCAL_MACHINE\Software\Policies\Microsoft\Windows NT\Printers]
+"DisableWebPnPDownload"=-
+[HKEY_LOCAL_MACHINE\Software\Policies\Microsoft\Windows NT\Printers]
+"DisableHTTPPrinting"=-
+
+;;; Remove all obsolete keys from 1909 to 1204
+;; N/A
 
 ;;; Remove all obsolete keys from 1903 to 1909
 ;; N/A
@@ -28,11 +34,9 @@ Windows Registry Editor Version 5.00
 ;; N/A
 
 ;;; Remove all obsolete keys from 1803 to 1809
-
 [HKEY_LOCAL_MACHINE\SOFTWARE\Policies\Microsoft\Windows\PreviewBuilds]
 "EnableConfigFlighting"=-
 
 ;;; Remove all obsolete keys from 1709 to 1803
-
 [HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\WcmSvc\wifinetworkmanager\config]
 "AutoConnectAllowedOEM"=-

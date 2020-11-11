@@ -22,7 +22,7 @@ My other goal is to gain a good understanding on Windows 10 Hardening and other 
 Scope is an important part for this project. Otherwise you can endlessly install security tools and solutions which in the end all have a trade-off. This might be resources and performance, but also your own precious time to keep it running :).
 
 The constraints are:
-- Windows 10 Home and Pro Build 1903 (compatible with 1803 & 1809)
+- Windows 10 Home and Pro
 - For the larger part, the settings needs to be able to be set through a GUI. I'll make some exceptions here and there (because there was never a GUI and its impact is rather important).
 - Many settings can also (and sometimes only) be set by using a registry-key file (.reg). I will supply these files.
 - Settings must be able to be set without using Group Policy Object (GPO), because that is not present (by default) on Windows 10 Home.
@@ -43,9 +43,9 @@ From a Graphical User Interface (GUI) perspective I will touch every relevant se
 Whenever you upgrade to a newer build, sometimes there are keys and entries going obsolete. Through this registry file you can remove them safely: [[hk-remove-obsolete-entries]](https://github.com/teusink/Home-Security-by-W10-Hardening/blob/master/files/hk-remove-obsolete-entries.reg)
 
 Upgrades included in the Registry file:
-- From 1909 to 2004: not included yet (if applicable even)
-- From 1903 to 1909: not needed
-- From 1809 to 1903: not needed
+- From 1909 to 2004: included
+- From 1903 to 1909: included
+- From 1809 to 1903: included
 - From 1803 to 1809: not needed
 - From 1709 to 1803: included
 
@@ -113,7 +113,7 @@ For automated enabling/disabling Windows Features, execute this file in the Comm
   - Security: Block unsecured images with other mixed content
   - Security: Send Do Not Track requests to sites you visit in Internet Explorer: On
   - Security: Warn if changing between secure and not secure mode: On
-  
+
 # Settings
 
 These are the settings that are done through the use of the new Windows Settings interface.
@@ -255,7 +255,7 @@ Note: The Virus & threat Protection settings are only available when third-party
 - Virus & threat Protection: Settings: Notifications: Receive recent activity and scan results: On
 - Firewall & network protection: Domain network: Windows Defender Firewall: On
 - Firewall & network protection: Domain network: Blocks all incoming connections: Off
-- Firewall & network protection: Private network: Windows Defender Firewall: On 
+- Firewall & network protection: Private network: Windows Defender Firewall: On
 - Firewall & network protection: Private network: Blocks all incoming connections: Off
 - Firewall & network protection: Public network: Windows Defender Firewall: On
 - Firewall & network protection: Public network: Blocks all incoming connections: Off
@@ -308,7 +308,6 @@ In order to even more harden your system, add the registry key-sets below to you
 **Machine Level**
 - Encryption for both client and server purposes compliant to best-practices.
 - DLL search path algorithm vulnerability mitigation.
-- Google Chrome hardening.
 
 **User Level**
 - Automatic installation of Windows Store apps disabled.
@@ -329,15 +328,11 @@ If you use Windows Defender with your Windows installment:
 If you use BitLocker with your Windows installment:
 - HKEY_LOCAL_MACHINE - Windows 10 CIS BitLocker [[REG]](https://github.com/teusink/Home-Security-by-W10-Hardening/blob/master/files/hklm-cis-bitlocker.reg)
 
-If you use BitLocker with your Windows installment, but DO NOT have a TPM chip:
+If you use BitLocker with your Windows installment, but DO NOT have a TPM chip use this add-on in addition to the file above:
 - HKEY_LOCAL_MACHINE - Windows 10 CIS BitLocker No TPM [[REG]](https://github.com/teusink/Home-Security-by-W10-Hardening/blob/master/files/hklm-cis-bitlocker-no-tpm.reg)
 
 If you use Windows Local Firewall with your Windows installment:
 - HKEY_LOCAL_MACHINE - Windows 10 CIS L1 & L2 - Windows Local Firewall [[REG]](https://github.com/teusink/Home-Security-by-W10-Hardening/blob/master/files/hklm-cis-firewall.reg)
-
-If you use Google Chrome:
-- HKEY_LOCAL_MACHINE - Google Chrome hardening [[REG]](https://github.com/teusink/Home-Security-by-W10-Hardening/blob/master/files/hklm-cis-chrome.reg)
-- HKEY_LOCAL_MACHINE - Google Chrome hardening (flash enabled) [[REG]](https://github.com/teusink/Home-Security-by-W10-Hardening/blob/master/files/hklm-cis-chrome-flash.reg)
 
 If you want to use some convenience related configuration:
 - HKEY_CURRENT_USER - Windows 10 User level settings convenience [[REG]](https://github.com/teusink/Home-Security-by-W10-Hardening/blob/master/files/hkcu-convenience.reg)
