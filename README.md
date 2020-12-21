@@ -238,8 +238,8 @@ Note: Cortana can only be fully disabled through the use of registry.
 - Windows Update: Advanced options: Reveive updates for other Microsoft products: On
 - Windows Update: Advanced options: Restart this device a.s.a.p.: Off
 - Windows Update: Advanced options: Show a notification when your PC requires a restart: On
-- Windows Update: Delivery optimization: Allow downloads from other PCs: On *
-- Windows Update: Delivery optimization: PCs on my local network: On *
+- Windows Update: Delivery optimization: Allow downloads from other PCs: Off *
+- Windows Update: Delivery optimization: PCs on my local network: Off *
 - Windows Update: Delivery optimization: PCs on my local network, and PCs on the Internet: Off *
 - Windows Security: Windows Defender Security Center
 - Windows Security: Antivirus options: Period scanning: Off (NOTE: setting only available when third-party anti-malware is installed)

@@ -264,8 +264,7 @@ Windows Registry Editor Version 5.00
 ; 0000000 = Do not allow 48-digit recovery password
 ; 0000001 = Require 48-digit recovery password
 ; 0000002 = Allow 48-digit recovery password (CIS)
-; FEATURE DOES NOT EXISTS IN NON-CORPORATE ENVIRONMENT
-;"OSRecoveryPassword"=dword:0000002
+"OSRecoveryPassword"=dword:0000002
 
 ;;; 18.9.11.2.6 (BL) Ensure 'Choose how BitLocker-protected operating system drives can be recovered: Recovery Key' is set to 'Enabled: Do not allow 256-bit recovery key'
 ;[HKEY_LOCAL_MACHINE\SOFTWARE\Policies\Microsoft\FVE]
@@ -273,8 +272,7 @@ Windows Registry Editor Version 5.00
 ; 0000000 = Do not allow 256-bit recovery key
 ; 0000001 = Require 256-bit recovery key
 ; 0000002 = Allow 256-bit recovery key (CIS)
-; FEATURE DOES NOT EXISTS IN NON-CORPORATE ENVIRONMENT
-;"OSRecoveryKey"=dword:0000002
+"OSRecoveryKey"=dword:0000002
 
 ;;; 18.9.11.2.7 (BL) Ensure 'Choose how BitLocker-protected operating system drives can be recovered: Omit recovery options from the BitLocker setup wizard' is set to 'Enabled: True'
 ;[HKEY_LOCAL_MACHINE\SOFTWARE\Policies\Microsoft\FVE]

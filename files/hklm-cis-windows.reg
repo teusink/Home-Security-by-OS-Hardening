@@ -2194,7 +2194,7 @@ Windows Registry Editor Version 5.00
 ; 0000003 = HTTP blended with Internet Peering
 ; 0000063 = Simple download mode with no peering. Delivery Optimization downloads using HTTP only and does not attempt to contact the Delivery Optimization cloud services
 ; 0000064 = Bypass mode. Do not use Delivery Optimization and use BITS instead.
-"DODownloadMode"=dword:0000001
+"DODownloadMode"=dword:0000000
 
 ;;; 18.9.18 Desktop Gadgets
 ;;; Paragraph skipped due to no registry keys available
