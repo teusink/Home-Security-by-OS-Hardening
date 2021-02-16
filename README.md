@@ -43,6 +43,7 @@ From a Graphical User Interface (GUI) perspective I will touch every relevant se
 Whenever you upgrade to a newer build, sometimes there are keys and entries going obsolete. Through this registry file you can remove them safely: [[hk-remove-obsolete-entries]](https://github.com/teusink/Home-Security-by-W10-Hardening/blob/master/files/hk-remove-obsolete-entries.reg)
 
 Upgrades included in the Registry file:
+- From 2004 to 20H2: included
 - From 1909 to 2004: included
 - From 1903 to 1909: included
 - From 1809 to 1903: included
