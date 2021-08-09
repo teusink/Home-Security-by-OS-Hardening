@@ -56,7 +56,7 @@ Dism.exe /Online /Disable-Feature /NoRestart /featurename:IIS-WebSockets
 Dism.exe /Online /Disable-Feature /NoRestart /featurename:IIS-WMICompatibility
 Dism.exe /Online /Disable-Feature /NoRestart /featurename:Internet-Explorer-Optional-amd64
 Dism.exe /Online /Disable-Feature /NoRestart /featurename:LegacyComponents
-Dism.exe /Online /Disable-Feature /NoRestart /featurename:MediaPlayback
+rem Dism.exe /Online /Disable-Feature /NoRestart /featurename:MediaPlayback
 Dism.exe /Online /Disable-Feature /NoRestart /featurename:MicrosoftWindowsPowerShellV2
 Dism.exe /Online /Disable-Feature /NoRestart /featurename:MicrosoftWindowsPowerShellV2Root
 Dism.exe /Online /Disable-Feature /NoRestart /featurename:Microsoft-Windows-Subsystem-Linux
@@ -94,7 +94,7 @@ Dism.exe /Online /Disable-Feature /NoRestart /featurename:WCF-Services45
 Dism.exe /Online /Disable-Feature /NoRestart /featurename:WCF-TCP-Activation45
 Dism.exe /Online /Disable-Feature /NoRestart /featurename:WCF-TCP-PortSharing45
 Dism.exe /Online /Disable-Feature /NoRestart /featurename:Windows-Identity-Foundation
-Dism.exe /Online /Disable-Feature /NoRestart /featurename:WindowsMediaPlayer
+rem Dism.exe /Online /Disable-Feature /NoRestart /featurename:WindowsMediaPlayer
 rem Dism.exe /Online /Disable-Feature /NoRestart /featurename:WMISnmpProvider
 Dism.exe /Online /Disable-Feature /NoRestart /featurename:WorkFolders-Client
 Dism.exe /Online /Enable-Feature /NoRestart /featurename:FaxServicesClientPackage

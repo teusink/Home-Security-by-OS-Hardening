@@ -80,6 +80,7 @@ These are the settings that are done through the use of the Control Panel. Set i
   - Internet Information Services Hostable Web Core
   - Legacy Components (and all below)
   - Media Features (and all below)
+    - Note: Removing this feature might disable PlayStation and Xbox features and services
   - Microsoft Message Queue (MSMQ) Server (and all below)
   - Microsoft XPS Document Writer
   - Print and Document Services: LPD Print Service
