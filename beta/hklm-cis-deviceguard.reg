@@ -108,7 +108,7 @@ Windows Registry Editor Version 5.00
 ; 0000001 = On (CIS)
 "AppHVSIClipboardSettings"=dword:0000001
 
-;;; 18.9.46.6 (NG) Ensure 'Turn on Windows Defender Application Guard in Enterprise Mode' is set to 'Enabled'
+;;; 18.9.46.6 (NG) Ensure 'Turn on Windows Defender Application Guard in Managed Mode' is set to 'Enabled'
 [HKEY_LOCAL_MACHINE\SOFTWARE\Policies\Microsoft\AppHVSI]
 ; <deleted> = (Default)
 ; 0000000 = Disable Windows Defender Application Guard

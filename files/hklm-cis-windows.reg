@@ -599,7 +599,7 @@ Windows Registry Editor Version 5.00
 ; 4 = Disabled (CIS)
 ;"Start"=dword:0000004
 
-;;; 5.7 (L1) Ensure 'Infrared monitor service (irmon)' is set to 'Disabled'
+;;; 5.7 (L1) Ensure 'Infrared monitor service (irmon)' is set to 'Disabled' or 'Not Installed'
 ;[HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Services\irmon]
 ; 2 = Automatic
 ; 3 = Manual (Default)
@@ -2107,7 +2107,15 @@ Windows Registry Editor Version 5.00
 
 ;;; 18.9.13 Cloud Content
 
-;;; 18.9.13.1 (L1) Ensure 'Turn off Microsoft consumer experiences' is set to 'Enabled'
+;;; 18.9.13.1 (L2) Ensure 'Turn off cloud optimized content' is set to 'Enabled'
+[HKEY_LOCAL_MACHINE\SOFTWARE\Policies\Microsoft\Windows\CloudContent]
+; <deleted> = (Default)
+; 0000000 = Off
+; 0000001 = On (CIS)
+; NON-COMPLIANCE TO NOT DISRUPT COMMON HOME FEATURES
+;"DisableCloudOptimizedContent"=dword:0000001
+
+;;; 18.9.13.2 (L1) Ensure 'Turn off Microsoft consumer experiences' is set to 'Enabled'
 [HKEY_LOCAL_MACHINE\SOFTWARE\Policies\Microsoft\Windows\CloudContent]
 ; <deleted> = (Default)
 ; 0000000 = Off
@@ -2503,7 +2511,7 @@ Windows Registry Editor Version 5.00
 ; NON-COMPLIANCE TO NOT DISRUPT COMMON HOME FEATURES
 ;"PreventCertErrorOverrides"=dword:0000001
 
-;;; 18.9.45.13 (L2) Ensure 'Prevent using Localhost IP address for WebRTC' is set to 'Enabled'
+;;; 18.9.48.13 (L2) Ensure 'Prevent using Localhost IP address for WebRTC' is set to 'Enabled'
 [HKEY_LOCAL_MACHINE\SOFTWARE\Policies\Microsoft\MicrosoftEdge\Main]
 ; <deleted> = (Default)
 ; 0000000 = Off
@@ -2682,7 +2690,7 @@ Windows Registry Editor Version 5.00
 
 ;;; 18.9.62.3.10 Session Time Limits
 
-;;; 18.9.62.3.10.1 (L2) Ensure 'Set time limit for active but idle Remote Desktop Services sessions' is set to 'Enabled: 15 minutes or less'
+;;; 18.9.62.3.10.1 (L2) Ensure 'Set time limit for active but idle Remote Desktop Services sessions' is set to 'Enabled: 15 minutes or less, but not Never (0)'
 [HKEY_LOCAL_MACHINE\SOFTWARE\Policies\Microsoft\Windows NT\Terminal Services]
 ; <deleted> = (Default)
 ; 0 = 0 minutes
