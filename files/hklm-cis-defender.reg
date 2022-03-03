@@ -21,7 +21,8 @@ Windows Registry Editor Version 5.00
 ; <deleted> = Default
 ; 0000000 = Off
 ; 0000001 = On (CIS)
-"MpEnablePus"=dword:0000000
+; FEATURE DOES NOT EXISTS IN NON-CORPORATE ENVIRONMENT
+;"MpEnablePus"=dword:0000001
 
 ;;; 18.9 Windows Components
 
@@ -34,21 +35,7 @@ Windows Registry Editor Version 5.00
 ;;; Paragraph skipped due to no registry keys available
 
 ;;; 18.9.45.3 MAPS
-
-;;; 18.9.45.3.1 (L1) Ensure 'Configure local setting override for reporting to Microsoft MAPS' is set to 'Disabled'
-[HKEY_LOCAL_MACHINE\SOFTWARE\Policies\Microsoft\Windows Defender\Spynet]
-; <deleted> = (Default)
-; 0000000 = Off (Default / CIS)
-; 0000001 = On
-"LocalSettingOverrideSpynetReporting"=dword:0000000
-
-;;; 18.9.45.3.2 (L2) Ensure 'Join Microsoft MAPS' is set to 'Disabled'
-[HKEY_LOCAL_MACHINE\Software\Microsoft\Windows Defender\Spynet]
-; <deleted> = (Default)
-; 0000000 = Off (CIS)
-; 0000001 = Basic MAPS
-; 0000002 = Advanced MAPS
-"SpynetReporting"=dword:0000000
+;;; See Windows Registry file
 
 ;;; 18.9.45.4 Microsoft Defender Exploit Guard (formerly Windows Defender Exploit Guard)
 
@@ -123,8 +110,6 @@ Windows Registry Editor Version 5.00
 ; 0000001 = On (CIS) (Block persistence through WMI event subscription)
 "e6db77e5-3df2-4cf1-b95a-636979351e5b"=dword:0000001
 
-;;; 18.9.45 Microsoft Defender Antivirus (formerly Windows Defender and Windows Defender Antivirus)
-
 ;;; 18.9.45.4.2 Controlled Folder Access
 ;;; Paragraph skipped due to no registry keys available
 
@@ -144,6 +129,7 @@ Windows Registry Editor Version 5.00
 ; <deleted> = (Default)
 ; 0000000 = Off
 ; 0000001 = On (CIS)
+; NON-COMPLIANCE TO NOT DISRUPT COMMON HOME FEATURES
 ;"FileHashComputation"=dword:0000001
 
 ;;; 18.9.45.6 Network Inspection System
@@ -173,7 +159,7 @@ Windows Registry Editor Version 5.00
 ; <deleted> = (Default)
 ; 0000000 = Off
 ; 0000001 = On (Default / CIS)
-"DisableBehaviorMonitoring"=dword:0000000
+"DisableBehaviorMonitoring"=dword:0000001
 
 ;;; 18.9.45.9 Remediation
 ;;; Paragraph skipped due to no registry keys available
@@ -215,7 +201,7 @@ Windows Registry Editor Version 5.00
 ; 0000000 = Disable (Default)
 ; 0000001 = Block (CIS)
 ; 0000001 = Audit Mode
-"PUAProtection"=dword:0000000
+"PUAProtection"=dword:0000001
 
 ;;; 18.9.45.15 (L1) Ensure 'Turn off Windows Defender AntiVirus' is set to 'Disabled'
 [HKEY_LOCAL_MACHINE\SOFTWARE\Policies\Microsoft\Windows Defender]

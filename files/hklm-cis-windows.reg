@@ -155,7 +155,7 @@ Windows Registry Editor Version 5.00
 ;"DontDisplayLastUserName"=dword:0000000
 
 ;;; 2.3.7.3 (BL) Ensure 'Interactive logon: Machine account lockout threshold' is set to '10 or fewer invalid logon attempts, but not 0'
-;;; See BitLocker Register file
+;;; See BitLocker Registry file
 
 ;;; 2.3.7.4 (L1) Ensure 'Interactive logon: Machine inactivity limit' is set to '900 or fewer second(s), but not 0'
 [HKEY_LOCAL_MACHINE\Software\Microsoft\Windows\CurrentVersion\Policies\System]
@@ -910,7 +910,7 @@ Windows Registry Editor Version 5.00
 ;;; Chapter skipped due to no registry keys available
 
 ;;; 9 Windows Firewall with Advanced Security
-;;; See Firewall Register file
+;;; See Firewall Registry file
 
 ;;; 10 Network List Manager Policies
 ;;; Chapter skipped due to no registry keys available
@@ -1279,7 +1279,7 @@ Windows Registry Editor Version 5.00
 ;"Disabled"=dword:0000000
 
 ;;; 18.5.11 Network Connections
-;;; See Firewall Register file
+;;; See Firewall Registry file
 
 ;;; 18.5.12 Network Connectivity Status Indicator
 ;;; Paragraph skipped due to no registry keys available
@@ -1460,13 +1460,13 @@ Windows Registry Editor Version 5.00
 "AllowProtectedCreds"=dword:0000001
 
 ;;; 18.8.5 Device Guard
-;;; See Device Guard Register file
+;;; See Defender Registry file
 
 ;;; 18.8.6 Device Health Attestation Service
 ;;; Paragraph skipped due to no registry keys available
 
 ;;; 18.8.7 Device Installation
-;;; See BitLocker Register file
+;;; See BitLocker Registry file
 
 ;;; 18.8.8 Device Redirection
 ;;; Paragraph skipped due to no registry keys available
@@ -1825,10 +1825,10 @@ Windows Registry Editor Version 5.00
 "ACSettingIndex"=dword:0000000
 
 ;;; 18.8.34.6.3 (BL) Ensure 'Allow standby states (S1-S3) when sleeping (on battery)' is set to 'Disabled'
-;;; See BitLocker Register file
+;;; See BitLocker Registry file
 
 ;;; 18.8.34.6.4 (BL) Ensure 'Allow standby states (S1-S3) when sleeping (plugged in)' is set to 'Disabled'
-;;; See BitLocker Register file
+;;; See BitLocker Registry file
 
 ;;; 18.8.34.6.5 (L1) Ensure 'Require a password when a computer wakes (on battery)' is set to 'Enabled'
 [HKEY_LOCAL_MACHINE\Software\Policies\Microsoft\Power\PowerSettings\0e796bdb-100d-47d6-a2d5-f7d2daa51f51]
@@ -2093,7 +2093,7 @@ Windows Registry Editor Version 5.00
 "EnhancedAntiSpoofing"=dword:0000001
 
 ;;; 18.9.11 BitLocker Drive Encryption
-;;; See BitLocker Register file
+;;; See BitLocker Registry file
 
 ;;; 18.9.12 Camera
 
@@ -2408,13 +2408,24 @@ Windows Registry Editor Version 5.00
 ;"DisableUserAuth"=dword:0000001
 
 ;;; 18.9.45 Microsoft Defender Antivirus (formerly Windows Defender and Windows Defender Antivirus)
-;;; See Defender Register file
+;;; Except for "18.9.45.3 MAPS", see Defender Registry file
 
-;;; 18.9.46 Microsoft Defender Application Guard (formerly Windows Defender Application Guard)
-;;; See Device Guard Register file
+;;; 18.9.45.3 MAPS
 
-;;; 18.9.47 Microsoft Defender Exploit Guard (formerly Windows Defender Exploit Guard)
-;;; See Device Guard Register file
+;;; 18.9.45.3.1 (L1) Ensure 'Configure local setting override for reporting to Microsoft MAPS' is set to 'Disabled'
+[HKEY_LOCAL_MACHINE\SOFTWARE\Policies\Microsoft\Windows Defender\Spynet]
+; <deleted> = (Default)
+; 0000000 = Off (Default / CIS)
+; 0000001 = On
+"LocalSettingOverrideSpynetReporting"=dword:0000000
+
+;;; 18.9.45.3.2 (L2) Ensure 'Join Microsoft MAPS' is set to 'Disabled'
+[HKEY_LOCAL_MACHINE\Software\Microsoft\Windows Defender\Spynet]
+; 0000000 = Off (CIS)
+; 0000001 = Basic MAPS
+; 0000002 = Advanced MAPS (Default)
+; NON-COMPLIANCE DUE TO FEATURE CAN ONLY BE CHANGED THROUGH GROUP POLICY
+;"SpyNetReporting"=dword:0000000
 
 ;;; 18.9.48 Microsoft Edge
 
@@ -3177,4 +3188,4 @@ Windows Registry Editor Version 5.00
 ;"SetDisablePauseUXAccess"=dword:0000001
 
 ;;; 19 Administrative Templates (User)
-;;; See User Register file
+;;; See User Registry file
