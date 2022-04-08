@@ -1,0 +1,3191 @@
+Windows Registry Editor Version 5.00
+
+;;; Windows 10 Home & Pro Hardening
+;;; Repository: https://github.com/teusink/Home-Security-by-W10-Hardening/
+
+;;; Registry target: HKEY_LOCAL_MACHINE
+;;; Source: Computer Internet Security (CIS) - Level 1
+;;; Author: Joram Teusink
+
+;;; The following elements from the Windows 10 CIS Level 1 & 2 baseline are excluded:
+;;; - BitLocker Drive Encryption
+;;; - Windows Local Firewall
+;;; - Windows Defender
+;;; - Device Guard
+
+;;; 1 Account Policies
+;;; Chapter skipped due to no registry keys available
+
+;;; 1.1 Password Policy
+;;; Paragraph skipped due to no registry keys available
+
+;;; 1.2 Account Lockout Policy
+;;; Paragraph skipped due to no registry keys available
+
+;;; 2 Local Policies
+
+;;; 2.1 Audit Policy
+;;; Paragraph skipped due to no registry keys available
+
+;;; 2.2 User Rights Assignment
+;;; Paragraph skipped due to no registry keys available
+
+;;; 2.3 Security Options
+
+;;; 2.3.1 Accounts
+
+;;; 2.3.1.1 (L1) Ensure 'Accounts: Administrator account status' is set to 'Disabled'
+;;; Paragraph skipped due to no registry keys available
+
+;;; 2.3.1.2 (L1) Ensure 'Accounts: Block Microsoft accounts' is set to 'Users can't add or log on with Microsoft accounts'
+;[HKEY_LOCAL_MACHINE\Software\Microsoft\Windows\CurrentVersion\Policies\System]
+; <deleted> = (Default)
+; 0000000 = This policy is disabled
+; 0000001 = Users can’t add Microsoft accounts
+; 0000003 = Users can’t add or log on with Microsoft accounts (CIS)
+; NON-COMPLIANCE TO NOT DISRUPT COMMON HOME FEATURES
+;"NoConnectedUser"=-
+
+;;; 2.3.1.3 (L1) Ensure 'Accounts: Guest account status' is set to 'Disabled'
+;;; Paragraph skipped due to no registry keys available
+
+;;; 2.3.1.4 (L1) Ensure 'Accounts: Limit local account use of blank passwords to console logon only' is set to 'Enabled'
+[HKEY_LOCAL_MACHINE\System\CurrentControlSet\Control\Lsa]
+; 0000000 = Off
+; 0000001 = On (Default / CIS)
+"LimitBlankPasswordUse"=dword:0000001
+
+;;; 2.3.1.5 (L1) Configure 'Accounts: Rename administrator account'
+;;; Paragraph skipped due to no registry keys available
+
+;;; 2.3.1.6 (L1) Configure 'Accounts: Rename guest account'
+;;; Paragraph skipped due to no registry keys available
+
+;;; 2.3.2 Audit
+
+;;; 2.3.2.1 (L1) Ensure 'Audit: Force audit policy subcategory settings (Windows Vista or later) to override audit policy category settings' is set to 'Enabled'
+[HKEY_LOCAL_MACHINE\System\CurrentControlSet\Control\Lsa]
+; <deleted> = (Default)
+; 0000000 = Off
+; 0000001 = On (Default / CIS)
+"SCENoApplyLegacyAuditPolicy"=-
+
+;;; 2.3.2.2 (L1) Ensure 'Audit: Shut down system immediately if unable to log security audits' is set to 'Disabled'
+[HKEY_LOCAL_MACHINE\System\CurrentControlSet\Control\Lsa]
+; 0000000 = Off (Default / CIS)
+; 0000001 = On
+"CrashOnAuditFail"=dword:0000000
+
+;;; 2.3.3 DCOM
+;;; Chapter skipped due to no registry keys available
+
+;;; 2.3.4 Devices
+
+;;; 2.3.4.1 (L1) Ensure 'Devices: Allowed to format and eject removable media' is set to 'Administrators and Interactive Users'
+[HKEY_LOCAL_MACHINE\Software\Microsoft\Windows NT\CurrentVersion\Winlogon]
+; <deleted> = (Default)
+; 0000000 = Administrators only
+; 0000001 = Administrators and power users
+; 0000002 = Administrators and interactive users (CIS)
+"AllocateDASD"=-
+
+;;; 2.3.4.2 (L2) Ensure 'Devices: Prevent users from installing printer drivers' is set to 'Enabled'
+;[HKEY_LOCAL_MACHINE\System\CurrentControlSet\Control\Print\Providers\LanMan Print Services\Servers]
+; 0000000 = Off (Default)
+; 0000001 = On (CIS)
+; NON-COMPLIANCE TO NOT DISRUPT COMMON HOME FEATURES
+;"AddPrinterDrivers"=dword:0000000
+
+;;; 2.3.5 Domain controller
+;;; Chapter skipped due to no registry keys available
+
+;;; 2.3.6 Domain member
+
+;;; 2.3.6.1 (L1) Ensure 'Domain member: Digitally encrypt or sign secure channel data (always)' is set to 'Enabled'
+[HKEY_LOCAL_MACHINE\System\CurrentControlSet\Services\Netlogon\Parameters]
+; 0000000 = Off
+; 0000001 = On (Default / CIS)
+"RequireSignOrSeal"=dword:0000001
+
+;;; 2.3.6.2 (L1) Ensure 'Domain member: Digitally encrypt secure channel data (when possible)' is set to 'Enabled'
+[HKEY_LOCAL_MACHINE\System\CurrentControlSet\Services\Netlogon\Parameters]
+; 0000000 = Off
+; 0000001 = On (Default / CIS)
+"SealSecureChannel"=dword:0000001
+
+;;; 2.3.6.3 (L1) Ensure 'Domain member: Digitally sign secure channel data (when possible)' is set to 'Enabled'
+[HKEY_LOCAL_MACHINE\System\CurrentControlSet\Services\Netlogon\Parameters]
+; 0000000 = Off
+; 0000001 = On (Default / CIS)
+"SignSecureChannel"=dword:0000001
+
+;;; 2.3.6.4 (L1) Ensure 'Domain member: Disable machine account password changes' is set to 'Disabled'
+[HKEY_LOCAL_MACHINE\System\CurrentControlSet\Services\Netlogon\Parameters]
+; 0000000 = Off (Default / CIS)
+; 0000001 = On
+"DisablePasswordChange"=dword:0000000
+
+;;; 2.3.6.5 (L1) Ensure 'Domain member: Maximum machine account password age' is set to '30 or fewer days, but not 0'
+[HKEY_LOCAL_MACHINE\System\CurrentControlSet\Services\Netlogon\Parameters]
+; 0000000 = Off
+; 000001e = 30 days (Default / CIS)
+"MaximumPasswordAge"=dword:000001e
+
+;;; 2.3.6.6 (L1) Ensure 'Domain member: Require strong (Windows 2000 or later) session key' is set to 'Enabled'
+[HKEY_LOCAL_MACHINE\System\CurrentControlSet\Services\Netlogon\Parameters]
+; 0000000 = Off
+; 0000001 = On (Default / CIS)
+"RequireStrongKey"=dword:0000001
+
+;;; 2.3.7 Interactive logon
+
+;;; 2.3.7.1 (L1) Ensure 'Interactive logon: Do not require CTRL+ALT+DEL' is set to 'Disabled'
+;[HKEY_LOCAL_MACHINE\Software\Microsoft\Windows\CurrentVersion\Policies\System]
+; <deleted> = (Default)
+; 0000000 = Off
+; 0000001 = On (CIS)
+; NON-COMPLIANCE TO NOT DISRUPT COMMON HOME FEATURES
+;"DisableCAD"=-
+
+;;; 2.3.7.2 (L1) Ensure 'Interactive logon: Don't display last signed-in' is set to 'Enabled'
+;[HKEY_LOCAL_MACHINE\Software\Microsoft\Windows\CurrentVersion\Policies\System]
+; 0000000 = Off = (Default)
+; 0000001 = On (CIS)
+; NON-COMPLIANCE TO NOT DISRUPT COMMON HOME FEATURES
+;"DontDisplayLastUserName"=dword:0000000
+
+;;; 2.3.7.3 (BL) Ensure 'Interactive logon: Machine account lockout threshold' is set to '10 or fewer invalid logon attempts, but not 0'
+;;; See BitLocker Registry file
+
+;;; 2.3.7.4 (L1) Ensure 'Interactive logon: Machine inactivity limit' is set to '900 or fewer second(s), but not 0'
+[HKEY_LOCAL_MACHINE\Software\Microsoft\Windows\CurrentVersion\Policies\System]
+; <deleted> = (Default)
+; 0000000 = Off
+; 0000384 = 900 seconds, 15 minutes (CIS)
+"InactivityTimeoutSecs"=-
+
+;;; 2.3.7.5 (L1) Configure 'Interactive logon: Message text for users attempting to log on'
+[HKEY_LOCAL_MACHINE\Software\Microsoft\Windows\CurrentVersion\Policies\System]
+; <blank> = Off (Default)
+; <message> = On (CIS)
+"LegalNoticeText"=""
+
+;;; 2.3.7.6 (L1) Configure 'Interactive logon: Message title for users attempting to log on'
+[HKEY_LOCAL_MACHINE\Software\Microsoft\Windows\CurrentVersion\Policies\System]
+; <blank> = Off (Default)
+; <message> = On (CIS)
+"LegalNoticeCaption"=""
+
+;;; 2.3.7.7 (L2) Ensure 'Interactive logon: Number of previous logons to cache (in case domain controller is not available)' is set to '4 or fewer logon(s)'
+[HKEY_LOCAL_MACHINE\Software\Microsoft\Windows NT\CurrentVersion\Winlogon]
+; 10 = 10 or fewer logon(s) (Default)
+; 4 = 4 or fewer logon(s) (CIS)
+"CachedLogonsCount"="10"
+
+;;; 2.3.7.8 (L1) Ensure 'Interactive logon: Prompt user to change password before expiration' is set to 'between 5 and 14 days'
+[HKEY_LOCAL_MACHINE\Software\Microsoft\Windows NT\CurrentVersion\Winlogon]
+; 0000000 = Off
+; 0000005 = 5 Days (Default / CIS)
+; 000000e = 14 Days (CIS)
+"PasswordExpiryWarning"=dword:0000005
+
+;;; 2.3.7.9 (L1) Ensure 'Interactive logon: Smart card removal behavior' is set to 'Lock Workstation' or higher
+[HKEY_LOCAL_MACHINE\Software\Microsoft\Windows NT\CurrentVersion\Winlogon]
+; 0 = no action, when smart-card is removed (Default)
+; 1 = lock workstation, when smart-card is removed (CIS)
+; 2 = force logoff, when smart-card is removed
+"ScRemoveOption"="0"
+
+;;; 2.3.8 Microsoft network client
+
+;;; 2.3.8.1 (L1) Ensure 'Microsoft network client: Digitally sign communications (always)' is set to 'Enabled'
+[HKEY_LOCAL_MACHINE\System\CurrentControlSet\Services\LanmanWorkstation\Parameters]
+; 0000000 = Off (Default)
+; 0000001 = On (CIS)
+"RequireSecuritySignature"=dword:0000000
+
+;;; 2.3.8.2 (L1) Ensure 'Microsoft network client: Digitally sign communications (if server agrees)' is set to 'Enabled'
+[HKEY_LOCAL_MACHINE\System\CurrentControlSet\Services\LanmanWorkstation\Parameters]
+; 0000000 = Off
+; 0000001 = On (Default / CIS)
+"EnableSecuritySignature"=dword:0000001
+
+;;; 2.3.8.3 (L1) Ensure 'Microsoft network client: Send unencrypted password to third-party SMB servers' is set to 'Disabled'
+[HKEY_LOCAL_MACHINE\System\CurrentControlSet\Services\LanmanWorkstation\Parameters]
+; 0000000 = Off (Default / CIS)
+; 0000001 = On
+"EnablePlainTextPassword"=dword:0000000
+
+;;; 2.3.9 Microsoft network server
+
+;;; 2.3.9.1 (L1) Ensure 'Microsoft network server: Amount of idle time required before suspending session' is set to '15 or fewer minute(s), but not 0'
+[HKEY_LOCAL_MACHINE\System\CurrentControlSet\Services\LanManServer\Parameters]
+; 0000000 = Off (Default)
+; 000000f = 15 Minutes (CIS)
+"AutoDisconnect"=dword:0000000
+
+;;; 2.3.9.2 (L1) Ensure 'Microsoft network server: Digitally sign communications (always)' is set to 'Enabled'
+[HKEY_LOCAL_MACHINE\System\CurrentControlSet\Services\LanManServer\Parameters]
+; 0000000 = Off (Default)
+; 0000001 = On (CIS)
+"RequireSecuritySignature"=dword:0000000
+
+;;; 2.3.9.3 (L1) Ensure 'Microsoft network server: Digitally sign communications (if client agrees)' is set to 'Enabled'
+[HKEY_LOCAL_MACHINE\System\CurrentControlSet\Services\LanManServer\Parameters]
+; 0000000 = Off (Default)
+; 0000001 = On (CIS)
+"EnableSecuritySignature"=dword:0000000
+
+;;; 2.3.9.4 (L1) Ensure 'Microsoft network server: Disconnect clients when logon hours expire' is set to 'Enabled'
+[HKEY_LOCAL_MACHINE\System\CurrentControlSet\Services\LanManServer\Parameters]
+; 0000000 = Off
+; 0000001 = On (Default / CIS)
+"enableforcedlogoff"=dword:0000001
+
+;;; 2.3.9.5 (L1) Ensure 'Microsoft network server: Server SPN target name validation level' is set to 'Accept if provided by client' or higher
+[HKEY_LOCAL_MACHINE\System\CurrentControlSet\Services\LanManServer\Parameters]
+; <deleted> = (Default)
+; 0 = No validation
+; 1 = Validate if provided by client (CIS)
+; 2 = Require match from client
+"SMBServerNameHardeningLevel"=-
+
+;;; 2.3.10 Network access
+
+;;; 2.3.10.1 (L1) Ensure 'Network access: Allow anonymous SID/Name translation' is set to 'Disabled'
+;;; Paragraph skipped due to no registry keys available
+
+;;; 2.3.10.2 (L1) Ensure 'Network access: Do not allow anonymous enumeration of SAM accounts' is set to 'Enabled'
+[HKEY_LOCAL_MACHINE\System\CurrentControlSet\Control\Lsa]
+; 0000000 = Off
+; 0000001 = On (Default / CIS)
+"RestrictAnonymousSAM"=dword:0000001
+
+;;; 2.3.10.3 (L1) Ensure 'Network access: Do not allow anonymous enumeration of SAM accounts and shares' is set to 'Enabled'
+[HKEY_LOCAL_MACHINE\System\CurrentControlSet\Control\Lsa]
+; 0000000 = Off
+; 0000001 = On (Default / CIS)
+"RestrictAnonymous"=dword:0000001
+
+;;; 2.3.10.4 (L1) Ensure 'Network access: Do not allow storage of passwords and credentials for network authentication' is set to 'Enabled'
+;[HKEY_LOCAL_MACHINE\System\CurrentControlSet\Control\Lsa]
+; 0000000 = Off (Default)
+; 0000001 = On (CIS)
+; NON-COMPLIANCE TO NOT DISRUPT COMMON HOME FEATURES
+;"DisableDomainCreds"=dword:0000000
+
+;;; 2.3.10.5 (L1) Ensure 'Network access: Let Everyone permissions apply to anonymous users' is set to 'Disabled'
+[HKEY_LOCAL_MACHINE\System\CurrentControlSet\Control\Lsa]
+; 0000000 = Off (Default / CIS)
+; 0000001 = On
+"EveryoneIncludesAnonymous"=dword:0000000
+
+;;; 2.3.10.6 (L1) Ensure 'Network access: Named Pipes that can be accessed anonymously' is set to 'None'
+[HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Services\LanManServer\Parameters]
+; <blank> = Off (Default / CIS)
+"NullSessionPipes"=hex(7):00,00
+
+;;; 2.3.10.7 (L1) Ensure 'Network access: Remotely accessible registry paths'
+;[HKEY_LOCAL_MACHINE\System\CurrentControlSet\Control\SecurePipeServers\Winreg\AllowedExactPaths]
+; <value> = see CLI baseline (Default / CIS)
+; KEY DISABLED TO NOT INTERRUPT FUTURE UPDATES
+;"Machine"=hex(7):53,00,79,00,73,00,74,00,65,00,6d,00,5c,00,43,00,75,00,72,00,\
+; 72,00,65,00,6e,00,74,00,43,00,6f,00,6e,00,74,00,72,00,6f,00,6c,00,53,00,65,\
+; 00,74,00,5c,00,43,00,6f,00,6e,00,74,00,72,00,6f,00,6c,00,5c,00,50,00,72,00,\
+; 6f,00,64,00,75,00,63,00,74,00,4f,00,70,00,74,00,69,00,6f,00,6e,00,73,00,00,\
+; 00,53,00,79,00,73,00,74,00,65,00,6d,00,5c,00,43,00,75,00,72,00,72,00,65,00,\
+; 6e,00,74,00,43,00,6f,00,6e,00,74,00,72,00,6f,00,6c,00,53,00,65,00,74,00,5c,\
+; 00,43,00,6f,00,6e,00,74,00,72,00,6f,00,6c,00,5c,00,53,00,65,00,72,00,76,00,\
+; 65,00,72,00,20,00,41,00,70,00,70,00,6c,00,69,00,63,00,61,00,74,00,69,00,6f,\
+; 00,6e,00,73,00,00,00,53,00,6f,00,66,00,74,00,77,00,61,00,72,00,65,00,5c,00,\
+; 4d,00,69,00,63,00,72,00,6f,00,73,00,6f,00,66,00,74,00,5c,00,57,00,69,00,6e,\
+; 00,64,00,6f,00,77,00,73,00,20,00,4e,00,54,00,5c,00,43,00,75,00,72,00,72,00,\
+; 65,00,6e,00,74,00,56,00,65,00,72,00,73,00,69,00,6f,00,6e,00,00,00,00,00
+
+;;; 2.3.10.8 (L1) Ensure 'Network access: Remotely accessible registry paths and sub-paths'
+;[HKEY_LOCAL_MACHINE\System\CurrentControlSet\Control\SecurePipeServers\Winreg\AllowedPaths]
+; <value> = see CLI baseline (Default / CIS)
+; KEY DISABLED TO NOT INTERRUPT FUTURE UPDATES
+;"Machine"=hex(7):53,00,79,00,73,00,74,00,65,00,6d,00,5c,00,43,00,75,00,72,00,\
+; 72,00,65,00,6e,00,74,00,43,00,6f,00,6e,00,74,00,72,00,6f,00,6c,00,53,00,65,\
+; 00,74,00,5c,00,43,00,6f,00,6e,00,74,00,72,00,6f,00,6c,00,5c,00,50,00,72,00,\
+; 69,00,6e,00,74,00,5c,00,50,00,72,00,69,00,6e,00,74,00,65,00,72,00,73,00,00,\
+; 00,53,00,79,00,73,00,74,00,65,00,6d,00,5c,00,43,00,75,00,72,00,72,00,65,00,\
+; 6e,00,74,00,43,00,6f,00,6e,00,74,00,72,00,6f,00,6c,00,53,00,65,00,74,00,5c,\
+; 00,53,00,65,00,72,00,76,00,69,00,63,00,65,00,73,00,5c,00,45,00,76,00,65,00,\
+; 6e,00,74,00,6c,00,6f,00,67,00,00,00,53,00,6f,00,66,00,74,00,77,00,61,00,72,\
+; 00,65,00,5c,00,4d,00,69,00,63,00,72,00,6f,00,73,00,6f,00,66,00,74,00,5c,00,\
+; 4f,00,4c,00,41,00,50,00,20,00,53,00,65,00,72,00,76,00,65,00,72,00,00,00,53,\
+; 00,6f,00,66,00,74,00,77,00,61,00,72,00,65,00,5c,00,4d,00,69,00,63,00,72,00,\
+; 6f,00,73,00,6f,00,66,00,74,00,5c,00,57,00,69,00,6e,00,64,00,6f,00,77,00,73,\
+; 00,20,00,4e,00,54,00,5c,00,43,00,75,00,72,00,72,00,65,00,6e,00,74,00,56,00,\
+; 65,00,72,00,73,00,69,00,6f,00,6e,00,5c,00,50,00,72,00,69,00,6e,00,74,00,00,\
+; 00,53,00,6f,00,66,00,74,00,77,00,61,00,72,00,65,00,5c,00,4d,00,69,00,63,00,\
+; 72,00,6f,00,73,00,6f,00,66,00,74,00,5c,00,57,00,69,00,6e,00,64,00,6f,00,77,\
+; 00,73,00,20,00,4e,00,54,00,5c,00,43,00,75,00,72,00,72,00,65,00,6e,00,74,00,\
+; 56,00,65,00,72,00,73,00,69,00,6f,00,6e,00,5c,00,57,00,69,00,6e,00,64,00,6f,\
+; 00,77,00,73,00,00,00,53,00,79,00,73,00,74,00,65,00,6d,00,5c,00,43,00,75,00,\
+; 72,00,72,00,65,00,6e,00,74,00,43,00,6f,00,6e,00,74,00,72,00,6f,00,6c,00,53,\
+; 00,65,00,74,00,5c,00,43,00,6f,00,6e,00,74,00,72,00,6f,00,6c,00,5c,00,43,00,\
+; 6f,00,6e,00,74,00,65,00,6e,00,74,00,49,00,6e,00,64,00,65,00,78,00,00,00,53,\
+; 00,79,00,73,00,74,00,65,00,6d,00,5c,00,43,00,75,00,72,00,72,00,65,00,6e,00,\
+; 74,00,43,00,6f,00,6e,00,74,00,72,00,6f,00,6c,00,53,00,65,00,74,00,5c,00,43,\
+; 00,6f,00,6e,00,74,00,72,00,6f,00,6c,00,5c,00,54,00,65,00,72,00,6d,00,69,00,\
+; 6e,00,61,00,6c,00,20,00,53,00,65,00,72,00,76,00,65,00,72,00,00,00,53,00,79,\
+; 00,73,00,74,00,65,00,6d,00,5c,00,43,00,75,00,72,00,72,00,65,00,6e,00,74,00,\
+; 43,00,6f,00,6e,00,74,00,72,00,6f,00,6c,00,53,00,65,00,74,00,5c,00,43,00,6f,\
+; 00,6e,00,74,00,72,00,6f,00,6c,00,5c,00,54,00,65,00,72,00,6d,00,69,00,6e,00,\
+; 61,00,6c,00,20,00,53,00,65,00,72,00,76,00,65,00,72,00,5c,00,55,00,73,00,65,\
+; 00,72,00,43,00,6f,00,6e,00,66,00,69,00,67,00,00,00,53,00,79,00,73,00,74,00,\
+; 65,00,6d,00,5c,00,43,00,75,00,72,00,72,00,65,00,6e,00,74,00,43,00,6f,00,6e,\
+; 00,74,00,72,00,6f,00,6c,00,53,00,65,00,74,00,5c,00,43,00,6f,00,6e,00,74,00,\
+; 72,00,6f,00,6c,00,5c,00,54,00,65,00,72,00,6d,00,69,00,6e,00,61,00,6c,00,20,\
+; 00,53,00,65,00,72,00,76,00,65,00,72,00,5c,00,44,00,65,00,66,00,61,00,75,00,\
+; 6c,00,74,00,55,00,73,00,65,00,72,00,43,00,6f,00,6e,00,66,00,69,00,67,00,75,\
+; 00,72,00,61,00,74,00,69,00,6f,00,6e,00,00,00,53,00,6f,00,66,00,74,00,77,00,\
+; 61,00,72,00,65,00,5c,00,4d,00,69,00,63,00,72,00,6f,00,73,00,6f,00,66,00,74,\
+; 00,5c,00,57,00,69,00,6e,00,64,00,6f,00,77,00,73,00,20,00,4e,00,54,00,5c,00,\
+; 43,00,75,00,72,00,72,00,65,00,6e,00,74,00,56,00,65,00,72,00,73,00,69,00,6f,\
+; 00,6e,00,5c,00,50,00,65,00,72,00,66,00,6c,00,69,00,62,00,00,00,53,00,79,00,\
+; 73,00,74,00,65,00,6d,00,5c,00,43,00,75,00,72,00,72,00,65,00,6e,00,74,00,43,\
+; 00,6f,00,6e,00,74,00,72,00,6f,00,6c,00,53,00,65,00,74,00,5c,00,53,00,65,00,\
+; 72,00,76,00,69,00,63,00,65,00,73,00,5c,00,53,00,79,00,73,00,6d,00,6f,00,6e,\
+; 00,4c,00,6f,00,67,00,00,00,00,00
+
+;;; 2.3.10.9 (L1) Ensure 'Network access: Restrict anonymous access to Named Pipes and Shares' is set to 'Enabled'
+[HKEY_LOCAL_MACHINE\System\CurrentControlSet\Services\LanManServer\Parameters]
+; 0000000 = Off
+; 0000001 = On (Default / CIS)
+"RestrictNullSessAccess"=dword:0000001
+
+;;; 2.3.10.10 (L1) Ensure 'Network access: Restrict clients allowed to make remote calls to SAM' is set to 'Administrators: Remote Access: Allow'
+[HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Control\Lsa]
+; <deleted> = (Default)
+; O:BAG:BAD:(A;;RC;;;BA) = On (Default / CIS)
+"restrictremotesam"=-
+
+;;; 2.3.10.11 (L1) Ensure 'Network access: Shares that can be accessed anonymously' is set to 'None'
+[HKEY_LOCAL_MACHINE\System\CurrentControlSet\Services\LanManServer\Parameters]
+; <deleted> = (Default)
+; <blank> = None (Default / CIS)
+"NullSessionShares"=-
+
+;;; 2.3.10.12 (L1) Ensure 'Network access: Sharing and security model for local accounts' is set to 'Classic - local users authenticate as themselves'
+[HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Control\Lsa]
+; 0000000 = Off (Default / CIS)
+; 0000001 = On
+"ForceGuest"=dword:0000000
+
+;;; 2.3.11 Network security
+
+;;; 2.3.11.1 (L1) Ensure 'Network security: Allow Local System to use computer identity for NTLM' is set to 'Enabled'
+[HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Control\Lsa]
+; <deleted> = (Default)
+; 0000000 = Off
+; 0000001 = On (CIS)
+"UseMachineId"=-
+
+;;; 2.3.11.2 (L1) Ensure 'Network security: Allow LocalSystem NULL session fallback' is set to 'Disabled'
+[HKEY_LOCAL_MACHINE\System\CurrentControlSet\Control\Lsa\MSV1_0]
+; <deleted> = (Default)
+; 0000000 = Off (Default / CIS)
+; 0000001 = On
+"AllowNullSessionFallback"=-
+
+;;; 2.3.11.3 (L1) Ensure 'Network Security: Allow PKU2U authentication requests to this computer to use online identities' is set to 'Disabled'
+[HKEY_LOCAL_MACHINE\System\CurrentControlSet\Control\Lsa\pku2u]
+; <deleted> = (Default)
+; 0000000 = Off (CIS)
+; 0000001 = On
+"AllowOnlineID"=-
+
+;;; 2.3.11.4 (L1) Ensure 'Network security: Configure encryption types allowed for Kerberos' is set to 'RC4_HMAC_MD5, AES128_HMAC_SHA1, AES256_HMAC_SHA1, Future encryption types'
+[HKEY_LOCAL_MACHINE\Software\Microsoft\Windows\CurrentVersion\Policies\System\Kerberos\Parameters]
+; <deleted> = (Default)
+; 2147483644 = Various encryption types (CIS L1 - 1709)
+; 2147483640 = Various encryption types (CIS L1 - 1803)
+"SupportedEncryptionTypes"=-
+
+;;; 2.3.11.5 (L1) Ensure 'Network security: Do not store LAN Manager hash value on next password change' is set to 'Enabled'
+[HKEY_LOCAL_MACHINE\System\CurrentControlSet\Control\Lsa]
+; 0000000 = Off
+; 0000001 = On (Default / CIS)
+"NoLMHash"=dword:0000001
+
+;;; 2.3.11.6 (L1) Ensure 'Network security: Force logoff when logon hours expire' is set to 'Enabled'
+[HKEY_LOCAL_MACHINE\System\CurrentControlSet\Services\LanManServer\Parameters]
+; 0000000 = Off (Default / CIS)
+; 0000001 = On
+"EnableForcedLogOff"=dword:0000000
+
+;;; 2.3.11.7 (L1) Ensure 'Network security: LAN Manager authentication level' is set to 'Send NTLMv2 response only. Refuse LM&NTLM'
+[HKEY_LOCAL_MACHINE\System\CurrentControlSet\Control\Lsa]
+; <deleted> = (Default)
+; 0000000 = Clients use LM and NTLM authentication, but they never use NTLMv2 session security. Domain controllers accept LM, NTLM, and NTLMv2 authentication
+; 0000001 = Clients use LM and NTLM authentication, and they use NTLMv2 session security if the server supports it. Domain controllers accept LM, NTLM, and NTLMv2 authentication
+; 0000002 = Clients use only NTLM authentication, and they use NTLMv2 session security if the server supports it. Domain controller accepts LM, NTLM, and NTLMv2 authentication
+; 0000003 = Clients use only NTLMv2 authentication, and they use NTLMv2 session security if the server supports it. Domain controllers accept LM, NTLM, and NTLMv2 authentication
+; 0000004 = Clients use only NTLMv2 authentication, and they use NTLMv2 session security if the server supports it. Domain controller refuses LM authentication responses, but it accepts NTLM and NTLMv2
+; 0000005 = Clients use only NTLMv2 authentication, and they use NTLMv2 session security if the server supports it. Domain controller refuses LM and NTLM authentication responses, but it accepts NTLMv2 (CIS)
+"LmCompatibilityLevel"=-
+
+;;; 2.3.11.8 (L1) Ensure 'Network security: LDAP client signing requirements' is set to 'Negotiate signing' or higher
+[HKEY_LOCAL_MACHINE\System\CurrentControlSet\Services\LDAP]
+; 0000000 = Off
+; 0000001 = On (Default / CIS)
+"LDAPClientIntegrity"=dword:0000000
+
+;;; 2.3.11.9 (L1) Ensure 'Network security: Minimum session security for NTLM SSP based (including secure RPC) clients' is set to 'Require NTLMv2 session security, Require 128-bit encryption'
+[HKEY_LOCAL_MACHINE\System\CurrentControlSet\Control\Lsa\MSV1_0]
+; 0000010 = Require message integrity
+; 0000020 = Require message confidentiality
+; 0080000 = Require NTLMv2 session security
+; 20000000 = Require 128 bit encryption (Default)
+; 20080000 = Require NTLMv2 session security, Require 128-bit encryption (CIS)
+"NTLMMinClientSec"=dword:20000000
+
+;;; 2.3.11.10 (L1) Ensure 'Network security: Minimum session security for NTLM SSP based (including secure RPC) servers' is set to 'Require NTLMv2 session security, Require 128-bit encryption'
+[HKEY_LOCAL_MACHINE\System\CurrentControlSet\Control\Lsa\MSV1_0]
+; 0000010 = Require message integrity
+; 0000020 = Require message confidentiality
+; 0080000 = Require NTLMv2 session security
+; 20000000 = Require 128 bit encryption (Default)
+; 20080000 = Require NTLMv2 session security, Require 128-bit encryption (CIS)
+"NTLMMinServerSec"=dword:20000000
+
+;;; 2.3.12 Recovery console
+;;; Paragraph skipped due to no registry keys available
+
+;;; 2.3.13 Shutdown
+;;; Paragraph skipped due to no registry keys available
+
+;;; 2.3.14 System cryptography
+
+;;; 2.3.14.1 (L2) Ensure 'System cryptography: Force strong key protection for user keys stored on the computer' is set to 'User is prompted when the key is first used' or higher
+[HKEY_LOCAL_MACHINE\Software\Policies\Microsoft\Cryptography]
+; <deleted> = (Default)
+; 1 = User input is not required when new keys are stored and used.
+; 2 = User is prompted when the key is first used. (CIS)
+; 3 = User must enter the password each time they use a key.
+"ForceKeyProtection"=-
+
+;;; 2.3.15 System objects
+
+;;; 2.3.15.1 (L1) Ensure 'System objects: Require case insensitivity for non-Windows subsystems' is set to 'Enabled'
+[HKEY_LOCAL_MACHINE\System\CurrentControlSet\Control\Session Manager\Kernel]
+; 0000000 = Off
+; 0000001 = On (Default / CIS)
+"ObCaseInsensitive"=dword:0000001
+
+;;; 2.3.15.2 (L1) Ensure 'System objects: Strengthen default permissions of internal system objects (e.g. Symbolic Links)' is set to 'Enabled'
+[HKEY_LOCAL_MACHINE\System\CurrentControlSet\Control\Session Manager]
+; 0000000 = Off
+; 0000001 = On (Default / CIS)
+"ProtectionMode"=dword:0000001
+
+;;; 2.3.16 System settings
+;;; Paragraph skipped due to no registry keys available
+
+;;; 2.3.17 User Account Control
+
+;;; 2.3.17.1 (L1) Ensure 'User Account Control: Admin Approval Mode for the Built-in Administrator account' is set to 'Enabled'
+[HKEY_LOCAL_MACHINE\Software\Microsoft\Windows\CurrentVersion\Policies\System]
+; <deleted> = (Default)
+; 0000000 = Off
+; 0000001 = On (CIS)
+"FilterAdministratorToken"=-
+
+;;; 2.3.17.2 (L1) Ensure 'User Account Control: Behavior of the elevation prompt for administrators in Admin Approval Mode' is set to 'Prompt for consent on the secure desktop'
+[HKEY_LOCAL_MACHINE\Software\Microsoft\Windows\CurrentVersion\Policies\System]
+; 0000000 = This option allows the Consent Admin to perform an operation that requires elevation without consent or credentials
+; 0000001 = This option prompts the Consent Admin to enter his or her user name and password (or another valid admin) when an operation requires elevation of privilege. This operation occurs on the secure desktop
+; 0000002 = This option prompts the administrator in Admin Approval Mode to select either "Permit" or "Deny" an operation that requires elevation of privilege. If the Consent Admin selects Permit, the operation will continue with the highest available privilege. "Prompt for consent" removes the inconvenience of requiring that users enter their name and password to perform a privileged task. This operation occurs on the secure desktop (CIS)
+; 0000003 = This option prompts the Consent Admin to enter his or her user name and password (or that of another valid admin) when an operation requires elevation of privilege
+; 0000004 = This prompts the administrator in Admin Approval Mode to select either "Permit" or "Deny" an operation that requires elevation of privilege. If the Consent Admin selects Permit, the operation will continue with the highest available privilege. "Prompt for consent" removes the inconvenience of requiring that users enter their name and password to perform a privileged task
+; 0000005 = This prompt is used to prompt the administrator in Admin Approval Mode to select either "Permit" or "Deny" for an operation that requires elevation of privilege for any non-Windows binaries. If the Consent Admin selects Permit, the operation will continue with the highest available privilege. This operation will happen on the secure desktop (Default)
+"ConsentPromptBehaviorAdmin"=dword:0000005
+
+;;; 2.3.17.3 (L1) Ensure 'User Account Control: Behavior of the elevation prompt for standard users' is set to 'Automatically deny elevation requests'
+;[HKEY_LOCAL_MACHINE\Software\Microsoft\Windows\CurrentVersion\Policies\System]
+; 0000000 = This option SHOULD be set to ensure that any operation that requires elevation of privilege will fail as a standard user (CIS)
+; 0000001 = This option SHOULD be set to ensure that a standard user on the Secure Desktop that needs to perform an operation that requires elevation of privilege will be prompted for an administrative user name and password. If the user enters valid credentials, the operation will continue with the applicable privilege
+; 0000003 = This option SHOULD be set to ensure that a standard user that needs to perform an operation that requires elevation of privilege will be prompted for an administrative user name and password. If the user enters valid credentials, the operation will continue with the applicable privilege (Default)
+; NON-COMPLIANCE TO NOT DISRUPT COMMON HOME FEATURES
+;"ConsentPromptBehaviorUser"=dword:0000003
+
+;;; 2.3.17.4 (L1) Ensure 'User Account Control: Detect application installations and prompt for elevation' is set to 'Enabled'
+[HKEY_LOCAL_MACHINE\Software\Microsoft\Windows\CurrentVersion\Policies\System]
+; 0000000 = Off
+; 0000001 = On (Default / CIS)
+"EnableInstallerDetection"=dword:0000001
+
+;;; 2.3.17.5 (L1) Ensure 'User Account Control: Only elevate UIAccess applications that are installed in secure locations' is set to 'Enabled'
+[HKEY_LOCAL_MACHINE\Software\Microsoft\Windows\CurrentVersion\Policies\System]
+; 0000000 = Off
+; 0000001 = On (Default / CIS)
+"EnableSecureUIAPaths"=dword:0000001
+
+;;; 2.3.17.6 (L1) Ensure 'User Account Control: Run all administrators in Admin Approval Mode' is set to 'Enabled'
+[HKEY_LOCAL_MACHINE\Software\Microsoft\Windows\CurrentVersion\Policies\System]
+; 0000000 = Off
+; 0000001 = On (Default / CIS)
+"EnableLUA"=dword:0000001
+
+;;; 2.3.17.7 (L1) Ensure 'User Account Control: Switch to the secure desktop when prompting for elevation' is set to 'Enabled'
+[HKEY_LOCAL_MACHINE\Software\Microsoft\Windows\CurrentVersion\Policies\System]
+; 0000000 = Off
+; 0000001 = On (Default / CIS)
+"PromptOnSecureDesktop"=dword:0000001
+
+;;; 2.3.17.8 (L1) Ensure 'User Account Control: Virtualize file and registry write failures to per-user locations' is set to 'Enabled'
+[HKEY_LOCAL_MACHINE\Software\Microsoft\Windows\CurrentVersion\Policies\System]
+; 0000000 = Off
+; 0000001 = On (Default / CIS)
+"EnableVirtualization"=dword:0000001
+
+;;; 3 Event Log
+;;; Chapter skipped due to no registry keys available
+
+;;; 4 Restricted Groups
+;;; Chapter skipped due to no registry keys available
+
+;;; 5 System Services
+
+;;; 5.1 (L2) Ensure 'Bluetooth Audio Gateway Service (BTAGService)' is set to 'Disabled'
+;[HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Services\BTAGService]
+; 2 = Automatic
+; 3 = Manual (Default)
+; 4 = Disabled (CIS)
+; NON-COMPLIANCE TO NOT DISRUPT COMMON HOME FEATURES
+;"Start"=dword:0000003
+
+;;; 5.2 (L2) Ensure 'Bluetooth Support Service (bthserv)' is set to 'Disabled'
+;[HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Services\bthserv]
+; 2 = Automatic
+; 3 = Manual (Default)
+; 4 = Disabled (CIS)
+; NON-COMPLIANCE TO NOT DISRUPT COMMON HOME FEATURES
+;"Start"=dword:0000003
+
+;;; 5.3 (L1) Ensure 'Computer Browser (Browser)' is set to 'Disabled' or 'Not Installed'
+;[HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Services\Browser]
+; 2 = Automatic
+; 3 = Manual (Default)
+; 4 = Disabled (CIS)
+; NON-COMPLIANCE TO NOT DISRUPT COMMON HOME FEATURES
+;"Start"=dword:0000003
+
+;;; 5.4 (L2) Ensure 'Downloaded Maps Manager (MapsBroker)' is set to 'Disabled'
+;[HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Services\MapsBroker]
+; 2 = Automatic (Default)
+; 3 = Manual
+; 4 = Disabled (CIS)
+; NON-COMPLIANCE TO NOT DISRUPT COMMON HOME FEATURES
+;"Start"=dword:0000002
+
+;;; 5.5 (L2) Ensure 'Geolocation Service (lfsvc)' is set to 'Disabled'
+;[HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Services\lfsvc]
+; 2 = Automatic
+; 3 = Manual (Default)
+; 4 = Disabled (CIS)
+; NON-COMPLIANCE TO NOT DISRUPT COMMON HOME FEATURES
+;"Start"=dword:0000003
+
+;;; 5.6 (L1) Ensure 'IIS Admin Service (IISADMIN)' is set to 'Disabled' or 'Not Installed'
+;[HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Services\IISADMIN]
+; <deleted> = (Default / CIS)
+; 2 = Automatic
+; 3 = Manual
+; 4 = Disabled (CIS)
+;"Start"=-
+
+;;; 5.7 (L1) Ensure 'Infrared monitor service (irmon)' is set to 'Disabled' or 'Not Installed'
+;[HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Services\irmon]
+; 2 = Automatic
+; 3 = Manual (Default)
+; 4 = Disabled (CIS)
+; NON-COMPLIANCE TO NOT DISRUPT COMMON HOME FEATURES
+;"Start"=dword:0000003
+
+;;; 5.8 (L1) Ensure 'Internet Connection Sharing (ICS) (SharedAccess)' is set to 'Disabled'
+;[HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Services\SharedAccess]
+; <deleted> = (Default)
+; 2 = Automatic
+; 3 = Manual
+; 4 = Disabled (CIS)
+;"Start"=-
+
+;;; 5.9 (L2) Ensure 'Link-Layer Topology Discovery Mapper (lltdsvc)' is set to 'Disabled'
+;[HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Services\lltdsvc]
+; 2 = Automatic
+; 3 = Manual (Default)
+; 4 = Disabled (CIS)
+; NON-COMPLIANCE TO NOT DISRUPT COMMON HOME FEATURES
+;"Start"=dword:0000003
+
+;;; 5.10 (L1) Ensure 'LxssManager (LxssManager)' is set to 'Disabled' or 'Not Installed'
+;[HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Services\LxssManager]
+; 2 = Automatic
+; 3 = Manual (Default)
+; 4 = Disabled (CIS)
+; NON-COMPLIANCE TO NOT DISRUPT COMMON HOME FEATURES
+;"Start"=dword:0000003
+
+;;; 5.11 (L1) Ensure 'Microsoft FTP Service (FTPSVC)' is set to 'Disabled' or 'Not Installed'
+;[HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Services\FTPSVC]
+; <deleted> = (Default / CIS)
+; 2 = Automatic
+; 3 = Manual
+; 4 = Disabled (CIS)
+;"Start"=-
+
+;;; 5.12 (L2) Ensure 'Microsoft iSCSI Initiator Service (MSiSCSI)' is set to 'Disabled'
+;[HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Services\MSiSCSI]
+; 2 = Automatic
+; 3 = Manual (Default)
+; 4 = Disabled (CIS)
+; NON-COMPLIANCE TO NOT DISRUPT COMMON HOME FEATURES
+;"Start"=dword:0000003
+
+;;; 5.13 (L1) Ensure 'OpenSSH SSH Server (sshd)' is set to 'Disabled' or 'Not Installed'
+;[HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Services\sshd]
+; <deleted> = (Default / CIS)
+; 2 = Automatic
+; 3 = Manual
+; 4 = Disabled (CIS)
+;"Start"=-
+
+;;; 5.14 (L2) Ensure 'Peer Name Resolution Protocol (PNRPsvc)' is set to 'Disabled'
+;[HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Services\PNRPsvc]
+; 2 = Automatic
+; 3 = Manual (Default)
+; 4 = Disabled (CIS)
+; NON-COMPLIANCE TO NOT DISRUPT COMMON HOME FEATURES
+;"Start"=dword:0000003
+
+;;; 5.15 (L2) Ensure 'Peer Networking Grouping (p2psvc)' is set to 'Disabled'
+;[HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Services\p2psvc]
+; 2 = Automatic
+; 3 = Manual (Default)
+; 4 = Disabled (CIS)
+; NON-COMPLIANCE TO NOT DISRUPT COMMON HOME FEATURES
+;"Start"=dword:0000003
+
+;;; 5.16 (L2) Ensure 'Peer Networking Identity Manager (p2pimsvc)' is set to 'Disabled'
+;[HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Services\p2pimsvc]
+; 2 = Automatic
+; 3 = Manual (Default)
+; 4 = Disabled (CIS)
+; NON-COMPLIANCE TO NOT DISRUPT COMMON HOME FEATURES
+;"Start"=dword:0000003
+
+;;; 5.17 (L2) Ensure 'PNRP Machine Name Publication Service (PNRPAutoReg)' is set to 'Disabled'
+;[HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Services\PNRPAutoReg]
+; 2 = Automatic
+; 3 = Manual (Default)
+; 4 = Disabled (CIS)
+; NON-COMPLIANCE TO NOT DISRUPT COMMON HOME FEATURES
+;"Start"=dword:0000003
+
+;;; 5.18 (L2) Ensure 'Problem Reports and Solutions Control Panel Support (wercplsupport)' is set to 'Disabled'
+;[HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Services\wercplsupport]
+; 2 = Automatic
+; 3 = Manual (Default)
+; 4 = Disabled (CIS)
+; NON-COMPLIANCE TO NOT DISRUPT COMMON HOME FEATURES
+;"Start"=dword:0000003
+
+;;; 5.19 (L2) Ensure 'Remote Access Auto Connection Manager (RasAuto)' is set to 'Disabled'
+;[HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Services\RasAuto]
+; 2 = Automatic
+; 3 = Manual (Default)
+; 4 = Disabled (CIS)
+; NON-COMPLIANCE TO NOT DISRUPT COMMON HOME FEATURES
+;"Start"=dword:0000003
+
+;;; 5.20 (L2) Ensure 'Remote Desktop Configuration (SessionEnv)' is set to 'Disabled'
+;[HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Services\SessionEnv]
+; 2 = Automatic
+; 3 = Manual (Default)
+; 4 = Disabled (CIS)
+; NON-COMPLIANCE TO NOT DISRUPT COMMON HOME FEATURES
+;"Start"=dword:0000003
+
+;;; 5.21 (L2) Ensure 'Remote Desktop Services (TermService)' is set to 'Disabled'
+;[HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Services\TermService]
+; 2 = Automatic
+; 3 = Manual (Default)
+; 4 = Disabled (CIS)
+; NON-COMPLIANCE TO NOT DISRUPT COMMON HOME FEATURES
+;"Start"=dword:0000003
+
+;;; 5.22 (L2) Ensure 'Remote Desktop Services UserMode Port Redirector (UmRdpService)' is set to 'Disabled'
+;[HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Services\UmRdpService]
+; 2 = Automatic
+; 3 = Manual
+; 4 = Disabled (Default / CIS)
+;"Start"=dword:0000004
+
+;;; 5.23 (L1) Ensure 'Remote Procedure Call (RPC) Locator (RpcLocator)' is set to 'Disabled'
+;[HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Services\RpcLocator]
+; 2 = Automatic
+; 3 = Manual (Default)
+; 4 = Disabled (CIS)
+; NON-COMPLIANCE TO NOT DISRUPT COMMON HOME FEATURES
+;"Start"=dword:0000003
+
+;;; 5.24 (L2) Ensure 'Remote Registry (RemoteRegistry)' is set to 'Disabled'
+;[HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Services\RemoteRegistry]
+; 2 = Automatic
+; 3 = Manual
+; 4 = Disabled (Default / CIS)
+;"Start"=dword:0000004
+
+;;; 5.25 (L1) Ensure 'Routing and Remote Access (RemoteAccess)' is set to 'Disabled'
+;[HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Services\RemoteAccess]
+; 2 = Automatic
+; 3 = Manual
+; 4 = Disabled (Default / CIS)
+;"Start"=dword:0000004
+
+;;; 5.26 (L2) Ensure 'Server (LanmanServer)' is set to 'Disabled'
+;[HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Services\LanmanServer]
+; 2 = Automatic (Default)
+; 3 = Manual
+; 4 = Disabled (CIS)
+; NON-COMPLIANCE TO NOT DISRUPT COMMON HOME FEATURES
+;"Start"=dword:0000002
+
+;;; 5.27 (L1) Ensure 'Simple TCP/IP Services (simptcp)' is set to 'Disabled' or 'Not Installed'
+;[HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Services\simptcp]
+; <deleted> = (Default / CIS)
+; 2 = Automatic
+; 3 = Manual
+; 4 = Disabled (CIS)
+;"Start"=-
+
+;;; 5.28 (L2) Ensure 'SNMP Service (SNMP)' is set to 'Disabled' or 'Not Installed'
+;[HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Services\SNMP]
+; <deleted> = (Default / CIS)
+; 2 = Automatic
+; 3 = Manual
+; 4 = Disabled (CIS)
+;"Start"=-
+
+;;; 5.29 (L1) Ensure 'Special Administration Console Helper (sacsvr)' is set to 'Disabled' or 'Not Installed'
+;[HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Services\sacsvr]
+; <deleted> = (Default / CIS)
+; 2 = Automatic
+; 3 = Manual
+; 4 = Disabled (CIS)
+;"Start"=-
+
+;;; 5.30 (L1) Ensure 'SSDP Discovery (SSDPSRV)' is set to 'Disabled'
+;[HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Services\SSDPSRV]
+; 2 = Automatic
+; 3 = Manual (Default)
+; 4 = Disabled (CIS)
+; NON-COMPLIANCE TO NOT DISRUPT COMMON HOME FEATURES
+;"Start"=dword:0000003
+
+;;; 5.31 (L1) Ensure 'UPnP Device Host (upnphost)' is set to 'Disabled'
+;[HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Services\upnphost]
+; 2 = Automatic
+; 3 = Manual (Default)
+; 4 = Disabled (CIS)
+; NON-COMPLIANCE TO NOT DISRUPT COMMON HOME FEATURES
+;"Start"=dword:0000003
+
+;;; 5.32 (L1) Ensure 'Web Management Service (WMSvc)' is set to 'Disabled' or 'Not Installed'
+;[HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Services\WMSvc]
+; <deleted> = (Default / CIS)
+; 2 = Automatic
+; 3 = Manual
+; 4 = Disabled (CIS)
+;"Start"=-
+
+;;; 5.33 (L2) Ensure 'Windows Error Reporting Service (WerSvc)' is set to 'Disabled'
+;[HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Services\WerSvc]
+; 2 = Automatic
+; 3 = Manual (Default)
+; 4 = Disabled (CIS)
+; NON-COMPLIANCE TO NOT DISRUPT COMMON HOME FEATURES
+;"Start"=dword:0000003
+
+;;; 5.34 (L2) Ensure 'Windows Event Collector (Wecsvc)' is set to 'Disabled'
+;[HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Services\Wecsvc]
+; 2 = Automatic
+; 3 = Manual (Default)
+; 4 = Disabled (CIS)
+; NON-COMPLIANCE TO NOT DISRUPT COMMON HOME FEATURES
+;"Start"=dword:0000003
+
+;;; 5.35 (L1) Ensure 'Windows Media Player Network Sharing Service (WMPNetworkSvc)' is set to 'Disabled' or 'Not Installed'
+;[HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Services\WMPNetworkSvc]
+; <deleted> = (Default / CIS)
+; 2 = Automatic
+; 3 = Manual
+; 4 = Disabled (CIS)
+;"Start"=-
+
+;;; 5.36 (L1) Ensure 'Windows Mobile Hotspot Service (icssvc)' is set to 'Disabled'
+;[HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Services\icssvc]
+; 2 = Automatic
+; 3 = Manual (Default)
+; 4 = Disabled (CIS)
+; NON-COMPLIANCE TO NOT DISRUPT COMMON HOME FEATURES
+;"Start"=dword:0000003
+
+;;; 5.37 (L2) Ensure 'Windows Push Notifications System Service (WpnService)' is set to 'Disabled'
+;[HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Services\WpnService]
+; 2 = Automatic (Default)
+; 3 = Manual
+; 4 = Disabled (CIS)
+; NON-COMPLIANCE TO NOT DISRUPT COMMON HOME FEATURES
+;"Start"=dword:0000002
+
+;;; 5.38 (L2) Ensure 'Windows PushToInstall Service (PushToInstall)' is set to 'Disabled'
+;[HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Services\PushToInstall]
+; 2 = Automatic
+; 3 = Manual (Default)
+; 4 = Disabled (CIS)
+; NON-COMPLIANCE TO NOT DISRUPT COMMON HOME FEATURES
+;"Start"=dword:0000003
+
+;;; 5.39 (L2) Ensure 'Windows Remote Management (WS-Management) (WinRM)' is set to 'Disabled'
+;[HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Services\WinRM]
+; 2 = Automatic
+; 3 = Manual (Default)
+; 4 = Disabled (CIS)
+; NON-COMPLIANCE TO NOT DISRUPT COMMON HOME FEATURES
+;"Start"=dword:0000003
+
+;;; 5.40 (L1) Ensure 'World Wide Web Publishing Service (W3SVC)' is set to 'Disabled' or 'Not Installed'
+;[HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Services\W3SVC]
+; 2 = Automatic
+; 3 = Manual (Default)
+; 4 = Disabled (CIS)
+; NON-COMPLIANCE TO NOT DISRUPT COMMON HOME FEATURES
+;"Start"=dword:0000003
+
+;;; 5.41 (L1) Ensure 'Xbox Accessory Management Service (XboxGipSvc)' is set to 'Disabled'
+;[HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Services\XboxGipSvc]
+; 2 = Automatic
+; 3 = Manual (Default)
+; 4 = Disabled (CIS)
+; NON-COMPLIANCE TO NOT DISRUPT COMMON HOME FEATURES
+;"Start"=dword:0000003
+
+;;; 5.42 (L1) Ensure 'Xbox Live Auth Manager (XblAuthManager)' is set to 'Disabled'
+;[HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Services\XblAuthManager]
+; 2 = Automatic
+; 3 = Manual (Default)
+; 4 = Disabled (CIS)
+; NON-COMPLIANCE TO NOT DISRUPT COMMON HOME FEATURES
+;"Start"=dword:0000003
+
+;;; 5.43 (L1) Ensure 'Xbox Live Game Save (XblGameSave)' is set to 'Disabled'
+;[HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Services\XblGameSave]
+; 2 = Automatic
+; 3 = Manual (Default)
+; 4 = Disabled (CIS)
+; NON-COMPLIANCE TO NOT DISRUPT COMMON HOME FEATURES
+;"Start"=dword:0000003
+
+;;; 5.44 (L1) Ensure 'Xbox Live Networking Service (XboxNetApiSvc)' is set to 'Disabled'
+;[HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Services\XboxNetApiSvc]
+; 2 = Automatic
+; 3 = Manual (Default)
+; 4 = Disabled (CIS)
+; NON-COMPLIANCE TO NOT DISRUPT COMMON HOME FEATURES
+;"Start"=dword:0000003
+
+;;; 6 Registry
+;;; Chapter skipped due to no registry keys available
+
+;;; 7 File System
+;;; Chapter skipped due to no registry keys available
+
+;;; 8 Wired Network (IEEE 802.3) Policies
+;;; Chapter skipped due to no registry keys available
+
+;;; 9 Windows Firewall with Advanced Security
+;;; See Firewall Registry file
+
+;;; 10 Network List Manager Policies
+;;; Chapter skipped due to no registry keys available
+
+;;; 11 Wireless Network (IEEE 802.11) Policies
+;;; Chapter skipped due to no registry keys available
+
+;;; 12 Public Key Policies
+;;; Chapter skipped due to no registry keys available
+
+;;; 13 Software Restriction Policies
+;;; Chapter skipped due to no registry keys available
+
+;;; 14 Network Access Protection NAP Client Configuration
+;;; Chapter skipped due to no registry keys available
+
+;;; 15 Application Control Policies
+;;; Chapter skipped due to no registry keys available
+
+;;; 16 IP Security Policies
+;;; Chapter skipped due to no registry keys available
+
+;;; 17 Advanced Audit Policy Configuration
+;;; Chapter skipped due to no registry keys available
+
+;;; 18 Administrative Templates (Computer)
+
+;;; 18.1 Control Panel
+
+;;; 18.1.1 Personalization
+
+;;; 18.1.1.1 (L1) Ensure 'Prevent enabling lock screen camera' is set to 'Enabled'
+;[HKEY_LOCAL_MACHINE\Software\Policies\Microsoft\Windows\Personalization]
+; <deleted> = (Default)
+; 0000000 = Off
+; 0000001 = On (CIS)
+; NON-COMPLIANCE TO NOT DISRUPT COMMON HOME FEATURES
+;"NoLockScreenCamera"=-
+
+;;; 18.1.1.2 (L1) Ensure 'Prevent enabling lock screen slide show' is set to 'Enabled'
+;[HKEY_LOCAL_MACHINE\Software\Policies\Microsoft\Windows\Personalization]
+; <deleted> = (Default)
+; 0000000 = Off
+; 0000001 = On (CIS)
+; NON-COMPLIANCE TO NOT DISRUPT COMMON HOME FEATURES
+;"NoLockScreenSlideshow"=-
+
+;;; 18.1.2 Regional and Language Options
+
+;;; 18.1.2.1 Handwriting personalization
+
+;;; 18.1.2.2 (L1) Ensure 'Allow users to enable online speech recognition services' is set to 'Disabled'
+;[HKEY_LOCAL_MACHINE\SOFTWARE\Policies\Microsoft\InputPersonalization]
+; <deleted> = (Default)
+; 0000000 = Off (CIS)
+; 0000001 = On
+; NON-COMPLIANCE TO NOT DISRUPT COMMON HOME FEATURES
+;"AllowInputPersonalization"=-
+
+;;; 18.1.3 (L2) Ensure 'Allow Online Tips' is set to 'Disabled'
+[HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Windows\CurrentVersion\Policies\Explorer]
+; <deleted> = (Default)
+; 0000000 = Off (CIS)
+; 0000001 = On
+"AllowOnlineTips"=-
+
+;;; 18.2 LAPS
+
+;;; 18.2.1 (L1) Ensure LAPS AdmPwd GPO Extension / CSE is installed
+;[HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Windows NT\CurrentVersion\Winlogon\GPExtensions\{D76B9641-3288-4f75-942D-087DE603E3EA}]
+; <deleted> = (Default)
+; "AdmPwd.dll" = (CIS)
+; FEATURE DOES NOT EXISTS IN NON-CORPORATE ENVIRONMENT
+;"DllName"=-
+
+;;; 18.2.2 (L1) Ensure 'Do not allow password expiration time longer than required by policy' is set to 'Enabled'
+;[HKEY_LOCAL_MACHINE\SOFTWARE\Policies\Microsoft Services\AdmPwd]
+; <deleted> = (Default)
+; 0000000 = Off
+; 0000001 = On (CIS)
+; FEATURE DOES NOT EXISTS IN NON-CORPORATE ENVIRONMENT
+;"PwdExpirationProtectionEnabled"=-
+
+;;; 18.2.3 (L1) Ensure 'Enable Local Admin Password Management' is set to 'Enabled'
+;[HKEY_LOCAL_MACHINE\SOFTWARE\Policies\Microsoft Services\AdmPwd]
+; <deleted> = (Default)
+; 0000000 = Off
+; 0000001 = On (CIS)
+; FEATURE DOES NOT EXISTS IN NON-CORPORATE ENVIRONMENT
+;"AdmPwdEnabled"=-
+
+;;; 18.2.4 (L1) Ensure 'Password Settings: Password Complexity' is set to 'Enabled: Large letters + small letters + numbers + special characters'
+;[HKEY_LOCAL_MACHINE\SOFTWARE\Policies\Microsoft Services\AdmPwd]
+; <deleted> = (Default)
+; 0000000 = Off
+; 0000001 = On (CIS)
+; FEATURE DOES NOT EXISTS IN NON-CORPORATE ENVIRONMENT
+;"PasswordComplexity"=-
+
+;;; 18.2.5 (L1) Ensure 'Password Settings: Password Length' is set to 'Enabled: 15 or more'
+;[HKEY_LOCAL_MACHINE\SOFTWARE\Policies\Microsoft Services\AdmPwd]
+; <deleted> = (Default)
+; 15 = 15 positions (CIS)
+; FEATURE DOES NOT EXISTS IN NON-CORPORATE ENVIRONMENT
+;"PasswordLength"=-
+
+;;; 18.2.6 (L1) Ensure 'Password Settings: Password Age (Days)' is set to 'Enabled: 30 or fewer'
+;[HKEY_LOCAL_MACHINE\SOFTWARE\Policies\Microsoft Services\AdmPwd]
+; <deleted> = (Default)
+; 30 = 30 Days (CIS)
+; FEATURE DOES NOT EXISTS IN NON-CORPORATE ENVIRONMENT
+;"PasswordAgeDays"=-
+
+;;; 18.3 MS Security Guide
+
+;;; 18.3.1 (L1) Ensure 'Apply UAC restrictions to local accounts on network logons' is set to 'Enabled'
+[HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Windows\CurrentVersion\Policies\System]
+; <deleted> = (Default)
+; 0000000 = Off (Default / CIS)
+; 0000001 = On
+"LocalAccountTokenFilterPolicy"=-
+
+;;; 18.3.2 (L1) Ensure 'Configure SMB v1 client driver' is set to 'Enabled: Disable driver'
+;[HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Services\mrxsmb10]
+; <deleted> = Default
+; 2 = Automatic (Default)
+; 3 = Manual
+; 4 = Disabled (CIS)
+; SMB v1 SHOULD BE REMOVED THROUGH WINDOWS FEATURES
+;"Start"=-
+
+;;; 18.3.3 (L1) Ensure 'Configure SMB v1 server' is set to 'Disabled'
+[HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Services\LanmanServer\Parameters]
+; <deleted> = Default
+; 0000000 = Off (CIS)
+; 0000001 = On
+"SMB1"=-
+
+;;; 18.3.4 (L1) Ensure 'Enable Structured Exception Handling Overwrite Protection (SEHOP)' is set to 'Enabled'
+[HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Control\Session Manager\kernel]
+; <deleted> = Default
+; 0000000 = B-node (CIS)
+; 0000001 = On
+"DisableExceptionChainValidation"=-
+
+;;; 18.3.5 (L1) Ensure 'NetBT NodeType configuration' is set to 'Enabled: P-node (recommended)'
+[HKEY_LOCAL_MACHINE\System\CurrentControlSet\Services\Netbt\Parameters]
+; <deleted> = (Default)
+; 0000001 = B-node, Broadcast
+; 0000002 = P-node, Peer-to-peer: for environments with WINS servers only (CIS)
+; 0000004 = M-node, Mixed: broadcast first, then use WINS servers
+; 0000008 = H-node, Hybrid: use WINS servers first, then use broadcast
+"NodeType"=-
+
+;;; 18.3.6 (L1) Ensure 'WDigest Authentication' is set to 'Disabled'
+[HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Control\SecurityProviders\WDigest]
+; <deleted> = Default
+; 0000000 = Off (Default / CIS)
+; 0000001 = On
+"UseLogonCredential"=-
+
+;;; 18.4 MSS (Legacy)
+
+;;; 18.4.1 (L1) Ensure 'MSS: (AutoAdminLogon) Enable Automatic Logon (not recommended)' is set to 'Disabled'
+[HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Windows NT\CurrentVersion\Winlogon]
+; <deleted> = (Default)
+; 0000000 = Off (Default / CIS)
+; 0000001 = On
+"AutoAdminLogon"=-
+
+;;; 18.4.2 (L1) Ensure 'MSS: (DisableIPSourceRouting IPv6) IP source routing protection level (protects against packet spoofing)' is set to 'Enabled: Highest protection, source routing is completely disabled'
+[HKEY_LOCAL_MACHINE\System\CurrentControlSet\Services\Tcpip6\Parameters]
+; <deleted> = (Default)
+; 0000000 = No additional protection, source routed packets are allowed
+; 0000001 = Medium, source routed packets ignored when IP forwarding is enabled
+; 0000002 = Highest protection, source routing is completely disabled (CIS)
+"DisableIPSourceRouting"=-
+
+;;; 18.4.3 (L1) Ensure 'MSS: (DisableIPSourceRouting) IP source routing protection level (protects against packet spoofing)' is set to 'Enabled: Highest protection, source routing is completely disabled'
+[HKEY_LOCAL_MACHINE\System\CurrentControlSet\Services\Tcpip\Parameters]
+; <deleted> = (Default)
+; 0000000 = No additional protection, source routed packets are allowed
+; 0000001 = Medium, source routed packets ignored when IP forwarding is enabled
+; 0000002 = Highest protection, source routing is completely disabled (CIS)
+"DisableIPSourceRouting"=-
+
+;;; 18.4.4 (L2) Ensure 'MSS: (DisableSavePassword) Prevent the dial-up password from being saved' is set to 'Enabled'
+;[HKEY_LOCAL_MACHINE\System\CurrentControlSet\Services\RasMan\Parameters]
+; <deleted> = (Default)
+; 0000000 = Off
+; 0000001 = On (CIS)
+; NON-COMPLIANCE TO NOT DISRUPT COMMON HOME FEATURES
+;"disablesavepassword"=-
+
+;;; 18.4.5 (L1) Ensure 'MSS: (EnableICMPRedirect) Allow ICMP redirects to override OSPF generated routes' is set to 'Disabled'
+[HKEY_LOCAL_MACHINE\System\CurrentControlSet\Services\Tcpip\Parameters]
+; 0000000 = Off (CIS)
+; 0000001 = On (Default)
+"EnableICMPRedirect"=dword:0000001
+
+;;; 18.4.6 (L2) Ensure 'MSS: (KeepAliveTime) How often keep-alive packets are sent in milliseconds' is set to 'Enabled: 300,000 or 5 minutes (recommended)'
+;[HKEY_LOCAL_MACHINE\System\CurrentControlSet\Services\Tcpip\Parameters]
+; <deleted> = (Default)
+; 0 = 0 seconds
+; 300000 (493e0) = 300.000 seconds, 5 minutes (CIS)
+; NON-COMPLIANCE TO NOT DISRUPT COMMON HOME FEATURES
+;"KeepAliveTime"=-
+
+;;; 18.4.7 (L1) Ensure 'MSS: (NoNameReleaseOnDemand) Allow the computer to ignore NetBIOS name release requests except from WINS servers' is set to 'Enabled'
+[HKEY_LOCAL_MACHINE\System\CurrentControlSet\Services\NetBT\Parameters]
+; <deleted> = (Default)
+; 0000000 = Off
+; 0000001 = On (Default / CIS)
+"nonamereleaseondemand"=-
+
+;;; 18.4.8 (L2) Ensure 'MSS: (PerformRouterDiscovery) Allow IRDP to detect and configure Default Gateway addresses (could lead to DoS)' is set to 'Disabled'
+;[HKEY_LOCAL_MACHINE\System\CurrentControlSet\Services\Tcpip\Parameters]
+; <deleted> = (Default)
+; 0000000 = Off
+; 0000001 = On (CIS)
+; NON-COMPLIANCE TO NOT DISRUPT COMMON HOME FEATURES
+;"PerformRouterDiscovery"=-
+
+;;; 18.4.9 (L1) Ensure 'MSS: (SafeDllSearchMode) Enable Safe DLL search mode (recommended)' is set to 'Enabled'
+[HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Control\Session Manager]
+; <deleted> = (Default)
+; 0000000 = Off
+; 0000001 = On (Default / CIS)
+"SafeDllSearchMode"=-
+
+;;; 18.4.10 (L1) Ensure 'MSS: (ScreenSaverGracePeriod) The time in seconds before the screen saver grace period expires (0 recommended)' is set to 'Enabled: 5 or fewer seconds'
+[HKEY_LOCAL_MACHINE\Software\Microsoft\Windows NT\CurrentVersion\Winlogon]
+; <deleted> = (Default)
+; 0000005 = 5 seconds (CIS)
+"ScreenSaverGracePeriod"=-
+
+;;; 18.4.11 (L2) Ensure 'MSS: (TcpMaxDataRetransmissions IPv6) How many times unacknowledged data is retransmitted' is set to 'Enabled: 3'
+[HKEY_LOCAL_MACHINE\System\CurrentControlSet\Services\TCPIP6\Parameters]
+; <deleted> = (Default)
+; 0 = 0 times
+; 3 = 3 times (CIS)
+"TcpMaxDataRetransmissions"=-
+
+;;; 18.4.12 (L2) Ensure 'MSS: (TcpMaxDataRetransmissions) How many times unacknowledged data is retransmitted' is set to 'Enabled: 3'
+[HKEY_LOCAL_MACHINE\System\CurrentControlSet\Services\Tcpip\Parameters]
+; <deleted> = (Default)
+; 0 = 0 times
+; 3 = 3 times (CIS)
+"TcpMaxDataRetransmissions"=-
+
+;;; 18.4.13 (L1) Ensure 'MSS: (WarningLevel) Percentage threshold for the security event log at which the system will generate a warning' is set to 'Enabled: 90% or less'
+[HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Services\Eventlog\Security]
+; <deleted> = (Default)
+; 0000032 = 50%
+; 000003c = 60%
+; 0000046 = 70%
+; 0000050 = 80%
+; 000005a = 90% (CIS)
+"WarningLevel"=-
+
+;;; 18.5 Network
+
+;;; 18.5.1 Background Intelligent Transfer Service (BITS)
+;;; Paragraph skipped due to no registry keys available
+
+;;; 18.5.2 BranchCache
+;;; Paragraph skipped due to no registry keys available
+
+;;; 18.5.3 DirectAccess Client Experience Settings
+;;; Paragraph skipped due to no registry keys available
+
+;;; 18.5.4 DNS Client
+
+;;; 18.5.4.1 (L1) Ensure 'Turn off multicast name resolution' is set to 'Enabled'
+[HKEY_LOCAL_MACHINE\SOFTWARE\Policies\Microsoft\Windows NT\DNSClient]
+;; Enable setting "Disable NetBIOS over TCP/IP" on all (Wireless) NICs present in machine
+; <deleted> = (Default)
+; 0000000 = On (CIS)
+; 0000001 = Off (CIS)
+"EnableMulticast"=-
+
+;;; 18.5.5 Fonts
+
+;;; 18.5.5.1 (L2) Ensure 'Enable Font Providers' is set to 'Disabled'
+[HKEY_LOCAL_MACHINE\SOFTWARE\Policies\Microsoft\Windows\System]
+; <deleted> = (Default)
+; 0000000 = Off (CIS)
+; 0000001 = On
+"EnableFontProviders"=-
+
+;;; 18.5.6 Hotspot Authentication
+;;; Paragraph skipped due to no registry keys available
+
+;;; 18.5.7 Lanman Server
+;;; Paragraph skipped due to no registry keys available
+
+;;; 18.5.8 Lanman Workstation
+
+;;; 18.5.8.1 (L1) Ensure 'Enable insecure guest logons' is set to 'Disabled'
+[HKEY_LOCAL_MACHINE\SOFTWARE\Policies\Microsoft\Windows\LanmanWorkstation]
+; <deleted> = (Default)
+; 0000000 = Off (CIS)
+; 0000001 = On
+"AllowInsecureGuestAuth"=-
+
+;;; 18.5.9 Link-Layer Topology Discovery
+
+;;; 18.5.9.1 (L2) Ensure 'Turn on Mapper I/O (LLTDIO) driver' is set to 'Disabled'
+;[HKEY_LOCAL_MACHINE\Software\Policies\Microsoft\Windows\LLTD]
+; <deleted> = (Default)
+; 0000000 = Off (CIS)
+; 0000001 = On
+; NON-COMPLIANCE TO NOT DISRUPT COMMON HOME FEATURES
+;"ProhibitLLTDIOOnPrivateNet"=-
+;[HKEY_LOCAL_MACHINE\Software\Policies\Microsoft\Windows\LLTD]
+; <deleted> = (Default)
+; 0000000 = Off (CIS)
+; 0000001 = On
+; NON-COMPLIANCE TO NOT DISRUPT COMMON HOME FEATURES
+;"LLTD:EnableLLTDIO"=-
+[HKEY_LOCAL_MACHINE\Software\Policies\Microsoft\Windows\LLTD]
+; <deleted> = (Default)
+; 0000000 = Off (Default / CIS)
+; 0000001 = On
+"AllowLLTDIOOnPublicNet"=-
+[HKEY_LOCAL_MACHINE\Software\Policies\Microsoft\Windows\LLTD]
+; <deleted> = (Default)
+; 0000000 = Off (Default / CIS)
+; 0000001 = On
+"AllowLLTDIOOnDomain"=-
+
+;;; 18.5.9.2 (L2) Ensure 'Turn on Responder (RSPNDR) driver' is set to 'Disabled'
+;[HKEY_LOCAL_MACHINE\Software\Policies\Microsoft\Windows\LLTD]
+; <deleted> = (Default)
+; 0000000 = Off (CIS)
+; 0000001 = On
+; NON-COMPLIANCE TO NOT DISRUPT COMMON HOME FEATURES
+;"ProhibitRspndrOnPrivateNet"=-
+;[HKEY_LOCAL_MACHINE\Software\Policies\Microsoft\Windows\LLTD]
+; <deleted> = (Default)
+; 0000000 = Off (CIS)
+; 0000001 = On
+; NON-COMPLIANCE TO NOT DISRUPT COMMON HOME FEATURES
+;"LLTD:EnableRspndr"=-
+[HKEY_LOCAL_MACHINE\Software\Policies\Microsoft\Windows\LLTD]
+; <deleted> = (Default)
+; 0000000 = Off (Default / CIS)
+; 0000001 = On
+"AllowRspndrOnPublicNet"=-
+[HKEY_LOCAL_MACHINE\Software\Policies\Microsoft\Windows\LLTD]
+; <deleted> = (Default)
+; 0000000 = Off (Default / CIS)
+; 0000001 = On
+"AllowRspndrOnDomain"=-
+
+;;; 18.5.10 Microsoft Peer-to-Peer Networking Services
+
+;;; 18.5.10.1 Peer Name Resolution Protocol
+;;; Paragraph skipped due to no registry keys available
+
+;;; 18.5.10.2 (L2) Ensure 'Turn off Microsoft Peer-to-Peer Networking Services' is set to 'Enabled'
+;[HKEY_LOCAL_MACHINE\Software\Policies\Microsoft\Peernet]
+; 0000000 = Off (Default)
+; 0000001 = On (CIS)
+; NON-COMPLIANCE TO NOT DISRUPT COMMON HOME FEATURES
+;"Disabled"=dword:0000000
+
+;;; 18.5.11 Network Connections
+;;; See Firewall Registry file
+
+;;; 18.5.12 Network Connectivity Status Indicator
+;;; Paragraph skipped due to no registry keys available
+
+;;; 18.5.13 Network Isolation
+;;; Paragraph skipped due to no registry keys available
+
+;;; 18.5.14 Network Provider
+
+;;; 18.5.14.1 (L1) Ensure 'Hardened UNC Paths' is set to 'Enabled, with "Require Mutual Authentication" and "Require Integrity" set for all NETLOGON and SYSVOL shares'
+[HKEY_LOCAL_MACHINE\SOFTWARE\Policies\Microsoft\Windows\NetworkProvider\HardenedPaths]
+; <deleted> = (Default)
+; RequireMutualAuthentication=1,RequireIntegrity=1 = Secure (CIS)
+"\\*\NETLOGON"=-
+[HKEY_LOCAL_MACHINE\SOFTWARE\Policies\Microsoft\Windows\NetworkProvider\HardenedPaths]
+; <deleted> = (Default)
+; RequireMutualAuthentication=1,RequireIntegrity=1 = Secure (CIS)
+"\\*\SYSVOL"=-
+
+;;; 18.5.15 Offline Files
+;;; Paragraph skipped due to no registry keys available
+
+;;; 18.5.16 QoS Packet Scheduler
+;;; Paragraph skipped due to no registry keys available
+
+;;; 18.5.17 SNMP
+;;; Paragraph skipped due to no registry keys available
+
+;;; 18.5.18 SSL Configuration Settings
+;;; Paragraph skipped due to no registry keys available
+
+;;; 18.5.19 TCPIP Settings
+
+;;; 18.5.19.1 IPv6 Transition Technologies
+;;; Paragraph skipped due to no registry keys available
+
+;;; 18.5.19.2 Parameters
+
+;;; 18.5.19.2.1 (L2) Disable IPv6 (Ensure TCPIP6 Parameter 'DisabledComponents' is set to '0xff (255)')
+;[HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Services\TCPIP6\Parameters]
+; <deleted> = (Default)
+; 0000000 = Enable all IPv6 components
+; 0000xff = Disable all IPv6 components (CIS)
+; 0000002 = Disable 6to4
+; 0000004 = Disable ISATAP
+; 0000008 = Disable Teredo
+; 000000a = Disable Teredo and 6to4
+; 0000001 = Disable all tunnel interfaces
+; 0000010 = Disable all LAN and PPP interfaces
+; 0000011 = Disable all LAN, PPP and tunnel interfaces
+; 0000020 = Prefer IPv4 over IPv6
+; NON-COMPLIANCE TO NOT DISRUPT COMMON HOME FEATURES
+;"DisabledComponents"=-
+
+;;; 18.5.20 Windows Connect Now
+
+;;; 18.5.20.1 (L2) Ensure 'Configuration of wireless settings using Windows Connect Now' is set to 'Disabled'
+;[HKEY_LOCAL_MACHINE\Software\Policies\Microsoft\Windows\WCN\Registrars]
+; <deleted> = (Default)
+; 0000000 = Off (CIS)
+; 0000001 = On
+; NON-COMPLIANCE TO NOT DISRUPT COMMON HOME FEATURES
+;"EnableRegistrars"=-
+;[HKEY_LOCAL_MACHINE\Software\Policies\Microsoft\Windows\WCN\Registrars]
+; <deleted> = (Default)
+; 0000000 = Off (CIS)
+; 0000001 = On
+; NON-COMPLIANCE TO NOT DISRUPT COMMON HOME FEATURES
+;"DisableUPnPRegistrar"=-
+;[HKEY_LOCAL_MACHINE\Software\Policies\Microsoft\Windows\WCN\Registrars]
+; <deleted> = (Default)
+; 0000000 = Off (CIS)
+; 0000001 = On
+; NON-COMPLIANCE TO NOT DISRUPT COMMON HOME FEATURES
+;"DisableInBand802DOT11Registrar"=-
+;[HKEY_LOCAL_MACHINE\Software\Policies\Microsoft\Windows\WCN\Registrars]
+; <deleted> = (Default)
+; 0000000 = Off (CIS)
+; 0000001 = On
+; NON-COMPLIANCE TO NOT DISRUPT COMMON HOME FEATURES
+;"DisableFlashConfigRegistrar"=-
+;[HKEY_LOCAL_MACHINE\Software\Policies\Microsoft\Windows\WCN\Registrars]
+; <deleted> = (Default)
+; 0000000 = Off (CIS)
+; 0000001 = On
+; NON-COMPLIANCE TO NOT DISRUPT COMMON HOME FEATURES
+;"DisableWPDRegistrar"=-
+
+;;; 18.5.20.2 (L2) Ensure 'Prohibit access of the Windows Connect Now wizards' is set to 'Enabled'
+;[HKEY_LOCAL_MACHINE\Software\Policies\Microsoft\Windows\WCN\UI]
+; <deleted> = (Default)
+; 0000000 = Off
+; 0000001 = On (CIS)
+; NON-COMPLIANCE TO NOT DISRUPT COMMON HOME FEATURES
+;"DisableWcnUi"=-
+
+;;; 18.5.21 Windows Connection Manager
+
+;;; 18.5.21.1 (L1) Ensure 'Minimize the number of simultaneous connections to the Internet or a Windows Domain' is set to 'Enabled'
+;[HKEY_LOCAL_MACHINE\Software\Policies\Microsoft\Windows\WcmSvc\GroupPolicy]
+; <deleted> = (Default)
+; 0000000 = Off
+; 0000001 = On (Default / CIS)
+; FEATURE DOES NOT EXISTS IN NON-CORPORATE ENVIRONMENT
+;"fMinimizeConnections"=-
+
+;;; 18.5.21.2 (L1) Ensure 'Prohibit connection to non-domain networks when connected to domain authenticated network' is set to 'Enabled'
+;[HKEY_LOCAL_MACHINE\Software\Policies\Microsoft\Windows\WcmSvc\GroupPolicy]
+; <deleted> = (Default)
+; 0000000 = Off
+; 0000001 = On (CIS)
+; FEATURE DOES NOT EXISTS IN NON-CORPORATE ENVIRONMENT
+;"fBlockNonDomain"=-
+
+;;; 18.5.22 Wireless Display
+;;; Paragraph skipped due to no registry keys available
+
+;;; 18.5.23 WLAN Service
+
+;;; 18.5.23.1 WLAN Media Cost
+;;; Paragraph skipped due to no registry keys available
+
+;;; 18.5.23.2 WLAN Settings
+
+;;; 18.5.23.2.1 (L1) Ensure 'Allow Windows to automatically connect to suggested open hotspots, to networks shared by contacts, and to hotspots offering paid services' is set to 'Disabled'
+[HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\WcmSvc\wifinetworkmanager\config]
+; <deleted> = (Default)
+; 0000000 = Off (CIS)
+; 0000001 = On
+"AutoConnectAllowedOEM"=-
+
+;;; 18.6 Printers
+;;; Paragraph skipped due to no registry keys available
+
+;;; 18.7 Start Menu and Taskbar
+
+;;; 18.7.1 Notifications
+
+;;; 18.7.1.1 (L2) Ensure 'Turn off notifications network usage' is set to 'Enabled'
+;[HKEY_LOCAL_MACHINE\SOFTWARE\Policies\Microsoft\Windows\CurrentVersion\PushNotifications]
+; <deleted> = (Default)
+; 0000000 = Off
+; 0000001 = On (CIS)
+; NON-COMPLIANCE TO NOT DISRUPT COMMON HOME FEATURES
+;"NoCloudApplicationNotification"=-
+
+;;; 18.8 System
+
+;;; 18.8.1 Access-Denied Assistance
+;;; Paragraph skipped due to no registry keys available
+
+;;; 18.8.2 App-V
+;;; Paragraph skipped due to no registry keys available
+
+;;; 18.8.3 Audit Process Creation
+
+;;; 18.8.3.1 (L1) Ensure 'Include command line in process creation events' is set to 'Disabled'
+[HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Windows\CurrentVersion\Policies\System\Audit]
+; <deleted> = (Default)
+; 0000000 = Off (Default / CIS)
+; 0000001 = On
+"ProcessCreationIncludeCmdLine_Enabled"=-
+
+;;; 18.8.4 Credentials Delegation
+
+;;; 18.8.4.1 (L1) Ensure 'Encryption Oracle Remediation' is set to 'Enabled: Force Updated Clients'
+[HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Windows\CurrentVersion\Policies\System\CredSSP\Parameters]
+; <deleted> = (Default)
+; 0000000 = Off (CIS)
+; 0000001 = On
+"AllowEncryptionOracle"=-
+
+;;; 18.8.4.2 (L1) Ensure 'Remote host allows delegation of non-exportable credentials' is set to 'Enabled'
+[HKEY_LOCAL_MACHINE\SOFTWARE\Policies\Microsoft\Windows\CredentialsDelegation]
+; <deleted> = (Default)
+; 0000000 = Off
+; 0000001 = On (CIS)
+"AllowProtectedCreds"=-
+
+;;; 18.8.5 Device Guard
+;;; See Defender Registry file
+
+;;; 18.8.6 Device Health Attestation Service
+;;; Paragraph skipped due to no registry keys available
+
+;;; 18.8.7 Device Installation
+;;; See BitLocker Registry file
+
+;;; 18.8.8 Device Redirection
+;;; Paragraph skipped due to no registry keys available
+
+;;; 18.8.9 Disk NV Cache
+;;; Paragraph skipped due to no registry keys available
+
+;;; 18.8.10 Disk Quotas
+;;; Paragraph skipped due to no registry keys available
+
+;;; 18.8.11 Display
+;;; Paragraph skipped due to no registry keys available
+
+;;; 18.8.12 Distributed COM
+;;; Paragraph skipped due to no registry keys available
+
+;;; 18.8.13 Driver Installation
+;;; Paragraph skipped due to no registry keys available
+
+;;; 18.8.14 Early Launch Antimalware
+
+;;; 18.8.14.1 (L1) Ensure 'Boot-Start Driver Initialization Policy' is set to 'Enabled: Good, unknown and bad but critical'
+[HKEY_LOCAL_MACHINE\System\CurrentControlSet\Policies\EarlyLaunch]
+; <deleted> = (Default)
+; 0000008 = Only good drivers
+; 0000001 = Good and unknown drivers
+; 0000003 = Good, unknown, and bad but critical drivers (CIS)
+; 0000007 = All drivers
+"DriverLoadPolicy"=-
+
+;;; 18.8.15 Enhanced Storage Access
+;;; Paragraph skipped due to no registry keys available
+
+;;; 18.8.16 File Classification Infrastructure
+;;; Paragraph skipped due to no registry keys available
+
+;;; 18.8.17 File Share Shadow Copy Agent
+;;; Paragraph skipped due to no registry keys available
+
+;;; 18.8.18 File Share Shadow Copy Provider
+;;; Paragraph skipped due to no registry keys available
+
+;;; 18.8.19 Filesystem (formerly NTFS Filesystem)
+;;; Paragraph skipped due to no registry keys available
+
+;;; 18.8.20 Folder Redirection
+;;; Paragraph skipped due to no registry keys available
+
+;;; 18.8.21 Group Policy
+
+;;; 18.8.21.1 Logging and tracing
+
+;;; 18.8.21.2 (L1) Ensure 'Configure registry policy processing: Do not apply during periodic background processing' is set to 'Enabled: FALSE'
+;[HKEY_LOCAL_MACHINE\Software\Policies\Microsoft\Windows\Group Policy\{35378EAC-683F-11D2-A89A-00C04FBBCFA2}]
+; <deleted> = (Default)
+; 0000000 = Off (CIS)
+; 0000001 = On
+; FEATURE DOES NOT EXISTS IN NON-CORPORATE ENVIRONMENT
+;"NoBackgroundPolicy"=-
+
+;;; 18.8.21.3 (L1) Ensure 'Configure registry policy processing: Process even if the Group Policy objects have not changed' is set to 'Enabled: TRUE'
+;[HKEY_LOCAL_MACHINE\Software\Policies\Microsoft\Windows\Group Policy\{35378EAC-683F-11D2-A89A-00C04FBBCFA2}]
+; <deleted> = (Default)
+; 0000000 = Off (CIS)
+; 0000001 = On
+; FEATURE DOES NOT EXISTS IN NON-CORPORATE ENVIRONMENT
+;"NoGPOListChanges"=-
+
+;;; 18.8.21.4 (L1) Ensure 'Continue experiences on this device' is set to 'Disabled'
+;[HKEY_LOCAL_MACHINE\SOFTWARE\Policies\Microsoft\Windows\System]
+; <deleted> = (Default)
+; 0000000 = Off (CIS)
+; 0000001 = On
+; NON-COMPLIANCE TO NOT DISRUPT COMMON HOME FEATURES
+;"EnableCdp"=-
+
+;;; 18.8.21.5 (L1) Ensure 'Turn off background refresh of Group Policy' is set to 'Disabled'
+;[HKEY_LOCAL_MACHINE\Software\Microsoft\Windows\CurrentVersion\Policies\System]
+; <deleted> = (Default / CIS)
+; 0000000 = Off
+; 0000001 = On
+; FEATURE DOES NOT EXISTS IN NON-CORPORATE ENVIRONMENT
+;"DisableBkGndGroupPolicy"=-
+
+;;; 18.8.22 Internet Communication Management
+
+;;; 18.8.22.1 Internet Communication settings
+
+;;; 18.8.22.1.1 (L2) Ensure 'Turn off access to the Store' is set to 'Enabled'
+;[HKEY_LOCAL_MACHINE\SOFTWARE\Policies\Microsoft\Windows\Explorer]
+; <deleted> = (Default)
+; 0000000 = Off
+; 0000001 = On (CIS)
+; NON-COMPLIANCE TO NOT DISRUPT COMMON HOME FEATURES
+;"NoUseStoreOpenWith"=-
+
+;;; 18.8.22.1.2 (L2) Ensure 'Turn off downloading of print drivers over HTTP' is set to 'Enabled'
+;[HKEY_LOCAL_MACHINE\Software\Policies\Microsoft\Windows NT\Printers]
+; <deleted> = (Default)
+; 0000000 = Off
+; 0000001 = On (CIS)
+; NON-COMPLIANCE TO NOT DISRUPT COMMON HOME FEATURES
+;"DisableWebPnPDownload"=-
+
+;;; 18.8.22.1.3 (L2) Ensure 'Turn off handwriting personalization data sharing' is set to 'Enabled'
+[HKEY_LOCAL_MACHINE\Software\Policies\Microsoft\Windows\TabletPC]
+; <deleted> = (Default)
+; 0000000 = Off
+; 0000001 = On (CIS)
+"PreventHandwritingDataSharing"=-
+
+;;; 18.8.22.1.4 (L2) Ensure 'Turn off handwriting recognition error reporting' is set to 'Enabled'
+[HKEY_LOCAL_MACHINE\Software\Policies\Microsoft\Windows\HandwritingErrorReports]
+; <deleted> = (Default)
+; 0000000 = Off
+; 0000001 = On (CIS)
+"PreventHandwritingErrorReports"=-
+
+;;; 18.8.22.1.5 (L2) Ensure 'Turn off Internet Connection Wizard if URL connection is referring to Microsoft.com' is set to 'Enabled'
+;[HKEY_LOCAL_MACHINE\Software\Policies\Microsoft\Windows\Internet Connection Wizard]
+; <deleted> = (Default)
+; 0000000 = Off
+; 0000001 = On (CIS)
+; NON-COMPLIANCE TO NOT DISRUPT COMMON HOME FEATURES
+;"ExitOnMSICW"=-
+
+;;; 18.8.22.1.6 (L2) Ensure 'Turn off Internet download for Web publishing and online ordering wizards' is set to 'Enabled'
+;[HKEY_LOCAL_MACHINE\Software\Microsoft\Windows\CurrentVersion\Policies\Explorer]
+; <deleted> = (Default)
+; 0000000 = Off
+; 0000001 = On (CIS)
+; NON-COMPLIANCE TO NOT DISRUPT COMMON HOME FEATURES
+;"NoWebServices"=-
+
+;;; 18.8.22.1.7 (L2) Ensure 'Turn off printing over HTTP' is set to 'Enabled'
+;[HKEY_LOCAL_MACHINE\Software\Policies\Microsoft\Windows NT\Printers]
+; <deleted> = (Default)
+; 0000000 = Off
+; 0000001 = On (CIS)
+; NON-COMPLIANCE TO NOT DISRUPT COMMON HOME FEATURES
+;"DisableHTTPPrinting"=-
+
+;;; 18.8.22.1.8 (L2) Ensure 'Turn off Registration if URL connection is referring to Microsoft.com' is set to 'Enabled'
+;[HKEY_LOCAL_MACHINE\Software\Policies\Microsoft\Windows\Registration Wizard Control]
+; <deleted> = (Default)
+; 0000000 = Off
+; 0000001 = On (CIS)
+; NON-COMPLIANCE TO NOT DISRUPT COMMON HOME FEATURES
+;"NoRegistration"=-
+
+;;; 18.8.22.1.9 (L2) Ensure 'Turn off Search Companion content file updates' is set to 'Enabled'
+;[HKEY_LOCAL_MACHINE\Software\Policies\Microsoft\SearchCompanion]
+; <deleted> = (Default)
+; 0000000 = Off
+; 0000001 = On (CIS)
+; NON-COMPLIANCE TO NOT DISRUPT COMMON HOME FEATURES
+;"DisableContentFileUpdates"=-
+
+;;; 18.8.22.1.10 (L2) Ensure 'Turn off the "Order Prints" picture task' is set to 'Enabled'
+;[HKEY_LOCAL_MACHINE\Software\Microsoft\Windows\CurrentVersion\Policies\Explorer]
+; <deleted> = (Default)
+; 0000000 = Off
+; 0000001 = On (CIS)
+; NON-COMPLIANCE TO NOT DISRUPT COMMON HOME FEATURES
+;"NoOnlinePrintsWizard"=-
+
+;;; 18.8.22.1.11 (L2) Ensure 'Turn off the "Publish to Web" task for files and folders' is set to 'Enabled'
+;[HKEY_LOCAL_MACHINE\Software\Microsoft\Windows\CurrentVersion\Policies\Explorer]
+; <deleted> = (Default)
+; 0000000 = Off
+; 0000001 = On (CIS)
+; NON-COMPLIANCE TO NOT DISRUPT COMMON HOME FEATURES
+;"NoPublishingWizard"=-
+
+;;; 18.8.22.1.12 (L2) Ensure 'Turn off the Windows Messenger Customer Experience Improvement Program' is set to 'Enabled'
+[HKEY_LOCAL_MACHINE\Software\Policies\Microsoft\Messenger\Client]
+; <deleted> = (Default)
+; 1 = Off
+; 2 = On (CIS)
+"CEIP"=-
+
+;;; 18.8.22.1.13 (L2) Ensure 'Turn off Windows Customer Experience Improvement Program' is set to 'Enabled'
+[HKEY_LOCAL_MACHINE\Software\Policies\Microsoft\SQMClient\Windows]
+; <deleted> = (Default)
+; 0000000 = Off (CIS)
+; 0000001 = On
+"CEIPEnable"=-
+
+;;; 18.8.22.1.14 (L2) Ensure 'Turn off Windows Error Reporting' is set to 'Enabled'
+[HKEY_LOCAL_MACHINE\Software\Policies\Microsoft\Windows\Windows Error Reporting]
+; <deleted> = (Default)
+; 0000000 = Off
+; 0000001 = On (CIS)
+"Disabled"=-
+[HKEY_LOCAL_MACHINE\Software\Policies\Microsoft\Windows\Windows Error Reporting]
+; <deleted> = (Default)
+; 0000000 = Off (CIS)
+; 0000001 = On
+"DoReport"=-
+
+;;; 18.8.25 Kerberos
+
+;;; 18.8.25.1 (L2) Ensure 'Support device authentication using certificate' is set to 'Enabled: Automatic'
+;[HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Windows\CurrentVersion\Policies\System\kerberos\parameters]
+; <deleted> = (Default)
+; 0000000 = Off (CIS)
+; 0000001 = On
+; FEATURE DOES NOT EXISTS IN NON-CORPORATE ENVIRONMENT
+;"DevicePKInitBehavior"=-
+;[HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Windows\CurrentVersion\Policies\System\kerberos\parameters]
+; <deleted> = (Default)
+; 0000000 = Off
+; 0000001 = On (CIS)
+; FEATURE DOES NOT EXISTS IN NON-CORPORATE ENVIRONMENT
+;"DevicePKInitEnabled"=-
+
+;;; 18.8.26 Kernel DMA Protection
+
+;;; 18.8.26.1 (L2) Ensure 'Disallow copying of user input methods to the system account for sign-in' is set to 'Enabled'
+;[HKEY_LOCAL_MACHINE\Software\Policies\Microsoft\Control Panel\International]
+; <deleted> = (Default)
+; 0000000 = Off
+; 0000001 = On (CIS)
+; NON-COMPLIANCE TO NOT DISRUPT COMMON HOME FEATURES
+;"BlockUserInputMethodsForSignIn"=-
+
+;;; 18.8.27 Locale Services
+
+;;; 18.8.27.1 (L2) Ensure 'Disallow copying of user input methods to the system account for sign-in' is set to 'Enabled'
+;[HKEY_LOCAL_MACHINE\SOFTWARE\Policies\Microsoft\Control Panel\International]
+; <deleted> = (Default)
+; 0000000 = Off
+; 0000001 = On (Default / CIS)
+; NON-COMPLIANCE TO NOT DISRUPT COMMON HOME FEATURES
+;"BlockUserInputMethodsForSignIn"=-
+
+;;; 18.8.28 Logon
+
+;;; 18.8.28.1 (L1) Ensure 'Block user from showing account details on sign-in' is set to 'Enabled'
+;[HKEY_LOCAL_MACHINE\SOFTWARE\Policies\Microsoft\Windows\System]
+; <deleted> = (Default)
+; 0000000 = Off
+; 0000001 = On (Default / CIS)
+; NON-COMPLIANCE TO NOT DISRUPT COMMON HOME FEATURES
+;"BlockUserFromShowingAccountDetailsOnSignin"=-
+
+;;; 18.8.28.2 (L1) Ensure 'Do not display network selection UI' is set to 'Enabled'
+[HKEY_LOCAL_MACHINE\SOFTWARE\Policies\Microsoft\Windows\System]
+; <deleted> = (Default)
+; 0000000 = Off
+; 0000001 = On (CIS)
+"DontDisplayNetworkSelectionUI"=-
+
+;;; 18.8.28.3 (L1) Ensure 'Do not enumerate connected users on domain-joined computers' is set to 'Enabled'
+;[HKEY_LOCAL_MACHINE\SOFTWARE\Policies\Microsoft\Windows\System]
+; <deleted> = (Default)
+; 0000000 = Off
+; 0000001 = On (CIS)
+; FEATURE DOES NOT EXISTS IN NON-CORPORATE ENVIRONMENT
+;"DontEnumerateConnectedUsers"=-
+
+;;; 18.8.28.4 (L1) Ensure 'Enumerate local users on domain-joined computers' is set to 'Disabled'
+;[HKEY_LOCAL_MACHINE\SOFTWARE\Policies\Microsoft\Windows\System]
+; <deleted> = (Default)
+; 0000000 = Off (Default / CIS)
+; 0000001 = On
+; FEATURE DOES NOT EXISTS IN NON-CORPORATE ENVIRONMENT
+;"EnumerateLocalUsers"=-
+
+;;; 18.8.28.5 (L1) Ensure 'Turn off app notifications on the lock screen' is set to 'Enabled'
+;[HKEY_LOCAL_MACHINE\SOFTWARE\Policies\Microsoft\Windows\System]
+; <deleted> = (Default)
+; 0000000 = Off
+; 0000001 = On (CIS)
+; NON-COMPLIANCE TO NOT DISRUPT COMMON HOME FEATURES
+;"DisableLockScreenAppNotifications"=-
+
+;;; 18.8.28.6 (L1) Ensure 'Turn off picture password sign-in' is set to 'Enabled'
+;[HKEY_LOCAL_MACHINE\SOFTWARE\Policies\Microsoft\Windows\System]
+; <deleted> = (Default)
+; 0000000 = Off
+; 0000001 = On (CIS)
+; FEATURE DOES NOT EXISTS IN NON-CORPORATE ENVIRONMENT
+;"BlockDomainPicturePassword"=-
+
+;;; 18.8.28.7 (L1) Ensure 'Turn on convenience PIN sign-in' is set to 'Disabled'
+;[HKEY_LOCAL_MACHINE\SOFTWARE\Policies\Microsoft\Windows\System]
+; <deleted> = (Default)
+; 0000000 = Off (Default / CIS)
+; 0000001 = On
+; FEATURE DOES NOT EXISTS IN NON-CORPORATE ENVIRONMENT
+;"AllowDomainPINLogon"=-
+
+;;; 18.8.29 Mitigation Options
+;;; Paragraph skipped due to no registry keys available
+
+;;; 18.8.30 Net Logon
+;;; Paragraph skipped due to no registry keys available
+
+;;; 18.8.31 OS Policies
+
+;;; 18.8.31.1 (L2) Ensure 'Allow Clipboard synchronization across devices' is set to 'Disabled'
+;[HKEY_LOCAL_MACHINE\SOFTWARE\Policies\Microsoft\Windows\System]
+; <deleted> = (Default)
+; 0000000 = Off (CIS)
+; 0000001 = On
+; NON-COMPLIANCE TO NOT DISRUPT COMMON HOME FEATURES
+;"AllowCrossDeviceClipboard"=-
+
+;;; 18.8.31.2 (L2) Ensure 'Allow upload of User Activities' is set to 'Disabled'
+;[HKEY_LOCAL_MACHINE\SOFTWARE\Policies\Microsoft\Windows\System]
+; <deleted> = (Default)
+; 0000000 = Off (CIS)
+; 0000001 = On
+; NON-COMPLIANCE TO NOT DISRUPT COMMON HOME FEATURES
+;"UploadUserActivities"=-
+
+;;; 18.8.32 Performance Control Panel
+;;; Paragraph skipped due to no registry keys available
+
+;;; 18.8.33 PIN Complexity
+;;; Paragraph skipped due to no registry keys available
+
+;;; 18.8.34 Power Management
+;;; Paragraph skipped due to no registry keys available
+
+;;; 18.8.34.1 Button Settings
+;;; Paragraph skipped due to no registry keys available
+
+;;; 18.8.34.2 Energy Saver Settings
+;;; Paragraph skipped due to no registry keys available
+
+;;; 18.8.34.3 Hard Disk Settings
+;;; Paragraph skipped due to no registry keys available
+
+;;; 18.8.34.4 Notification Settings
+;;; Paragraph skipped due to no registry keys available
+
+;;; 18.8.34.5 Power Throttling Settings
+;;; Paragraph skipped due to no registry keys available
+
+;;; 18.8.34.6 Sleep Settings
+
+;;; 18.8.33.6.1 (L1) Ensure 'Allow network connectivity during connected-standby (on battery)' is set to 'Disabled'
+[HKEY_LOCAL_MACHINE\SOFTWARE\Policies\Microsoft\Power\PowerSettings\f15576e8-98b7-4186-b944-eafa664402d9]
+; <deleted> = (Default)
+; 0000000 = Off (CIS)
+; 0000001 = On
+"DCSettingIndex"=-
+
+;;; 18.8.33.6.2 (L1) Ensure 'Allow network connectivity during connected-standby (plugged in)' is set to 'Disabled'
+[HKEY_LOCAL_MACHINE\SOFTWARE\Policies\Microsoft\Power\PowerSettings\f15576e8-98b7-4186-b944-eafa664402d9]
+; <deleted> = (Default)
+; 0000000 = Off (CIS)
+; 0000001 = On
+"ACSettingIndex"=-
+
+;;; 18.8.34.6.3 (BL) Ensure 'Allow standby states (S1-S3) when sleeping (on battery)' is set to 'Disabled'
+;;; See BitLocker Registry file
+
+;;; 18.8.34.6.4 (BL) Ensure 'Allow standby states (S1-S3) when sleeping (plugged in)' is set to 'Disabled'
+;;; See BitLocker Registry file
+
+;;; 18.8.34.6.5 (L1) Ensure 'Require a password when a computer wakes (on battery)' is set to 'Enabled'
+[HKEY_LOCAL_MACHINE\Software\Policies\Microsoft\Power\PowerSettings\0e796bdb-100d-47d6-a2d5-f7d2daa51f51]
+; <deleted> = (Default)
+; 0000000 = Off
+; 0000001 = On (Default / CIS)
+"DCSettingIndex"=-
+
+;;; 18.8.34.6.6 (L1) Ensure 'Require a password when a computer wakes (plugged in)' is set to 'Enabled'
+[HKEY_LOCAL_MACHINE\Software\Policies\Microsoft\Power\PowerSettings\0e796bdb-100d-47d6-a2d5-f7d2daa51f51]
+; <deleted> = (Default)
+; 0000000 = Off
+; 0000001 = On (Default / CIS)
+"ACSettingIndex"=-
+
+;;; 18.8.35 Recovery
+;;; Paragraph skipped due to no registry keys available
+
+;;; 18.8.36 Remote Assistance
+
+;;; 18.8.36.1 (L1) Ensure 'Configure Offer Remote Assistance' is set to 'Disabled'
+[HKEY_LOCAL_MACHINE\Software\policies\Microsoft\Windows NT\Terminal Services]
+; <deleted> = (Default)
+; 0000000 = Off (Default / CIS)
+; 0000001 = On
+"fAllowUnsolicited"=-
+
+;;; 18.8.36.2 (L1) Ensure 'Configure Solicited Remote Assistance' is set to 'Disabled'
+;[HKEY_LOCAL_MACHINE\Software\policies\Microsoft\Windows NT\Terminal Services]
+; <deleted> = (Default)
+; 0000000 = Off (CIS)
+; 0000001 = On
+; NON-COMPLIANCE TO NOT DISRUPT COMMON HOME FEATURES
+;"fAllowToGetHelp"=-
+
+;;; 18.8.37 Remote Procedure Call
+
+;;; 18.8.37.1 (L1) Ensure 'Enable RPC Endpoint Mapper Client Authentication' is set to 'Enabled'
+[HKEY_LOCAL_MACHINE\Software\Policies\Microsoft\Windows NT\Rpc]
+; <deleted> = (Default)
+; 0000000 = Off
+; 0000001 = On (CIS)
+"EnableAuthEpResolution"=-
+
+;;; 18.8.37.2 (L1) Ensure 'Restrict Unauthenticated RPC clients' is set to 'Enabled: Authenticated'
+[HKEY_LOCAL_MACHINE\Software\Policies\Microsoft\Windows NT\Rpc]
+; <deleted> = (Default)
+; 0000000 = Off
+; 0000001 = On (Default / CIS)
+"RestrictRemoteClients"=-
+
+;;; 18.8.38 Removable Storage Access
+;;; Paragraph skipped due to no registry keys available
+
+;;; 18.8.39 Scripts
+;;; Paragraph skipped due to no registry keys available
+
+;;; 18.8.40 Server Manager
+;;; Paragraph skipped due to no registry keys available
+
+;;; 18.8.41 Service Control Manager Settings
+;;; Paragraph skipped due to no registry keys available
+
+;;; 18.8.42 Shutdown
+;;; Paragraph skipped due to no registry keys available
+
+;;; 18.8.43 Shutdown Options
+;;; Paragraph skipped due to no registry keys available
+
+;;; 18.8.44 Storage Health
+;;; Paragraph skipped due to no registry keys available
+
+;;; 18.8.45 Storage Sense
+;;; Paragraph skipped due to no registry keys available
+
+;;; 18.8.46 System Restore
+;;; Paragraph skipped due to no registry keys available
+
+;;; 18.8.47 Troubleshooting and Diagnostics
+;;; Paragraph skipped due to no registry keys available
+
+;;; 18.8.47.1 Application Compatibility Diagnostics
+;;; Paragraph skipped due to no registry keys available
+
+;;; 18.8.47.2 Corrupted File Recovery
+;;; Paragraph skipped due to no registry keys available
+
+;;; 18.8.47.3 Disk Diagnostic
+;;; Paragraph skipped due to no registry keys available
+
+;;; 18.8.47.5 Microsoft Support Diagnostic Tool
+
+;;; 18.8.47.5.1 (L2) Ensure 'Microsoft Support Diagnostic Tool: Turn on MSDT interactive communication with support provider' is set to 'Disabled'
+;[HKEY_LOCAL_MACHINE\SOFTWARE\Policies\Microsoft\Windows\ScriptedDiagnosticsProvider\Policy]
+; <deleted> = (Default)
+; 0000000 = Off (CIS)
+; 0000001 = On
+; NON-COMPLIANCE TO NOT DISRUPT COMMON HOME FEATURES
+;"DisableQueryRemoteServer"=-
+
+;;; 18.8.47.6 MSI Corrupted File Recovery
+;;; Paragraph skipped due to no registry keys available
+
+;;; 18.8.47.7 Scheduled Maintenance
+;;; Paragraph skipped due to no registry keys available
+
+;;; 18.8.47.8 Scripted Diagnostics
+;;; Paragraph skipped due to no registry keys available
+
+;;; 18.8.47.9 Windows Boot Performance Diagnostics
+;;; Paragraph skipped due to no registry keys available
+
+;;; 18.8.47.10 Windows Memory Leak Diagnosis
+;;; Paragraph skipped due to no registry keys available
+
+;;; 18.8.47.11 Windows Performance PerfTrack
+
+;;; 18.8.47.11.1 (L2) Ensure 'Enable/Disable PerfTrack' is set to 'Disabled'
+[HKEY_LOCAL_MACHINE\Software\Policies\Microsoft\Windows\WDI\{9c5a40da-b965-4fc3-8781-88dd50a6299d}]
+; <deleted> = (Default)
+; 0000000 = Off (CIS)
+; 0000001 = On
+"ScenarioExecutionEnabled"=-
+
+;;; 18.8.48 Trusted Platform Module Services
+;;; Paragraph skipped due to no registry keys available
+
+;;; 18.8.49 User Profiles
+
+;;; 18.8.49.1 (L2) Ensure 'Turn off the advertising ID' is set to 'Enabled'
+[HKEY_LOCAL_MACHINE\SOFTWARE\policies\Microsoft\Windows\AdvertisingInfo]
+; <deleted> = (Default)
+; 0000000 = Off
+; 0000001 = On (CIS)
+"DisabledByGroupPolicy"=-
+
+;;; 18.8.50 Windows File Protection
+;;; Paragraph skipped due to no registry keys available
+
+;;; 18.8.51 Windows HotStart
+;;; Paragraph skipped due to no registry keys available
+
+;;; 18.8.52 Windows Time Service
+
+;;; 18.8.52.1 Time Providers
+
+;;; 18.8.52.1.1 (L2) Ensure 'Enable Windows NTP Client' is set to 'Enabled'
+[HKEY_LOCAL_MACHINE\SOFTWARE\Policies\Microsoft\W32Time\TimeProviders\NtpClient]
+; <deleted> = (Default)
+; 0000000 = Off
+; 0000001 = On (CIS)
+"Enabled"=-
+
+;;; 18.8.52.1.2 (L2) Ensure 'Enable Windows NTP Server' is set to 'Disabled'
+;[HKEY_LOCAL_MACHINE\SOFTWARE\Policies\Microsoft\W32Time\TimeProviders\NtpServer]
+; <deleted> = (Default)
+; 0000000 = Off (Default / CIS)
+; 0000001 = On
+; FEATURE DOES NOT EXISTS IN NON-CORPORATE ENVIRONMENT
+;"Enabled"=-
+
+;;; 18.9 Windows Components
+
+;;; 18.9.1 Active Directory Federation Services
+;;; Paragraph skipped due to no registry keys available
+
+;;; 18.9.2 ActiveX Installer Service
+;;; Paragraph skipped due to no registry keys available
+
+;;; 18.9.3 Add features to Windows 8 / 8.1 / 10 (formerly Windows Anytime Upgrade)
+;;; Paragraph skipped due to no registry keys available
+
+;;; 18.9.4 App Package Deployment
+
+;;; 18.9.4.1 (L2) Ensure 'Allow a Windows app to share application data between users' is set to 'Disabled'
+[HKEY_LOCAL_MACHINE\SOFTWARE\Policies\Microsoft\Windows\CurrentVersion\AppModel\StateManager]
+; <deleted> = (Default)
+; 0000000 = Off (Default / CIS)
+; 0000001 = On
+"AllowSharedLocalAppData"=-
+
+;;; 18.9.4.2 (L1) Ensure 'Prevent non-admin users from installing packaged Windows apps' is set to 'Enabled'
+;[HKEY_LOCAL_MACHINE\SOFTWARE\Policies\Microsoft\Windows\Appx]
+; <deleted> = (Default)
+; 0000000 = Off (Default)
+; 0000001 = On (CIS)
+; NON-COMPLIANCE TO NOT DISRUPT COMMON HOME FEATURES
+;"BlockNonAdminUserInstall"=-
+
+;;; 18.9.5 App Privacy
+
+;;; 18.9.5.1 (L1) Ensure 'Let Windows apps activate with voice while the system is locked' is set to 'Enabled: Force Deny'
+[HKEY_LOCAL_MACHINE\SOFTWARE\Policies\Microsoft\Windows\AppPrivacy]
+; <deleted> = (Default)
+; 0000000 = User is in control (Default)
+; 0000001 = Force Allow
+; 0000002 = Force Deny (CIS)
+"LetAppsActivateWithVoiceAboveLock"=-
+
+;;; 18.9.6 App runtime
+
+;;; 18.9.6.1 (L1) Ensure 'Allow Microsoft accounts to be optional' is set to 'Enabled'
+;[HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Windows\CurrentVersion\Policies\System]
+; <deleted> = (Default)
+; 0000000 = Off
+; 0000001 = On (CIS)
+; FEATURE DOES NOT EXISTS IN NON-CORPORATE ENVIRONMENT
+;"MSAOptional"=-
+
+;;; 18.9.6.2 (L2) Ensure 'Block launching Windows Store apps with Windows Runtime API access from hosted content.' is set to 'Enabled'
+;[HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Windows\CurrentVersion\Policies\System]
+; <deleted> = (Default)
+; 0000000 = Off
+; 0000001 = On (CIS)
+; NON-COMPLIANCE TO NOT DISRUPT COMMON HOME FEATURES
+;"BlockHostedAppAccessWinRT"=-
+
+;;; 18.9.7 Application Compatibility
+;;; Paragraph skipped due to no registry keys available
+
+;;; 18.9.8 AutoPlay Policies
+
+;;; 18.9.8.1 (L1) Ensure 'Disallow Autoplay for non-volume devices' is set to 'Enabled'
+[HKEY_LOCAL_MACHINE\Software\Policies\Microsoft\Windows\Explorer]
+; <deleted> = (Default)
+; 0000000 = Off
+; 0000001 = On (CIS)
+"NoAutoplayfornonVolume"=-
+
+;;; 18.9.8.2 (L1) Ensure 'Set the default behavior for AutoRun' is set to 'Enabled: Do not execute any autorun commands'
+[HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Windows\CurrentVersion\Policies\Explorer]
+; <deleted> = (Default)
+; 0000000 = Off
+; 0000001 = On (CIS)
+"NoAutorun"=-
+
+;;; 18.9.8.3 (L1) Ensure 'Turn off Autoplay' is set to 'Enabled: All drives'
+[HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Windows\CurrentVersion\Policies\Explorer]
+; <deleted> = (Default)
+; 1 = Disables AutoPlay on drives of unknown type.
+; 4 = Disables AutoPlay on removable drives.
+; 8 = Disables AutoPlay on fixed drives.
+; 10 = Disables AutoPlay on network drives.
+; 20 = Disables AutoPlay on CD-ROM drives.
+; 40 = Disables AutoPlay on RAM drives.
+; 80 = Disables AutoPlay on drives of unknown type.
+; ff = Disables AutoPlay on all types of drives. (CIS)
+"NoDriveTypeAutoRun"=-
+
+;;; 18.9.9 Backup
+;;; Paragraph skipped due to no registry keys available
+
+;;; 18.9.10 Biometrics
+
+;;; 18.9.10.1 Facial Features
+
+;;; 18.9.10.1.1 (L1) Ensure 'Configure enhanced anti-spoofing' is set to 'Enabled'
+[HKEY_LOCAL_MACHINE\SOFTWARE\Policies\Microsoft\Biometrics\FacialFeatures]
+; <deleted> = (Default)
+; 0000000 = Off
+; 0000001 = On (CIS)
+"EnhancedAntiSpoofing"=-
+
+;;; 18.9.11 BitLocker Drive Encryption
+;;; See BitLocker Registry file
+
+;;; 18.9.12 Camera
+
+;;; 18.9.12.1 (L2) Ensure 'Allow Use of Camera' is set to 'Disabled'
+;[HKEY_LOCAL_MACHINE\SOFTWARE\Policies\Microsoft\Camera]
+; <deleted> = (Default)
+; 0000000 = Off (CIS)
+; 0000001 = On
+; NON-COMPLIANCE TO NOT DISRUPT COMMON HOME FEATURES
+;"AllowCamera"=-
+
+;;; 18.9.13 Cloud Content
+
+;;; 18.9.13.1 (L2) Ensure 'Turn off cloud optimized content' is set to 'Enabled'
+[HKEY_LOCAL_MACHINE\SOFTWARE\Policies\Microsoft\Windows\CloudContent]
+; <deleted> = (Default)
+; 0000000 = Off
+; 0000001 = On (CIS)
+; NON-COMPLIANCE TO NOT DISRUPT COMMON HOME FEATURES
+;"DisableCloudOptimizedContent"=-
+
+;;; 18.9.13.2 (L1) Ensure 'Turn off Microsoft consumer experiences' is set to 'Enabled'
+[HKEY_LOCAL_MACHINE\SOFTWARE\Policies\Microsoft\Windows\CloudContent]
+; <deleted> = (Default)
+; 0000000 = Off
+; 0000001 = On (CIS)
+"DisableWindowsConsumerFeatures"=-
+
+;;; 18.9.14.1 (L1) Ensure 'Require pin for pairing' is set to 'Enabled'
+[HKEY_LOCAL_MACHINE\SOFTWARE\Policies\Microsoft\Windows\Connect]
+; <deleted> = (Default)
+; 0000000 = Off
+; 0000001 = On (CIS)
+"RequirePinForPairing"=-
+[HKEY_LOCAL_MACHINE\SOFTWARE\Policies\Microsoft\Windows\Connect]
+; <deleted> = (Default)
+; 0000000 = Off
+; 0000001 = On (CIS)
+"AllowProjectionToPC"=-
+
+;;; 18.9.15 Credential User Interface
+
+;;; 18.9.15.1 (L1) Ensure 'Do not display the password reveal button' is set to 'Enabled'
+;[HKEY_LOCAL_MACHINE\Software\Policies\Microsoft\Windows\CredUI]
+; <deleted> = (Default)
+; 0000000 = Off
+; 0000001 = On (CIS)
+; NON-COMPLIANCE TO NOT DISRUPT COMMON HOME FEATURES
+;"DisablePasswordReveal"=-
+
+;;; 18.9.15.2 (L1) Ensure 'Enumerate administrator accounts on elevation' is set to 'Disabled'
+[HKEY_LOCAL_MACHINE\Software\Policies\Microsoft\Windows\CredUI]
+; <deleted> = (Default)
+; 0000000 = Off (Default / CIS)
+; 0000001 = On
+"EnumerateAdministrators"=-
+
+;;; 18.9.15.3 (L1) Ensure 'Prevent the use of security questions for local accounts' is set to 'Enabled'
+[HKEY_LOCAL_MACHINE\SOFTWARE\Policies\Microsoft\Windows\System]
+; <deleted> = (Default)
+; 0000000 = Off
+; 0000001 = On (CIS)
+"NoLocalPasswordResetQuestions"=-
+
+;;; 18.9.16 Data Collection and Preview Builds
+
+;;; 18.9.16.1 (L1) Ensure 'Allow Telemetry' is set to 'Enabled: 0 - Security [Enterprise Only]'
+[HKEY_LOCAL_MACHINE\Software\Policies\Microsoft\Windows\DataCollection]
+; <deleted> = (Default)
+; 0 = Security: Security data only (CIS)
+; 1 = Basic: Security + basic system and quality data
+; 2 = Enhanced: Basic + enhanced insights and advanced reliability data
+; 3 = Full: Enhanced + full diagnostics data
+"AllowTelemetry"=-
+
+;;; 18.9.16.2 (L2) Ensure 'Configure Authenticated Proxy usage for the Connected User Experience and Telemetry service' is set to 'Enabled: Disable Authenticated Proxy usage'
+[HKEY_LOCAL_MACHINE\SOFTWARE\Policies\Microsoft\Windows\DataCollection]
+; <deleted> = (Default)
+; 0000000 = Off
+; 0000001 = On (CIS)
+"DisableEnterpriseAuthProxy"=-
+
+;;; 18.9.16.3 (L1) Ensure 'Do not show feedback notifications' is set to 'Enabled'
+[HKEY_LOCAL_MACHINE\Software\Policies\Microsoft\Windows\DataCollection]
+; <deleted> = (Default)
+; 0000000 = Off
+; 0000001 = On (CIS)
+"DoNotShowFeedbackNotifications"=-
+
+;;; 18.9.16.4 (L1) Ensure 'Toggle user control over Insider builds' is set to 'Disabled'
+;[HKEY_LOCAL_MACHINE\SOFTWARE\Policies\Microsoft\Windows\PreviewBuilds]
+; <deleted> = (Default)
+; 0000000 = Off (CIS)
+; 0000001 = On
+; NON-COMPLIANCE TO NOT DISRUPT COMMON HOME FEATURES
+;"AllowBuildPreview"=-
+
+;;; 18.9.17 Delivery Optimization
+
+;;; 18.9.17.1 (L1) Ensure 'Download Mode' is NOT set to 'Enabled: Internet'
+[HKEY_LOCAL_MACHINE\Software\Policies\Microsoft\Windows\DeliveryOptimization]
+; <deleted> = (Default)
+; 0000000 = HTTP only, no peering
+; 0000001 = HTTP blended with peering behind the same NAT
+; 0000002 = HTTP blended with peering across a private group. Peering occurs on devices in the same Active Directory Site (if exist) or the same domain by default. When this option is selected, peering will cross NATs. To create a custom group use Group ID in combination with Mode 2
+; 0000003 = HTTP blended with Internet Peering
+; 0000063 = Simple download mode with no peering. Delivery Optimization downloads using HTTP only and does not attempt to contact the Delivery Optimization cloud services
+; 0000064 = Bypass mode. Do not use Delivery Optimization and use BITS instead.
+"DODownloadMode"=-
+
+;;; 18.9.18 Desktop Gadgets
+;;; Paragraph skipped due to no registry keys available
+
+;;; 18.9.19 Desktop Window Manager
+;;; Paragraph skipped due to no registry keys available
+
+;;; 18.9.20 Device and Driver Compatibility
+;;; Paragraph skipped due to no registry keys available
+
+;;; 18.9.21 Device Registration (formerly Workplace Join)
+;;; Paragraph skipped due to no registry keys available
+
+;;; 18.9.22 Digital Locker
+;;; Paragraph skipped due to no registry keys available
+
+;;; 18.9.23 Edge UI
+;;; Paragraph skipped due to no registry keys available
+
+;;; 18.9.24 EMET
+;;; Paragraph skipped due to no registry keys available
+
+;;; 18.9.25 Event Forwarding
+;;; Paragraph skipped due to no registry keys available
+
+;;; 18.9.26 Event Log Service
+
+;;; 18.9.26.1 Application
+
+;;; 18.9.26.1.1 (L1) Ensure 'Application: Control Event Log behavior when the log file reaches its maximum size' is set to 'Disabled'
+;[HKEY_LOCAL_MACHINE\Software\Policies\Microsoft\Windows\EventLog\Application]
+; <deleted> = (Default)
+; 0000000 = Off (CIS)
+; 0000001 = On
+; NON-COMPLIANCE TO NOT DISRUPT COMMON HOME FEATURES
+;"Retention"=-
+
+;;; 18.9.26.1.2 (L1) Ensure 'Application: Specify the maximum log file size (KB)' is set to 'Enabled: 32,768 or greater'
+[HKEY_LOCAL_MACHINE\Software\Policies\Microsoft\Windows\EventLog\Application]
+; <deleted> = (Default)
+; 00008000 = 32768 KB (CIS)
+"MaxSize"=-
+
+;;; 18.9.26.2.1 (L1) Ensure 'Security: Control Event Log behavior when the log file reaches its maximum size' is set to 'Disabled'
+;[HKEY_LOCAL_MACHINE\Software\Policies\Microsoft\Windows\EventLog\Security]
+; <deleted> = (Default)
+; 0000000 = Off (CIS)
+; 0000001 = On
+; NON-COMPLIANCE TO NOT DISRUPT COMMON HOME FEATURES
+;"Retention"=-
+
+;;; 18.9.26.2 Security
+
+;;; 18.9.26.2.1 (L1) Ensure 'Security: Control Event Log behavior when the log file reaches its maximum size' is set to 'Disabled'
+;[HKEY_LOCAL_MACHINE\Software\Policies\Microsoft\Windows\EventLog\Security]
+; <deleted> = (Default)
+; 0000000 = Off (CIS)
+; 0000001 = On
+; NON-COMPLIANCE TO NOT DISRUPT COMMON HOME FEATURES
+;"Retention"=-
+
+;;; 18.9.26.2.2 (L1) Ensure 'Security: Specify the maximum log file size (KB)' is set to 'Enabled: 196,608 or greater'
+[HKEY_LOCAL_MACHINE\Software\Policies\Microsoft\Windows\EventLog\Security]
+; <deleted> = (Default)
+; 00030000 = 196608 KB (CIS)
+"MaxSize"=-
+
+;;; 18.9.26.3 Setup
+
+;;; 18.9.26.3.1 (L1) Ensure 'Setup: Control Event Log behavior when the log file reaches its maximum size' is set to 'Disabled'
+;[HKEY_LOCAL_MACHINE\Software\Policies\Microsoft\Windows\EventLog\Setup]
+; <deleted> = (Default)
+; 0000000 = Off (CIS)
+; 0000001 = On
+; NON-COMPLIANCE TO NOT DISRUPT COMMON HOME FEATURES
+;"Retention"=-
+
+;;; 18.9.26.3.2 (L1) Ensure 'Setup: Specify the maximum log file size (KB)' is set to 'Enabled: 32,768 or greater'
+[HKEY_LOCAL_MACHINE\Software\Policies\Microsoft\Windows\EventLog\Setup]
+; <deleted> = (Default)
+; 00008000 = 32768 KB (CIS)
+"MaxSize"=-
+
+;;; 18.9.26.4 System
+
+;;; 18.9.26.4.1 (L1) Ensure 'System: Control Event Log behavior when the log file reaches its maximum size' is set to 'Disabled'
+;[HKEY_LOCAL_MACHINE\Software\Policies\Microsoft\Windows\EventLog\System]
+; <deleted> = (Default)
+; 0000000 = Off (CIS)
+; 0000001 = On
+; NON-COMPLIANCE TO NOT DISRUPT COMMON HOME FEATURES
+;"Retention"=-
+
+;;; 18.9.26.4.2 (L1) Ensure 'System: Specify the maximum log file size (KB)' is set to 'Enabled: 32,768 or greater'
+[HKEY_LOCAL_MACHINE\Software\Policies\Microsoft\Windows\EventLog\System]
+; <deleted> = (Default)
+; 00008000 = 32768 KB (CIS)
+"MaxSize"=-
+
+;;; 18.9.27 Event Logging
+;;; Paragraph skipped due to no registry keys available
+
+;;; 18.9.28 Event Viewer
+;;; Paragraph skipped due to no registry keys available
+
+;;; 18.9.29 Family Safety (formerly Parental Controls)
+;;; Paragraph skipped due to no registry keys available
+
+;;; 18.9.30 File Explorer (formerly Windows Explorer)
+;;; Paragraph skipped due to no registry keys available
+
+;;; 18.9.30.1 Previous Versions
+
+;;; 18.9.30.2 (L1) Ensure 'Turn off Data Execution Prevention for Explorer' is set to 'Disabled'
+[HKEY_LOCAL_MACHINE\Software\Policies\Microsoft\Windows\Explorer]
+; <deleted> = (Default)
+; 0000000 = Off (Default / CIS)
+; 0000001 = On
+"NoDataExecutionPrevention"=-
+
+;;; 18.9.30.3 (L1) Ensure 'Turn off heap termination on corruption' is set to 'Disabled'
+[HKEY_LOCAL_MACHINE\Software\Policies\Microsoft\Windows\Explorer]
+; <deleted> = (Default)
+; 0000000 = Off (Default / CIS)
+; 0000001 = On
+"NoHeapTerminationOnCorruption"=-
+
+;;; 18.9.30.4 (L1) Ensure 'Turn off shell protocol protected mode' is set to 'Disabled'
+[HKEY_LOCAL_MACHINE\Software\Microsoft\Windows\CurrentVersion\Policies\Explorer]
+; <deleted> = (Default)
+; 0000000 = Off (Default / CIS)
+; 0000001 = On
+"PreXPSP2ShellProtocolBehavior"=-
+
+;;; 18.9.31 File History
+;;; Paragraph skipped due to no registry keys available
+
+;;; 18.9.32 Find My Device
+;;; Paragraph skipped due to no registry keys available
+
+;;; 18.9.33 Game Explorer
+;;; Paragraph skipped due to no registry keys available
+
+;;; 18.9.34 Handwriting
+;;; Paragraph skipped due to no registry keys available
+
+;;; 18.9.35 HomeGroup
+
+;;; 18.9.35.1 (L1) Ensure 'Prevent the computer from joining a homegroup' is set to 'Enabled'
+;[HKEY_LOCAL_MACHINE\Software\Policies\Microsoft\Windows\HomeGroup]
+; <deleted> = (Default)
+; 0000000 = Off
+; 0000001 = On (CIS)
+; NON-COMPLIANCE TO NOT DISRUPT COMMON HOME FEATURES
+;"DisableHomeGroup"=-
+
+;;; 18.9.36 Import Video
+;;; Paragraph skipped due to no registry keys available
+
+;;; 18.9.37 Internet Explorer
+;;; Paragraph skipped due to no registry keys available
+
+;;; 18.9.38 Internet Information Services
+;;; Paragraph skipped due to no registry keys available
+
+;;; 18.9.39 Location and Sensors
+
+;;; 18.9.39.2 (L2) Ensure 'Turn off location' is set to 'Enabled'
+;[HKEY_LOCAL_MACHINE\SOFTWARE\Policies\Microsoft\Windows\LocationAndSensors]
+; <deleted> = (Default)
+; 0000000 = Off
+; 0000001 = On (CIS)
+; NON-COMPLIANCE TO NOT DISRUPT COMMON HOME FEATURES
+;"DisableWindowsLocationProvider"=-
+
+;;; 18.9.40 Maintenance Scheduler
+;;; Paragraph skipped due to no registry keys available
+
+;;; 18.9.41 Maps
+;;; Paragraph skipped due to no registry keys available
+
+;;; 18.9.42 MDM
+;;; Paragraph skipped due to no registry keys available
+
+;;; 18.9.43 Messaging
+
+;;; 18.9.43.1 (L2) Ensure 'Allow Message Service Cloud Sync' is set to 'Disabled'
+;[HKEY_LOCAL_MACHINE\SOFTWARE\Policies\Microsoft\Windows\Messaging]
+; <deleted> = (Default)
+; 0000000 = Off
+; 0000001 = On (CIS)
+; NON-COMPLIANCE TO NOT DISRUPT COMMON HOME FEATURES
+;"AllowMessageSync"=-
+
+;;; 18.9.44 Microsoft account
+
+;;; 18.9.44.1 (L1) Ensure 'Block all consumer Microsoft account user authentication' is set to 'Enabled'
+;[HKEY_LOCAL_MACHINE\SOFTWARE\Policies\Microsoft\MicrosoftAccount]
+; <deleted> = (Default)
+; 0000000 = Off
+; 0000001 = On (CIS)
+; NON-COMPLIANCE TO NOT DISRUPT COMMON HOME FEATURES
+;"DisableUserAuth"=-
+
+;;; 18.9.45 Microsoft Defender Antivirus (formerly Windows Defender and Windows Defender Antivirus)
+;;; Except for "18.9.45.3 MAPS", see Defender Registry file
+
+;;; 18.9.45.3 MAPS
+
+;;; 18.9.45.3.1 (L1) Ensure 'Configure local setting override for reporting to Microsoft MAPS' is set to 'Disabled'
+[HKEY_LOCAL_MACHINE\SOFTWARE\Policies\Microsoft\Windows Defender\Spynet]
+; <deleted> = (Default)
+; 0000000 = Off (Default / CIS)
+; 0000001 = On
+"LocalSettingOverrideSpynetReporting"=-
+
+;;; 18.9.45.3.2 (L2) Ensure 'Join Microsoft MAPS' is set to 'Disabled'
+[HKEY_LOCAL_MACHINE\Software\Microsoft\Windows Defender\Spynet]
+; 0000000 = Off (CIS)
+; 0000001 = Basic MAPS
+; 0000002 = Advanced MAPS (Default)
+; NON-COMPLIANCE DUE TO FEATURE CAN ONLY BE CHANGED THROUGH GROUP POLICY
+;"SpyNetReporting"=dword:0000002
+
+;;; 18.9.48 Microsoft Edge
+
+;;; 18.9.48.1 (L2) Ensure 'Allow Address bar drop-down list suggestions' is set to 'Disabled'
+;[HKEY_LOCAL_MACHINE\SOFTWARE\Policies\Microsoft\MicrosoftEdge\ServiceUI]
+; <deleted> = (Default)
+; 0000000 = Off (CIS)
+; 0000001 = On
+; NON-COMPLIANCE TO NOT DISRUPT COMMON HOME FEATURES
+;"ShowOneBox"=-
+
+;;; 18.9.48.2 (L2) Ensure 'Allow Adobe Flash' is set to 'Disabled'
+[HKEY_LOCAL_MACHINE\SOFTWARE\Policies\Microsoft\MicrosoftEdge\Addons]
+; <deleted> = (Default)
+; 0000000 = Off (CIS)
+; 0000001 = On
+"FlashPlayerEnabled"=-
+
+;;; 18.9.48.3 (L2) Ensure 'Allow InPrivate Browsing' is set to 'Disabled'
+;[HKEY_LOCAL_MACHINE\SOFTWARE\Policies\Microsoft\MicrosoftEdge\Main]
+; <deleted> = (Default)
+; 0000000 = Off (CIS)
+; 0000001 = On
+; NON-COMPLIANCE TO NOT DISRUPT COMMON HOME FEATURES
+;"AllowInPrivate"=dword:0000000
+
+;;; 18.9.48.4 (L1) Ensure 'Allow Sideloading of extension' is set to 'Disabled'
+;[HKEY_LOCAL_MACHINE\SOFTWARE\Policies\Microsoft\MicrosoftEdge\Extensions]
+; <deleted> = (Default)
+; 0000000 = Off (CIS)
+; 0000001 = On
+; NON-COMPLIANCE TO NOT DISRUPT COMMON HOME FEATURES
+;"AllowSideloadingOfExtensions"=dword:0000000
+
+;;; 18.9.48.5 (L1) Ensure 'Configure cookies' is set to 'Enabled: Block only 3rd-party cookies' or higher
+;[HKEY_LOCAL_MACHINE\SOFTWARE\Policies\Microsoft\MicrosoftEdge\Main]
+; <deleted> = (Default)
+; 0 = Block all cookies
+; 1 = Block only 3rd-party cookies (CIS)
+; 2 = Allow all cookies
+; NON-COMPLIANCE TO NOT DISRUPT COMMON HOME FEATURES
+;"Cookies"=dword:0000001
+
+;;; 18.9.48.6 (L1) Ensure 'Configure Password Manager' is set to 'Disabled'
+;[HKEY_LOCAL_MACHINE\SOFTWARE\Policies\Microsoft\MicrosoftEdge\Main]
+; <deleted> = (Default)
+; no = Off (CIS)
+; yes = On
+; NON-COMPLIANCE TO NOT DISRUPT COMMON HOME FEATURES
+;"FormSuggest Passwords"="no"
+
+;;; 18.9.48.7 (L2) Ensure 'Configure Pop-up Blocker' is set to 'Enabled'
+[HKEY_LOCAL_MACHINE\SOFTWARE\Policies\Microsoft\MicrosoftEdge\Main]
+; <deleted> = (Default)
+; no = Off
+; yes = On (Default / CIS)
+"AllowPopups"=-
+
+;;; 18.9.48.8 (L2) Ensure 'Configure search suggestions in Address bar' is set to 'Disabled'
+;[HKEY_LOCAL_MACHINE\SOFTWARE\Policies\Microsoft\MicrosoftEdge\SearchScopes]
+; <deleted> = (Default)
+; 0000000 = Off (CIS)
+; 0000001 = On
+; NON-COMPLIANCE TO NOT DISRUPT COMMON HOME FEATURES
+;"ShowSearchSuggestionsGlobal"=-
+
+;;; 18.9.48.9 (L1) Ensure 'Configure the Adobe Flash Click-to-Run setting' is set to 'Enabled'
+[HKEY_LOCAL_MACHINE\SOFTWARE\Policies\Microsoft\MicrosoftEdge\Security]
+; <deleted> = (Default)
+; no = Off
+; yes = On (Default / CIS)
+"FlashClickToRunMode"=-
+
+;;; 18.9.48.10 (L2) Ensure 'Prevent access to the about:flags page in Microsoft Edge' is set to 'Enabled'
+;[HKEY_LOCAL_MACHINE\SOFTWARE\Policies\Microsoft\MicrosoftEdge\Main]
+; <deleted> = (Default)
+; 0000000 = Off
+; 0000001 = On (CIS)
+; NON-COMPLIANCE TO NOT DISRUPT COMMON HOME FEATURES
+;"PreventAccessToAboutFlagsInMicrosoftEdge"=-
+
+;;; 18.9.48.11 (L1) Ensure 'Prevent bypassing Windows Defender SmartScreen prompts for files' is set to 'Enabled'
+[HKEY_LOCAL_MACHINE\SOFTWARE\Policies\Microsoft\MicrosoftEdge\PhishingFilter]
+; <deleted> = (Default)
+; 0000000 = Off
+; 0000001 = On (CIS)
+"PreventOverrideAppRepUnknown"=-
+
+;;; 18.9.48.12 (L1) Ensure 'Prevent certificate error overrides' is set to 'Enabled'
+;[HKEY_LOCAL_MACHINE\SOFTWARE\Policies\Microsoft\MicrosoftEdge\Internet Settings]
+; <deleted> = (Default)
+; 0000000 = Off
+; 0000001 = On (CIS)
+; NON-COMPLIANCE TO NOT DISRUPT COMMON HOME FEATURES
+;"PreventCertErrorOverrides"=-
+
+;;; 18.9.48.13 (L2) Ensure 'Prevent using Localhost IP address for WebRTC' is set to 'Enabled'
+[HKEY_LOCAL_MACHINE\SOFTWARE\Policies\Microsoft\MicrosoftEdge\Main]
+; <deleted> = (Default)
+; 0000000 = Off
+; 0000001 = On (CIS)
+"HideLocalHostIP"=-
+
+;;; 18.9.49 Microsoft FIDO Authentication
+;;; Paragraph skipped due to no registry keys available
+
+;;; 18.9.50 Microsoft Secondary Authentication Factor
+;;; Paragraph skipped due to no registry keys available
+
+;;; 18.9.51 Microsoft User Experience Virtualization
+;;; Paragraph skipped due to no registry keys available
+
+;;; 18.9.52 NetMeeting
+;;; Paragraph skipped due to no registry keys available
+
+;;; 18.9.53 Network Access Protection
+;;; Paragraph skipped due to no registry keys available
+
+;;; 18.9.54 Network Projector
+;;; Paragraph skipped due to no registry keys available
+
+;;; 18.9.55 OneDrive (formerly SkyDrive)
+
+;;; 18.9.55.1 (L1) Ensure 'Prevent the usage of OneDrive for file storage' is set to 'Enabled'
+;[HKEY_LOCAL_MACHINE\Software\Policies\Microsoft\Windows\OneDrive]
+; <deleted> = (Default)
+; no = Off
+; yes = On (CIS)
+; NON-COMPLIANCE TO NOT DISRUPT COMMON HOME FEATURES
+;"DisableFileSyncNGSC"=-
+
+;;; 18.9.56 Online Assistance
+;;; Paragraph skipped due to no registry keys available
+
+;;; 18.9.57 OOBE
+;;; Paragraph skipped due to no registry keys available
+
+;;; 18.9.58 Password Synchronization
+;;; Paragraph skipped due to no registry keys available
+
+;;; 18.9.59 Portable Operating System
+;;; Paragraph skipped due to no registry keys available
+
+;;; 18.9.60 Presentation Settings
+;;; Paragraph skipped due to no registry keys available
+
+;;; 18.9.61 Push To Install
+
+;;; 18.9.61.1 (L2) Ensure 'Turn off Push To Install service' is set to 'Enabled'
+;[HKEY_LOCAL_MACHINE\SOFTWARE\Policies\Microsoft\PushToInstall]
+; <deleted> = (Default)
+; 0000000 = Off
+; 0000001 = On (CIS)
+; NON-COMPLIANCE TO NOT DISRUPT COMMON HOME FEATURES
+;"DisablePushToInstall"=-
+
+;;; 18.9.62 Remote Desktop Services (formerly Terminal Services)
+;;; Paragraph skipped due to no registry keys available
+
+;;; 18.9.62.1 RD Licensing (formerly TS Licensing)
+;;; Paragraph skipped due to no registry keys available
+
+;;; 18.9.62.2 Remote Desktop Connection Client
+;;; Paragraph skipped due to no registry keys available
+
+;;; 18.9.62.2.1 RemoteFX USB Device Redirection
+
+;;; 18.9.62.2.2 (L1) Ensure 'Do not allow passwords to be saved' is set to 'Enabled'
+[HKEY_LOCAL_MACHINE\SOFTWARE\Policies\Microsoft\Windows NT\Terminal Services]
+; <deleted> = (Default)
+; 0000000 = Off
+; 0000001 = On (CIS)
+"DisablePasswordSaving"=-
+
+;;; 18.9.62.3 Remote Desktop Session Host (formerly Terminal Server)
+;;; Paragraph skipped due to no registry keys available
+
+;;; 18.9.62.3.1 Application Compatibility
+;;; Paragraph skipped due to no registry keys available
+
+;;; 18.9.62.3.2 Connections
+
+;;; 18.9.62.3.2.1 (L2) Ensure 'Allow users to connect remotely by using Remote Desktop Services' is set to 'Disabled'
+[HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Control\Terminal Server]
+; 0000000 = Off (CIS)
+; 0000001 = On (Default)
+; NON-COMPLIANCE TO NOT DISRUPT COMMON HOME FEATURES
+"fDenyTSConnections"=dword:0000001
+
+;;; 18.9.62.3.3 Device and Resource Redirection
+
+;;; 18.9.62.3.3.1 (L2) Ensure 'Do not allow COM port redirection' is set to 'Enabled'
+[HKEY_LOCAL_MACHINE\SOFTWARE\Policies\Microsoft\Windows NT\Terminal Services]
+; <deleted> = (Default)
+; 0000000 = Off
+; 0000001 = On (CIS)
+"fDisableCcm"=-
+
+;;; 18.9.62.3.3.2 (L1) Ensure 'Do not allow drive redirection' is set to 'Enabled'
+[HKEY_LOCAL_MACHINE\SOFTWARE\Policies\Microsoft\Windows NT\Terminal Services]
+; <deleted> = (Default)
+; 0000000 = Off
+; 0000001 = On (CIS)
+"fDisableCdm"=-
+
+;;; 18.9.62.3.3.3 (L2) Ensure 'Do not allow LPT port redirection' is set to 'Enabled'
+[HKEY_LOCAL_MACHINE\SOFTWARE\Policies\Microsoft\Windows NT\Terminal Services]
+; <deleted> = (Default)
+; 0000000 = Off
+; 0000001 = On (CIS)
+"fDisableLPT"=-
+
+;;; 18.9.62.3.3.4 (L2) Ensure 'Do not allow supported Plug and Play device redirection' is set to 'Enabled'
+[HKEY_LOCAL_MACHINE\SOFTWARE\Policies\Microsoft\Windows NT\Terminal Services]
+; <deleted> = (Default)
+; 0000000 = Off
+; 0000001 = On (CIS)
+"fDisablePNPRedir"=-
+
+;;; 18.9.62.3.4 Licensing
+;;; Paragraph skipped due to no registry keys available
+
+;;; 18.9.62.3.5 Printer Redirection
+;;; Paragraph skipped due to no registry keys available
+
+;;; 18.9.62.3.6 Profiles
+;;; Paragraph skipped due to no registry keys available
+
+;;; 18.9.62.3.7 RD Connection Broker (formerly TS Connection Broker)
+;;; Paragraph skipped due to no registry keys available
+
+;;; 18.9.62.3.8 Remote Session Environment
+;;; Paragraph skipped due to no registry keys available
+
+;;; 18.9.62.3.9 Security
+
+;;; 18.9.62.3.9.1 (L1) Ensure 'Always prompt for password upon connection' is set to 'Enabled'
+[HKEY_LOCAL_MACHINE\SOFTWARE\Policies\Microsoft\Windows NT\Terminal Services]
+; <deleted> = (Default)
+; 0000000 = Off
+; 0000001 = On (CIS)
+"fPromptForPassword"=-
+
+;;; 18.9.62.3.9.2 (L1) Ensure 'Require secure RPC communication' is set to 'Enabled'
+[HKEY_LOCAL_MACHINE\SOFTWARE\Policies\Microsoft\Windows NT\Terminal Services]
+; <deleted> = (Default)
+; 0000000 = Off
+; 0000001 = On (CIS)
+"fEncryptRPCTraffic"=-
+
+;;; 18.9.62.3.9.3 (L1) Ensure 'Require use of specific security layer for remote (RDP) connections' is set to 'Enabled: SSL'
+[HKEY_LOCAL_MACHINE\SOFTWARE\Policies\Microsoft\Windows NT\Terminal Services]
+; <deleted> = (Default)
+; 0 = RDP
+; 1 = Negotiate
+; 2 = SSL (CIS)
+"SecurityLayer"=-
+
+;;; 18.9.62.3.9.4 (L1) Ensure 'Require user authentication for remote connections by using Network Level Authentication' is set to 'Enabled'
+[HKEY_LOCAL_MACHINE\SOFTWARE\Policies\Microsoft\Windows NT\Terminal Services]
+; <deleted> = (Default)
+; 0000000 = Off
+; 0000001 = On (CIS)
+"UserAuthentication"=-
+
+;;; 18.9.62.3.9.5 (L1) Ensure 'Set client connection encryption level' is set to 'Enabled: High Level'
+[HKEY_LOCAL_MACHINE\SOFTWARE\Policies\Microsoft\Windows NT\Terminal Services]
+; <deleted> = (Default)
+; 1 = Low Level
+; 2 = Client Compatible
+; 3 = High Level (Default / CIS)
+"MinEncryptionLevel"=-
+
+;;; 18.9.62.3.10 Session Time Limits
+
+;;; 18.9.62.3.10.1 (L2) Ensure 'Set time limit for active but idle Remote Desktop Services sessions' is set to 'Enabled: 15 minutes or less, but not Never (0)'
+[HKEY_LOCAL_MACHINE\SOFTWARE\Policies\Microsoft\Windows NT\Terminal Services]
+; <deleted> = (Default)
+; 0 = 0 minutes
+; 900000 (dbba0) = 900000 milliseconds, 15 minutes (CIS)
+"MaxIdleTime"=-
+
+;;; 18.9.62.3.10.2 (L2) Ensure 'Set time limit for disconnected sessions' is set to 'Enabled: 1 minute'
+[HKEY_LOCAL_MACHINE\SOFTWARE\Policies\Microsoft\Windows NT\Terminal Services]
+; <deleted> = (Default)
+; 0 = 0 minutes
+; 60000 (ea60) = 60000 milliseconds, 1 minute (CIS)
+"MaxDisconnectionTime"=-
+
+;;; 18.9.62.3.11 Temporary folders
+
+;;; 18.9.62.3.11.1 (L1) Ensure 'Do not delete temp folders upon exit' is set to 'Disabled'
+[HKEY_LOCAL_MACHINE\SOFTWARE\Policies\Microsoft\Windows NT\Terminal Services]
+; <deleted> = (Default)
+; 0000000 = Off
+; 0000001 = On (Default / CIS)
+"DeleteTempDirsOnExit"=-
+
+;;; 18.9.63 RSS Feeds
+
+;;; 18.9.59.1 (L1) Ensure 'Prevent downloading of enclosures' is set to 'Enabled'
+;[HKEY_LOCAL_MACHINE\SOFTWARE\Policies\Microsoft\Internet Explorer\Feeds]
+; <deleted> = (Default)
+; 0000000 = Off
+; 0000001 = On (CIS)
+; NON-COMPLIANCE TO NOT DISRUPT COMMON HOME FEATURES
+;"DisableEnclosureDownload"=-
+
+;;; 18.9.64 Search
+
+;;; 18.9.64.1 OCR
+
+;;; 18.9.64.2 (L2) Ensure 'Allow Cloud Search' is set to 'Enabled: Disable Cloud Search'
+;[HKEY_LOCAL_MACHINE\SOFTWARE\Policies\Microsoft\Windows\Windows Search]
+; <deleted> = (Default)
+; 0000000 = Off (CIS)
+; 0000001 = On
+; NON-COMPLIANCE TO NOT DISRUPT COMMON HOME FEATURES
+;"AllowCloudSearch"=-
+
+;;; 18.9.64.3 (L1) Ensure 'Allow Cortana' is set to 'Disabled'
+;[HKEY_LOCAL_MACHINE\SOFTWARE\Policies\Microsoft\Windows\Windows Search]
+; <deleted> = (Default)
+; 0000000 = Off (CIS)
+; 0000001 = On
+; NON-COMPLIANCE TO NOT DISRUPT COMMON HOME FEATURES
+;"AllowCortana"=-
+
+;;; 18.9.64.4 (L1) Ensure 'Allow Cortana above lock screen' is set to 'Disabled'
+;[HKEY_LOCAL_MACHINE\SOFTWARE\Policies\Microsoft\Windows\Windows Search]
+; <deleted> = (Default)
+; 0000000 = Off (CIS)
+; 0000001 = On
+; NON-COMPLIANCE TO NOT DISRUPT COMMON HOME FEATURES
+;"AllowCortanaAboveLock"=-
+
+;;; 18.9.64.5 (L1) Ensure 'Allow indexing of encrypted files' is set to 'Disabled'
+[HKEY_LOCAL_MACHINE\SOFTWARE\Policies\Microsoft\Windows\Windows Search]
+; <deleted> = (Default)
+; 0000000 = Off (Default / CIS)
+; 0000001 = On
+"AllowIndexingEncryptedStoresOrItems"=-
+
+;;; 18.9.64.6 (L1) Ensure 'Allow search and Cortana to use location' is set to 'Disabled'
+;[HKEY_LOCAL_MACHINE\SOFTWARE\Policies\Microsoft\Windows\Windows Search]
+; <deleted> = (Default)
+; 0000000 = Off (CIS)
+; 0000001 = On
+; NON-COMPLIANCE TO NOT DISRUPT COMMON HOME FEATURES
+;"AllowSearchToUseLocation"=-
+
+;;; 18.9.65 Security Center
+;;; Paragraph skipped due to no registry keys available
+
+;;; 18.9.66 Server for NIS
+;;; Paragraph skipped due to no registry keys available
+
+;;; 18.9.67 Shutdown Options
+;;; Paragraph skipped due to no registry keys available
+
+;;; 18.9.68 Smart Card
+;;; Paragraph skipped due to no registry keys available
+
+;;; 18.9.69 Software Protection Platform
+
+;;; 18.9.69.1 (L2) Ensure 'Turn off KMS Client Online AVS Validation' is set to 'Enabled'
+;[HKEY_LOCAL_MACHINE\SOFTWARE\Policies\Microsoft\Windows NT\CurrentVersion\Software Protection Platform]
+; <deleted> = (Default)
+; 0000000 = Off
+; 0000001 = On (CIS)
+; FEATURE DOES NOT EXISTS IN NON-CORPORATE ENVIRONMENT
+;"NoGenTicket"=-
+
+;;; 18.9.70 Sound Recorder
+;;; Paragraph skipped due to no registry keys available
+
+;;; 18.9.71 Speech
+;;; Paragraph skipped due to no registry keys available
+
+;;; 18.9.72 Store
+
+;;; 18.9.72.1 (L2) Ensure 'Disable all apps from Windows Store' is set to 'Enabled'
+;[HKEY_LOCAL_MACHINE\SOFTWARE\Policies\Microsoft\WindowsStore]
+; <deleted> = (Default)
+; 0 = On (CIS)
+; 1 = Off
+; NON-COMPLIANCE TO NOT DISRUPT COMMON HOME FEATURES
+;"DisableStoreApps"=-
+
+;;; 18.9.72.2 (L1) Ensure 'Only display the private store within the Microsoft Store' is set to 'Enabled'
+;[HKEY_LOCAL_MACHINE\SOFTWARE\Policies\Microsoft\WindowsStore]
+; <deleted> = (Default)
+; 0000000 = Off (CIS)
+; 0000001 = On
+; NON-COMPLIANCE TO NOT DISRUPT COMMON HOME FEATURES
+;"RequirePrivateStoreOnly"=-
+
+;;; 18.9.72.3 (L1) Ensure 'Turn off Automatic Download and Install of updates' is set to 'Disabled'
+[HKEY_LOCAL_MACHINE\SOFTWARE\Policies\Microsoft\WindowsStore]
+; <deleted> = (Default)
+; 0000002 = Off
+; 0000004 = On (Default / CIS)
+"AutoDownload"=-
+
+;;; 18.9.72.4 (L1) Ensure 'Turn off the offer to update to the latest version of Windows' is set to 'Enabled'
+;[HKEY_LOCAL_MACHINE\SOFTWARE\Policies\Microsoft\WindowsStore]
+; <deleted> = (Default)
+; 0000000 = Off (CIS)
+; 0000001 = On
+; NON-COMPLIANCE TO NOT DISRUPT COMMON HOME FEATURES
+;"DisableOSUpgrade"=-
+
+;;; 18.9.72.5 (L2) Ensure 'Turn off the Store application' is set to 'Enabled'
+;[HKEY_LOCAL_MACHINE\SOFTWARE\Policies\Microsoft\WindowsStore]
+; <deleted> = (Default)
+; 0000000 = Off
+; 0000001 = On (CIS)
+; NON-COMPLIANCE TO NOT DISRUPT COMMON HOME FEATURES
+;"RemoveWindowsStore"=-
+
+;;; 18.9.73 Sync your settings
+;;; Paragraph skipped due to no registry keys available
+
+;;; 18.9.74 Tablet PC
+;;; Paragraph skipped due to no registry keys available
+
+;;; 18.9.75 Task Scheduler
+;;; Paragraph skipped due to no registry keys available
+
+;;; 18.9.76 Text Input
+;;; Paragraph skipped due to no registry keys available
+
+;;; 18.9.77 Windows Calendar
+;;; Paragraph skipped due to no registry keys available
+
+;;; 18.9.78 Windows Color System
+;;; Paragraph skipped due to no registry keys available
+
+;;; 18.9.79 Windows Customer Experience Improvement Program
+;;; Paragraph skipped due to no registry keys available
+
+;;; 18.9.80 Windows Defender SmartScreen
+;;; Paragraph skipped due to no registry keys available
+
+;;; 18.9.80.1 Explorer
+
+;;; 18.9.80.1.1 (L1) Ensure 'Configure Windows Defender SmartScreen' is set to 'Enabled: Warn and prevent bypass'
+[HKEY_LOCAL_MACHINE\Software\Policies\Microsoft\Windows\System]
+; <deleted> = (Default)
+; 0000000 : Turn off SmartScreen
+; 0000001 : Give user a warning before running downloaded unknown software
+; 0000002 : Require approval from an administrator before running downloaded unknown software. (CIS)
+; NON-COMPLIANCE TO NOT DISRUPT COMMON HOME FEATURES
+"EnableSmartScreen"=-
+;[HKEY_LOCAL_MACHINE\SOFTWARE\Policies\Microsoft\Windows\System]
+; <deleted> = (Default)
+; Block = Warn and prevent bypass (CIS)
+; Warn = Warn
+; NON-COMPLIANCE TO NOT DISRUPT COMMON HOME FEATURES
+;"ShellSmartScreenLevel"=-
+
+;;; 18.9.80.2 Microsoft Edge
+
+;;; 18.9.80.2.1 (L1) Ensure 'Configure Windows Defender SmartScreen' is set to 'Enabled'
+[HKEY_LOCAL_MACHINE\SOFTWARE\Policies\Microsoft\MicrosoftEdge\PhishingFilter]
+; <deleted> = (Default)
+; 0000000 = Off
+; 0000001 = On (Default / CIS)
+"EnabledV9"=-
+
+;;; 18.9.80.2.3 (L1) Ensure 'Prevent bypassing Windows Defender SmartScreen prompts for sites' is set to 'Enabled'
+[HKEY_LOCAL_MACHINE\SOFTWARE\Policies\Microsoft\MicrosoftEdge\PhishingFilter]
+; <deleted> = (Default)
+; 0000000 = Off
+; 0000001 = On (CIS)
+"PreventOverride"=-
+
+;;; 18.9.81 Windows Error Reporting
+;;; Paragraph skipped due to no registry keys available
+
+;;; 18.9.82 Windows Game Recording and Broadcasting
+
+;;; 18.9.82.1 (L1) Ensure 'Enables or disables Windows Game Recording and Broadcasting' is set to 'Disabled'
+;[HKEY_LOCAL_MACHINE\SOFTWARE\Policies\Microsoft\Windows\GameDVR]
+; <deleted> = (Default)
+; 0000000 = Off (CIS)
+; 0000001 = On
+; NON-COMPLIANCE TO NOT DISRUPT COMMON HOME FEATURES
+;"AllowGameDVR"=-
+
+;;; 18.9.83 Windows Hello for Business (formerly Microsoft Passport for Work)
+;;; Paragraph skipped due to no registry keys available
+
+;;; 18.9.84 Windows Ink Workspace
+
+;;; 18.9.84.1 (L2) Ensure 'Allow suggested apps in Windows Ink Workspace' is set to 'Disabled'
+[HKEY_LOCAL_MACHINE\SOFTWARE\Policies\Microsoft\WindowsInkWorkspace]
+; <deleted> = (Default)
+; 0000000 = Off (CIS)
+; 0000001 = On
+"AllowSuggestedAppsInWindowsInkWorkspace"=-
+
+;;; 18.9.84.2 (L1) Ensure 'Allow Windows Ink Workspace' is set to 'Enabled: On, but disallow access above lock' OR 'Disabled' but not 'Enabled: On'
+;[HKEY_LOCAL_MACHINE\SOFTWARE\Policies\Microsoft\WindowsInkWorkspace]
+; <deleted> = (Default)
+; 0000000 = Off
+; 0000001 = On, but disallow access above lock (CIS)
+; 0000002 = On
+; NON-COMPLIANCE TO NOT DISRUPT COMMON HOME FEATURES
+;"AllowWindowsInkWorkspace"=-
+
+;;; 18.9.85 Windows Installer
+
+;;; 18.9.85.1 (L1) Ensure 'Allow user control over installs' is set to 'Disabled'
+[HKEY_LOCAL_MACHINE\Software\Policies\Microsoft\Windows\Installer]
+; <deleted> = (Default)
+; 0000000 = Off (Default / CIS)
+; 0000001 = On
+"EnableUserControl"=-
+
+;;; 18.9.85.2 (L1) Ensure 'Always install with elevated privileges' is set to 'Disabled'
+[HKEY_LOCAL_MACHINE\Software\Policies\Microsoft\Windows\Installer]
+; <deleted> = (Default)
+; 0000000 = Off (Default / CIS)
+; 0000001 = On
+"AlwaysInstallElevated"=-
+
+;;; 18.9.85.3 (L2) Ensure 'Prevent Internet Explorer security prompt for Windows Installer scripts' is set to 'Disabled'
+[HKEY_LOCAL_MACHINE\Software\Policies\Microsoft\Windows\Installer]
+; <deleted> = (Default)
+; 0000000 = Off (Default / CIS)
+; 0000001 = On
+"SafeForScripting"=-
+
+;;; 18.9.86 Windows Logon Options
+
+;;; 18.9.86.1 (L1) Ensure 'Sign-in last interactive user automatically after a system-initiated restart' is set to 'Disabled'
+;[HKEY_LOCAL_MACHINE\Software\Microsoft\Windows\CurrentVersion\Policies\System]
+; <deleted> = (Default)
+; 0000000 = Off
+; 0000001 = On (CIS)
+; NON-COMPLIANCE TO NOT DISRUPT COMMON HOME FEATURES
+;"DisableAutomaticRestartSignOn"=-
+
+;;; 18.9.87 Windows Mail
+;;; Paragraph skipped due to no registry keys available
+
+;;; 18.9.88 Windows Media Center
+;;; Paragraph skipped due to no registry keys available
+
+;;; 18.9.89 Windows Media Digital Rights Management
+;;; Paragraph skipped due to no registry keys available
+
+;;; 18.9.90 Windows Media Player
+;;; Paragraph skipped due to no registry keys available
+
+;;; 18.9.91 Windows Meeting Space
+;;; Paragraph skipped due to no registry keys available
+
+;;; 18.9.92 Windows Messenger
+;;; Paragraph skipped due to no registry keys available
+
+;;; 18.9.93 Windows Mobility Center
+;;; Paragraph skipped due to no registry keys available
+
+;;; 18.9.94 Windows Movie Maker
+
+;;; 18.9.95 Windows PowerShell
+
+;;; 18.9.95.1 (L1) Ensure 'Turn on PowerShell Script Block Logging' is set to 'Disabled'
+[HKEY_LOCAL_MACHINE\SOFTWARE\Policies\Microsoft\Windows\PowerShell\ScriptBlockLogging]
+; <deleted> = (Default)
+; 0000000 = Off (CIS)
+; 0000001 = On
+"EnableScriptBlockLogging"=-
+
+;;; 18.9.95.2 (L1) Ensure 'Turn on PowerShell Transcription' is set to 'Disabled'
+[HKEY_LOCAL_MACHINE\SOFTWARE\Policies\Microsoft\Windows\PowerShell\Transcription]
+; <deleted> = (Default)
+; 0000000 = Off (Default / CIS)
+; 0000001 = On
+"EnableTranscripting"=-
+
+;;; 18.9.96 Windows Reliability Analysis
+;;; Paragraph skipped due to no registry keys available
+
+;;; 18.9.97 Windows Remote Management (WinRM)
+
+;;; 18.9.97.1 WinRM Client
+
+;;; 18.9.97.1.1 (L1) Ensure 'Allow Basic authentication' is set to 'Disabled'
+[HKEY_LOCAL_MACHINE\Software\Policies\Microsoft\Windows\WinRM\Client]
+; <deleted> = (Default)
+; 0000000 = Off (Default / CIS)
+; 0000001 = On
+"AllowBasic"=-
+
+;;; 18.9.97.1.2 (L1) Ensure 'Allow unencrypted traffic' is set to 'Disabled'
+[HKEY_LOCAL_MACHINE\Software\Policies\Microsoft\Windows\WinRM\Client]
+; <deleted> = (Default)
+; 0000000 = Off (Default / CIS)
+; 0000001 = On
+"AllowUnencryptedTraffic"=-
+
+;;; 18.9.97.1.3 (L1) Ensure 'Disallow Digest authentication' is set to 'Enabled'
+[HKEY_LOCAL_MACHINE\Software\Policies\Microsoft\Windows\WinRM\Client]
+; <deleted> = (Default)
+; 0000000 = Off (CIS)
+; 0000001 = On
+"AllowDigest"=-
+
+;;; 18.9.97.2 WinRM Service
+
+;;; 18.9.97.2.1 (L1) Ensure 'Allow Basic authentication' is set to 'Disabled'
+[HKEY_LOCAL_MACHINE\Software\Policies\Microsoft\Windows\WinRM\Service]
+; <deleted> = (Default)
+; 0000000 = Off (Default / CIS)
+; 0000001 = On
+"AllowBasic"=-
+
+;;; 18.9.97.2.2 (L2) Ensure 'Allow remote server management through WinRM' is set to 'Disabled'
+[HKEY_LOCAL_MACHINE\SOFTWARE\Policies\Microsoft\Windows\WinRM\Service]
+; <deleted> = (Default)
+; 0000000 = Off (Default / CIS)
+; 0000001 = On
+"AllowAutoConfig"=-
+
+;;; 18.9.97.2.3 (L1) Ensure 'Allow unencrypted traffic' is set to 'Disabled'
+[HKEY_LOCAL_MACHINE\Software\Policies\Microsoft\Windows\WinRM\Service]
+; <deleted> = (Default)
+; 0000000 = Off (Default / CIS)
+; 0000001 = On
+"AllowUnencryptedTraffic"=-
+
+;;; 18.9.97.2.4 (L1) Ensure 'Disallow WinRM from storing RunAs credentials' is set to 'Enabled'
+[HKEY_LOCAL_MACHINE\Software\Policies\Microsoft\Windows\WinRM\Service]
+; <deleted> = (Default)
+; 0000000 = Off
+; 0000001 = On (CIS)
+"DisableRunAs"=-
+
+;;; 18.9.98 Windows Remote Shell
+
+;;; 18.9.98.1 (L2) Ensure 'Allow Remote Shell Access' is set to 'Disabled'
+[HKEY_LOCAL_MACHINE\Software\Policies\Microsoft\Windows\WinRM\Service\WinRS]
+; <deleted> = (Default)
+; 0000000 = Off (CIS)
+; 0000001 = On
+"AllowRemoteShellAccess"=-
+
+;;; 18.9.99 Windows Security (formerly Windows Defender Security Center)
+
+;;; 18.9.99.1 Account protection
+
+;;; 18.9.99.2 App and browser protection
+
+;;; 18.9.99.2.1 (L1) Ensure 'Prevent users from modifying settings' is set to 'Enabled'
+[HKEY_LOCAL_MACHINE\SOFTWARE\Policies\Microsoft\Windows Defender Security Center\App and Browser protection]
+; <deleted> = (Default)
+; 0000000 = Off (CIS)
+; 0000001 = On
+"DisallowExploitProtectionOverride"=-
+
+;;; 18.9.100 Windows SideShow
+;;; Paragraph skipped due to no registry keys available
+
+;;; 18.9.100 Windows SideShow
+;;; Paragraph skipped due to no registry keys available
+
+;;; 18.9.101 Windows System Resource Manager
+;;; Paragraph skipped due to no registry keys available
+
+;;; 18.9.102 Windows Update
+
+;;; 18.9.102.1 Windows Update for Business (formerly Defer Windows Updates)
+
+;;; 18.9.102.1.1 (L1) Ensure 'Manage preview builds' is set to 'Enabled: Disable preview builds'
+;[HKEY_LOCAL_MACHINE\SOFTWARE\Policies\Microsoft\Windows\WindowsUpdate]
+; <deleted> = (Default)
+; 0000000 = Off (CIS)
+; 0000001 = On
+; NON-COMPLIANCE TO NOT DISRUPT COMMON HOME FEATURES
+;"ManagePreviewBuildsPolicyValue"=-
+
+;;; 18.9.102.1.2 (L1) Ensure 'Select when Preview Builds and Feature Updates are received' is set to 'Enabled: Semi-Annual Channel, 180 or more days'
+;[HKEY_LOCAL_MACHINE\SOFTWARE\Policies\Microsoft\Windows\WindowsUpdate]
+; <deleted> = (Default)
+; 0000000 = 0 days (min)
+; 00000b4 = 180 days (CIS)
+; 000016d = 365 days (max)
+; NON-COMPLIANCE TO NOT DISRUPT COMMON HOME FEATURES
+;"DeferFeatureUpdatesPeriodInDays"=-
+;[HKEY_LOCAL_MACHINE\SOFTWARE\Policies\Microsoft\Windows\WindowsUpdate]
+; <deleted> = (Default)
+; 00000002 = Preview Build - Fast
+; 00000004 = Preview Build - Slow
+; 00000008 = Release Preview
+; 00000010 = Semi-Annual Channel (Targeted)
+; 00000020 = Semi-Annual Channel (CIS)
+; NON-COMPLIANCE TO NOT DISRUPT COMMON HOME FEATURES
+;"BranchReadinessLevel"=-
+;[HKEY_LOCAL_MACHINE\SOFTWARE\Policies\Microsoft\Windows\WindowsUpdate]
+; <deleted> = (Default)
+; 0000000 = Off
+; 0000001 = On (CIS)
+; NON-COMPLIANCE TO NOT DISRUPT COMMON HOME FEATURES
+;"DeferFeatureUpdates"=-
+
+;;; 18.9.102.1.3 (L1) Ensure 'Select when Quality Updates are received' is set to 'Enabled: 0 days'
+;[HKEY_LOCAL_MACHINE\SOFTWARE\Policies\Microsoft\Windows\WindowsUpdate]
+; <deleted> = (Default)
+; 0000000 = Off
+; 0000001 = On (Default / CIS)
+; NON-COMPLIANCE TO NOT DISRUPT COMMON HOME FEATURES
+;"DeferQualityUpdates"=-
+;[HKEY_LOCAL_MACHINE\SOFTWARE\Policies\Microsoft\Windows\WindowsUpdate]
+; <deleted> = (Default)
+; 0000000 = 0 days (min / Default / CIS)
+; 00000b4 = 180 days (middle)
+; 000016d = 365 days (max)
+; NON-COMPLIANCE TO NOT DISRUPT COMMON HOME FEATURES
+;"DeferQualityUpdatesPeriodInDays"=-
+
+;;; 18.9.102.2 (L1) Ensure 'Configure Automatic Updates' is set to 'Enabled'
+;[HKEY_LOCAL_MACHINE\Software\Policies\Microsoft\Windows\WindowsUpdate\AU]
+; <deleted> = (Default)
+; 0000000 = Off (CIS)
+; 0000001 = On
+; FEATURE DOES NOT EXISTS IN NON-CORPORATE ENVIRONMENT
+;"NoAutoUpdate"=-
+
+;;; 18.9.102.3 (L1) Ensure 'Configure Automatic Updates: Scheduled install day' is set to '0 - Every day'
+;[HKEY_LOCAL_MACHINE\Software\Policies\Microsoft\Windows\WindowsUpdate\AU]
+; <deleted> = (Default)
+; 0000000 = Every day (CIS)
+; 0000001 = Every Sunday
+; 0000002 = Every Monday
+; 0000003 = Every Tuesday
+; 0000004 = Every Wednesday
+; 0000005 = Every Thursday
+; 0000006 = Every Friday
+; 0000007 = Every Saturday
+; FEATURE DOES NOT EXISTS IN NON-CORPORATE ENVIRONMENT
+;"ScheduledInstallDay"=-
+
+;;; 18.9.102.4 (L1) Ensure 'No auto-restart with logged on users for scheduled automatic updates installations' is set to 'Disabled'
+;[HKEY_LOCAL_MACHINE\Software\Policies\Microsoft\Windows\WindowsUpdate\AU]
+; <deleted> = (Default)
+; 0000000 = Off (Default / CIS)
+; 0000001 = On
+; FEATURE DOES NOT EXISTS IN NON-CORPORATE ENVIRONMENT
+;"NoAutoRebootWithLoggedOnUsers"=-
+
+;;; 18.9.102.5 (L1) Ensure 'Remove access to “Pause updates” feature' is set to 'Enabled'
+;[HKEY_LOCAL_MACHINE\SOFTWARE\Policies\Microsoft\Windows\WindowsUpdate]
+; <deleted> = (Default)
+; 0000000 = Off (Default)
+; 0000001 = On (CIS)
+; FEATURE DOES NOT EXISTS IN NON-CORPORATE ENVIRONMENT
+;"SetDisablePauseUXAccess"=-
+
+;;; 19 Administrative Templates (User)
+;;; See User Registry file

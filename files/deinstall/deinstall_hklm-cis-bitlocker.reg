@@ -1,0 +1,499 @@
+Windows Registry Editor Version 5.00
+
+;;; Windows 10 Home & Pro BitLocker Hardening
+;;; Repository: https://github.com/teusink/Home-Security-by-W10-Hardening/
+
+;;; Registry target: HKEY_LOCAL_MACHINE
+;;; Source: Computer Internet Security (CIS) - BitLocker
+;;; Author: Joram Teusink
+
+;;; The following elements from the CIS Level BitLocker baseline are included:
+;;; - BitLocker Drive Encryption
+
+;;; WARNING: Do not use, if you do not use Windows BitLocker!!
+
+;;; 2.3 Security Options
+
+;;; 2.3.7 Interactive logon
+
+;;; 2.3.7.3 (BL) Ensure 'Interactive logon: Machine account lockout threshold' is set to '10 or fewer invalid logon attempts, but not 0'
+[HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Windows\CurrentVersion\Policies\System]
+; <deleted> = (Default)
+; 0000000 = Off
+; 000000a = 10 attempts (CIS)
+"MaxDevicePasswordFailedAttempts"=-
+
+;;; 18 Administrative Templates (Computer)
+
+;;; 18.8 System
+
+;;; 18.8.7 Device Installation
+
+;;; 18.8.7.1 Device Installation Restrictions
+
+;;; 18.8.7.1.1 (BL) Ensure 'Prevent installation of devices that match any of these device IDs' is set to 'Enabled'
+;[HKEY_LOCAL_MACHINE\Software\Policies\Microsoft\Windows\DeviceInstall\Restrictions]
+; <deleted> = (Default)
+; 0000000 = Off
+; 0000001 = On (CIS)
+; NON-COMPLIANCE TO NOT DISRUPT COMMON HOME FEATURES
+;"DenyDeviceIDs"=-
+
+;;; 18.8.7.1.2 (BL) Ensure 'Prevent installation of devices that match any of these device IDs: Prevent installation of devices that match any of these device IDs' is set to 'PCI\CC_0C0A'
+;[HKEY_LOCAL_MACHINE\Software\Policies\Microsoft\Windows\DeviceInstall\Restrictions]
+; <deleted> = (Default)
+; 0000000 = Off
+; PCI\CC_0C0A = Limit Direct Memory Access (DMA) attacks (CIS)
+; NON-COMPLIANCE TO NOT DISRUPT COMMON HOME FEATURES
+;"1"=-
+
+;;; 18.8.7.1.3 (BL) Ensure 'Prevent installation of devices that match any of these device IDs: Also apply to matching devices that are already installed.' is set to 'True' (checked)
+;[HKEY_LOCAL_MACHINE\Software\Policies\Microsoft\Windows\DeviceInstall\Restrictions]
+; <deleted> = (Default)
+; 0000000 = Off
+; 0000001 = On (CIS)
+; NON-COMPLIANCE TO NOT DISRUPT COMMON HOME FEATURES
+;"DenyDeviceIDsRetroactive"=-
+
+;;; 18.8.7.1.4 (BL) Ensure 'Prevent installation of devices using drivers that match these device setup classes' is set to 'Enabled'
+;[HKEY_LOCAL_MACHINE\Software\Policies\Microsoft\Windows\DeviceInstall\Restrictions]
+; <deleted> = (Default)
+; 0000000 = Off
+; 0000001 = On (CIS)
+; NON-COMPLIANCE TO NOT DISRUPT COMMON HOME FEATURES
+;"DenyDeviceClasses"=-
+
+;;; 18.8.7.1.5 (BL) Ensure 'Prevent installation of devices using drivers that match these device setup classes: Prevent installation of devices using drivers for these device setup' is set to <see below>
+;; {d48179be-ec20-11d1-b6b8-00c04fa372a7} - IEEE 1394 devices that support the SBP2 Protocol Class
+;; {7ebefbc0-3200-11d2-b4c2-00a0C9697d07} - IEEE 1394 devices that support the IEC-61883 Protocol Class
+;; {c06ff265-ae09-48f0-812c-16753d7cba83} - IEEE 1394 devices that support the AVC Protocol Class
+;; {6bdd1fc1-810f-11d0-bec7-08002be2092f} - IEEE 1394 Host Bus Controller Class
+;[HKEY_LOCAL_MACHINE\Software\Policies\Microsoft\Windows\DeviceInstall\Restrictions]
+; <deleted> = (Default)
+; 1 = Deny (CIS)
+; NON-COMPLIANCE TO NOT DISRUPT COMMON HOME FEATURES
+;"1"=-
+;"1"=-
+;"1"=-
+;"1"=-
+
+;;; 18.8.7.1.6 (BL) Ensure 'Prevent installation of devices using drivers that match these device setup classes: Also apply to matching devices that are already installed.' is set to 'True' (checked)
+;[HKEY_LOCAL_MACHINE\Software\Policies\Microsoft\Windows\DeviceInstall\Restrictions]
+; <deleted> = (Default)
+; 0000000 = Off
+; 0000001 = On (CIS)
+; NON-COMPLIANCE TO NOT DISRUPT COMMON HOME FEATURES
+;"DenyDeviceClassesRetroactive"=-
+
+;;; 18.8.34.6 Sleep Settings
+
+;;; 18.8.34.6.3 (BL) Ensure 'Allow standby states (S1-S3) when sleeping (on battery)' is set to 'Disabled'
+[HKEY_LOCAL_MACHINE\Software\Policies\Microsoft\Power\PowerSettings\abfc2519-3608-4c2a-94ea-171b0ed546ab]
+; <deleted> = (Default)
+; 0000000 = Off (Default / CIS)
+; 0000001 = On
+"DCSettingIndex"=-
+
+;;; 18.8.34.6.4 (BL) Ensure 'Allow standby states (S1-S3) when sleeping (plugged in)' is set to 'Disabled'
+[HKEY_LOCAL_MACHINE\Software\Policies\Microsoft\Power\PowerSettings\abfc2519-3608-4c2a-94ea-171b0ed546ab]
+; <deleted> = (Default)
+; 0000000 = Off (Default / CIS)
+; 0000001 = On
+"ACSettingIndex"=-
+
+;;; 18.9.11 BitLocker Drive Encryption
+
+;;; 18.9.11.1 Fixed Data Drives
+
+;;; 18.9.11.1.1 (BL) Ensure 'Allow access to BitLocker-protected fixed data drives from earlier versions of Windows' is set to 'Disabled'
+[HKEY_LOCAL_MACHINE\Software\Policies\Microsoft\FVE]
+; <deleted> = (Default)
+; <blank> = None (CIS)
+"DVDiscoveryVolumeType"=-
+
+;;; 18.9.11.1.2 (BL) Ensure 'Choose how BitLocker-protected fixed drives can be recovered' is set to 'Enabled'
+[HKEY_LOCAL_MACHINE\SOFTWARE\Policies\Microsoft\FVE]
+; <deleted> = (Default)
+; 0000000 = Off
+; 0000001 = On (CIS)
+"FDVRecovery"=-
+
+;;; 18.9.11.1.3 (BL) Ensure 'Choose how BitLocker-protected fixed drives can be recovered: Allow data recovery agent' is set to 'Enabled: True'
+[HKEY_LOCAL_MACHINE\SOFTWARE\Policies\Microsoft\FVE]
+; <deleted> = (Default)
+; 0000000 = Off
+; 0000001 = On (Default / CIS)
+"FDVManageDRA"=-
+
+;;; 18.9.11.1.4 (BL) Ensure 'Choose how BitLocker-protected fixed drives can be recovered: Recovery Password' is set to 'Enabled: Allow 48-digit recovery password'
+[HKEY_LOCAL_MACHINE\SOFTWARE\Policies\Microsoft\FVE]
+; <deleted> = (Default)
+; 0000000 = Do not allow 48-digit recovery password
+; 0000001 = Require 48-digit recovery password
+; 0000002 = Allow 48-digit recovery password (CIS)
+"FDVRecoveryPassword"=-
+
+;;; 18.9.11.1.5 (BL) Ensure 'Choose how BitLocker-protected fixed drives can be recovered: Recovery Key' is set to 'Enabled: Allow 256-bit recovery key'
+[HKEY_LOCAL_MACHINE\SOFTWARE\Policies\Microsoft\FVE]
+; <deleted> = (Default)
+; 0000000 = Do not allow 256-bit recovery key
+; 0000001 = Require 256-bit recovery key
+; 0000002 = Allow 256-bit recovery key (CIS)
+"FDVRecoveryKey"=-
+
+;;; 18.9.11.1.6 (BL) Ensure 'Choose how BitLocker-protected fixed drives can be recovered: Omit recovery options from the BitLocker setup wizard' is set to 'Enabled: True'
+;[HKEY_LOCAL_MACHINE\SOFTWARE\Policies\Microsoft\FVE]
+; <deleted> = (Default)
+; 0000000 = Off
+; 0000001 = On (CIS)
+; NON-COMPLIANCE TO NOT DISRUPT COMMON HOME FEATURES
+;"FDVHideRecoveryPage"=-
+
+;;; 18.9.11.1.7 (BL) Ensure 'Choose how BitLocker-protected fixed drives can be recovered: Save BitLocker recovery information to AD DS for fixed data drives' is set to 'Enabled: False'
+;[HKEY_LOCAL_MACHINE\SOFTWARE\Policies\Microsoft\FVE]
+; <deleted> = (Default)
+; 0000000 = Off (Default / CIS)
+; 0000001 = On
+; FEATURE DOES NOT EXISTS IN NON-CORPORATE ENVIRONMENT
+;"FDVActiveDirectoryBackup"=-
+
+;;; 18.9.11.1.8 (BL) Ensure 'Choose how BitLocker-protected fixed drives can be recovered: Configure storage of BitLocker recovery information to AD DS' is set to 'Enabled: Backup recovery passwords and key packages'
+;[HKEY_LOCAL_MACHINE\SOFTWARE\Policies\Microsoft\FVE]
+; <deleted> = (Default)
+; 0000000 = Off
+; 0000001 = On (CIS)
+; FEATURE DOES NOT EXISTS IN NON-CORPORATE ENVIRONMENT
+;"FDVActiveDirectoryInfoToStore"=-
+
+;;; 18.9.11.1.9 (BL) Ensure 'Choose how BitLocker-protected fixed drives can be recovered: Do not enable BitLocker until recovery information is stored to AD DS for fixed data drives' is set to 'Enabled: False'
+;[HKEY_LOCAL_MACHINE\SOFTWARE\Policies\Microsoft\FVE]
+; <deleted> = (Default)
+; 0000000 = Off (Default / CIS)
+; 0000001 = On
+; FEATURE DOES NOT EXISTS IN NON-CORPORATE ENVIRONMENT
+;"FDVRequireActiveDirectoryBackup"=-
+
+;;; 18.9.11.1.10 (BL) Ensure 'Configure use of hardware-based encryption for fixed data drives' is set to 'Enabled'
+[HKEY_LOCAL_MACHINE\SOFTWARE\Policies\Microsoft\FVE]
+; <deleted> = (Default)
+; 0000000 = Off (Microsoft Security Guideline: https://portal.msrc.microsoft.com/en-us/security-guidance/advisory/ADV180028)
+; 0000001 = On (CIS)
+"FDVHardwareEncryption"=-
+
+;;; 18.9.11.1.11 (BL) Ensure 'Configure use of hardware-based encryption for fixed data drives: Use BitLocker software-based encryption when hardware encryption is not available' is set to 'Enabled: True'
+[HKEY_LOCAL_MACHINE\SOFTWARE\Policies\Microsoft\FVE]
+; <deleted> = (Default)
+; 0000000 = Off
+; 0000001 = On (Default / CIS)
+"FDVAllowSoftwareEncryptionFailover"=-
+
+;;; 18.9.11.1.12 (BL) Ensure 'Configure use of hardware-based encryption for fixed data drives: Restrict encryption algorithms and cipher suites allowed for hardware-based encryption' is set to 'Enabled: False'
+[HKEY_LOCAL_MACHINE\SOFTWARE\Policies\Microsoft\FVE]
+; <deleted> = (Default)
+; 0000000 = Off (Default / CIS)
+; 0000001 = On
+"FDVRestrictHardwareEncryptionAlgorithms"=-
+
+;;; 18.9.11.1.13 (BL) Ensure 'Configure use of hardware-based encryption for fixed data drives: Restrict crypto algorithms or cipher suites to the following:' is set to 'Enabled: 2.16.840.1.101.3.4.1.2;2.16.840.1.101.3.4.1.42'
+[HKEY_LOCAL_MACHINE\SOFTWARE\Policies\Microsoft\FVE]
+; <deleted> = (Default)
+; 2.16.840.1.101.3.4.1.2;2.16.840.1.101.3.4.1.42 = Best practice (CIS)
+"FDVAllowedHardwareEncryptionAlgorithms"=-
+
+;;; 18.9.11.1.14 (BL) Ensure 'Configure use of passwords for fixed data drives' is set to 'Disabled'
+;[HKEY_LOCAL_MACHINE\SOFTWARE\Policies\Microsoft\FVE]
+; <deleted> = (Default)
+; 0000000 = Off (CIS)
+; 0000001 = On
+; NON-COMPLIANCE TO NOT DISRUPT COMMON HOME FEATURES
+;"FDVPassphrase"=-
+
+;;; 18.9.11.1.15 (BL) Ensure 'Configure use of smart cards on fixed data drives' is set to 'Enabled'
+[HKEY_LOCAL_MACHINE\SOFTWARE\Policies\Microsoft\FVE]
+; <deleted> = (Default)
+; 0000000 = Off
+; 0000001 = On (Default / CIS)
+"FDVAllowUserCert"=-
+
+;;; 18.9.11.1.16 (BL) Ensure 'Configure use of smart cards on fixed data drives: Require use of smart cards on fixed data drives' is set to 'Enabled: True'
+;[HKEY_LOCAL_MACHINE\SOFTWARE\Policies\Microsoft\FVE]
+; <deleted> = (Default)
+; 0000000 = Off
+; 0000001 = On (CIS)
+; NON-COMPLIANCE TO NOT DISRUPT COMMON HOME FEATURES
+;"FDVEnforceUserCert"=-
+
+;;; 18.9.11.2 Operating System Drives
+
+;;; 18.9.11.2.1 (BL) Ensure 'Allow enhanced PINs for startup' is set to 'Enabled'
+[HKEY_LOCAL_MACHINE\SOFTWARE\Policies\Microsoft\FVE]
+; <deleted> = (Default)
+; 0000000 = Off
+; 0000001 = On (CIS)
+"UseEnhancedPin"=-
+
+;;; 18.9.11.2.2 (BL) Ensure 'Allow Secure Boot for integrity validation' is set to 'Enabled'
+[HKEY_LOCAL_MACHINE\SOFTWARE\Policies\Microsoft\FVE]
+; <deleted> = (Default)
+; 0000000 = Off
+; 0000001 = On (Default / CIS)
+"OSAllowSecureBootForIntegrity"=-
+
+;;; 18.9.11.2.3 (BL) Ensure 'Choose how BitLocker-protected operating system drives can be recovered' is set to 'Enabled'
+;[HKEY_LOCAL_MACHINE\SOFTWARE\Policies\Microsoft\FVE]
+; <deleted> = (Default)
+; 0000000 = Off
+; 0000001 = On (CIS)
+; FEATURE DOES NOT EXISTS IN NON-CORPORATE ENVIRONMENT
+;"OSRecovery"=-
+
+;;; 18.9.11.2.4 (BL) Ensure 'Choose how BitLocker-protected operating system drives can be recovered: Allow data recovery agent' is set to 'Enabled: False'
+;[HKEY_LOCAL_MACHINE\SOFTWARE\Policies\Microsoft\FVE]
+; <deleted> = (Default)
+; 0000000 = Off (CIS)
+; 0000001 = On
+; FEATURE DOES NOT EXISTS IN NON-CORPORATE ENVIRONMENT
+;"OSManageDRA"=-
+
+;;; 18.9.11.2.5 (BL) Ensure 'Choose how BitLocker-protected operating system drives can be recovered: Recovery Password' is set to 'Enabled: Require 48-digit recovery password'
+;[HKEY_LOCAL_MACHINE\SOFTWARE\Policies\Microsoft\FVE]
+; <deleted> = (Default)
+; 0000000 = Do not allow 48-digit recovery password
+; 0000001 = Require 48-digit recovery password
+; 0000002 = Allow 48-digit recovery password (CIS)
+"OSRecoveryPassword"=-
+
+;;; 18.9.11.2.6 (BL) Ensure 'Choose how BitLocker-protected operating system drives can be recovered: Recovery Key' is set to 'Enabled: Do not allow 256-bit recovery key'
+;[HKEY_LOCAL_MACHINE\SOFTWARE\Policies\Microsoft\FVE]
+; <deleted> = (Default)
+; 0000000 = Do not allow 256-bit recovery key
+; 0000001 = Require 256-bit recovery key
+; 0000002 = Allow 256-bit recovery key (CIS)
+"OSRecoveryKey"=-
+
+;;; 18.9.11.2.7 (BL) Ensure 'Choose how BitLocker-protected operating system drives can be recovered: Omit recovery options from the BitLocker setup wizard' is set to 'Enabled: True'
+;[HKEY_LOCAL_MACHINE\SOFTWARE\Policies\Microsoft\FVE]
+; <deleted> = (Default)
+; 0000000 = Off
+; 0000001 = On (CIS)
+; FEATURE DOES NOT EXISTS IN NON-CORPORATE ENVIRONMENT
+;"OSHideRecoveryPage"=-
+
+;;; 18.9.11.2.8 (BL) Ensure 'Choose how BitLocker-protected operating system drives can be recovered: Save BitLocker recovery information to AD DS for operating system drives' is set to 'Enabled: True'
+;[HKEY_LOCAL_MACHINE\SOFTWARE\Policies\Microsoft\FVE]
+; <deleted> = (Default)
+; 0000000 = Off
+; 0000001 = On (CIS)
+; FEATURE DOES NOT EXISTS IN NON-CORPORATE ENVIRONMENT
+;"OSActiveDirectoryBackup"=-
+
+;;; 18.9.11.2.9 (BL) Ensure 'Choose how BitLocker-protected operating system drives can be recovered: Configure storage of BitLocker recovery information to AD DS:' is set to 'Enabled: Store recovery passwords and key packages'
+;[HKEY_LOCAL_MACHINE\SOFTWARE\Policies\Microsoft\FVE]
+; <deleted> = (Default)
+; 0000000 = Off
+; 0000001 = On (CIS)
+; FEATURE DOES NOT EXISTS IN NON-CORPORATE ENVIRONMENT
+;"OSActiveDirectoryInfoToStore"=-
+
+;;; 18.9.11.2.10 (BL) Ensure 'Choose how BitLocker-protected operating system drives can be recovered: Do not enable BitLocker until recovery information is stored to AD DS for operating system drives' is set to 'Enabled: True'
+;[HKEY_LOCAL_MACHINE\SOFTWARE\Policies\Microsoft\FVE]
+; <deleted> = (Default)
+; 0000000 = Off
+; 0000001 = On (CIS)
+; FEATURE DOES NOT EXISTS IN NON-CORPORATE ENVIRONMENT
+;"OSRequireActiveDirectoryBackup"=-
+
+;;; 18.9.11.2.11 (BL) Ensure 'Configure use of hardware-based encryption for operating system drives' is set to 'Enabled'
+[HKEY_LOCAL_MACHINE\SOFTWARE\Policies\Microsoft\FVE]
+; <deleted> = (Default)
+; 0000000 = Off (Microsoft Security Guideline: https://portal.msrc.microsoft.com/en-us/security-guidance/advisory/ADV180028)
+; 0000001 = On (CIS)
+"OSHardwareEncryption"=-
+
+;;; 18.9.11.2.12 (BL) Ensure 'Configure use of hardware-based encryption for operating system drives: Use BitLocker software-based encryption when hardware encryption is not available' is set to 'Enabled: True'
+[HKEY_LOCAL_MACHINE\SOFTWARE\Policies\Microsoft\FVE]
+; <deleted> = (Default)
+; 0000000 = Off
+; 0000001 = On (Default / CIS)
+"OSAllowSoftwareEncryptionFailover"=-
+
+;;; 18.9.11.2.13 (BL) Ensure 'Configure use of hardware-based encryption for operating system drives: Restrict encryption algorithms and cipher suites allowed for hardware-based encryption' is set to 'Enabled: False'
+[HKEY_LOCAL_MACHINE\SOFTWARE\Policies\Microsoft\FVE]
+; <deleted> = (Default)
+; 0000000 = Off (Default / CIS)
+; 0000001 = On
+"OSRestrictHardwareEncryptionAlgorithms"=-
+
+;;; 18.9.11.2.14 (BL) Ensure 'Configure use of hardware-based encryption for operating system drives: Restrict crypto algorithms or cipher suites to the following:' is set to 'Enabled: 2.16.840.1.101.3.4.1.2;2.16.840.1.101.3.4.1.42'
+[HKEY_LOCAL_MACHINE\SOFTWARE\Policies\Microsoft\FVE]
+; <deleted> = (Default)
+; 2.16.840.1.101.3.4.1.2;2.16.840.1.101.3.4.1.42 = Best practice (CIS)
+"OSAllowedHardwareEncryptionAlgorithms"=-
+
+;;; 18.9.11.2.15 (BL) Ensure 'Configure use of passwords for operating system drives' is set to 'Disabled'
+;[HKEY_LOCAL_MACHINE\SOFTWARE\Policies\Microsoft\FVE]
+; <deleted> = (Default)
+; 0000000 = Off (CIS)
+; 0000001 = On
+; NON-COMPLIANCE TO NOT DISRUPT COMMON HOME FEATURES
+;"OSPassphrase"=-
+
+;;; 18.9.11.2.16 (BL) Ensure 'Require additional authentication at startup' is set to 'Enabled'
+;[HKEY_LOCAL_MACHINE\SOFTWARE\Policies\Microsoft\FVE]
+; <deleted> = (Default)
+; 0000000 = Off
+; 0000001 = On (CIS)
+; NON-COMPLIANCE TO NOT DISRUPT COMMON HOME FEATURES
+;"UseAdvancedStartup"=-
+
+;;; 18.9.11.2.17 (BL) Ensure 'Require additional authentication at startup: Allow BitLocker without a compatible TPM' is set to 'Enabled: False'
+;[HKEY_LOCAL_MACHINE\SOFTWARE\Policies\Microsoft\FVE]
+; <deleted> = (Default)
+; 0000000 = Off (CIS)
+; 0000001 = On
+; NON-COMPLIANCE TO NOT DISRUPT COMMON HOME FEATURES
+;"EnableBDEWithNoTPM"=-
+
+;;; 18.9.11.3 Removable Data Drives
+
+;;; 18.9.11.3.1 (BL) Ensure 'Allow access to BitLocker-protected removable data drives from earlier versions of Windows' is set to 'Disabled'
+[HKEY_LOCAL_MACHINE\SOFTWARE\Policies\Microsoft\FVE]
+; <deleted> = (Default)
+; <blank> = Off (CIS)
+"RDVDiscoveryVolumeType"=-
+
+;;; 18.9.11.3.2 (BL) Ensure 'Choose how BitLocker-protected removable drives can be recovered' is set to 'Enabled'
+[HKEY_LOCAL_MACHINE\SOFTWARE\Policies\Microsoft\FVE]
+; <deleted> = (Default)
+; 0000000 = Off
+; 0000001 = On (CIS)
+"RDVRecovery"=-
+
+;;; 18.9.11.3.3 (BL) Ensure 'Choose how BitLocker-protected removable drives can be recovered: Allow data recovery agent' is set to 'Enabled: True'
+[HKEY_LOCAL_MACHINE\SOFTWARE\Policies\Microsoft\FVE]
+; <deleted> = (Default)
+; 0000000 = Off
+; 0000001 = On (Default / CIS)
+"RDVManageDRA"=-
+
+;;; 18.9.11.3.4 (BL) Ensure 'Choose how BitLocker-protected removable drives can be recovered: Recovery Password' is set to 'Enabled: Do not allow 48-digit recovery password'
+;[HKEY_LOCAL_MACHINE\SOFTWARE\Policies\Microsoft\FVE]
+; <deleted> = (Default)
+; 0000000 = Do not allow 48-digit recovery password (CIS)
+; 0000001 = Require 48-digit recovery password
+; 0000002 = Allow 48-digit recovery password
+; NON-COMPLIANCE TO NOT DISRUPT COMMON HOME FEATURES
+;"RDVRecoveryPassword"=-
+
+;;; 18.9.11.3.5 (BL) Ensure 'Choose how BitLocker-protected removable drives can be recovered: Recovery Key' is set to 'Enabled: Do not allow 256-bit recovery key'
+;[HKEY_LOCAL_MACHINE\SOFTWARE\Policies\Microsoft\FVE]
+; <deleted> = (Default)
+; 0000000 = Do not allow 256-bit recovery key (CIS)
+; 0000001 = Require 256-bit recovery key
+; 0000002 = Allow 256-bit recovery key
+; NON-COMPLIANCE TO NOT DISRUPT COMMON HOME FEATURES
+;"RDVRecoveryKey"=-
+
+;;; 18.9.11.3.6 (BL) Ensure 'Choose how BitLocker-protected removable drives can be recovered: Omit recovery options from the BitLocker setup wizard' is set to 'Enabled: True'
+;[HKEY_LOCAL_MACHINE\SOFTWARE\Policies\Microsoft\FVE]
+; <deleted> = (Default)
+; 0000000 = Off
+; 0000001 = On (CIS)
+; NON-COMPLIANCE TO NOT DISRUPT COMMON HOME FEATURES
+;"RDVHideRecoveryPage"=-
+
+;;; 18.9.11.3.7 (BL) Ensure 'Choose how BitLocker-protected removable drives can be recovered: Save BitLocker recovery information to AD DS for removable data drives' is set to 'Enabled: False'
+;[HKEY_LOCAL_MACHINE\SOFTWARE\Policies\Microsoft\FVE]
+; <deleted> = (Default)
+; 0000000 = Off (Default / CIS)
+; 0000001 = On
+; FEATURE DOES NOT EXISTS IN NON-CORPORATE ENVIRONMENT
+;"RDVActiveDirectoryBackup"=-
+
+;;; 18.9.11.3.8 (BL) Ensure 'Choose how BitLocker-protected removable drives can be recovered: Configure storage of BitLocker recovery information to AD DS:' is set to 'Enabled: Backup recovery passwords and key packages'
+;[HKEY_LOCAL_MACHINE\SOFTWARE\Policies\Microsoft\FVE]
+; <deleted> = (Default)
+; 0000000 = Off
+; 0000001 = On (CIS)
+; FEATURE DOES NOT EXISTS IN NON-CORPORATE ENVIRONMENT
+;"RDVActiveDirectoryInfoToStore"=-
+
+;;; 18.9.11.3.9 (BL) Ensure 'Choose how BitLocker-protected removable drives can be recovered: Do not enable BitLocker until recovery information is stored to AD DS for removable data drives' is set to 'Enabled: False'
+;[HKEY_LOCAL_MACHINE\SOFTWARE\Policies\Microsoft\FVE]
+; <deleted> = (Default)
+; 0000000 = Off (Default / CIS)
+; 0000001 = On
+; FEATURE DOES NOT EXISTS IN NON-CORPORATE ENVIRONMENT
+;"RDVRequireActiveDirectoryBackup"=-
+
+;;; 18.9.11.3.10 (BL) Ensure 'Configure use of hardware-based encryption for removable data drives' is set to 'Enabled'
+[HKEY_LOCAL_MACHINE\SOFTWARE\Policies\Microsoft\FVE]
+; <deleted> = (Default)
+; 0000000 = Off (Microsoft Security Guideline: https://portal.msrc.microsoft.com/en-us/security-guidance/advisory/ADV180028)
+; 0000001 = On (CIS)
+"RDVHardwareEncryption"=-
+
+;;; 18.9.11.3.11 (BL) Ensure 'Configure use of hardware-based encryption for removable data drives: Use BitLocker software-based encryption when hardware encryption is not available' is set to 'Enabled: True'
+[HKEY_LOCAL_MACHINE\SOFTWARE\Policies\Microsoft\FVE]
+; <deleted> = (Default)
+; 0000000 = Off
+; 0000001 = On (Default / CIS)
+"RDVAllowSoftwareEncryptionFailover"=-
+
+;;; 18.9.11.3.12 (BL) Ensure 'Configure use of hardware-based encryption for removable data drives: Restrict encryption algorithms and cipher suites allowed for hardware-based encryption' is set to 'Enabled: False'
+[HKEY_LOCAL_MACHINE\SOFTWARE\Policies\Microsoft\FVE]
+; <deleted> = (Default)
+; 0000000 = Off (Default / CIS)
+; 0000001 = On
+"RDVRestrictHardwareEncryptionAlgorithms"=-
+
+;;; 18.9.11.3.13 (BL) Ensure 'Configure use of hardware-based encryption for removable data drives: Restrict crypto algorithms or cipher suites to the following:' is set to 'Enabled: 2.16.840.1.101.3.4.1.2;2.16.840.1.101.3.4.1.42'
+[HKEY_LOCAL_MACHINE\SOFTWARE\Policies\Microsoft\FVE]
+; <deleted> = (Default)
+; 2.16.840.1.101.3.4.1.2;2.16.840.1.101.3.4.1.42 = Best practice (CIS)
+"RDVAllowedHardwareEncryptionAlgorithms"=-
+
+;;; 18.9.11.3.14 (BL) Ensure 'Configure use of passwords for removable data drives' is set to 'Disabled'
+;[HKEY_LOCAL_MACHINE\SOFTWARE\Policies\Microsoft\FVE]
+; <deleted> = (Default)
+; 0000000 = Off (CIS)
+; 0000001 = On
+; NON-COMPLIANCE TO NOT DISRUPT COMMON HOME FEATURES
+;"RDVPassphrase"=-
+
+;;; 18.9.11.3.15 (BL) Ensure 'Configure use of smart cards on removable data drives' is set to 'Enabled'
+[HKEY_LOCAL_MACHINE\SOFTWARE\Policies\Microsoft\FVE]
+; <deleted> = (Default)
+; 0000000 = Off
+; 0000001 = On (Default / CIS)
+"RDVAllowUserCert"=-
+
+;;; 18.9.11.3.16 (BL) Ensure 'Configure use of smart cards on removable data drives: Require use of smart cards on removable data drives' is set to 'Enabled: True'
+;[HKEY_LOCAL_MACHINE\SOFTWARE\Policies\Microsoft\FVE]
+; <deleted> = (Default)
+; 0000000 = Off
+; 0000001 = On (CIS)
+; NON-COMPLIANCE TO NOT DISRUPT COMMON HOME FEATURES
+;"RDVEnforceUserCert"=-
+
+;;; 18.9.11.3.17 (BL) Ensure 'Deny write access to removable drives not protected by BitLocker' is set to 'Enabled'
+;[HKEY_LOCAL_MACHINE\SOFTWARE\Policies\Microsoft\FVE]
+; <deleted> = (Default)
+; 0000000 = Off
+; 0000001 = On (CIS)
+; NON-COMPLIANCE TO NOT DISRUPT COMMON HOME FEATURES
+;"RDVDenyWriteAccess"=-
+
+;;; 18.9.11.3.18 (BL) Ensure 'Deny write access to removable drives not protected by BitLocker: Do not allow write access to devices configured in another organization' is set to 'Enabled: False'
+[HKEY_LOCAL_MACHINE\SOFTWARE\Policies\Microsoft\FVE]
+; <deleted> = (Default)
+; 0000000 = Off (Default / CIS)
+; 0000001 = On
+"RDVDenyCrossOrg"=-
+
+;;; 18.9.11.4 (BL) Ensure 'Disable new DMA devices when this computer is locked' is set to 'Enabled'
+[HKEY_LOCAL_MACHINE\SOFTWARE\Policies\Microsoft\FVE]
+; <deleted> = (Default)
+; 0000000 = Off (Default)
+; 0000001 = On (CIS)
+"DisableExternalDMAUnderLock"=-

@@ -1,0 +1,298 @@
+Windows Registry Editor Version 5.00
+
+;;; Windows 10 Home & Pro Hardening
+;;; Repository: https://github.com/teusink/Home-Security-by-W10-Hardening/
+
+;;; Registry target: HKEY_LOCAL_MACHINE
+;;; Source: Various online sources
+;;; Author: Joram Teusink
+
+;;; Windows Error Reporting: Off
+[HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Windows\Windows Error Reporting]
+; 0000000 = Off (Default)
+; 0000001 = On (Secure)
+"Disabled"=dword:0000000
+
+;;; DLL search path algorithm: Strict DLL search order
+;; All scenarios
+; <deleted> = (Default)
+; FFFFFFF = Removes the current working directory from the default DLL search order
+;; Scenario 1: The application is started from a local folder, such as C:\Program Files
+; 0000000: Uses the default DLL search path that was mentioned earlier
+; 0000001: Blocks a DLL Load from the current working directory if the current working directory is set to a WebDAV folder
+; 0000002: Blocks a DLL Load from the current working directory if the current working directory is set to a remote folder (such as a WebDAV or UNC location) (most Secure)
+;; Scenario 2: The application is started from a remote folder, such as \\remote\shareremote\share)
+; 0000000: Uses the default DLL search path that was mentioned earlier
+; 0000001: Blocks a DLL Load from the current working directory if the current working directory is set to a WebDAV folder
+; 0000002: Allows DLL Load from the current working directory if the current working directory is set to a remote folder (such as a WebDAV or UNC location) (most Secure)
+[HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Control\Session Manager]
+"CWDIllegalInDllSearch"=-
+
+;;; Disable Fast Restart to prevent disk encryption errors with third party tools
+[HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Control\Session Manager\Power]
+; 0000000 = Off (Secure)
+; 0000001 = On (Default)
+"HiberbootEnabled"=dword:0000001
+
+;;; Disable Domain Name Devolution
+[HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Services\Tcpip\Parameters]
+; 0000000 = Off (Secure)
+; 0000001 = On (Default)
+"UseDomainNameDevolution"=dword:0000001
+
+;;; Enable Clipboard History capability
+[HKEY_LOCAL_MACHINE\SOFTWARE\Policies\Microsoft\Windows\System]
+; <deleted> = (Default)
+; 0000000 = Off (Secure)
+; 0000001 = On
+"AllowClipboardHistory"=-
+
+;;; Disable VBScript in all zones in Internet Explorer
+; My Computer - default: 00000000
+[HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Windows\CurrentVersion\Internet Settings\Zones\0]
+"140C"=dword:00000000
+; Local Intranet Zone - default: 00000000
+[HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Windows\CurrentVersion\Internet Settings\Zones\1]
+"140C"=dword:00000000
+; Trusted Sites Zone - default: 00000000
+[HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Windows\CurrentVersion\Internet Settings\Zones\2]
+"140C"=dword:00000000
+; Internet Zone - default: 00000003
+[HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Windows\CurrentVersion\Internet Settings\Zones\3]
+"140C"=dword:00000000
+; Restricted Sites Zone - default: 00000003
+[HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Windows\CurrentVersion\Internet Settings\Zones\4]
+"140C"=dword:00000000
+
+;;; WARNING: Settings below are gone in newer CIS Benchmarks, but seemingly still supported
+
+;;; (CIS-1709): 18.8.26.1 (L1) Ensure 'Untrusted Font Blocking' is set to 'Enabled: Block untrusted fonts and log events'
+[HKEY_LOCAL_MACHINE\SOFTWARE\Policies\Microsoft\Windows NT\MitigationOptions]
+; <deleted> = (Default)
+; 00,10,a5,d4,e8,00,00,00 (1000000000000) = Block untrusted fonts and log events (CIS)
+; 00,20,4a,a9,d1,01,00,00 (2000000000000) = Do not block untrusted fonts
+; 00,30,ef,7d,ba,02,00,00 (3000000000000) = Log events without blocking untrusted fonts
+"MitigationOptions_FontBocking"=-
+
+;;; (CIS-1709): 18.9.5.1 (L2) Ensure 'Let Windows apps access account information' is set to 'Enabled: Force Deny'
+;[HKEY_LOCAL_MACHINE\SOFTWARE\Policies\Microsoft\Windows\AppPrivacy]
+; <deleted> = (Default)
+; 0000000 = User is in control
+; 0000001 = Force Allow
+; 0000002 = Force Deny (CIS)
+; NON-COMPLIANCE TO NOT DISRUPT COMMON HOME FEATURES
+;"LetAppsAccessAccountInfo"=-
+
+;;; (CIS-1709): 18.9.5.2 (L2) Ensure 'Let Windows apps access call history' is set to 'Enabled: Force Deny'
+;[HKEY_LOCAL_MACHINE\SOFTWARE\Policies\Microsoft\Windows\AppPrivacy]
+; <deleted> = (Default)
+; 0000000 = User is in control
+; 0000001 = Force Allow
+; 0000002 = Force Deny (CIS)
+; NON-COMPLIANCE TO NOT DISRUPT COMMON HOME FEATURES
+;"LetAppsAccessCallHistory"=-
+
+;;; (CIS-1709): 18.9.5.3 (L2) Ensure 'Let Windows apps access contacts' is set to 'Enabled: Force Deny'
+;[HKEY_LOCAL_MACHINE\SOFTWARE\Policies\Microsoft\Windows\AppPrivacy]
+; <deleted> = (Default)
+; 0000000 = User is in control
+; 0000001 = Force Allow
+; 0000002 = Force Deny (CIS)
+; NON-COMPLIANCE TO NOT DISRUPT COMMON HOME FEATURES
+;"LetAppsAccessContacts"=-
+
+;;; (CIS-1709): 18.9.5.4 (L2) Ensure 'Let Windows apps access email' is set to 'Enabled: Force Deny'
+;[HKEY_LOCAL_MACHINE\SOFTWARE\Policies\Microsoft\Windows\AppPrivacy]
+; <deleted> = (Default)
+; 0000000 = User is in control
+; 0000001 = Force Allow
+; 0000002 = Force Deny (CIS)
+; NON-COMPLIANCE TO NOT DISRUPT COMMON HOME FEATURES
+;"LetAppsAccessEmail"=-
+
+;;; (CIS-1709): 18.9.5.5 (L2) Ensure 'Let Windows apps access location' is set to 'Enabled: Force Deny'
+;[HKEY_LOCAL_MACHINE\SOFTWARE\Policies\Microsoft\Windows\AppPrivacy]
+; <deleted> = (Default)
+; 0000000 = User is in control
+; 0000001 = Force Allow
+; 0000002 = Force Deny (CIS)
+; NON-COMPLIANCE TO NOT DISRUPT COMMON HOME FEATURES
+;"LetAppsAccessLocation"=-
+
+;;; (CIS-1709): 18.9.5.6 (L2) Ensure 'Let Windows apps access messaging' is set to 'Enabled: Force Deny'
+;[HKEY_LOCAL_MACHINE\SOFTWARE\Policies\Microsoft\Windows\AppPrivacy]
+; <deleted> = (Default)
+; 0000000 = User is in control
+; 0000001 = Force Allow
+; 0000002 = Force Deny (CIS)
+; NON-COMPLIANCE TO NOT DISRUPT COMMON HOME FEATURES
+;"LetAppsAccessMessaging"=-
+
+;;; (CIS-1709): 18.9.5.7 (L2) Ensure 'Let Windows apps access motion' is set to 'Enabled: Force Deny'
+;[HKEY_LOCAL_MACHINE\SOFTWARE\Policies\Microsoft\Windows\AppPrivacy]
+; <deleted> = (Default)
+; 0000000 = User is in control
+; 0000001 = Force Allow
+; 0000002 = Force Deny (CIS)
+; NON-COMPLIANCE TO NOT DISRUPT COMMON HOME FEATURES
+;"LetAppsAccessMotion"=-
+
+;;; (CIS-1709): 18.9.5.8 (L2) Ensure 'Let Windows apps access the calendar' is set to 'Enabled: Force Deny'
+;[HKEY_LOCAL_MACHINE\SOFTWARE\Policies\Microsoft\Windows\AppPrivacy]
+; <deleted> = (Default)
+; 0000000 = User is in control
+; 0000001 = Force Allow
+; 0000002 = Force Deny (CIS)
+; NON-COMPLIANCE TO NOT DISRUPT COMMON HOME FEATURES
+;"LetAppsAccessCalendar"=-
+
+;;; (CIS-1709): 18.9.5.9 (L2) Ensure 'Let Windows apps access the camera' is set to 'Enabled: Force Deny'
+;[HKEY_LOCAL_MACHINE\SOFTWARE\Policies\Microsoft\Windows\AppPrivacy]
+; <deleted> = (Default)
+; 0000000 = User is in control
+; 0000001 = Force Allow
+; 0000002 = Force Deny (CIS)
+; NON-COMPLIANCE TO NOT DISRUPT COMMON HOME FEATURES
+;"LetAppsAccessCamera"=-
+
+;;; (CIS-1709): 18.9.5.10 (L2) Ensure 'Let Windows apps access the microphone' is set to 'Enabled: Force Deny'
+;[HKEY_LOCAL_MACHINE\SOFTWARE\Policies\Microsoft\Windows\AppPrivacy]
+; <deleted> = (Default)
+; 0000000 = User is in control
+; 0000001 = Force Allow
+; 0000002 = Force Deny (CIS)
+; NON-COMPLIANCE TO NOT DISRUPT COMMON HOME FEATURES
+;"LetAppsAccessMicrophone"=-
+
+;;; (CIS-1709): 18.9.5.11 (L2) Ensure 'Let Windows apps access trusted devices' is set to 'Enabled: Force Deny'
+;[HKEY_LOCAL_MACHINE\SOFTWARE\Policies\Microsoft\Windows\AppPrivacy]
+; <deleted> = (Default)
+; 0000000 = User is in control
+; 0000001 = Force Allow
+; 0000002 = Force Deny (CIS)
+; NON-COMPLIANCE TO NOT DISRUPT COMMON HOME FEATURES
+;"LetAppsAccessTrustedDevices"=-
+
+;;; (CIS-1709): 18.9.5.12 (L2) Ensure 'Let Windows apps control radios' is set to 'Enabled: Force Deny'
+;[HKEY_LOCAL_MACHINE\SOFTWARE\Policies\Microsoft\Windows\AppPrivacy]
+; <deleted> = (Default)
+; 0000000 = User is in control
+; 0000001 = Force Allow
+; 0000002 = Force Deny (CIS)
+; NON-COMPLIANCE TO NOT DISRUPT COMMON HOME FEATURES
+;"LetAppsAccessRadios"=-
+
+;;; (CIS-1709): 18.9.5.13 (L2) Ensure 'Let Windows apps sync with devices' is set to 'Enabled: Force Deny'
+;[HKEY_LOCAL_MACHINE\SOFTWARE\Policies\Microsoft\Windows\AppPrivacy]
+; <deleted> = (Default)
+; 0000000 = User is in control
+; 0000001 = Force Allow
+; 0000002 = Force Deny (CIS)
+; NON-COMPLIANCE TO NOT DISRUPT COMMON HOME FEATURES
+;"LetAppsSyncWithDevices"=-
+
+;;; (CIS-1709): 18.9.5.14 (L2) Ensure 'Let Windows apps make phone calls' is set to 'Enabled: Force Deny'
+;[HKEY_LOCAL_MACHINE\SOFTWARE\Policies\Microsoft\Windows\AppPrivacy]
+; <deleted> = (Default)
+; 0000000 = User is in control
+; 0000001 = Force Allow
+; 0000002 = Force Deny (CIS)
+; NON-COMPLIANCE TO NOT DISRUPT COMMON HOME FEATURES
+;"LetAppsAccessPhone"=-
+
+;;; (CIS-1709): 18.9.5.15 (L2) Ensure 'Let Windows apps access notifications' is set to 'Enabled: Force Deny'
+;[HKEY_LOCAL_MACHINE\SOFTWARE\Policies\Microsoft\Windows\AppPrivacy]
+; <deleted> = (Default)
+; 0000000 = User is in control
+; 0000001 = Force Allow
+; 0000002 = Force Deny (CIS)
+; NON-COMPLIANCE TO NOT DISRUPT COMMON HOME FEATURES
+;"LetAppsAccessNotifications"=-
+
+;;; (CIS-1709): 18.9.41.1 (L2) Ensure 'Allow Extensions' is set to 'Disabled'
+;[HKEY_LOCAL_MACHINE\SOFTWARE\Policies\Microsoft\MicrosoftEdge\Extensions]
+; <deleted> = (Default)
+; 0000000 = Off (CIS)
+; 0000001 = On
+; NON-COMPLIANCE TO NOT DISRUPT COMMON HOME FEATURES
+;"ExtensionsEnabled"=-
+
+;;; (CIS-1803): 2.3.17.2 (L1) Ensure 'User Account Control: Allow UIAccess applications to prompt for elevation without using the secure desktop' is set to 'Disabled'
+[HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Windows\CurrentVersion\Policies\System]
+; 0000000 = Off (Default / CIS)
+; 0000001 = On
+"EnableUIADesktopToggle"=dword:0000000
+
+;;; (CIS-1803): 18.9.11.2.11 (BL) Ensure 'Configure minimum PIN length for startup' is set to 'Enabled: 7 or more characters'
+[HKEY_LOCAL_MACHINE\SOFTWARE\Policies\Microsoft\FVE]
+; <deleted> = (Default)
+; 000004 = 4-digits or more (minimum)
+; 000007 = 7-digits or more (CIS)
+; 000020 = 20-digits (maximum)
+"MinimumPIN"=-
+
+;;; (CIS-1803): 18.9.11.2.19 (BL) Ensure 'Require additional authentication at startup: Configure TPM startup:' is set to 'Enabled: Do not allow TPM'
+;[HKEY_LOCAL_MACHINE\SOFTWARE\Policies\Microsoft\FVE]
+; <deleted> = (Default)
+; 0000000 = Do not allow TPM (CIS)
+; 0000001 = Require TPM
+; 0000002 = Allow TPM
+; NON-COMPLIANCE TO NOT DISRUPT COMMON HOME FEATURES
+;"UseTPM"=-
+
+;;; (CIS-1803): 18.9.11.2.20 (BL) Ensure 'Require additional authentication at startup: Configure TPM startup PIN:' is set to 'Enabled: Require startup PIN with TPM'
+;[HKEY_LOCAL_MACHINE\SOFTWARE\Policies\Microsoft\FVE]
+; <deleted> = (Default)
+; 0000000 = Do not allow startup PIN with TPM
+; 0000001 = Require startup PIN with TPM (CIS)
+; 0000002 = Allow startup PIN with TPM
+; NON-COMPLIANCE TO NOT DISRUPT COMMON HOME FEATURES
+;"UseTPMPIN"=-
+
+;;; (CIS-1803): 18.9.11.2.21 (BL) Ensure 'Require additional authentication at startup: Configure TPM startup key:' is set to 'Enabled: Do not allow startup key with TPM'
+;[HKEY_LOCAL_MACHINE\SOFTWARE\Policies\Microsoft\FVE]
+; <deleted> = (Default)
+; 0000000 = Do not allow startup key with TPM (CIS)
+; 0000001 = Require startup key with TPM
+; 0000002 = Allow startup key with TPM
+; NON-COMPLIANCE TO NOT DISRUPT COMMON HOME FEATURES
+;"UseTPMKey"=-
+
+;;; (CIS-1803): 18.9.11.2.22 (BL) Ensure 'Require additional authentication at startup: Configure TPM startup key and PIN:' is set to 'Enabled: Do not allow startup key and PIN with TPM'
+;[HKEY_LOCAL_MACHINE\SOFTWARE\Policies\Microsoft\FVE]
+; <deleted> = (Default)
+; 0000000 = Do not allow startup key and PIN with TPM (CIS)
+; 0000001 = Require startup key and PIN with TPM
+; 0000002 = Allow startup key and PIN with TPM
+; NON-COMPLIANCE TO NOT DISRUPT COMMON HOME FEATURES
+;"UseTPMKeyPIN"=-
+
+;;; (CIS-1809): 18.9.11.4 (BL) Ensure 'Choose drive encryption method and cipher strength (Windows 10 [Version 1511] and later)' is set to 'Enabled: XTS-AES 256-bit'
+[HKEY_LOCAL_MACHINE\SOFTWARE\Policies\Microsoft\FVE]
+; <deleted> = (Default)
+; 000003 = AES-CBC 128-bit
+; 000004 = AES-CBC 256-bit
+; 000006 = XTS-AES 128-bit
+; 000007 = XTS-AES 256-bit (CIS)
+"EncryptionMethodWithXtsOs"=-
+[HKEY_LOCAL_MACHINE\SOFTWARE\Policies\Microsoft\FVE]
+; <deleted> = (Default)
+; 000003 = AES-CBC 128-bit
+; 000004 = AES-CBC 256-bit
+; 000006 = XTS-AES 128-bit
+; 000007 = XTS-AES 256-bit (CIS)
+"EncryptionMethodWithXtsFdv"=-
+[HKEY_LOCAL_MACHINE\SOFTWARE\Policies\Microsoft\FVE]
+; <deleted> = (Default)
+; 000003 = AES-CBC 128-bit
+; 000004 = AES-CBC 256-bit
+; 000006 = XTS-AES 128-bit
+; 000007 = XTS-AES 256-bit (CIS)
+"EncryptionMethodWithXtsRdv"=-
+
+;;; (CIS-1909) 18.9.59.3.11.2 (L1) Ensure 'Do not use temporary folders per session' is set to 'Disabled'
+[HKEY_LOCAL_MACHINE\SOFTWARE\Policies\Microsoft\Windows NT\Terminal Services]
+; <deleted> = (Default)
+; 0000000 = Off
+; 0000001 = On (Default / CIS)
+"PerSessionTempDir"=-
