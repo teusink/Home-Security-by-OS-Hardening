@@ -79,29 +79,6 @@ Windows Registry Editor Version 5.00
 ; 0000001 = On (Default)
 "EnableLMHOSTS"=dword:0000000
 
-;;; NOTE: These settings are not Security or Privacy related, but purely for convenience
-
-;;; Performance - Visual Effects: Best performance
-[HKEY_CURRENT_USER\Software\Microsoft\Windows\CurrentVersion\Explorer\VisualEffects]
-; 000000 = Let Windows choose what’s best for my computer (Default)
-; 000001 = Adjust for best appearance
-; 000002 = Adjust for best performance
-"VisualFXSetting"=dword:0000001
-
-;;; Functionality - Click to Activate Last Window on Taskbar Click
-[HKEY_CURRENT_USER\Software\Microsoft\Windows\CurrentVersion\Explorer\Advanced]
-; <deleted> = Off (Default)
-; 000000 = Off
-; 000001 = On
-"LastActiveClick"=dword:0000001
-
-;;; Functionality - Active Tumbnail Preview on Taskbar, while having "Click to Activate" enabled
-[HKEY_CURRENT_USER\Software\Microsoft\Windows\CurrentVersion\Explorer\Advanced]
-; <deleted> = Off (Default)
-; 000000 = Off
-; 000001 = On
-"ExtendedUIHoverTime"=dword:0000001
-
 ;;; USER CONFIGURATION
 
 ;;; Turn off "File Explorer ads"
@@ -309,3 +286,26 @@ Windows Registry Editor Version 5.00
 ; 0000001 = On
 "EnableCloudClipboard"=dword:0000000
 "CloudClipboardAutomaticUpload"=dword:0000000
+
+;;; NOTE: These settings are not Security or Privacy related, but purely for convenience
+
+;;; Performance - Visual Effects: Best performance
+[HKEY_CURRENT_USER\Software\Microsoft\Windows\CurrentVersion\Explorer\VisualEffects]
+; 000000 = Let Windows choose what’s best for my computer (Default)
+; 000001 = Adjust for best appearance
+; 000002 = Adjust for best performance
+"VisualFXSetting"=dword:0000001
+
+;;; Functionality - Click to Activate Last Window on Taskbar Click
+[HKEY_CURRENT_USER\Software\Microsoft\Windows\CurrentVersion\Explorer\Advanced]
+; <deleted> = Off (Default)
+; 000000 = Off
+; 000001 = On
+"LastActiveClick"=dword:0000001
+
+;;; Functionality - Active Tumbnail Preview on Taskbar, while having "Click to Activate" enabled
+[HKEY_CURRENT_USER\Software\Microsoft\Windows\CurrentVersion\Explorer\Advanced]
+; <deleted> = Off (Default)
+; 000000 = Off
+; 000001 = On
+"ExtendedUIHoverTime"=dword:0000001
