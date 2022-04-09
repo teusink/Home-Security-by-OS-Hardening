@@ -339,6 +339,8 @@ If you use Windows Local Firewall with your Windows installment:
 If you want to use some convenience related configuration:
 - HKEY_CURRENT_USER - Windows 10 User level settings convenience [[REG]](https://github.com/teusink/Home-Security-by-W10-Hardening/blob/master/files/hkcu-convenience.reg)
 
+You can find the deinstall registry files here: [[deinstall folder]](https://github.com/teusink/Home-Security-by-W10-Hardening/blob/master/files/deinstall/)
+
 # hosts file
 To disable the wpad requests (automatic proxy server configuration) without breaking the IP Helper service of Windows, you will need to add a value to your hosts file.
 - This can be done by replacing your hosts file with this [[hosts]](https://github.com/teusink/Home-Security-by-W10-Hardening/blob/master/files/hosts)) file.
