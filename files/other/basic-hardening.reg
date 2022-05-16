@@ -79,6 +79,14 @@ Windows Registry Editor Version 5.00
 ; 0000001 = On (Default)
 "EnableLMHOSTS"=dword:0000000
 
+;;; Change time server (NTP) to The Netherlands
+[HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Services\W32Time\Parameters]
+; time.windows.com,0x9 = (Default)
+; time.nist.gov,0x9 = US NIST
+; ntp.time.nl,0x9 = NL SIDN
+"NtpServer"="ntp.time.nl,0x9"
+"Type"="NTP"
+
 ;;; USER CONFIGURATION
 
 ;;; Turn off "File Explorer ads"
