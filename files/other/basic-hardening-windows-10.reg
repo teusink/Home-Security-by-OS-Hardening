@@ -1,0 +1,326 @@
+Windows Registry Editor Version 5.00
+
+;;; Windows 10 Home & Pro Hardening
+;;; Repository: https://github.com/teusink/Home-Security-by-W10-Hardening/
+
+;;; Registry target: HKEY_LOCAL_MACHINE
+;;; Source: Various online sources
+;;; Author: Joram Teusink
+
+;;; NOTE: These settings below are also configurable through the GUI and do not act as a policy (prohibit changing settings through GUI)
+
+;;; MACHINE CONFIGURATION
+
+;;; Startup and Recovery - Debug Information: None
+[HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Control\CrashControl]
+"AutoReboot"=dword:0000001						; Default: 1
+"LogEvent"=dword:0000001						; Default: 1
+"MinidumpsCount"=dword:0000001					; Default: 5
+"Overwrite"=dword:0000001						; Default: 1
+"CrashDumpEnabled"=dword:0000000				; Default: 1
+"AlwaysKeepMemoryDump"=dword:0000000			; Default: 1
+
+;;; Remote Assistance: Disable
+[HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Control\Remote Assistance]
+"CreateEncryptedOnlyTickets"=dword:0000001		; Default: 0
+"fAllowFullControl"=dword:0000001				; Default: 1
+"fAllowToGetHelp"=dword:0000000					; Default: 1
+"fEnableChatControl"=dword:0000001				; Default: 1
+"MaxTicketExpiry"=dword:0000001					; Default: 1
+"MaxTicketExpiryUnits"=dword:0000001			; Default: 1
+
+;;; Find my device: On
+[HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Settings\FindMyDevice]
+; 0000000 = Off (Default)
+; 0000001 = On (Secure)
+"LocationSyncEnabled"=dword:0000001
+
+;;; App Advertising ID: Off
+[HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Windows\CurrentVersion\AdvertisingInfo]
+; 0000000 = Off (Secure)
+; 0000001 = On (Default)
+"Enabled"=dword:0000000
+
+;;; Project to this PC: Off
+[HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\MiracastReceiver]
+"NetworkQualificationEnabled"=dword:0000000		; Default: 0000001
+"ConsentToast"=dword:0000002					; Default: 0000000
+"Primary Authorization Method"=dword:0000003	; Default: 0000002
+"Secondary Authorization Method"=dword:0000000	; Default: 0000003
+"Tertiary Authorization Method"=dword:0000000	; Default: 0000000
+"EnabledOnACOnly"=dword:0000000					; Default: 0000001
+[HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\PlayToReceiver]
+; 0000000 = Off (Secure)
+; 0000001 = On (Default)
+"AutoEnabled"=dword:0000000
+
+;;; Hotspots 2.0 networks: Off
+[HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\WlanSvc\AnqpCache]
+; 0000000 = Off (Secure)
+; 0000001 = On (Default)
+"OsuRegistrationStatus"=dword:0000000
+
+;;; SmartScreen Apps and Files: Warn
+[HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Windows\CurrentVersion\Explorer]
+; Block = Block execution/opening (Secure)
+; Warn = Warn before execution/opening (Default)
+; Off = Turn off
+"SmartScreenEnabled"="Warn"
+
+;;; Sign-in after Windows Update: On
+[HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Windows NT\CurrentVersion\Winlogon]
+; 0000000 = Off (Secure)
+; 0000001 = On (Default)
+"ARSOUserConsent"=dword:0000001
+
+;;; LMHOSTS lookup: Off
+[HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Services\NetBT\Parameters]
+; 0000000 = Off (Secure)
+; 0000001 = On (Default)
+"EnableLMHOSTS"=dword:0000000
+
+;;; Change time server (NTP) to The Netherlands
+[HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Services\W32Time\Parameters]
+; time.windows.com,0x9 = (Default)
+; time.nist.gov,0x9 = US NIST
+; ntp.time.nl,0x9 = NL SIDN
+"NtpServer"="ntp.time.nl,0x9"
+"Type"="NTP"
+
+;;; Enable SMB signing
+[HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Services\LanmanServer\Parameters]
+; 00000000 = Off (Default)
+; 00000001 = On (Secure)
+"EnableSecuritySignature"=dword:00000001
+"RequireSecuritySignature"=dword:00000001
+
+;;; USER CONFIGURATION
+
+;;; Turn off "File Explorer ads"
+[HKEY_CURRENT_USER\SOFTWARE\Microsoft\Windows\CurrentVersion\Explorer\Advanced]
+; 0000000 = Off (Secure)
+; 0000001 = On (Default)
+"ShowSyncProviderNotifications"=dword:0000000
+
+;;; Turn off "Start Menu suggestions"
+[HKEY_CURRENT_USER\SOFTWARE\Microsoft\Windows\CurrentVersion\ContentDeliveryManager]
+; 0000000 = Off (Secure)
+; 0000001 = On (Default)
+"SystemPaneSuggestionsEnabled"=dword:0000000
+"SubscribedContent-338388Enabled"=dword:0000000
+
+;;; Turn off "Get tips, tricks and suggestions as you use Windows"
+[HKEY_CURRENT_USER\SOFTWARE\Microsoft\Windows\CurrentVersion\ContentDeliveryManager]
+; 0000000 = Off (Secure)
+; 0000001 = On (Default)
+"SoftLandingEnabled"=dword:0000000
+"SubscribedContent-338389Enabled"=dword:0000000
+
+;;; Turn off "Ads in Settings"
+[HKEY_CURRENT_USER\SOFTWARE\Microsoft\Windows\CurrentVersion\ContentDeliveryManager]
+; 0000000 = Off (Secure)
+; 0000001 = On (Default)
+"SubscribedContent-338393Enabled"=dword:0000000
+"SubscribedContent-353694Enabled"=dword:0000000
+
+;;; Turn off "Fun facts and tips"
+[HKEY_CURRENT_USER\SOFTWARE\Microsoft\Windows\CurrentVersion\ContentDeliveryManager]
+; 0000000 = Off (Secure)
+; 0000001 = On (Default)
+"RotatingLockScreenOverlayEnabled"=dword:0000000
+"SubscribedContent-338387Enabled"=dword:0000000
+
+;;; Turn off "Game Bar Tips"
+[HKEY_CURRENT_USER\Software\Microsoft\GameBar]
+; 0000000 = Off (Secure)
+; 0000001 = On (Default)
+"ShowStartupPanel"=dword:0000000
+
+;;; Turn off "AutoPlay"
+[HKEY_CURRENT_USER\Software\Microsoft\Windows\CurrentVersion\Explorer\AutoplayHandlers]
+; 0000000 = Off (Default)
+; 0000001 = On (Secure)
+"DisableAutoplay"=dword:0000001
+
+;;; Turn off "Let websites access language list"
+[HKEY_CURRENT_USER\Control Panel\International\User Profile]
+; 0000000 = Off (Secure)
+; 0000001 = On (Default)
+"HttpAcceptLanguageOptOut"=dword:0000001
+
+;;; Turn on "Let Windows track app launches"
+[HKEY_CURRENT_USER\Software\Microsoft\Windows\CurrentVersion\Explorer\Advanced]
+; 0000000 = Off (Secure)
+; 0000001 = On (Default)
+"Start_TrackProgs"=dword:0000001
+
+;;; Turn off "Let apps share and sync with wireless devices"
+[HKEY_CURRENT_USER\Software\Microsoft\Windows\CurrentVersion\DeviceAccess\Global\LooselyCoupled]
+; Deny = Denied to share and sync (Secure & Default)
+; Allow = Allowed to share and sync
+"Value"="Deny"
+
+;;; Turn off "Show me the Windows welcome experience after updates and occasionally when I sign in to highlight what’s new and suggested"
+[HKEY_CURRENT_USER\Software\Microsoft\Windows\CurrentVersion\ContentDeliveryManager]
+; 0000000 = Off (Secure)
+; 0000001 = On (Default)
+"SubscribedContent-310093Enabled"=dword:0000000
+
+;;; Turn off "Tailored experiences with diagnostic data"
+[HKEY_CURRENT_USER\Software\Microsoft\Windows\CurrentVersion\Privacy]
+; 0000000 = Off (Secure)
+; 0000001 = On (Default)
+"TailoredExperiencesWithDiagnosticDataEnabled"=dword:0000000
+
+;;; Turn off (set to Never) "Feedback Frequency"
+[HKEY_CURRENT_USER\SOFTWARE\Microsoft\Siuf\Rules]
+; 0000000 = Off (Secure)
+; 0000001 = On (Default)
+"NumberOfSIUFInPeriod"=dword:0000000
+"PeriodInNanoSeconds"=dword:0000000
+
+;;; Turn on (set to Warning) "SmartScreen for Microsoft Edge"
+[HKEY_CURRENT_USER\Software\Classes\Local Settings\Software\Microsoft\Windows\CurrentVersion\AppContainer\Storage\microsoft.microsoftedge_8wekyb3d8bbwe\MicrosoftEdge\PhishingFilter]
+; 0000000 = Off
+; 0000001 = On (Secure & Default)
+"EnabledV9"=dword:0000001
+
+;;; Turn on (set to Warning) "SmartScreen for Windows Store apps"
+[HKEY_CURRENT_USER\Software\Microsoft\Windows\CurrentVersion\AppHost]
+; 0000000 = Off
+; 0000001 = On (Secure & Default)
+"EnableWebContentEvaluation"=dword:0000001
+
+;;; Turn on override prevention "SmartScreen for Windows Store apps"
+[HKEY_CURRENT_USER\Software\Microsoft\Windows\CurrentVersion\AppHost]
+; 0000000 = Off (Default)
+; 0000001 = On (Secure)
+"PreventOverride"=dword:0000001
+
+;;; Turn on "Storage sense" (once a month) and delete Temporary files and empty Recycle bin after 30 days
+[HKEY_CURRENT_USER\Software\Microsoft\Windows\CurrentVersion\StorageSense\Parameters\StoragePolicy]
+; Storage Sense: On
+"01"=dword:00000001
+; Run Storage Sense: On, Every Month
+"1024"=dword:00000001
+"2048"=dword:0000001e
+; Delete temporary files that my apps aren’t using: On
+"04"=dword:00000001
+; Delete files in my recycle bin if they have been there for over: On, 30 Days
+"08"=dword:00000001
+"256"=dword:0000001e
+; Delete files in my Downloads folder if they have been there for over: Off, Never
+"32"=dword:00000000
+"512"=dword:00000000
+
+;;; Turn on "File extensions for known file types"
+[HKEY_CURRENT_USER\Software\Microsoft\Windows\CurrentVersion\Explorer\Advanced]
+; 0000000 = Off (Secure)
+; 0000001 = On (Default)
+"HideFileExt"=dword:0000000
+
+;;; Set to "My devices only" for Nearby sharing: "I can share and receive from"
+[HKEY_CURRENT_USER\Software\Microsoft\Windows\CurrentVersion\CDP]
+; 0000000 = Off (Secure, Default)
+; 0000001 = My devices only
+; 0000002 = Everyone nearby
+"NearShareChannelUserAuthzPolicy"=dword:0000000
+
+;;; Set to "My devices only" for Shared Experiences: "I can share and receive from"
+[HKEY_CURRENT_USER\Software\Microsoft\Windows\CurrentVersion\CDP]
+; 0000000 = Off (Secure)
+; 0000001 = My devices only (Default)
+; 0000002 = Everyone nearby
+"CdpSessionUserAuthzPolicy"=dword:0000001
+
+;;; Turn on "Sync your settings: Ease of Access"
+[HKEY_CURRENT_USER\Software\Microsoft\Windows\CurrentVersion\SettingSync\Groups\Accessibility]
+; 0000000 = Off (Secure)
+; 0000001 = On (Default)
+"Enabled"=dword:0000001
+
+;;; Turn on "Sync your settings: Internet Explorer settings"
+[HKEY_CURRENT_USER\Software\Microsoft\Windows\CurrentVersion\SettingSync\Groups\BrowserSettings]
+; 0000000 = Off (Secure)
+; 0000001 = On (Default)
+"Enabled"=dword:0000001
+
+;;; Turn on "Sync your settings: Passwords"
+[HKEY_CURRENT_USER\Software\Microsoft\Windows\CurrentVersion\SettingSync\Groups\Credentials]
+; 0000000 = Off (Secure)
+; 0000001 = On (Default)
+"Enabled"=dword:0000001
+
+;;; Turn on "Sync your settings: Language preferences"
+[HKEY_CURRENT_USER\Software\Microsoft\Windows\CurrentVersion\SettingSync\Groups\Language]
+; 0000000 = Off (Secure)
+; 0000001 = On (Default)
+"Enabled"=dword:0000001
+
+;;; Turn on "Sync your settings: Theme"
+[HKEY_CURRENT_USER\Software\Microsoft\Windows\CurrentVersion\SettingSync\Groups\Personalization]
+; 0000000 = Off (Secure)
+; 0000001 = On (Default)
+"Enabled"=dword:0000001
+
+;;; Turn on "Sync your settings: Other Windows settings"
+[HKEY_CURRENT_USER\Software\Microsoft\Windows\CurrentVersion\SettingSync\Groups\Windows]
+; 0000000 = Off (Secure)
+; 0000001 = On (Default)
+"Enabled"=dword:0000001
+
+;;; Turn off "Let Cortana respond to "Hey Cortana""
+[HKEY_CURRENT_USER\Software\Microsoft\Speech_OneCore\Preferences]
+; 0000000 = Off (Secure)
+; 0000001 = On (Default)
+"VoiceActivationOn"=dword:0000000
+
+;;; Turn on "Let Cortana listen for my commands when I press the Windows logo key + C"
+[HKEY_CURRENT_USER\Software\Microsoft\Windows\CurrentVersion\Search]
+; 0000000 = Off (Secure)
+; 0000001 = On (Default)
+"VoiceShortcut"=dword:0000001
+
+;;; Turn off "Use Cortana even when my device is locked"
+[HKEY_CURRENT_USER\Software\Microsoft\Speech_OneCore\Preferences]
+; 0000000 = Off (Secure & Default)
+; 0000001 = On
+"VoiceActivationEnableAboveLockscreen"=dword:0000000
+
+;;; Enable Clipboard History Feature
+[HKEY_CURRENT_USER\Software\Microsoft\Clipboard]
+; <deleted> = (Default)
+; 0000000 = Off (Secure)
+; 0000001 = On
+"EnableClipboardHistory"=dword:0000001
+
+;;; Disable Clipboard Cloud Sync Feature
+[HKEY_CURRENT_USER\Software\Microsoft\Clipboard]
+; <deleted> = (Default)
+; 0000000 = Off (Secure)
+; 0000001 = On
+"EnableCloudClipboard"=dword:0000000
+"CloudClipboardAutomaticUpload"=dword:0000000
+
+;;; NOTE: These settings are not Security or Privacy related, but purely for convenience
+
+;;; Performance - Visual Effects: Best performance
+[HKEY_CURRENT_USER\Software\Microsoft\Windows\CurrentVersion\Explorer\VisualEffects]
+; 000000 = Let Windows choose what’s best for my computer (Default)
+; 000001 = Adjust for best appearance
+; 000002 = Adjust for best performance
+"VisualFXSetting"=dword:0000001
+
+;;; Functionality - Click to Activate Last Window on Taskbar Click
+[HKEY_CURRENT_USER\Software\Microsoft\Windows\CurrentVersion\Explorer\Advanced]
+; <deleted> = Off (Default)
+; 000000 = Off
+; 000001 = On
+"LastActiveClick"=dword:0000001
+
+;;; Functionality - Active Tumbnail Preview on Taskbar, while having "Click to Activate" enabled
+[HKEY_CURRENT_USER\Software\Microsoft\Windows\CurrentVersion\Explorer\Advanced]
+; <deleted> = Off (Default)
+; 000000 = Off
+; 000001 = On
+"ExtendedUIHoverTime"=dword:0000001
