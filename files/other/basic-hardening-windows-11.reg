@@ -1,0 +1,30 @@
+Windows Registry Editor Version 5.00
+
+;;; Windows 11 Home & Pro Hardening
+;;; Repository: https://github.com/teusink/Home-Security-by-W10-Hardening/
+
+;;; Registry target: HKEY_LOCAL_MACHINE
+;;; Source: Various online sources
+;;; Author: Joram Teusink
+
+;;; NOTE: These settings below are also configurable through the GUI and do not act as a policy (prohibit changing settings through GUI)
+
+;;; MACHINE CONFIGURATION
+
+;;; Change time server (NTP) to The Netherlands
+[HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Services\W32Time\Parameters]
+; time.windows.com,0x9 = (Default)
+; time.nist.gov,0x9 = US NIST
+; ntp.time.nl,0x9 = NL SIDN
+"NtpServer"="ntp.time.nl,0x9"
+"Type"="NTP"
+
+;;; Enable SMB signing
+[HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Services\LanmanServer\Parameters]
+; 00000000 = Off (Default)
+; 00000001 = On (Secure)
+"EnableSecuritySignature"=dword:00000001
+"RequireSecuritySignature"=dword:00000001
+
+;;; USER CONFIGURATION
+
