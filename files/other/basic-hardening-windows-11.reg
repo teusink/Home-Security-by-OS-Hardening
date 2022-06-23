@@ -41,4 +41,5 @@ Windows Registry Editor Version 5.00
 [HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Control\GraphicsDrivers]
 ; <deleted> = Off (Default)
 ; 0000000a = 10 seconds
-"TdrDelay"=dword:0000000a
+; 00000014 = 20 seconds
+"TdrDelay"=dword:00000014
