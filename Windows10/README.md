@@ -1,7 +1,7 @@
 ﻿# Home-Security-by-OS-Hardening
 Description on how I configured the installation and Security of Windows 10 Home and Pro, and how I keep it fit for use and purpose.
 
-Please note, this is the advanced section. For the basic section please go here: [[Windows 10 basic hardening]](https://github.com/teusink/Home-Security-by-W10-Hardening/blob/master/Windows10/basic/)
+Please note, this is the advanced section. For the basic section please go here: [[Windows 10 basic hardening]](https://github.com/teusink/Home-Security-by-OS-Hardening/blob/master/Windows10/basic/)
 
 Disclaimer: That this works on my machines does not mean it works on yours. Test it out carefully yourself. And keep in mind that the Windows 10 variant is not actively updated anymore.
 
@@ -44,7 +44,7 @@ From a Graphical User Interface (GUI) perspective I will touch every relevant se
 
 # Upgrades to newer Windows 10 builds
 
-Whenever you upgrade to a newer build, sometimes there are keys and entries going obsolete. Through this registry file you can remove them safely: [[hk-remove-obsolete-entries]](https://github.com/teusink/Home-Security-by-W10-Hardening/blob/master/Windows10/advanced/hk-remove-obsolete-entries.reg)
+Whenever you upgrade to a newer build, sometimes there are keys and entries going obsolete. Through this registry file you can remove them safely: [[hk-remove-obsolete-entries]](https://github.com/teusink/Home-Security-by-OS-Hardening/blob/master/Windows10/advanced/hk-remove-obsolete-entries.reg)
 
 Upgrades included in the Registry file:
 - From 2004 to 20H2: not needed
@@ -109,7 +109,7 @@ These are the settings that are done through the use of the Control Panel. Set i
   - Security: Enable Java content for browser and Web Start applications: Off
   - Security: Security level for applications not on the Exception Site list: High
 
-For automated enabling/disabling Windows Features, execute this file in the Command Promt with Administrative Privileges (right-click -> Run as Administrator): [[windows-features.bat]](https://github.com/teusink/Home-Security-by-W10-Hardening/blob/master/Windows10/advanced/)
+For automated enabling/disabling Windows Features, execute this file in the Command Promt with Administrative Privileges (right-click -> Run as Administrator): [[windows-features.bat]](https://github.com/teusink/Home-Security-by-OS-Hardening/blob/master/Windows10/advanced/)
 
 ## Network and Internet
 - Internet Options: Connections: LAN settings:
@@ -322,32 +322,32 @@ In order to even more harden your system, add the registry key-sets below to you
 All settings mentioned above followed with an asterisk (*) can also be found below in the registry files. Keep in mind the the files below are based on the CIS Benchmarks, that neither registry file receives 100% compliance!
 
 If you have Windows 10 Home/Pro:
-- HKEY_LOCAL_MACHINE - Windows 10 CIS Level 1 & 2 [[REG]](https://github.com/teusink/Home-Security-by-W10-Hardening/blob/master/Windows10/advanced/hklm-cis-windows.reg)
-- HKEY_CURRENT_USER - Windows 10 CIS Level 1 & 2 [[REG]](https://github.com/teusink/Home-Security-by-W10-Hardening/blob/master/Windows10/advanced/hkcu-cis-windows.reg)
-- HKEY_LOCAL_MACHINE - Windows 10 Custom hardening [[REG]](https://github.com/teusink/Home-Security-by-W10-Hardening/blob/master/Windows10/advanced/hklm-custom.reg)
-- HKEY_LOCAL_MACHINE - Windows Client and Server Encryption hardening [[REG]](https://github.com/teusink/Home-Security-by-W10-Hardening/blob/master/Windows10/advanced/hklm-encryption.reg)
-- HKEY_CURRENT_USER - Windows 10 User level settings hardening [[REG]](https://github.com/teusink/Home-Security-by-W10-Hardening/blob/master/Windows10/advanced/hkcu-custom.reg)
+- HKEY_LOCAL_MACHINE - Windows 10 CIS Level 1 & 2 [[REG]](https://github.com/teusink/Home-Security-by-OS-Hardening/blob/master/Windows10/advanced/hklm-cis-windows.reg)
+- HKEY_CURRENT_USER - Windows 10 CIS Level 1 & 2 [[REG]](https://github.com/teusink/Home-Security-by-OS-Hardening/blob/master/Windows10/advanced/hkcu-cis-windows.reg)
+- HKEY_LOCAL_MACHINE - Windows 10 Custom hardening [[REG]](https://github.com/teusink/Home-Security-by-OS-Hardening/blob/master/Windows10/advanced/hklm-custom.reg)
+- HKEY_LOCAL_MACHINE - Windows Client and Server Encryption hardening [[REG]](https://github.com/teusink/Home-Security-by-OS-Hardening/blob/master/Windows10/advanced/hklm-encryption.reg)
+- HKEY_CURRENT_USER - Windows 10 User level settings hardening [[REG]](https://github.com/teusink/Home-Security-by-OS-Hardening/blob/master/Windows10/advanced/hkcu-custom.reg)
 
 If you use Windows Defender with your Windows installment:
-- HKEY_LOCAL_MACHINE - Windows 10 CIS L1 & L2 - Windows Defender [[REG]](https://github.com/teusink/Home-Security-by-W10-Hardening/blob/master/Windows10/advanced/hklm-cis-defender.reg)
+- HKEY_LOCAL_MACHINE - Windows 10 CIS L1 & L2 - Windows Defender [[REG]](https://github.com/teusink/Home-Security-by-OS-Hardening/blob/master/Windows10/advanced/hklm-cis-defender.reg)
 
 If you use BitLocker with your Windows installment:
-- HKEY_LOCAL_MACHINE - Windows 10 CIS BitLocker [[REG]](https://github.com/teusink/Home-Security-by-W10-Hardening/blob/master/Windows10/advanced/hklm-cis-bitlocker.reg)
+- HKEY_LOCAL_MACHINE - Windows 10 CIS BitLocker [[REG]](https://github.com/teusink/Home-Security-by-OS-Hardening/blob/master/Windows10/advanced/hklm-cis-bitlocker.reg)
 
 If you use BitLocker with your Windows installment, but DO NOT have a TPM chip use this add-on in addition to the file above:
-- HKEY_LOCAL_MACHINE - Windows 10 CIS BitLocker No TPM [[REG]](https://github.com/teusink/Home-Security-by-W10-Hardening/blob/master/Windows10/advanced/hklm-cis-bitlocker-no-tpm.reg)
+- HKEY_LOCAL_MACHINE - Windows 10 CIS BitLocker No TPM [[REG]](https://github.com/teusink/Home-Security-by-OS-Hardening/blob/master/Windows10/advanced/hklm-cis-bitlocker-no-tpm.reg)
 
 If you use Windows Local Firewall with your Windows installment:
-- HKEY_LOCAL_MACHINE - Windows 10 CIS L1 & L2 - Windows Local Firewall [[REG]](https://github.com/teusink/Home-Security-by-W10-Hardening/blob/master/Windows10/advanced/hklm-cis-firewall.reg)
+- HKEY_LOCAL_MACHINE - Windows 10 CIS L1 & L2 - Windows Local Firewall [[REG]](https://github.com/teusink/Home-Security-by-OS-Hardening/blob/master/Windows10/advanced/hklm-cis-firewall.reg)
 
 If you want to use some convenience related configuration:
-- HKEY_CURRENT_USER - Windows 10 User level settings convenience [[REG]](https://github.com/teusink/Home-Security-by-W10-Hardening/blob/master/Windows10/advanced/hkcu-convenience.reg)
+- HKEY_CURRENT_USER - Windows 10 User level settings convenience [[REG]](https://github.com/teusink/Home-Security-by-OS-Hardening/blob/master/Windows10/advanced/hkcu-convenience.reg)
 
-You can find the deinstall registry files here: [[deinstall folder]](https://github.com/teusink/Home-Security-by-W10-Hardening/blob/master/Windows10/advanced/deinstall/)
+You can find the deinstall registry files here: [[deinstall folder]](https://github.com/teusink/Home-Security-by-OS-Hardening/blob/master/Windows10/advanced/deinstall/)
 
 # hosts file
 To disable the wpad requests (automatic proxy server configuration) without breaking the IP Helper service of Windows, you will need to add a value to your hosts file.
-- This can be done by replacing your hosts file with this [[hosts]](https://github.com/teusink/Home-Security-by-W10-Hardening/blob/master/Windows10/advanced/hosts)) file.
+- This can be done by replacing your hosts file with this [[hosts]](https://github.com/teusink/Home-Security-by-OS-Hardening/blob/master/Windows10/advanced/hosts)) file.
 - Or you can manually add this line to your existing hosts file: `255.255.255.255 wpad.`.
 
 The hosts file is located in: `C:\Windows\System32\drivers\etc`
@@ -397,6 +397,6 @@ A special word of thanks goes to Center for Internet Security (CIS) (https://www
 Their contributions to (not only) this guide is worth my sincere gratitude. Thanks!
 
 # Licensing
-All the licensing and copyrights of any of the code and applications belong to their respective owners. All other coding falls under the MIT-license: https://github.com/teusink/Home-Security-by-W10-Hardening/blob/master/Windows10/LICENSE
+All the licensing and copyrights of any of the code and applications belong to their respective owners. All other coding falls under the MIT-license: https://github.com/teusink/Home-Security-by-OS-Hardening/blob/master/Windows10/LICENSE
 
 Feel free to remake, reshape and reuse whatever you like or need.
