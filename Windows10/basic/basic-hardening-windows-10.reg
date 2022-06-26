@@ -325,7 +325,7 @@ Windows Registry Editor Version 5.00
 ; 000001 = On
 "ExtendedUIHoverTime"=dword:0000001
 
-;;; Fix - Display driver nvlddmkm stopped responding
+;;; Fix EventID 4101 - Display driver nvlddmkm stopped responding
 [HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Control\GraphicsDrivers]
 ; <deleted> = Off (Default)
 ; 0000000a = 10 seconds

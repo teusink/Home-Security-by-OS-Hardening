@@ -18,12 +18,10 @@ Disclaimer: That this works on my machines does not mean it works on yours. Test
 
 ## Performance monitor
 
+Fix EventID 3 - Session "ReadyBoot" stopped due to the following error: 0xC0000188
 - ReadyBoot
 -- File
 --- Logmode: Circular (Default: none)
-- DefenderApiLogger
--- Stop Condition
---- Maximum Size: 200MB (Default: 100MB)
 
 # Licensing
 All the licensing and copyrights of any of the code and applications belong to their respective owners. All other coding falls under the MIT-license: https://github.com/teusink/Home-Security-by-OS-Hardening/blob/master/LICENSE
