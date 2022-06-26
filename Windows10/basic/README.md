@@ -1,5 +1,5 @@
 ﻿# Home-Security-by-OS-Hardening
-Operating System: Windows 11 Home and Pro
+Operating System: Windows 10 Home and Pro
 
 In regard this part of the repo, this section focuses on basic tuning and configuration and add some fixes applied which occurd in the event log.
 
