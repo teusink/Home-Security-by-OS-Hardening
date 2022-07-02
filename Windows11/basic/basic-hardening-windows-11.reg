@@ -1,7 +1,7 @@
 Windows Registry Editor Version 5.00
 
 ;;; Windows 11 Home & Pro Hardening
-;;; Repository: https://github.com/teusink/Home-Security-by-W10-Hardening/
+;;; Repository: https://github.com/teusink/Home-Security-by-OS-Hardening/
 
 ;;; Registry target: HKEY_LOCAL_MACHINE
 ;;; Source: Various online sources
@@ -10,6 +10,59 @@ Windows Registry Editor Version 5.00
 ;;; NOTE: These settings below are also configurable through the GUI and do not act as a policy (prohibit changing settings through GUI)
 
 ;;; MACHINE CONFIGURATION
+
+;;; Startup and Recovery - Debug Information: None
+[HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Control\CrashControl]
+"AutoReboot"=dword:0000001						; Default: 1
+"LogEvent"=dword:0000001						; Default: 1
+"MinidumpsCount"=dword:0000001					; Default: 5
+"Overwrite"=dword:0000001						; Default: 1
+"CrashDumpEnabled"=dword:0000000				; Default: 1
+"AlwaysKeepMemoryDump"=dword:0000000			; Default: 1
+
+;;; Remote Assistance: Disable
+[HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Control\Remote Assistance]
+"CreateEncryptedOnlyTickets"=dword:0000001		; Default: 0
+"fAllowFullControl"=dword:0000001				; Default: 1
+"fAllowToGetHelp"=dword:0000000					; Default: 1
+"fEnableChatControl"=dword:0000001				; Default: 1
+"MaxTicketExpiry"=dword:0000001					; Default: 1
+"MaxTicketExpiryUnits"=dword:0000001			; Default: 1
+
+;;; Find my device: On
+[HKEY_LOCAL_MACHINE\SOFTWARE\Policies\Microsoft\FindMyDevice]
+; <deleted> = Not configured (Default)
+; 0000000 = Off (Default)
+; 0000001 = On (Secure)
+"AllowFindMyDevice"=dword:00000001
+
+;;; App Advertising ID: Off
+[HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Windows\CurrentVersion\AdvertisingInfo]
+; 0000000 = Off (Secure)
+; 0000001 = On (Default)
+"Enabled"=dword:0000000
+
+;;; Mobile hotspot: Off
+[HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\WlanSvc\AnqpCache]
+; <deleted> = Not configured (Default)
+; 0000000 = Off (Secure)
+; 0000001 = On (Default)
+"OsuReNC_ShowSharedAccessUIgistrationStatus"=dword:0000000
+
+;;; SmartScreen Apps and Files: Warn
+[HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Windows\CurrentVersion\Explorer]
+; <deleted> = Not configured (Default)
+; Block = Block execution/opening (Secure)
+; Warn = Warn before execution/opening (Default)
+; Off = Turn off
+"SmartScreenEnabled"="Warn"
+
+;;; LMHOSTS lookup: Off
+[HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Services\NetBT\Parameters]
+; <deleted> = Not configured (Default)
+; 0000000 = Off (Secure)
+; 0000001 = On (Default)
+"EnableLMHOSTS"=dword:0000000
 
 ;;; Change time server (NTP) to The Netherlands
 [HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Services\W32Time\Parameters]
@@ -29,6 +82,90 @@ Windows Registry Editor Version 5.00
 ;;; USER CONFIGURATION
 
 ;;; NOTE: These settings are not Security or Privacy related, but purely for convenience
+
+;;; Turn off "Start Menu suggestions"
+[HKEY_CURRENT_USER\SOFTWARE\Microsoft\Windows\CurrentVersion\ContentDeliveryManager]
+; 0000000 = Off (Secure)
+; 0000001 = On (Default)
+"SystemPaneSuggestionsEnabled"=dword:0000000
+"SubscribedContent-338388Enabled"=dword:0000000
+
+;;; Turn off "Ads in Settings"
+[HKEY_CURRENT_USER\SOFTWARE\Microsoft\Windows\CurrentVersion\ContentDeliveryManager]
+; 0000000 = Off (Secure)
+; 0000001 = On (Default)
+"SubscribedContent-338393Enabled"=dword:0000000
+"SubscribedContent-353694Enabled"=dword:0000000
+
+;;; Turn off "Fun facts and tips"
+[HKEY_CURRENT_USER\SOFTWARE\Microsoft\Windows\CurrentVersion\ContentDeliveryManager]
+; 0000000 = Off (Secure)
+; 0000001 = On (Default)
+"RotatingLockScreenOverlayEnabled"=dword:0000000
+"SubscribedContent-338387Enabled"=dword:0000000
+
+;;; Turn off "AutoPlay"
+[HKEY_CURRENT_USER\Software\Microsoft\Windows\CurrentVersion\Explorer\AutoplayHandlers]
+; 0000000 = Off (Default)
+; 0000001 = On (Secure)
+"DisableAutoplay"=dword:0000001
+
+;;; Turn off "Show me the Windows welcome experience after updates and occasionally when I sign in to highlight what’s new and suggested"
+[HKEY_CURRENT_USER\Software\Microsoft\Windows\CurrentVersion\ContentDeliveryManager]
+; 0000000 = Off (Secure)
+; 0000001 = On (Default)
+"SubscribedContent-310093Enabled"=dword:0000000
+
+;;; Turn off "Tailored experiences with diagnostic data"
+[HKEY_CURRENT_USER\Software\Microsoft\Windows\CurrentVersion\Privacy]
+; 0000000 = Off (Secure)
+; 0000001 = On (Default)
+"TailoredExperiencesWithDiagnosticDataEnabled"=dword:0000000
+
+;;; Turn off (set to Never) "Feedback Frequency"
+[HKEY_CURRENT_USER\SOFTWARE\Microsoft\Siuf\Rules]
+; 0000000 = Off (Secure)
+; 0000001 = On (Default)
+"NumberOfSIUFInPeriod"=dword:0000000
+"PeriodInNanoSeconds"=dword:0000000
+
+;;; Turn on "Storage sense" (once a month) and delete Temporary files and empty Recycle bin after 30 days
+[HKEY_CURRENT_USER\Software\Microsoft\Windows\CurrentVersion\StorageSense\Parameters\StoragePolicy]
+; Storage Sense: On
+"01"=dword:00000001
+; Run Storage Sense: On, Every Month
+"1024"=dword:00000001
+"2048"=dword:0000001e
+; Delete temporary files that my apps aren’t using: On
+"04"=dword:00000001
+; Delete files in my recycle bin if they have been there for over: On, 30 Days
+"08"=dword:00000001
+"256"=dword:0000001e
+; Delete files in my Downloads folder if they have been there for over: Off, Never
+"32"=dword:00000000
+"512"=dword:00000000
+
+;;; Turn on "File extensions for known file types"
+[HKEY_CURRENT_USER\Software\Microsoft\Windows\CurrentVersion\Explorer\Advanced]
+; 0000000 = Off (Secure)
+; 0000001 = On (Default)
+"HideFileExt"=dword:0000000
+
+;;; Set to "My devices only" for Nearby sharing: "I can share and receive from"
+[HKEY_CURRENT_USER\Software\Microsoft\Windows\CurrentVersion\CDP]
+; <deleted> = Not configured (Default)
+; 0000000 = Off (Secure, Default)
+; 0000001 = My devices only
+; 0000002 = Everyone nearby
+"NearShareChannelUserAuthzPolicy"=dword:0000000
+
+;;; Set to "My devices only" for Shared Experiences: "I can share and receive from"
+[HKEY_CURRENT_USER\Software\Microsoft\Windows\CurrentVersion\CDP]
+; <deleted> = Not configured (Default)
+; 0000000 = Off (Secure)
+; 0000001 = My devices only (Default)
+; 0000002 = Everyone nearby
+"CdpSessionUserAuthzPolicy"=dword:0000001
 
 ;;; Performance - Visual Effects: Best performance
 ; 000000 = Let Windows choose what’s best for my computer (Default)
@@ -75,7 +212,7 @@ Windows Registry Editor Version 5.00
 
 ;;; Fix EventID 4101 - Display driver nvlddmkm stopped responding
 [HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Control\GraphicsDrivers]
-; <deleted> = Off (Default)
+; <deleted> = Not configured (Default)
 ; 0000000a = 10 seconds
 ; 00000014 = 20 seconds
 "TdrDelay"=dword:00000014
@@ -85,5 +222,7 @@ Windows Registry Editor Version 5.00
 ; default present
 "NT Authority\\NetworkService"=dword:00000001
 ; add in addtion to default (normaly non-existent)
-".\\Administrator"=dword:00000001
 "NT Authority\\SYSTEM"=dword:00000001
+"NT Authority\\Authenticated Users"=dword:00000001
+"BUILTIN\\Administrators"=dword:00000001
+".\\Administrator"=dword:00000001

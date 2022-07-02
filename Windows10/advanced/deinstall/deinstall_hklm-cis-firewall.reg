@@ -1,7 +1,7 @@
 Windows Registry Editor Version 5.00
 
 ;;; Windows 10 Home & Pro Local Firewall Hardening
-;;; Repository: https://github.com/teusink/Home-Security-by-W10-Hardening/
+;;; Repository: https://github.com/teusink/Home-Security-by-OS-Hardening/
 
 ;;; Registry target: HKEY_LOCAL_MACHINE
 ;;; Source: Computer Internet Security (CIS) - Level 1
