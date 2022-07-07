@@ -216,13 +216,3 @@ Windows Registry Editor Version 5.00
 ; 0000000a = 10 seconds
 ; 00000014 = 20 seconds
 "TdrDelay"=dword:00000014
-
-;;;; Fix EventID 8194 - Volume Shadow Copy Service error: Unexpected error querying for the IVssWriterCallback interface
-[HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Services\VSS\VssAccessControl]
-; default present
-"NT Authority\\NetworkService"=dword:00000001
-; add in addtion to default (normaly non-existent)
-"NT Authority\\SYSTEM"=dword:00000001
-"NT Authority\\Authenticated Users"=dword:00000001
-"BUILTIN\\Administrators"=dword:00000001
-".\\Administrator"=dword:00000001
