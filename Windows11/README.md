@@ -23,6 +23,12 @@ Fix EventID 3 - Session "ReadyBoot" stopped due to the following error: 0xC00001
 -- File
 --- Logmode: Circular (Default: none)
 
+## Filter out Event IDs
+
+The following Event IDs can be filtered out from Administrative Events in the Event Viewer.
+
+`-17,-37,-63,-200,-201,-202,-360,-1000,-2505,-8001,-10010,-10016,-10317`
+
 # Licensing
 All the licensing and copyrights of any of the code and applications belong to their respective owners. All other coding falls under the MIT-license: https://github.com/teusink/Home-Security-by-OS-Hardening/blob/master/LICENSE
 
